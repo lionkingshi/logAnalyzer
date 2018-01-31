@@ -1,0 +1,898 @@
+2018-01-31 17:12:23,167 - stereo_speaker - INFO - ===== Verify VB & BE are on when playing Dolby content start 
+2018-01-31 17:12:23,244 - stereo_speaker - INFO - ===== run command : adb shell am broadcast -a feature_test -p com.dolby.qa.featuretest --es step play_content --es content_location /sdcard/featureTest/stereo_dd_25fps_channel_id.m4a 
+2018-01-31 17:12:24,370 - stereo_speaker - INFO - ===== run command : adb shell am broadcast -a feature_test -p com.dolby.qa.featuretest --es step change_dap_feature --ei dap_status 1 
+2018-01-31 17:12:25,496 - stereo_speaker - INFO - ===== run command : adb shell am broadcast -a feature_test -p com.dolby.qa.featuretest --es step change_dap_feature --ei dap_profile 5 
+2018-01-31 17:12:26,587 - stereo_speaker - INFO - ===== run command : adb shell am broadcast -a feature_test -p com.dolby.qa.featuretest --es step change_dap_feature --ei dap_universal_be 1 
+2018-01-31 17:12:27,701 - stereo_speaker - INFO - ===== run command : adb shell am broadcast -a feature_test -p com.dolby.qa.featuretest --es step record_log  
+2018-01-31 17:12:33,796 - stereo_speaker - INFO - ===== run command : adb logcat -d >./log/stereo_speaker/test_log_tc78_bass_dap_universal_be_1_stereo_dd_25fps_channel_id_m4a.txt 
+2018-01-31 17:12:33,797 - stereo_speaker - INFO - specified log file : /home/emediaqa/automationpRroject/logAnalysis/integrationAutorun/log/stereo_speaker/test_log_tc78_bass_dap_universal_be_1_stereo_dd_25fps_channel_id_m4a.txt
+2018-01-31 17:12:33,797 - stereo_speaker - DEBUG - effect para in global process saved at : /home/emediaqa/automationpRroject/logAnalysis/integrationAutorun/log/stereo_speaker/test_log_tc78_bass_dap_universal_be_1_stereo_dd_25fps_channel_id_m4a_effect_params_from_log.txt
+2018-01-31 17:12:33,797 - stereo_speaker - DEBUG - effect para in qmf process saved at : /home/emediaqa/automationpRroject/logAnalysis/integrationAutorun/log/stereo_speaker/test_log_tc78_bass_dap_universal_be_1_stereo_dd_25fps_channel_id_m4a_arendered_params_from_log.txt
+2018-01-31 17:12:33,798 - stereo_speaker - DEBUG - dap cp and dp para saved at : /home/emediaqa/automationpRroject/logAnalysis/integrationAutorun/log/stereo_speaker/test_log_tc78_bass_dap_universal_be_1_stereo_dd_25fps_channel_id_m4a_dap_cp_dp_from_log.txt
+2018-01-31 17:12:33,798 - stereo_speaker - INFO - ===== filter global parameters in global process start=====---
+2018-01-31 17:12:33,798 - stereo_speaker - INFO - Welcome to DAP Parameters filter !
+2018-01-31 17:12:33,798 - stereo_speaker - INFO - start to filter effect parameter in DlbDap2Process process 
+2018-01-31 17:12:33,799 - stereo_speaker - INFO -  the specified log file for filter exist ! 
+2018-01-31 17:12:33,799 - stereo_speaker - INFO -  start to parse the log ! 
+2018-01-31 17:12:33,799 - stereo_speaker - DEBUG - the param name and its value : msce = 0 
+2018-01-31 17:12:33,800 - stereo_speaker - DEBUG - the param name and its value : mdee = 0 
+2018-01-31 17:12:33,800 - stereo_speaker - DEBUG - the param name and its value : miee = 0 
+2018-01-31 17:12:33,800 - stereo_speaker - DEBUG - the param name and its value : mdle = 0 
+2018-01-31 17:12:33,800 - stereo_speaker - DEBUG - the param name and its value : dvle = 0 
+2018-01-31 17:12:33,800 - stereo_speaker - DEBUG - the param name and its value : mave = 0 
+2018-01-31 17:12:33,800 - stereo_speaker - DEBUG - the param name and its value : ieon = 0 
+2018-01-31 17:12:33,800 - stereo_speaker - DEBUG - the param name and its value : dom = 0 
+2018-01-31 17:12:33,800 - stereo_speaker - DEBUG - the param name and its value : dvle = 0 
+2018-01-31 17:12:33,800 - stereo_speaker - DEBUG - the param name and its value : dvme = 0 
+2018-01-31 17:12:33,800 - stereo_speaker - DEBUG - the param name and its value : deon = 0 
+2018-01-31 17:12:33,800 - stereo_speaker - DEBUG - the param name and its value : ngon = 0 
+2018-01-31 17:12:33,800 - stereo_speaker - DEBUG - the param name and its value : iea = 10 
+2018-01-31 17:12:33,800 - stereo_speaker - DEBUG - the param name and its value : vcbf = 47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688 
+2018-01-31 17:12:33,801 - stereo_speaker - DEBUG - the param name and its value : vbon = 1 
+2018-01-31 17:12:33,801 - stereo_speaker - DEBUG - the param name and its value : beon = 1 
+2018-01-31 17:12:33,801 - stereo_speaker - DEBUG - the param name and its value : geon = 0 
+2018-01-31 17:12:33,801 - stereo_speaker - DEBUG - the param name and its value : gebs = 20,47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+2018-01-31 17:12:33,801 - stereo_speaker - DEBUG - the param name and its value : iebs = 20,65,136,223,332,467,634,841,1098,1416,1812,2302,2909,3663,4598,5756,7194,8976,11186,13927,17326,117,133,188,176,141,149,175,185,185,200,236,242,228,213,182,132,110,68,-27,-240 
+2018-01-31 17:12:33,801 - stereo_speaker - DEBUG - the param name and its value : dea = 7 
+2018-01-31 17:12:33,801 - stereo_speaker - DEBUG - the param name and its value : dsa = 10 
+2018-01-31 17:12:33,801 - stereo_speaker - DEBUG - the param name and its value : beb = 192 
+2018-01-31 17:12:33,801 - stereo_speaker - DEBUG - the param name and its value : plb = 0 
+2018-01-31 17:12:33,801 - stereo_speaker - DEBUG - the param name and its value : vmb = 144 
+2018-01-31 17:12:33,801 - stereo_speaker - DEBUG - the param name and its value : dsb = 48 
+2018-01-31 17:12:33,801 - stereo_speaker - DEBUG - the param name and its value : ded = 0 
+2018-01-31 17:12:33,801 - stereo_speaker - DEBUG - the param name and its value : vbm = 3 
+2018-01-31 17:12:33,801 - stereo_speaker - DEBUG - the param name and its value : bew = 16 
+2018-01-31 17:12:33,801 - stereo_speaker - DEBUG - the param name and its value : dvla = 5 
+2018-01-31 17:12:33,801 - stereo_speaker - DEBUG - the param name and its value : arra = 96 
+2018-01-31 17:12:33,802 - stereo_speaker - DEBUG - the param name and its value : dfsa = 10 
+2018-01-31 17:12:33,802 - stereo_speaker - DEBUG - the param name and its value : dhsa = 10 
+2018-01-31 17:12:33,802 - stereo_speaker - DEBUG - the param name and its value : dvmc = 0 
+2018-01-31 17:12:33,802 - stereo_speaker - DEBUG - the param name and its value : arod = 0 
+2018-01-31 17:12:33,802 - stereo_speaker - DEBUG - the param name and its value : arde = 1 
+2018-01-31 17:12:33,802 - stereo_speaker - DEBUG - the param name and its value : becf = 200 
+2018-01-31 17:12:33,802 - stereo_speaker - DEBUG - the param name and its value : vbmf = 94,469 
+2018-01-31 17:12:33,802 - stereo_speaker - DEBUG - the param name and its value : vbsf = 35,160 
+2018-01-31 17:12:33,802 - stereo_speaker - DEBUG - the param name and its value : vbhg = -32,-144,-192 
+2018-01-31 17:12:33,802 - stereo_speaker - DEBUG - the param name and its value : vbog = 0 
+2018-01-31 17:12:33,802 - stereo_speaker - DEBUG - the param name and its value : vbsg = 0 
+2018-01-31 17:12:33,802 - stereo_speaker - DEBUG - the param name and its value : dvli = -320 
+2018-01-31 17:12:33,802 - stereo_speaker - DEBUG - the param name and its value : dhfm = 2 
+2018-01-31 17:12:33,802 - stereo_speaker - DEBUG - the param name and its value : vbon = 1 
+2018-01-31 17:12:33,802 - stereo_speaker - DEBUG - the param name and its value : beon = 1 
+2018-01-31 17:12:33,802 - stereo_speaker - DEBUG - the param name and its value : aoon = 1 
+2018-01-31 17:12:33,803 - stereo_speaker - DEBUG - the param name and its value : aron = 1 
+2018-01-31 17:12:33,803 - stereo_speaker - DEBUG - the param name and its value : dvlo = -320 
+2018-01-31 17:12:33,803 - stereo_speaker - DEBUG - the param name and its value : artp = 12 
+2018-01-31 17:12:33,803 - stereo_speaker - DEBUG - the param name and its value : aobs = 20,10,47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+2018-01-31 17:12:33,803 - stereo_speaker - DEBUG - the param name and its value : arbs = 20,47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+2018-01-31 17:12:33,803 - stereo_speaker - DEBUG - the param name and its value : iea = 10 
+2018-01-31 17:12:33,803 - stereo_speaker - DEBUG - the param name and its value : msce = 0 
+2018-01-31 17:12:33,803 - stereo_speaker - DEBUG - the param name and its value : mdee = 0 
+2018-01-31 17:12:33,803 - stereo_speaker - DEBUG - the param name and its value : miee = 0 
+2018-01-31 17:12:33,803 - stereo_speaker - DEBUG - the param name and its value : mdle = 0 
+2018-01-31 17:12:33,803 - stereo_speaker - DEBUG - the param name and its value : dvle = 0 
+2018-01-31 17:12:33,803 - stereo_speaker - DEBUG - the param name and its value : mave = 0 
+2018-01-31 17:12:33,803 - stereo_speaker - DEBUG - the param name and its value : vcbf = 47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688 
+2018-01-31 17:12:33,803 - stereo_speaker - DEBUG - the param name and its value : preg = -387 
+2018-01-31 17:12:33,804 - stereo_speaker - DEBUG - the param name and its value : vbon = 1 
+2018-01-31 17:12:33,804 - stereo_speaker - DEBUG - the param name and its value : beon = 1 
+2018-01-31 17:12:33,804 - stereo_speaker - DEBUG - the param name and its value : geon = 0 
+2018-01-31 17:12:33,804 - stereo_speaker - DEBUG - the param name and its value : ieon = 0 
+2018-01-31 17:12:33,804 - stereo_speaker - DEBUG - the param name and its value : gebs = 20,47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+2018-01-31 17:12:33,804 - stereo_speaker - DEBUG - the param name and its value : iebs = 20,65,136,223,332,467,634,841,1098,1416,1812,2302,2909,3663,4598,5756,7194,8976,11186,13927,17326,117,133,188,176,141,149,175,185,185,200,236,242,228,213,182,132,110,68,-27,-240 
+2018-01-31 17:12:33,804 - stereo_speaker - DEBUG - the param name and its value : dea = 7 
+2018-01-31 17:12:33,804 - stereo_speaker - DEBUG - the param name and its value : dsa = 10 
+2018-01-31 17:12:33,804 - stereo_speaker - DEBUG - the param name and its value : beb = 192 
+2018-01-31 17:12:33,804 - stereo_speaker - DEBUG - the param name and its value : plb = 0 
+2018-01-31 17:12:33,804 - stereo_speaker - DEBUG - the param name and its value : vmb = 144 
+2018-01-31 17:12:33,804 - stereo_speaker - DEBUG - the param name and its value : dsb = 48 
+2018-01-31 17:12:33,804 - stereo_speaker - DEBUG - the param name and its value : ded = 0 
+2018-01-31 17:12:33,804 - stereo_speaker - DEBUG - the param name and its value : vbm = 3 
+2018-01-31 17:12:33,804 - stereo_speaker - DEBUG - the param name and its value : dom = 0 
+2018-01-31 17:12:33,804 - stereo_speaker - DEBUG - the param name and its value : bew = 16 
+2018-01-31 17:12:33,805 - stereo_speaker - DEBUG - the param name and its value : dvla = 5 
+2018-01-31 17:12:33,805 - stereo_speaker - DEBUG - the param name and its value : arra = 96 
+2018-01-31 17:12:33,805 - stereo_speaker - DEBUG - the param name and its value : dfsa = 10 
+2018-01-31 17:12:33,805 - stereo_speaker - DEBUG - the param name and its value : dhsa = 10 
+2018-01-31 17:12:33,805 - stereo_speaker - DEBUG - the param name and its value : dvmc = 0 
+2018-01-31 17:12:33,805 - stereo_speaker - DEBUG - the param name and its value : arod = 0 
+2018-01-31 17:12:33,805 - stereo_speaker - DEBUG - the param name and its value : arde = 1 
+2018-01-31 17:12:33,805 - stereo_speaker - DEBUG - the param name and its value : dvle = 0 
+2018-01-31 17:12:33,805 - stereo_speaker - DEBUG - the param name and its value : dvme = 0 
+2018-01-31 17:12:33,805 - stereo_speaker - DEBUG - the param name and its value : becf = 200 
+2018-01-31 17:12:33,805 - stereo_speaker - DEBUG - the param name and its value : vbmf = 94,469 
+2018-01-31 17:12:33,805 - stereo_speaker - DEBUG - the param name and its value : vbsf = 35,160 
+2018-01-31 17:12:33,805 - stereo_speaker - DEBUG - the param name and its value : vbhg = -32,-144,-192 
+2018-01-31 17:12:33,805 - stereo_speaker - DEBUG - the param name and its value : vbog = 0 
+2018-01-31 17:12:33,805 - stereo_speaker - DEBUG - the param name and its value : vbsg = 0 
+2018-01-31 17:12:33,805 - stereo_speaker - DEBUG - the param name and its value : dvli = -320 
+2018-01-31 17:12:33,805 - stereo_speaker - DEBUG - the param name and its value : dhfm = 2 
+2018-01-31 17:12:33,806 - stereo_speaker - DEBUG - the param name and its value : vbon = 1 
+2018-01-31 17:12:33,806 - stereo_speaker - DEBUG - the param name and its value : beon = 1 
+2018-01-31 17:12:33,806 - stereo_speaker - DEBUG - the param name and its value : deon = 0 
+2018-01-31 17:12:33,806 - stereo_speaker - DEBUG - the param name and its value : ngon = 0 
+2018-01-31 17:12:33,806 - stereo_speaker - DEBUG - the param name and its value : aoon = 1 
+2018-01-31 17:12:33,806 - stereo_speaker - DEBUG - the param name and its value : aron = 1 
+2018-01-31 17:12:33,806 - stereo_speaker - DEBUG - the param name and its value : dvlo = -320 
+2018-01-31 17:12:33,806 - stereo_speaker - DEBUG - the param name and its value : artp = 12 
+2018-01-31 17:12:33,806 - stereo_speaker - DEBUG - the param name and its value : aobs = 20,10,47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+2018-01-31 17:12:33,806 - stereo_speaker - DEBUG - the param name and its value : arbs = 20,47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+2018-01-31 17:12:33,806 - stereo_speaker - INFO - End to filter effect parameter in DlbDap2Process process 
+2018-01-31 17:12:33,806 - stereo_speaker - INFO - ===== filter global parameters in global process end  =====---
+2018-01-31 17:12:33,806 - stereo_speaker - INFO - ===== write global parameters filtered in global process start=====---
+2018-01-31 17:12:33,807 - stereo_speaker - INFO - Welcome to DAP Parameters write !
+2018-01-31 17:12:33,807 - stereo_speaker - INFO - start to write para to specified file : /home/emediaqa/automationpRroject/logAnalysis/integrationAutorun/log/stereo_speaker/test_log_tc78_bass_dap_universal_be_1_stereo_dd_25fps_channel_id_m4a_effect_params_from_log.txt
+2018-01-31 17:12:33,807 - stereo_speaker - DEBUG - write content to file : dea=7 
+2018-01-31 17:12:33,807 - stereo_speaker - DEBUG - write content to file : iea=10 
+2018-01-31 17:12:33,807 - stereo_speaker - DEBUG - write content to file : dsa=10 
+2018-01-31 17:12:33,807 - stereo_speaker - DEBUG - write content to file : beb=192 
+2018-01-31 17:12:33,807 - stereo_speaker - DEBUG - write content to file : plb=0 
+2018-01-31 17:12:33,807 - stereo_speaker - DEBUG - write content to file : vmb=144 
+2018-01-31 17:12:33,807 - stereo_speaker - DEBUG - write content to file : dsb=48 
+2018-01-31 17:12:33,807 - stereo_speaker - DEBUG - write content to file : ded=0 
+2018-01-31 17:12:33,807 - stereo_speaker - DEBUG - write content to file : vbm=3 
+2018-01-31 17:12:33,807 - stereo_speaker - DEBUG - write content to file : dom=0 
+2018-01-31 17:12:33,807 - stereo_speaker - DEBUG - write content to file : bew=16 
+2018-01-31 17:12:33,808 - stereo_speaker - DEBUG - write content to file : dvla=5 
+2018-01-31 17:12:33,808 - stereo_speaker - DEBUG - write content to file : arra=96 
+2018-01-31 17:12:33,808 - stereo_speaker - DEBUG - write content to file : dfsa=10 
+2018-01-31 17:12:33,808 - stereo_speaker - DEBUG - write content to file : dhsa=10 
+2018-01-31 17:12:33,808 - stereo_speaker - DEBUG - write content to file : dvmc=0 
+2018-01-31 17:12:33,808 - stereo_speaker - DEBUG - write content to file : arod=0 
+2018-01-31 17:12:33,808 - stereo_speaker - DEBUG - write content to file : msce=0 
+2018-01-31 17:12:33,808 - stereo_speaker - DEBUG - write content to file : arde=1 
+2018-01-31 17:12:33,808 - stereo_speaker - DEBUG - write content to file : mdee=0 
+2018-01-31 17:12:33,808 - stereo_speaker - DEBUG - write content to file : miee=0 
+2018-01-31 17:12:33,808 - stereo_speaker - DEBUG - write content to file : mdle=0 
+2018-01-31 17:12:33,808 - stereo_speaker - DEBUG - write content to file : dvle=0 
+2018-01-31 17:12:33,808 - stereo_speaker - DEBUG - write content to file : dvme=0 
+2018-01-31 17:12:33,808 - stereo_speaker - DEBUG - write content to file : mave=0 
+2018-01-31 17:12:33,808 - stereo_speaker - DEBUG - write content to file : vcbf=47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688 
+2018-01-31 17:12:33,808 - stereo_speaker - DEBUG - write content to file : becf=200 
+2018-01-31 17:12:33,808 - stereo_speaker - DEBUG - write content to file : vbmf=94,469 
+2018-01-31 17:12:33,808 - stereo_speaker - DEBUG - write content to file : vbsf=35,160 
+2018-01-31 17:12:33,809 - stereo_speaker - DEBUG - write content to file : preg=-387 
+2018-01-31 17:12:33,809 - stereo_speaker - DEBUG - write content to file : vbhg=-32,-144,-192 
+2018-01-31 17:12:33,809 - stereo_speaker - DEBUG - write content to file : vbog=0 
+2018-01-31 17:12:33,809 - stereo_speaker - DEBUG - write content to file : vbsg=0 
+2018-01-31 17:12:33,809 - stereo_speaker - DEBUG - write content to file : dvli=-320 
+2018-01-31 17:12:33,809 - stereo_speaker - DEBUG - write content to file : dhfm=2 
+2018-01-31 17:12:33,809 - stereo_speaker - DEBUG - write content to file : vbon=1 
+2018-01-31 17:12:33,809 - stereo_speaker - DEBUG - write content to file : beon=1 
+2018-01-31 17:12:33,809 - stereo_speaker - DEBUG - write content to file : deon=0 
+2018-01-31 17:12:33,809 - stereo_speaker - DEBUG - write content to file : geon=0 
+2018-01-31 17:12:33,809 - stereo_speaker - DEBUG - write content to file : ieon=0 
+2018-01-31 17:12:33,809 - stereo_speaker - DEBUG - write content to file : ngon=0 
+2018-01-31 17:12:33,809 - stereo_speaker - DEBUG - write content to file : aoon=1 
+2018-01-31 17:12:33,809 - stereo_speaker - DEBUG - write content to file : aron=1 
+2018-01-31 17:12:33,809 - stereo_speaker - DEBUG - write content to file : dvlo=-320 
+2018-01-31 17:12:33,809 - stereo_speaker - DEBUG - write content to file : artp=12 
+2018-01-31 17:12:33,809 - stereo_speaker - DEBUG - write content to file : pstg=non-exist 
+2018-01-31 17:12:33,809 - stereo_speaker - DEBUG - write content to file : gebs=20,47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+2018-01-31 17:12:33,809 - stereo_speaker - DEBUG - write content to file : iebs=20,65,136,223,332,467,634,841,1098,1416,1812,2302,2909,3663,4598,5756,7194,8976,11186,13927,17326,117,133,188,176,141,149,175,185,185,200,236,242,228,213,182,132,110,68,-27,-240 
+2018-01-31 17:12:33,810 - stereo_speaker - DEBUG - write content to file : aobs=20,10,47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+2018-01-31 17:12:33,810 - stereo_speaker - DEBUG - write content to file : arbs=20,47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+2018-01-31 17:12:33,810 - stereo_speaker - INFO - End to DAP Parameters write !
+2018-01-31 17:12:33,810 - stereo_speaker - INFO - ===== write global parameters filtered in global process end  =====---
+2018-01-31 17:12:33,810 - stereo_speaker - INFO - ===== filter content processing parameters in qmf process start=====---
+2018-01-31 17:12:33,810 - stereo_speaker - INFO - Welcome to DAP Parameters filter !
+2018-01-31 17:12:33,810 - stereo_speaker - INFO - start to filter udc effect parameter in DlbDap2QmfProcess process 
+2018-01-31 17:12:33,810 - stereo_speaker - INFO -  the specified log file for filter exist ! 
+2018-01-31 17:12:33,810 - stereo_speaker - INFO -  start to parse the log ! 
+2018-01-31 17:12:33,811 - stereo_speaker - DEBUG - the param name and its value : iea = 10 
+2018-01-31 17:12:33,811 - stereo_speaker - DEBUG - the param name and its value : msce = 0 
+2018-01-31 17:12:33,811 - stereo_speaker - DEBUG - the param name and its value : mdee = 0 
+2018-01-31 17:12:33,811 - stereo_speaker - DEBUG - the param name and its value : miee = 0 
+2018-01-31 17:12:33,811 - stereo_speaker - DEBUG - the param name and its value : mdle = 0 
+2018-01-31 17:12:33,811 - stereo_speaker - DEBUG - the param name and its value : dvle = 1 
+2018-01-31 17:12:33,811 - stereo_speaker - DEBUG - the param name and its value : mave = 0 
+2018-01-31 17:12:33,811 - stereo_speaker - DEBUG - the param name and its value : vcbf = 47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688 
+2018-01-31 17:12:33,811 - stereo_speaker - DEBUG - the param name and its value : ieon = 1 
+2018-01-31 17:12:33,811 - stereo_speaker - DEBUG - the param name and its value : gebs = 20,47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+2018-01-31 17:12:33,811 - stereo_speaker - DEBUG - the param name and its value : iebs = 20,65,136,223,332,467,634,841,1098,1416,1812,2302,2909,3663,4598,5756,7194,8976,11186,13927,17326,117,133,188,176,141,149,175,185,185,200,236,242,228,213,182,132,110,68,-27,-240 
+2018-01-31 17:12:33,811 - stereo_speaker - DEBUG - the param name and its value : dea = 7 
+2018-01-31 17:12:33,811 - stereo_speaker - DEBUG - the param name and its value : dsa = 10 
+2018-01-31 17:12:33,811 - stereo_speaker - DEBUG - the param name and its value : beb = 192 
+2018-01-31 17:12:33,811 - stereo_speaker - DEBUG - the param name and its value : plb = 0 
+2018-01-31 17:12:33,811 - stereo_speaker - DEBUG - the param name and its value : vmb = 144 
+2018-01-31 17:12:33,811 - stereo_speaker - DEBUG - the param name and its value : dsb = 48 
+2018-01-31 17:12:33,811 - stereo_speaker - DEBUG - the param name and its value : ded = 0 
+2018-01-31 17:12:33,811 - stereo_speaker - DEBUG - the param name and its value : dom = 0 
+2018-01-31 17:12:33,811 - stereo_speaker - DEBUG - the param name and its value : bew = 16 
+2018-01-31 17:12:33,811 - stereo_speaker - DEBUG - the param name and its value : dvla = 5 
+2018-01-31 17:12:33,812 - stereo_speaker - DEBUG - the param name and its value : dfsa = 10 
+2018-01-31 17:12:33,812 - stereo_speaker - DEBUG - the param name and its value : dhsa = 10 
+2018-01-31 17:12:33,812 - stereo_speaker - DEBUG - the param name and its value : dvmc = 0 
+2018-01-31 17:12:33,812 - stereo_speaker - DEBUG - the param name and its value : dvle = 1 
+2018-01-31 17:12:33,812 - stereo_speaker - DEBUG - the param name and its value : dvme = 0 
+2018-01-31 17:12:33,812 - stereo_speaker - DEBUG - the param name and its value : becf = 200 
+2018-01-31 17:12:33,812 - stereo_speaker - DEBUG - the param name and its value : vbmf = 94,469 
+2018-01-31 17:12:33,812 - stereo_speaker - DEBUG - the param name and its value : vbsf = 35,160 
+2018-01-31 17:12:33,812 - stereo_speaker - DEBUG - the param name and its value : vbhg = -32,-144,-192 
+2018-01-31 17:12:33,812 - stereo_speaker - DEBUG - the param name and its value : vbog = 0 
+2018-01-31 17:12:33,812 - stereo_speaker - DEBUG - the param name and its value : vbsg = 0 
+2018-01-31 17:12:33,812 - stereo_speaker - DEBUG - the param name and its value : dvli = -320 
+2018-01-31 17:12:33,812 - stereo_speaker - DEBUG - the param name and its value : dhfm = 2 
+2018-01-31 17:12:33,812 - stereo_speaker - DEBUG - the param name and its value : deon = 1 
+2018-01-31 17:12:33,812 - stereo_speaker - DEBUG - the param name and its value : ngon = 1 
+2018-01-31 17:12:33,812 - stereo_speaker - DEBUG - the param name and its value : dvlo = -320 
+2018-01-31 17:12:33,812 - stereo_speaker - DEBUG - the param name and its value : aobs = 20,10,47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+2018-01-31 17:12:33,812 - stereo_speaker - DEBUG - the param name and its value : dvle = 1 
+2018-01-31 17:12:33,812 - stereo_speaker - DEBUG - the param name and its value : dvli = -496 
+2018-01-31 17:12:33,812 - stereo_speaker - DEBUG - the param name and its value : dvlo = -176 
+2018-01-31 17:12:33,812 - stereo_speaker - DEBUG - the param name and its value : vmb = 0 
+2018-01-31 17:12:33,812 - stereo_speaker - DEBUG - the param name and its value : preg = -384 
+2018-01-31 17:12:33,812 - stereo_speaker - DEBUG - the param name and its value : vol = 384 
+2018-01-31 17:12:33,812 - stereo_speaker - DEBUG - the param name and its value : iea = 10 
+2018-01-31 17:12:33,812 - stereo_speaker - DEBUG - the param name and its value : msce = 0 
+2018-01-31 17:12:33,812 - stereo_speaker - DEBUG - the param name and its value : mdee = 0 
+2018-01-31 17:12:33,812 - stereo_speaker - DEBUG - the param name and its value : miee = 0 
+2018-01-31 17:12:33,812 - stereo_speaker - DEBUG - the param name and its value : mdle = 0 
+2018-01-31 17:12:33,812 - stereo_speaker - DEBUG - the param name and its value : dvle = 1 
+2018-01-31 17:12:33,812 - stereo_speaker - DEBUG - the param name and its value : mave = 0 
+2018-01-31 17:12:33,812 - stereo_speaker - DEBUG - the param name and its value : vcbf = 47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688 
+2018-01-31 17:12:33,812 - stereo_speaker - DEBUG - the param name and its value : ieon = 1 
+2018-01-31 17:12:33,812 - stereo_speaker - DEBUG - the param name and its value : gebs = 20,47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+2018-01-31 17:12:33,812 - stereo_speaker - DEBUG - the param name and its value : iebs = 20,65,136,223,332,467,634,841,1098,1416,1812,2302,2909,3663,4598,5756,7194,8976,11186,13927,17326,117,133,188,176,141,149,175,185,185,200,236,242,228,213,182,132,110,68,-27,-240 
+2018-01-31 17:12:33,812 - stereo_speaker - DEBUG - the param name and its value : dea = 7 
+2018-01-31 17:12:33,813 - stereo_speaker - DEBUG - the param name and its value : dsa = 10 
+2018-01-31 17:12:33,813 - stereo_speaker - DEBUG - the param name and its value : beb = 192 
+2018-01-31 17:12:33,813 - stereo_speaker - DEBUG - the param name and its value : plb = 0 
+2018-01-31 17:12:33,813 - stereo_speaker - DEBUG - the param name and its value : vmb = 144 
+2018-01-31 17:12:33,813 - stereo_speaker - DEBUG - the param name and its value : dsb = 48 
+2018-01-31 17:12:33,813 - stereo_speaker - DEBUG - the param name and its value : ded = 0 
+2018-01-31 17:12:33,813 - stereo_speaker - DEBUG - the param name and its value : dom = 0 
+2018-01-31 17:12:33,813 - stereo_speaker - DEBUG - the param name and its value : bew = 16 
+2018-01-31 17:12:33,813 - stereo_speaker - DEBUG - the param name and its value : dvla = 5 
+2018-01-31 17:12:33,813 - stereo_speaker - DEBUG - the param name and its value : dfsa = 10 
+2018-01-31 17:12:33,813 - stereo_speaker - DEBUG - the param name and its value : dhsa = 10 
+2018-01-31 17:12:33,813 - stereo_speaker - DEBUG - the param name and its value : dvmc = 0 
+2018-01-31 17:12:33,813 - stereo_speaker - DEBUG - the param name and its value : dvle = 1 
+2018-01-31 17:12:33,813 - stereo_speaker - DEBUG - the param name and its value : dvme = 0 
+2018-01-31 17:12:33,813 - stereo_speaker - DEBUG - the param name and its value : becf = 200 
+2018-01-31 17:12:33,813 - stereo_speaker - DEBUG - the param name and its value : vbmf = 94,469 
+2018-01-31 17:12:33,813 - stereo_speaker - DEBUG - the param name and its value : vbsf = 35,160 
+2018-01-31 17:12:33,813 - stereo_speaker - DEBUG - the param name and its value : vbhg = -32,-144,-192 
+2018-01-31 17:12:33,813 - stereo_speaker - DEBUG - the param name and its value : vbog = 0 
+2018-01-31 17:12:33,813 - stereo_speaker - DEBUG - the param name and its value : vbsg = 0 
+2018-01-31 17:12:33,813 - stereo_speaker - DEBUG - the param name and its value : dvli = -320 
+2018-01-31 17:12:33,813 - stereo_speaker - DEBUG - the param name and its value : dhfm = 2 
+2018-01-31 17:12:33,813 - stereo_speaker - DEBUG - the param name and its value : deon = 1 
+2018-01-31 17:12:33,813 - stereo_speaker - DEBUG - the param name and its value : ngon = 1 
+2018-01-31 17:12:33,813 - stereo_speaker - DEBUG - the param name and its value : dvlo = -320 
+2018-01-31 17:12:33,813 - stereo_speaker - DEBUG - the param name and its value : aobs = 20,10,47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+2018-01-31 17:12:33,813 - stereo_speaker - DEBUG - the param name and its value : dvle = 1 
+2018-01-31 17:12:33,813 - stereo_speaker - DEBUG - the param name and its value : dvli = -496 
+2018-01-31 17:12:33,813 - stereo_speaker - DEBUG - the param name and its value : dvlo = -176 
+2018-01-31 17:12:33,813 - stereo_speaker - DEBUG - the param name and its value : vmb = 0 
+2018-01-31 17:12:33,813 - stereo_speaker - DEBUG - the param name and its value : preg = -384 
+2018-01-31 17:12:33,813 - stereo_speaker - DEBUG - the param name and its value : vol = 384 
+2018-01-31 17:12:33,813 - stereo_speaker - INFO - End to filter udc effect parameter in DlbDap2QmfProcess process 
+2018-01-31 17:12:33,813 - stereo_speaker - INFO - ===== filter content processing parameters in qmf process end  =====---
+2018-01-31 17:12:33,813 - stereo_speaker - INFO - ===== write content processing parameters filtered in qmf process start=====---
+2018-01-31 17:12:33,813 - stereo_speaker - INFO - Welcome to DAP Parameters write !
+2018-01-31 17:12:33,813 - stereo_speaker - INFO - start to write para to specified file : /home/emediaqa/automationpRroject/logAnalysis/integrationAutorun/log/stereo_speaker/test_log_tc78_bass_dap_universal_be_1_stereo_dd_25fps_channel_id_m4a_arendered_params_from_log.txt
+2018-01-31 17:12:33,814 - stereo_speaker - DEBUG - write content to file : dea=7 
+2018-01-31 17:12:33,814 - stereo_speaker - DEBUG - write content to file : iea=10 
+2018-01-31 17:12:33,814 - stereo_speaker - DEBUG - write content to file : dsa=10 
+2018-01-31 17:12:33,814 - stereo_speaker - DEBUG - write content to file : beb=192 
+2018-01-31 17:12:33,814 - stereo_speaker - DEBUG - write content to file : plb=0 
+2018-01-31 17:12:33,814 - stereo_speaker - DEBUG - write content to file : vmb=0 
+2018-01-31 17:12:33,814 - stereo_speaker - DEBUG - write content to file : dsb=48 
+2018-01-31 17:12:33,814 - stereo_speaker - DEBUG - write content to file : ded=0 
+2018-01-31 17:12:33,814 - stereo_speaker - DEBUG - write content to file : vol=384 
+2018-01-31 17:12:33,814 - stereo_speaker - DEBUG - write content to file : dom=0 
+2018-01-31 17:12:33,814 - stereo_speaker - DEBUG - write content to file : bew=16 
+2018-01-31 17:12:33,814 - stereo_speaker - DEBUG - write content to file : dvla=5 
+2018-01-31 17:12:33,814 - stereo_speaker - DEBUG - write content to file : dfsa=10 
+2018-01-31 17:12:33,814 - stereo_speaker - DEBUG - write content to file : dhsa=10 
+2018-01-31 17:12:33,814 - stereo_speaker - DEBUG - write content to file : dvmc=0 
+2018-01-31 17:12:33,814 - stereo_speaker - DEBUG - write content to file : msce=0 
+2018-01-31 17:12:33,814 - stereo_speaker - DEBUG - write content to file : mdee=0 
+2018-01-31 17:12:33,814 - stereo_speaker - DEBUG - write content to file : miee=0 
+2018-01-31 17:12:33,814 - stereo_speaker - DEBUG - write content to file : mdle=0 
+2018-01-31 17:12:33,814 - stereo_speaker - DEBUG - write content to file : dvle=1 
+2018-01-31 17:12:33,814 - stereo_speaker - DEBUG - write content to file : dvme=0 
+2018-01-31 17:12:33,814 - stereo_speaker - DEBUG - write content to file : mave=0 
+2018-01-31 17:12:33,814 - stereo_speaker - DEBUG - write content to file : vcbf=47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688 
+2018-01-31 17:12:33,814 - stereo_speaker - DEBUG - write content to file : becf=200 
+2018-01-31 17:12:33,814 - stereo_speaker - DEBUG - write content to file : vbmf=94,469 
+2018-01-31 17:12:33,814 - stereo_speaker - DEBUG - write content to file : vbsf=35,160 
+2018-01-31 17:12:33,814 - stereo_speaker - DEBUG - write content to file : preg=-384 
+2018-01-31 17:12:33,814 - stereo_speaker - DEBUG - write content to file : vbhg=-32,-144,-192 
+2018-01-31 17:12:33,814 - stereo_speaker - DEBUG - write content to file : vbog=0 
+2018-01-31 17:12:33,814 - stereo_speaker - DEBUG - write content to file : vbsg=0 
+2018-01-31 17:12:33,814 - stereo_speaker - DEBUG - write content to file : dvli=-496 
+2018-01-31 17:12:33,814 - stereo_speaker - DEBUG - write content to file : dhfm=2 
+2018-01-31 17:12:33,814 - stereo_speaker - DEBUG - write content to file : deon=1 
+2018-01-31 17:12:33,814 - stereo_speaker - DEBUG - write content to file : ieon=1 
+2018-01-31 17:12:33,814 - stereo_speaker - DEBUG - write content to file : ngon=1 
+2018-01-31 17:12:33,814 - stereo_speaker - DEBUG - write content to file : dvlo=-176 
+2018-01-31 17:12:33,814 - stereo_speaker - DEBUG - write content to file : gebs=20,47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+2018-01-31 17:12:33,814 - stereo_speaker - DEBUG - write content to file : iebs=20,65,136,223,332,467,634,841,1098,1416,1812,2302,2909,3663,4598,5756,7194,8976,11186,13927,17326,117,133,188,176,141,149,175,185,185,200,236,242,228,213,182,132,110,68,-27,-240 
+2018-01-31 17:12:33,814 - stereo_speaker - DEBUG - write content to file : aobs=20,10,47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+2018-01-31 17:12:33,814 - stereo_speaker - INFO - End to DAP Parameters write !
+2018-01-31 17:12:33,814 - stereo_speaker - INFO - ===== write content processing parameters filtered in qmf process end  =====---
+2018-01-31 17:12:33,814 - stereo_speaker - INFO - ===== filter content processing parameters in global process start=====---
+2018-01-31 17:12:33,814 - stereo_speaker - INFO - Welcome to DAP Parameters filter !
+2018-01-31 17:12:33,815 - stereo_speaker - INFO - start to filter content processing parameter in DlbDap2Process process 
+2018-01-31 17:12:33,815 - stereo_speaker - INFO -  the specified log file for filter exist ! 
+2018-01-31 17:12:33,815 - stereo_speaker - INFO -  start to parse the log ! 
+2018-01-31 17:12:33,815 - stereo_speaker - DEBUG - the param name and its value : msce = 0 
+2018-01-31 17:12:33,815 - stereo_speaker - DEBUG - the param name and its value : mdee = 0 
+2018-01-31 17:12:33,815 - stereo_speaker - DEBUG - the param name and its value : miee = 0 
+2018-01-31 17:12:33,815 - stereo_speaker - DEBUG - the param name and its value : mdle = 0 
+2018-01-31 17:12:33,815 - stereo_speaker - DEBUG - the param name and its value : dvle = 0 
+2018-01-31 17:12:33,815 - stereo_speaker - DEBUG - the param name and its value : mave = 0 
+2018-01-31 17:12:33,815 - stereo_speaker - DEBUG - the param name and its value : ieon = 0 
+2018-01-31 17:12:33,815 - stereo_speaker - DEBUG - the param name and its value : dom = 0 
+2018-01-31 17:12:33,815 - stereo_speaker - DEBUG - the param name and its value : dvle = 0 
+2018-01-31 17:12:33,815 - stereo_speaker - DEBUG - the param name and its value : dvme = 0 
+2018-01-31 17:12:33,815 - stereo_speaker - DEBUG - the param name and its value : deon = 0 
+2018-01-31 17:12:33,815 - stereo_speaker - DEBUG - the param name and its value : ngon = 0 
+2018-01-31 17:12:33,815 - stereo_speaker - DEBUG - the param name and its value : iea = 10 
+2018-01-31 17:12:33,815 - stereo_speaker - DEBUG - the param name and its value : vcbf = 47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688 
+2018-01-31 17:12:33,815 - stereo_speaker - DEBUG - the param name and its value : vbon = 1 
+2018-01-31 17:12:33,815 - stereo_speaker - DEBUG - the param name and its value : beon = 1 
+2018-01-31 17:12:33,815 - stereo_speaker - DEBUG - the param name and its value : geon = 0 
+2018-01-31 17:12:33,815 - stereo_speaker - DEBUG - the param name and its value : gebs = 20,47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+2018-01-31 17:12:33,815 - stereo_speaker - DEBUG - the param name and its value : iebs = 20,65,136,223,332,467,634,841,1098,1416,1812,2302,2909,3663,4598,5756,7194,8976,11186,13927,17326,117,133,188,176,141,149,175,185,185,200,236,242,228,213,182,132,110,68,-27,-240 
+2018-01-31 17:12:33,815 - stereo_speaker - DEBUG - the param name and its value : dea = 7 
+2018-01-31 17:12:33,815 - stereo_speaker - DEBUG - the param name and its value : dsa = 10 
+2018-01-31 17:12:33,815 - stereo_speaker - DEBUG - the param name and its value : beb = 192 
+2018-01-31 17:12:33,815 - stereo_speaker - DEBUG - the param name and its value : plb = 0 
+2018-01-31 17:12:33,815 - stereo_speaker - DEBUG - the param name and its value : vmb = 144 
+2018-01-31 17:12:33,815 - stereo_speaker - DEBUG - the param name and its value : dsb = 48 
+2018-01-31 17:12:33,816 - stereo_speaker - DEBUG - the param name and its value : ded = 0 
+2018-01-31 17:12:33,816 - stereo_speaker - DEBUG - the param name and its value : vbm = 3 
+2018-01-31 17:12:33,816 - stereo_speaker - DEBUG - the param name and its value : bew = 16 
+2018-01-31 17:12:33,816 - stereo_speaker - DEBUG - the param name and its value : dvla = 5 
+2018-01-31 17:12:33,816 - stereo_speaker - DEBUG - the param name and its value : arra = 96 
+2018-01-31 17:12:33,816 - stereo_speaker - DEBUG - the param name and its value : dfsa = 10 
+2018-01-31 17:12:33,816 - stereo_speaker - DEBUG - the param name and its value : dhsa = 10 
+2018-01-31 17:12:33,816 - stereo_speaker - DEBUG - the param name and its value : dvmc = 0 
+2018-01-31 17:12:33,816 - stereo_speaker - DEBUG - the param name and its value : arod = 0 
+2018-01-31 17:12:33,816 - stereo_speaker - DEBUG - the param name and its value : arde = 1 
+2018-01-31 17:12:33,816 - stereo_speaker - DEBUG - the param name and its value : becf = 200 
+2018-01-31 17:12:33,816 - stereo_speaker - DEBUG - the param name and its value : vbmf = 94,469 
+2018-01-31 17:12:33,816 - stereo_speaker - DEBUG - the param name and its value : vbsf = 35,160 
+2018-01-31 17:12:33,816 - stereo_speaker - DEBUG - the param name and its value : vbhg = -32,-144,-192 
+2018-01-31 17:12:33,816 - stereo_speaker - DEBUG - the param name and its value : vbog = 0 
+2018-01-31 17:12:33,816 - stereo_speaker - DEBUG - the param name and its value : vbsg = 0 
+2018-01-31 17:12:33,816 - stereo_speaker - DEBUG - the param name and its value : dvli = -320 
+2018-01-31 17:12:33,816 - stereo_speaker - DEBUG - the param name and its value : dhfm = 2 
+2018-01-31 17:12:33,816 - stereo_speaker - DEBUG - the param name and its value : vbon = 1 
+2018-01-31 17:12:33,816 - stereo_speaker - DEBUG - the param name and its value : beon = 1 
+2018-01-31 17:12:33,816 - stereo_speaker - DEBUG - the param name and its value : aoon = 1 
+2018-01-31 17:12:33,816 - stereo_speaker - DEBUG - the param name and its value : aron = 1 
+2018-01-31 17:12:33,816 - stereo_speaker - DEBUG - the param name and its value : dvlo = -320 
+2018-01-31 17:12:33,816 - stereo_speaker - DEBUG - the param name and its value : artp = 12 
+2018-01-31 17:12:33,816 - stereo_speaker - DEBUG - the param name and its value : aobs = 20,10,47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+2018-01-31 17:12:33,816 - stereo_speaker - DEBUG - the param name and its value : arbs = 20,47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+2018-01-31 17:12:33,816 - stereo_speaker - DEBUG - the param name and its value : iea = 10 
+2018-01-31 17:12:33,816 - stereo_speaker - DEBUG - the param name and its value : msce = 0 
+2018-01-31 17:12:33,816 - stereo_speaker - DEBUG - the param name and its value : mdee = 0 
+2018-01-31 17:12:33,816 - stereo_speaker - DEBUG - the param name and its value : miee = 0 
+2018-01-31 17:12:33,816 - stereo_speaker - DEBUG - the param name and its value : mdle = 0 
+2018-01-31 17:12:33,816 - stereo_speaker - DEBUG - the param name and its value : dvle = 0 
+2018-01-31 17:12:33,816 - stereo_speaker - DEBUG - the param name and its value : mave = 0 
+2018-01-31 17:12:33,816 - stereo_speaker - DEBUG - the param name and its value : vcbf = 47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688 
+2018-01-31 17:12:33,816 - stereo_speaker - DEBUG - the param name and its value : preg = -387 
+2018-01-31 17:12:33,816 - stereo_speaker - DEBUG - the param name and its value : vbon = 1 
+2018-01-31 17:12:33,816 - stereo_speaker - DEBUG - the param name and its value : beon = 1 
+2018-01-31 17:12:33,816 - stereo_speaker - DEBUG - the param name and its value : geon = 0 
+2018-01-31 17:12:33,816 - stereo_speaker - DEBUG - the param name and its value : ieon = 0 
+2018-01-31 17:12:33,816 - stereo_speaker - DEBUG - the param name and its value : gebs = 20,47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+2018-01-31 17:12:33,817 - stereo_speaker - DEBUG - the param name and its value : iebs = 20,65,136,223,332,467,634,841,1098,1416,1812,2302,2909,3663,4598,5756,7194,8976,11186,13927,17326,117,133,188,176,141,149,175,185,185,200,236,242,228,213,182,132,110,68,-27,-240 
+2018-01-31 17:12:33,817 - stereo_speaker - DEBUG - the param name and its value : dea = 7 
+2018-01-31 17:12:33,817 - stereo_speaker - DEBUG - the param name and its value : dsa = 10 
+2018-01-31 17:12:33,817 - stereo_speaker - DEBUG - the param name and its value : beb = 192 
+2018-01-31 17:12:33,817 - stereo_speaker - DEBUG - the param name and its value : plb = 0 
+2018-01-31 17:12:33,817 - stereo_speaker - DEBUG - the param name and its value : vmb = 144 
+2018-01-31 17:12:33,817 - stereo_speaker - DEBUG - the param name and its value : dsb = 48 
+2018-01-31 17:12:33,817 - stereo_speaker - DEBUG - the param name and its value : ded = 0 
+2018-01-31 17:12:33,817 - stereo_speaker - DEBUG - the param name and its value : vbm = 3 
+2018-01-31 17:12:33,817 - stereo_speaker - DEBUG - the param name and its value : dom = 0 
+2018-01-31 17:12:33,817 - stereo_speaker - DEBUG - the param name and its value : bew = 16 
+2018-01-31 17:12:33,817 - stereo_speaker - DEBUG - the param name and its value : dvla = 5 
+2018-01-31 17:12:33,817 - stereo_speaker - DEBUG - the param name and its value : arra = 96 
+2018-01-31 17:12:33,817 - stereo_speaker - DEBUG - the param name and its value : dfsa = 10 
+2018-01-31 17:12:33,817 - stereo_speaker - DEBUG - the param name and its value : dhsa = 10 
+2018-01-31 17:12:33,817 - stereo_speaker - DEBUG - the param name and its value : dvmc = 0 
+2018-01-31 17:12:33,817 - stereo_speaker - DEBUG - the param name and its value : arod = 0 
+2018-01-31 17:12:33,817 - stereo_speaker - DEBUG - the param name and its value : arde = 1 
+2018-01-31 17:12:33,817 - stereo_speaker - DEBUG - the param name and its value : dvle = 0 
+2018-01-31 17:12:33,817 - stereo_speaker - DEBUG - the param name and its value : dvme = 0 
+2018-01-31 17:12:33,817 - stereo_speaker - DEBUG - the param name and its value : becf = 200 
+2018-01-31 17:12:33,817 - stereo_speaker - DEBUG - the param name and its value : vbmf = 94,469 
+2018-01-31 17:12:33,817 - stereo_speaker - DEBUG - the param name and its value : vbsf = 35,160 
+2018-01-31 17:12:33,817 - stereo_speaker - DEBUG - the param name and its value : vbhg = -32,-144,-192 
+2018-01-31 17:12:33,817 - stereo_speaker - DEBUG - the param name and its value : vbog = 0 
+2018-01-31 17:12:33,817 - stereo_speaker - DEBUG - the param name and its value : vbsg = 0 
+2018-01-31 17:12:33,817 - stereo_speaker - DEBUG - the param name and its value : dvli = -320 
+2018-01-31 17:12:33,817 - stereo_speaker - DEBUG - the param name and its value : dhfm = 2 
+2018-01-31 17:12:33,817 - stereo_speaker - DEBUG - the param name and its value : vbon = 1 
+2018-01-31 17:12:33,817 - stereo_speaker - DEBUG - the param name and its value : beon = 1 
+2018-01-31 17:12:33,817 - stereo_speaker - DEBUG - the param name and its value : deon = 0 
+2018-01-31 17:12:33,817 - stereo_speaker - DEBUG - the param name and its value : ngon = 0 
+2018-01-31 17:12:33,817 - stereo_speaker - DEBUG - the param name and its value : aoon = 1 
+2018-01-31 17:12:33,817 - stereo_speaker - DEBUG - the param name and its value : aron = 1 
+2018-01-31 17:12:33,817 - stereo_speaker - DEBUG - the param name and its value : dvlo = -320 
+2018-01-31 17:12:33,817 - stereo_speaker - DEBUG - the param name and its value : artp = 12 
+2018-01-31 17:12:33,817 - stereo_speaker - DEBUG - the param name and its value : aobs = 20,10,47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+2018-01-31 17:12:33,817 - stereo_speaker - DEBUG - the param name and its value : arbs = 20,47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+2018-01-31 17:12:33,817 - stereo_speaker - INFO - End to filter content processing parameter in DlbDap2Process process 
+2018-01-31 17:12:33,818 - stereo_speaker - INFO - ===== filter content processing parameters in global process end=====---
+2018-01-31 17:12:33,818 - stereo_speaker - INFO - ===== filter device processing parameters in global process start=====---
+2018-01-31 17:12:33,818 - stereo_speaker - INFO - Welcome to DAP Parameters filter !
+2018-01-31 17:12:33,818 - stereo_speaker - INFO - start to filter device processing parameter in DlbDap2QmfProcess process 
+2018-01-31 17:12:33,818 - stereo_speaker - INFO -  the specified log file for filter exist ! 
+2018-01-31 17:12:33,818 - stereo_speaker - INFO -  start to parse the log ! 
+2018-01-31 17:12:33,818 - stereo_speaker - DEBUG - the param name and its value : iea = 10 
+2018-01-31 17:12:33,818 - stereo_speaker - DEBUG - the param name and its value : msce = 0 
+2018-01-31 17:12:33,818 - stereo_speaker - DEBUG - the param name and its value : mdee = 0 
+2018-01-31 17:12:33,818 - stereo_speaker - DEBUG - the param name and its value : miee = 0 
+2018-01-31 17:12:33,818 - stereo_speaker - DEBUG - the param name and its value : mdle = 0 
+2018-01-31 17:12:33,818 - stereo_speaker - DEBUG - the param name and its value : dvle = 1 
+2018-01-31 17:12:33,818 - stereo_speaker - DEBUG - the param name and its value : mave = 0 
+2018-01-31 17:12:33,818 - stereo_speaker - DEBUG - the param name and its value : vcbf = 47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688 
+2018-01-31 17:12:33,818 - stereo_speaker - DEBUG - the param name and its value : ieon = 1 
+2018-01-31 17:12:33,818 - stereo_speaker - DEBUG - the param name and its value : gebs = 20,47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+2018-01-31 17:12:33,818 - stereo_speaker - DEBUG - the param name and its value : iebs = 20,65,136,223,332,467,634,841,1098,1416,1812,2302,2909,3663,4598,5756,7194,8976,11186,13927,17326,117,133,188,176,141,149,175,185,185,200,236,242,228,213,182,132,110,68,-27,-240 
+2018-01-31 17:12:33,818 - stereo_speaker - DEBUG - the param name and its value : dea = 7 
+2018-01-31 17:12:33,818 - stereo_speaker - DEBUG - the param name and its value : dsa = 10 
+2018-01-31 17:12:33,818 - stereo_speaker - DEBUG - the param name and its value : beb = 192 
+2018-01-31 17:12:33,818 - stereo_speaker - DEBUG - the param name and its value : plb = 0 
+2018-01-31 17:12:33,818 - stereo_speaker - DEBUG - the param name and its value : vmb = 144 
+2018-01-31 17:12:33,818 - stereo_speaker - DEBUG - the param name and its value : dsb = 48 
+2018-01-31 17:12:33,818 - stereo_speaker - DEBUG - the param name and its value : ded = 0 
+2018-01-31 17:12:33,818 - stereo_speaker - DEBUG - the param name and its value : dom = 0 
+2018-01-31 17:12:33,818 - stereo_speaker - DEBUG - the param name and its value : bew = 16 
+2018-01-31 17:12:33,818 - stereo_speaker - DEBUG - the param name and its value : dvla = 5 
+2018-01-31 17:12:33,818 - stereo_speaker - DEBUG - the param name and its value : dfsa = 10 
+2018-01-31 17:12:33,818 - stereo_speaker - DEBUG - the param name and its value : dhsa = 10 
+2018-01-31 17:12:33,818 - stereo_speaker - DEBUG - the param name and its value : dvmc = 0 
+2018-01-31 17:12:33,818 - stereo_speaker - DEBUG - the param name and its value : dvle = 1 
+2018-01-31 17:12:33,819 - stereo_speaker - DEBUG - the param name and its value : dvme = 0 
+2018-01-31 17:12:33,819 - stereo_speaker - DEBUG - the param name and its value : becf = 200 
+2018-01-31 17:12:33,819 - stereo_speaker - DEBUG - the param name and its value : vbmf = 94,469 
+2018-01-31 17:12:33,819 - stereo_speaker - DEBUG - the param name and its value : vbsf = 35,160 
+2018-01-31 17:12:33,819 - stereo_speaker - DEBUG - the param name and its value : vbhg = -32,-144,-192 
+2018-01-31 17:12:33,819 - stereo_speaker - DEBUG - the param name and its value : vbog = 0 
+2018-01-31 17:12:33,819 - stereo_speaker - DEBUG - the param name and its value : vbsg = 0 
+2018-01-31 17:12:33,819 - stereo_speaker - DEBUG - the param name and its value : dvli = -320 
+2018-01-31 17:12:33,819 - stereo_speaker - DEBUG - the param name and its value : dhfm = 2 
+2018-01-31 17:12:33,819 - stereo_speaker - DEBUG - the param name and its value : deon = 1 
+2018-01-31 17:12:33,819 - stereo_speaker - DEBUG - the param name and its value : ngon = 1 
+2018-01-31 17:12:33,819 - stereo_speaker - DEBUG - the param name and its value : dvlo = -320 
+2018-01-31 17:12:33,819 - stereo_speaker - DEBUG - the param name and its value : aobs = 20,10,47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+2018-01-31 17:12:33,819 - stereo_speaker - DEBUG - the param name and its value : dvle = 1 
+2018-01-31 17:12:33,819 - stereo_speaker - DEBUG - the param name and its value : dvli = -496 
+2018-01-31 17:12:33,819 - stereo_speaker - DEBUG - the param name and its value : dvlo = -176 
+2018-01-31 17:12:33,819 - stereo_speaker - DEBUG - the param name and its value : vmb = 0 
+2018-01-31 17:12:33,819 - stereo_speaker - DEBUG - the param name and its value : preg = -384 
+2018-01-31 17:12:33,819 - stereo_speaker - DEBUG - the param name and its value : vol = 384 
+2018-01-31 17:12:33,819 - stereo_speaker - DEBUG - the param name and its value : iea = 10 
+2018-01-31 17:12:33,819 - stereo_speaker - DEBUG - the param name and its value : msce = 0 
+2018-01-31 17:12:33,819 - stereo_speaker - DEBUG - the param name and its value : mdee = 0 
+2018-01-31 17:12:33,819 - stereo_speaker - DEBUG - the param name and its value : miee = 0 
+2018-01-31 17:12:33,819 - stereo_speaker - DEBUG - the param name and its value : mdle = 0 
+2018-01-31 17:12:33,819 - stereo_speaker - DEBUG - the param name and its value : dvle = 1 
+2018-01-31 17:12:33,819 - stereo_speaker - DEBUG - the param name and its value : mave = 0 
+2018-01-31 17:12:33,819 - stereo_speaker - DEBUG - the param name and its value : vcbf = 47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688 
+2018-01-31 17:12:33,819 - stereo_speaker - DEBUG - the param name and its value : ieon = 1 
+2018-01-31 17:12:33,819 - stereo_speaker - DEBUG - the param name and its value : gebs = 20,47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+2018-01-31 17:12:33,819 - stereo_speaker - DEBUG - the param name and its value : iebs = 20,65,136,223,332,467,634,841,1098,1416,1812,2302,2909,3663,4598,5756,7194,8976,11186,13927,17326,117,133,188,176,141,149,175,185,185,200,236,242,228,213,182,132,110,68,-27,-240 
+2018-01-31 17:12:33,819 - stereo_speaker - DEBUG - the param name and its value : dea = 7 
+2018-01-31 17:12:33,819 - stereo_speaker - DEBUG - the param name and its value : dsa = 10 
+2018-01-31 17:12:33,819 - stereo_speaker - DEBUG - the param name and its value : beb = 192 
+2018-01-31 17:12:33,819 - stereo_speaker - DEBUG - the param name and its value : plb = 0 
+2018-01-31 17:12:33,819 - stereo_speaker - DEBUG - the param name and its value : vmb = 144 
+2018-01-31 17:12:33,819 - stereo_speaker - DEBUG - the param name and its value : dsb = 48 
+2018-01-31 17:12:33,819 - stereo_speaker - DEBUG - the param name and its value : ded = 0 
+2018-01-31 17:12:33,819 - stereo_speaker - DEBUG - the param name and its value : dom = 0 
+2018-01-31 17:12:33,819 - stereo_speaker - DEBUG - the param name and its value : bew = 16 
+2018-01-31 17:12:33,820 - stereo_speaker - DEBUG - the param name and its value : dvla = 5 
+2018-01-31 17:12:33,820 - stereo_speaker - DEBUG - the param name and its value : dfsa = 10 
+2018-01-31 17:12:33,820 - stereo_speaker - DEBUG - the param name and its value : dhsa = 10 
+2018-01-31 17:12:33,820 - stereo_speaker - DEBUG - the param name and its value : dvmc = 0 
+2018-01-31 17:12:33,820 - stereo_speaker - DEBUG - the param name and its value : dvle = 1 
+2018-01-31 17:12:33,820 - stereo_speaker - DEBUG - the param name and its value : dvme = 0 
+2018-01-31 17:12:33,820 - stereo_speaker - DEBUG - the param name and its value : becf = 200 
+2018-01-31 17:12:33,820 - stereo_speaker - DEBUG - the param name and its value : vbmf = 94,469 
+2018-01-31 17:12:33,820 - stereo_speaker - DEBUG - the param name and its value : vbsf = 35,160 
+2018-01-31 17:12:33,820 - stereo_speaker - DEBUG - the param name and its value : vbhg = -32,-144,-192 
+2018-01-31 17:12:33,820 - stereo_speaker - DEBUG - the param name and its value : vbog = 0 
+2018-01-31 17:12:33,820 - stereo_speaker - DEBUG - the param name and its value : vbsg = 0 
+2018-01-31 17:12:33,820 - stereo_speaker - DEBUG - the param name and its value : dvli = -320 
+2018-01-31 17:12:33,820 - stereo_speaker - DEBUG - the param name and its value : dhfm = 2 
+2018-01-31 17:12:33,820 - stereo_speaker - DEBUG - the param name and its value : deon = 1 
+2018-01-31 17:12:33,820 - stereo_speaker - DEBUG - the param name and its value : ngon = 1 
+2018-01-31 17:12:33,820 - stereo_speaker - DEBUG - the param name and its value : dvlo = -320 
+2018-01-31 17:12:33,820 - stereo_speaker - DEBUG - the param name and its value : aobs = 20,10,47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+2018-01-31 17:12:33,820 - stereo_speaker - DEBUG - the param name and its value : dvle = 1 
+2018-01-31 17:12:33,820 - stereo_speaker - DEBUG - the param name and its value : dvli = -496 
+2018-01-31 17:12:33,820 - stereo_speaker - DEBUG - the param name and its value : dvlo = -176 
+2018-01-31 17:12:33,820 - stereo_speaker - DEBUG - the param name and its value : vmb = 0 
+2018-01-31 17:12:33,820 - stereo_speaker - DEBUG - the param name and its value : preg = -384 
+2018-01-31 17:12:33,820 - stereo_speaker - DEBUG - the param name and its value : vol = 384 
+2018-01-31 17:12:33,820 - stereo_speaker - INFO - End to filter device processing parameter in DlbDap2QmfProcess process 
+2018-01-31 17:12:33,820 - stereo_speaker - INFO - ===== filter device processing parameters in global process end  =====---
+2018-01-31 17:12:33,820 - stereo_speaker - INFO - ===== transfer to dap cp dp parameters start
+2018-01-31 17:12:33,821 - stereo_speaker - INFO - Congratulation. transfer dap cp dp parameter succeed 
+2018-01-31 17:12:33,821 - stereo_speaker - INFO - ===== transfer to dap cp dp parameters end  
+2018-01-31 17:12:33,821 - stereo_speaker - INFO - --- verify content double processing parameter in global process equals to 0 
+2018-01-31 17:12:33,821 - stereo_speaker - INFO -  Congratulation ! No double content processing in global process.
+2018-01-31 17:12:33,821 - stereo_speaker - INFO - --- verify no content double processing in global process end   
+2018-01-31 17:12:33,821 - stereo_speaker - INFO - --- verify device double processing parameter didn't exist in qmf process 
+2018-01-31 17:12:33,821 - stereo_speaker - INFO -  Congratulation ! No double device processing in qmf process.
+2018-01-31 17:12:33,822 - stereo_speaker - INFO - --- verify no device double processing in qmf process end   
+2018-01-31 17:12:33,822 - stereo_speaker - INFO - Congratulation. Get effect parameter value in global process: beon = 1 
+2018-01-31 17:12:33,822 - stereo_speaker - INFO - Congratulation. Get effect parameter value in global process: vbon = 1 
+2018-01-31 17:12:33,822 - stereo_speaker - INFO - get bass1 enhancer value is 1 .
+2018-01-31 17:12:33,822 - stereo_speaker - INFO - get virtual1 bass value is 1 .
+2018-01-31 17:12:33,933 - stereo_speaker - INFO - ===== run command : adb shell am broadcast -a feature_test -p com.dolby.qa.featuretest --es step change_dap_feature --ei dap_reset_universal 1 
+2018-01-31 17:12:34,046 - stereo_speaker - INFO - ===== run command : adb shell am broadcast -a feature_test -p com.dolby.qa.featuretest --es step change_dap_feature --ei dap_reset_profile 10 
+2018-01-31 17:12:35,124 - stereo_speaker - INFO - ===== run command : adb logcat -b all -c 
+2018-01-31 17:12:35,244 - stereo_speaker - INFO - ===== run command : adb shell am force-stop com.dolby.qa.featuretest 
+2018-01-31 17:12:35,329 - stereo_speaker - INFO - ===== run command : adb shell am start -n com.dolby.qa.featuretest/.MainActivity 
+2018-01-31 17:12:35,369 - stereo_speaker - INFO - ===== run command : adb logcat -b all -c 
+2018-01-31 17:12:36,373 - stereo_speaker - INFO - ===== Verify VB & BE are on when playing non Dolby content start 
+2018-01-31 17:12:36,449 - stereo_speaker - INFO - ===== run command : adb shell am broadcast -a feature_test -p com.dolby.qa.featuretest --es step play_content --es content_location /sdcard/featureTest/stereo_channel_id.wav 
+2018-01-31 17:12:37,548 - stereo_speaker - INFO - ===== run command : adb shell am broadcast -a feature_test -p com.dolby.qa.featuretest --es step change_dap_feature --ei dap_status 1 
+2018-01-31 17:12:38,669 - stereo_speaker - INFO - ===== run command : adb shell am broadcast -a feature_test -p com.dolby.qa.featuretest --es step change_dap_feature --ei dap_profile 5 
+2018-01-31 17:12:39,784 - stereo_speaker - INFO - ===== run command : adb shell am broadcast -a feature_test -p com.dolby.qa.featuretest --es step change_dap_feature --ei dap_universal_be 1 
+2018-01-31 17:12:40,873 - stereo_speaker - INFO - ===== run command : adb shell am broadcast -a feature_test -p com.dolby.qa.featuretest --es step record_log  
+2018-01-31 17:12:46,989 - stereo_speaker - INFO - ===== run command : adb logcat -d >./log/stereo_speaker/test_log_tc79_bass_dap_universal_be_1_stereo_channel_id_wav.txt 
+2018-01-31 17:12:46,990 - stereo_speaker - INFO - specified log file : /home/emediaqa/automationpRroject/logAnalysis/integrationAutorun/log/stereo_speaker/test_log_tc79_bass_dap_universal_be_1_stereo_channel_id_wav.txt
+2018-01-31 17:12:46,990 - stereo_speaker - DEBUG - effect para in global process saved at : /home/emediaqa/automationpRroject/logAnalysis/integrationAutorun/log/stereo_speaker/test_log_tc79_bass_dap_universal_be_1_stereo_channel_id_wav_effect_params_from_log.txt
+2018-01-31 17:12:46,990 - stereo_speaker - DEBUG - effect para in qmf process saved at : /home/emediaqa/automationpRroject/logAnalysis/integrationAutorun/log/stereo_speaker/test_log_tc79_bass_dap_universal_be_1_stereo_channel_id_wav_arendered_params_from_log.txt
+2018-01-31 17:12:46,990 - stereo_speaker - DEBUG - dap cp and dp para saved at : /home/emediaqa/automationpRroject/logAnalysis/integrationAutorun/log/stereo_speaker/test_log_tc79_bass_dap_universal_be_1_stereo_channel_id_wav_dap_cp_dp_from_log.txt
+2018-01-31 17:12:46,991 - stereo_speaker - INFO - ===== filter global parameters in global process start=====---
+2018-01-31 17:12:46,991 - stereo_speaker - INFO - Welcome to DAP Parameters filter !
+2018-01-31 17:12:46,991 - stereo_speaker - INFO - start to filter effect parameter in DlbDap2Process process 
+2018-01-31 17:12:46,991 - stereo_speaker - INFO -  the specified log file for filter exist ! 
+2018-01-31 17:12:46,991 - stereo_speaker - INFO -  start to parse the log ! 
+2018-01-31 17:12:46,992 - stereo_speaker - DEBUG - the param name and its value : iea = 10 
+2018-01-31 17:12:46,992 - stereo_speaker - DEBUG - the param name and its value : msce = 0 
+2018-01-31 17:12:46,993 - stereo_speaker - DEBUG - the param name and its value : mdee = 0 
+2018-01-31 17:12:46,993 - stereo_speaker - DEBUG - the param name and its value : miee = 0 
+2018-01-31 17:12:46,993 - stereo_speaker - DEBUG - the param name and its value : mdle = 0 
+2018-01-31 17:12:46,993 - stereo_speaker - DEBUG - the param name and its value : dvle = 1 
+2018-01-31 17:12:46,993 - stereo_speaker - DEBUG - the param name and its value : mave = 0 
+2018-01-31 17:12:46,993 - stereo_speaker - DEBUG - the param name and its value : vcbf = 47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688 
+2018-01-31 17:12:46,993 - stereo_speaker - DEBUG - the param name and its value : vbon = 1 
+2018-01-31 17:12:46,994 - stereo_speaker - DEBUG - the param name and its value : beon = 1 
+2018-01-31 17:12:46,994 - stereo_speaker - DEBUG - the param name and its value : geon = 0 
+2018-01-31 17:12:46,994 - stereo_speaker - DEBUG - the param name and its value : ieon = 1 
+2018-01-31 17:12:46,994 - stereo_speaker - DEBUG - the param name and its value : gebs = 20,47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+2018-01-31 17:12:46,994 - stereo_speaker - DEBUG - the param name and its value : iebs = 20,65,136,223,332,467,634,841,1098,1416,1812,2302,2909,3663,4598,5756,7194,8976,11186,13927,17326,117,133,188,176,141,149,175,185,185,200,236,242,228,213,182,132,110,68,-27,-240 
+2018-01-31 17:12:46,994 - stereo_speaker - DEBUG - the param name and its value : dea = 7 
+2018-01-31 17:12:46,994 - stereo_speaker - DEBUG - the param name and its value : dsa = 10 
+2018-01-31 17:12:46,994 - stereo_speaker - DEBUG - the param name and its value : beb = 192 
+2018-01-31 17:12:46,995 - stereo_speaker - DEBUG - the param name and its value : plb = 0 
+2018-01-31 17:12:46,995 - stereo_speaker - DEBUG - the param name and its value : vmb = 144 
+2018-01-31 17:12:46,995 - stereo_speaker - DEBUG - the param name and its value : dsb = 48 
+2018-01-31 17:12:46,995 - stereo_speaker - DEBUG - the param name and its value : ded = 0 
+2018-01-31 17:12:46,995 - stereo_speaker - DEBUG - the param name and its value : vbm = 3 
+2018-01-31 17:12:46,995 - stereo_speaker - DEBUG - the param name and its value : dom = 0 
+2018-01-31 17:12:46,995 - stereo_speaker - DEBUG - the param name and its value : bew = 16 
+2018-01-31 17:12:46,995 - stereo_speaker - DEBUG - the param name and its value : dvla = 5 
+2018-01-31 17:12:46,995 - stereo_speaker - DEBUG - the param name and its value : arra = 96 
+2018-01-31 17:12:46,996 - stereo_speaker - DEBUG - the param name and its value : dfsa = 10 
+2018-01-31 17:12:46,996 - stereo_speaker - DEBUG - the param name and its value : dhsa = 10 
+2018-01-31 17:12:46,996 - stereo_speaker - DEBUG - the param name and its value : dvmc = 0 
+2018-01-31 17:12:46,996 - stereo_speaker - DEBUG - the param name and its value : arod = 0 
+2018-01-31 17:12:46,996 - stereo_speaker - DEBUG - the param name and its value : arde = 1 
+2018-01-31 17:12:46,996 - stereo_speaker - DEBUG - the param name and its value : dvle = 1 
+2018-01-31 17:12:46,996 - stereo_speaker - DEBUG - the param name and its value : dvme = 0 
+2018-01-31 17:12:46,996 - stereo_speaker - DEBUG - the param name and its value : becf = 200 
+2018-01-31 17:12:46,997 - stereo_speaker - DEBUG - the param name and its value : vbmf = 94,469 
+2018-01-31 17:12:46,997 - stereo_speaker - DEBUG - the param name and its value : vbsf = 35,160 
+2018-01-31 17:12:46,997 - stereo_speaker - DEBUG - the param name and its value : vbhg = -32,-144,-192 
+2018-01-31 17:12:46,997 - stereo_speaker - DEBUG - the param name and its value : vbog = 0 
+2018-01-31 17:12:46,997 - stereo_speaker - DEBUG - the param name and its value : vbsg = 0 
+2018-01-31 17:12:46,997 - stereo_speaker - DEBUG - the param name and its value : dvli = -320 
+2018-01-31 17:12:46,997 - stereo_speaker - DEBUG - the param name and its value : dhfm = 2 
+2018-01-31 17:12:46,997 - stereo_speaker - DEBUG - the param name and its value : vbon = 1 
+2018-01-31 17:12:46,997 - stereo_speaker - DEBUG - the param name and its value : beon = 1 
+2018-01-31 17:12:46,998 - stereo_speaker - DEBUG - the param name and its value : deon = 1 
+2018-01-31 17:12:46,998 - stereo_speaker - DEBUG - the param name and its value : ngon = 1 
+2018-01-31 17:12:46,998 - stereo_speaker - DEBUG - the param name and its value : aoon = 1 
+2018-01-31 17:12:46,998 - stereo_speaker - DEBUG - the param name and its value : aron = 1 
+2018-01-31 17:12:46,998 - stereo_speaker - DEBUG - the param name and its value : dvlo = -320 
+2018-01-31 17:12:46,998 - stereo_speaker - DEBUG - the param name and its value : artp = 12 
+2018-01-31 17:12:46,998 - stereo_speaker - DEBUG - the param name and its value : aobs = 20,10,47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+2018-01-31 17:12:46,998 - stereo_speaker - DEBUG - the param name and its value : arbs = 20,47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+2018-01-31 17:12:46,999 - stereo_speaker - DEBUG - the param name and its value : iea = 10 
+2018-01-31 17:12:46,999 - stereo_speaker - DEBUG - the param name and its value : msce = 0 
+2018-01-31 17:12:46,999 - stereo_speaker - DEBUG - the param name and its value : mdee = 0 
+2018-01-31 17:12:46,999 - stereo_speaker - DEBUG - the param name and its value : miee = 0 
+2018-01-31 17:12:46,999 - stereo_speaker - DEBUG - the param name and its value : mdle = 0 
+2018-01-31 17:12:46,999 - stereo_speaker - DEBUG - the param name and its value : dvle = 1 
+2018-01-31 17:12:46,999 - stereo_speaker - DEBUG - the param name and its value : mave = 0 
+2018-01-31 17:12:46,999 - stereo_speaker - DEBUG - the param name and its value : vcbf = 47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688 
+2018-01-31 17:12:46,999 - stereo_speaker - DEBUG - the param name and its value : preg = -387 
+2018-01-31 17:12:46,999 - stereo_speaker - DEBUG - the param name and its value : vbon = 1 
+2018-01-31 17:12:46,999 - stereo_speaker - DEBUG - the param name and its value : beon = 1 
+2018-01-31 17:12:46,999 - stereo_speaker - DEBUG - the param name and its value : geon = 0 
+2018-01-31 17:12:46,999 - stereo_speaker - DEBUG - the param name and its value : ieon = 1 
+2018-01-31 17:12:46,999 - stereo_speaker - DEBUG - the param name and its value : gebs = 20,47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+2018-01-31 17:12:46,999 - stereo_speaker - DEBUG - the param name and its value : iebs = 20,65,136,223,332,467,634,841,1098,1416,1812,2302,2909,3663,4598,5756,7194,8976,11186,13927,17326,117,133,188,176,141,149,175,185,185,200,236,242,228,213,182,132,110,68,-27,-240 
+2018-01-31 17:12:46,999 - stereo_speaker - DEBUG - the param name and its value : dea = 7 
+2018-01-31 17:12:46,999 - stereo_speaker - DEBUG - the param name and its value : dsa = 10 
+2018-01-31 17:12:46,999 - stereo_speaker - DEBUG - the param name and its value : beb = 192 
+2018-01-31 17:12:46,999 - stereo_speaker - DEBUG - the param name and its value : plb = 0 
+2018-01-31 17:12:46,999 - stereo_speaker - DEBUG - the param name and its value : vmb = 144 
+2018-01-31 17:12:46,999 - stereo_speaker - DEBUG - the param name and its value : dsb = 48 
+2018-01-31 17:12:47,000 - stereo_speaker - DEBUG - the param name and its value : ded = 0 
+2018-01-31 17:12:47,000 - stereo_speaker - DEBUG - the param name and its value : vbm = 3 
+2018-01-31 17:12:47,000 - stereo_speaker - DEBUG - the param name and its value : dom = 0 
+2018-01-31 17:12:47,000 - stereo_speaker - DEBUG - the param name and its value : bew = 16 
+2018-01-31 17:12:47,000 - stereo_speaker - DEBUG - the param name and its value : dvla = 5 
+2018-01-31 17:12:47,000 - stereo_speaker - DEBUG - the param name and its value : arra = 96 
+2018-01-31 17:12:47,000 - stereo_speaker - DEBUG - the param name and its value : dfsa = 10 
+2018-01-31 17:12:47,000 - stereo_speaker - DEBUG - the param name and its value : dhsa = 10 
+2018-01-31 17:12:47,000 - stereo_speaker - DEBUG - the param name and its value : dvmc = 0 
+2018-01-31 17:12:47,000 - stereo_speaker - DEBUG - the param name and its value : arod = 0 
+2018-01-31 17:12:47,000 - stereo_speaker - DEBUG - the param name and its value : arde = 1 
+2018-01-31 17:12:47,000 - stereo_speaker - DEBUG - the param name and its value : dvle = 1 
+2018-01-31 17:12:47,000 - stereo_speaker - DEBUG - the param name and its value : dvme = 0 
+2018-01-31 17:12:47,000 - stereo_speaker - DEBUG - the param name and its value : becf = 200 
+2018-01-31 17:12:47,000 - stereo_speaker - DEBUG - the param name and its value : vbmf = 94,469 
+2018-01-31 17:12:47,000 - stereo_speaker - DEBUG - the param name and its value : vbsf = 35,160 
+2018-01-31 17:12:47,000 - stereo_speaker - DEBUG - the param name and its value : vbhg = -32,-144,-192 
+2018-01-31 17:12:47,000 - stereo_speaker - DEBUG - the param name and its value : vbog = 0 
+2018-01-31 17:12:47,000 - stereo_speaker - DEBUG - the param name and its value : vbsg = 0 
+2018-01-31 17:12:47,000 - stereo_speaker - DEBUG - the param name and its value : dvli = -320 
+2018-01-31 17:12:47,000 - stereo_speaker - DEBUG - the param name and its value : dhfm = 2 
+2018-01-31 17:12:47,000 - stereo_speaker - DEBUG - the param name and its value : vbon = 1 
+2018-01-31 17:12:47,000 - stereo_speaker - DEBUG - the param name and its value : beon = 1 
+2018-01-31 17:12:47,000 - stereo_speaker - DEBUG - the param name and its value : deon = 1 
+2018-01-31 17:12:47,000 - stereo_speaker - DEBUG - the param name and its value : ngon = 1 
+2018-01-31 17:12:47,000 - stereo_speaker - DEBUG - the param name and its value : aoon = 1 
+2018-01-31 17:12:47,000 - stereo_speaker - DEBUG - the param name and its value : aron = 1 
+2018-01-31 17:12:47,000 - stereo_speaker - DEBUG - the param name and its value : dvlo = -320 
+2018-01-31 17:12:47,000 - stereo_speaker - DEBUG - the param name and its value : artp = 12 
+2018-01-31 17:12:47,000 - stereo_speaker - DEBUG - the param name and its value : aobs = 20,10,47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+2018-01-31 17:12:47,000 - stereo_speaker - DEBUG - the param name and its value : arbs = 20,47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+2018-01-31 17:12:47,000 - stereo_speaker - INFO - End to filter effect parameter in DlbDap2Process process 
+2018-01-31 17:12:47,000 - stereo_speaker - INFO - ===== filter global parameters in global process end  =====---
+2018-01-31 17:12:47,000 - stereo_speaker - INFO - ===== write global parameters filtered in global process start=====---
+2018-01-31 17:12:47,000 - stereo_speaker - INFO - Welcome to DAP Parameters write !
+2018-01-31 17:12:47,001 - stereo_speaker - INFO - start to write para to specified file : /home/emediaqa/automationpRroject/logAnalysis/integrationAutorun/log/stereo_speaker/test_log_tc79_bass_dap_universal_be_1_stereo_channel_id_wav_effect_params_from_log.txt
+2018-01-31 17:12:47,001 - stereo_speaker - DEBUG - write content to file : dea=7 
+2018-01-31 17:12:47,001 - stereo_speaker - DEBUG - write content to file : iea=10 
+2018-01-31 17:12:47,001 - stereo_speaker - DEBUG - write content to file : dsa=10 
+2018-01-31 17:12:47,001 - stereo_speaker - DEBUG - write content to file : beb=192 
+2018-01-31 17:12:47,001 - stereo_speaker - DEBUG - write content to file : plb=0 
+2018-01-31 17:12:47,001 - stereo_speaker - DEBUG - write content to file : vmb=144 
+2018-01-31 17:12:47,001 - stereo_speaker - DEBUG - write content to file : dsb=48 
+2018-01-31 17:12:47,001 - stereo_speaker - DEBUG - write content to file : ded=0 
+2018-01-31 17:12:47,001 - stereo_speaker - DEBUG - write content to file : vbm=3 
+2018-01-31 17:12:47,001 - stereo_speaker - DEBUG - write content to file : dom=0 
+2018-01-31 17:12:47,001 - stereo_speaker - DEBUG - write content to file : bew=16 
+2018-01-31 17:12:47,001 - stereo_speaker - DEBUG - write content to file : dvla=5 
+2018-01-31 17:12:47,001 - stereo_speaker - DEBUG - write content to file : arra=96 
+2018-01-31 17:12:47,001 - stereo_speaker - DEBUG - write content to file : dfsa=10 
+2018-01-31 17:12:47,001 - stereo_speaker - DEBUG - write content to file : dhsa=10 
+2018-01-31 17:12:47,001 - stereo_speaker - DEBUG - write content to file : dvmc=0 
+2018-01-31 17:12:47,001 - stereo_speaker - DEBUG - write content to file : arod=0 
+2018-01-31 17:12:47,001 - stereo_speaker - DEBUG - write content to file : msce=0 
+2018-01-31 17:12:47,001 - stereo_speaker - DEBUG - write content to file : arde=1 
+2018-01-31 17:12:47,001 - stereo_speaker - DEBUG - write content to file : mdee=0 
+2018-01-31 17:12:47,001 - stereo_speaker - DEBUG - write content to file : miee=0 
+2018-01-31 17:12:47,001 - stereo_speaker - DEBUG - write content to file : mdle=0 
+2018-01-31 17:12:47,001 - stereo_speaker - DEBUG - write content to file : dvle=1 
+2018-01-31 17:12:47,001 - stereo_speaker - DEBUG - write content to file : dvme=0 
+2018-01-31 17:12:47,001 - stereo_speaker - DEBUG - write content to file : mave=0 
+2018-01-31 17:12:47,001 - stereo_speaker - DEBUG - write content to file : vcbf=47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688 
+2018-01-31 17:12:47,001 - stereo_speaker - DEBUG - write content to file : becf=200 
+2018-01-31 17:12:47,001 - stereo_speaker - DEBUG - write content to file : vbmf=94,469 
+2018-01-31 17:12:47,001 - stereo_speaker - DEBUG - write content to file : vbsf=35,160 
+2018-01-31 17:12:47,001 - stereo_speaker - DEBUG - write content to file : preg=-387 
+2018-01-31 17:12:47,001 - stereo_speaker - DEBUG - write content to file : vbhg=-32,-144,-192 
+2018-01-31 17:12:47,001 - stereo_speaker - DEBUG - write content to file : vbog=0 
+2018-01-31 17:12:47,001 - stereo_speaker - DEBUG - write content to file : vbsg=0 
+2018-01-31 17:12:47,001 - stereo_speaker - DEBUG - write content to file : dvli=-320 
+2018-01-31 17:12:47,001 - stereo_speaker - DEBUG - write content to file : dhfm=2 
+2018-01-31 17:12:47,001 - stereo_speaker - DEBUG - write content to file : vbon=1 
+2018-01-31 17:12:47,001 - stereo_speaker - DEBUG - write content to file : beon=1 
+2018-01-31 17:12:47,001 - stereo_speaker - DEBUG - write content to file : deon=1 
+2018-01-31 17:12:47,001 - stereo_speaker - DEBUG - write content to file : geon=0 
+2018-01-31 17:12:47,001 - stereo_speaker - DEBUG - write content to file : ieon=1 
+2018-01-31 17:12:47,001 - stereo_speaker - DEBUG - write content to file : ngon=1 
+2018-01-31 17:12:47,002 - stereo_speaker - DEBUG - write content to file : aoon=1 
+2018-01-31 17:12:47,002 - stereo_speaker - DEBUG - write content to file : aron=1 
+2018-01-31 17:12:47,002 - stereo_speaker - DEBUG - write content to file : dvlo=-320 
+2018-01-31 17:12:47,002 - stereo_speaker - DEBUG - write content to file : artp=12 
+2018-01-31 17:12:47,002 - stereo_speaker - DEBUG - write content to file : pstg=non-exist 
+2018-01-31 17:12:47,002 - stereo_speaker - DEBUG - write content to file : gebs=20,47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+2018-01-31 17:12:47,002 - stereo_speaker - DEBUG - write content to file : iebs=20,65,136,223,332,467,634,841,1098,1416,1812,2302,2909,3663,4598,5756,7194,8976,11186,13927,17326,117,133,188,176,141,149,175,185,185,200,236,242,228,213,182,132,110,68,-27,-240 
+2018-01-31 17:12:47,002 - stereo_speaker - DEBUG - write content to file : aobs=20,10,47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+2018-01-31 17:12:47,002 - stereo_speaker - DEBUG - write content to file : arbs=20,47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+2018-01-31 17:12:47,002 - stereo_speaker - INFO - End to DAP Parameters write !
+2018-01-31 17:12:47,002 - stereo_speaker - INFO - ===== write global parameters filtered in global process end  =====---
+2018-01-31 17:12:47,002 - stereo_speaker - INFO - ===== filter content processing parameters in qmf process start=====---
+2018-01-31 17:12:47,002 - stereo_speaker - INFO - Welcome to DAP Parameters filter !
+2018-01-31 17:12:47,002 - stereo_speaker - INFO - start to filter udc effect parameter in DlbDap2QmfProcess process 
+2018-01-31 17:12:47,002 - stereo_speaker - INFO -  the specified log file for filter exist ! 
+2018-01-31 17:12:47,002 - stereo_speaker - INFO -  start to parse the log ! 
+2018-01-31 17:12:47,002 - stereo_speaker - INFO - End to filter udc effect parameter in DlbDap2QmfProcess process 
+2018-01-31 17:12:47,002 - stereo_speaker - INFO - ===== filter content processing parameters in qmf process end  =====---
+2018-01-31 17:12:47,002 - stereo_speaker - INFO - ===== write content processing parameters filtered in qmf process start=====---
+2018-01-31 17:12:47,002 - stereo_speaker - INFO - Welcome to DAP Parameters write !
+2018-01-31 17:12:47,002 - stereo_speaker - INFO - start to write para to specified file : /home/emediaqa/automationpRroject/logAnalysis/integrationAutorun/log/stereo_speaker/test_log_tc79_bass_dap_universal_be_1_stereo_channel_id_wav_arendered_params_from_log.txt
+2018-01-31 17:12:47,002 - stereo_speaker - DEBUG - write content to file : dea=non-exist 
+2018-01-31 17:12:47,002 - stereo_speaker - DEBUG - write content to file : iea=non-exist 
+2018-01-31 17:12:47,002 - stereo_speaker - DEBUG - write content to file : dsa=non-exist 
+2018-01-31 17:12:47,002 - stereo_speaker - DEBUG - write content to file : beb=non-exist 
+2018-01-31 17:12:47,002 - stereo_speaker - DEBUG - write content to file : plb=non-exist 
+2018-01-31 17:12:47,003 - stereo_speaker - DEBUG - write content to file : vmb=non-exist 
+2018-01-31 17:12:47,003 - stereo_speaker - DEBUG - write content to file : dsb=non-exist 
+2018-01-31 17:12:47,003 - stereo_speaker - DEBUG - write content to file : ded=non-exist 
+2018-01-31 17:12:47,003 - stereo_speaker - DEBUG - write content to file : vol=non-exist 
+2018-01-31 17:12:47,003 - stereo_speaker - DEBUG - write content to file : dom=non-exist 
+2018-01-31 17:12:47,003 - stereo_speaker - DEBUG - write content to file : bew=non-exist 
+2018-01-31 17:12:47,003 - stereo_speaker - DEBUG - write content to file : dvla=non-exist 
+2018-01-31 17:12:47,003 - stereo_speaker - DEBUG - write content to file : dfsa=non-exist 
+2018-01-31 17:12:47,003 - stereo_speaker - DEBUG - write content to file : dhsa=non-exist 
+2018-01-31 17:12:47,003 - stereo_speaker - DEBUG - write content to file : dvmc=non-exist 
+2018-01-31 17:12:47,003 - stereo_speaker - DEBUG - write content to file : msce=non-exist 
+2018-01-31 17:12:47,003 - stereo_speaker - DEBUG - write content to file : mdee=non-exist 
+2018-01-31 17:12:47,003 - stereo_speaker - DEBUG - write content to file : miee=non-exist 
+2018-01-31 17:12:47,003 - stereo_speaker - DEBUG - write content to file : mdle=non-exist 
+2018-01-31 17:12:47,003 - stereo_speaker - DEBUG - write content to file : dvle=non-exist 
+2018-01-31 17:12:47,003 - stereo_speaker - DEBUG - write content to file : dvme=non-exist 
+2018-01-31 17:12:47,003 - stereo_speaker - DEBUG - write content to file : mave=non-exist 
+2018-01-31 17:12:47,003 - stereo_speaker - DEBUG - write content to file : vcbf=non-exist 
+2018-01-31 17:12:47,003 - stereo_speaker - DEBUG - write content to file : becf=non-exist 
+2018-01-31 17:12:47,003 - stereo_speaker - DEBUG - write content to file : vbmf=non-exist 
+2018-01-31 17:12:47,003 - stereo_speaker - DEBUG - write content to file : vbsf=non-exist 
+2018-01-31 17:12:47,003 - stereo_speaker - DEBUG - write content to file : preg=non-exist 
+2018-01-31 17:12:47,003 - stereo_speaker - DEBUG - write content to file : vbhg=non-exist 
+2018-01-31 17:12:47,003 - stereo_speaker - DEBUG - write content to file : vbog=non-exist 
+2018-01-31 17:12:47,003 - stereo_speaker - DEBUG - write content to file : vbsg=non-exist 
+2018-01-31 17:12:47,003 - stereo_speaker - DEBUG - write content to file : dvli=non-exist 
+2018-01-31 17:12:47,003 - stereo_speaker - DEBUG - write content to file : dhfm=non-exist 
+2018-01-31 17:12:47,003 - stereo_speaker - DEBUG - write content to file : deon=non-exist 
+2018-01-31 17:12:47,003 - stereo_speaker - DEBUG - write content to file : ieon=non-exist 
+2018-01-31 17:12:47,003 - stereo_speaker - DEBUG - write content to file : ngon=non-exist 
+2018-01-31 17:12:47,003 - stereo_speaker - DEBUG - write content to file : dvlo=non-exist 
+2018-01-31 17:12:47,003 - stereo_speaker - DEBUG - write content to file : gebs=non-exist 
+2018-01-31 17:12:47,003 - stereo_speaker - DEBUG - write content to file : iebs=non-exist 
+2018-01-31 17:12:47,003 - stereo_speaker - DEBUG - write content to file : aobs=non-exist 
+2018-01-31 17:12:47,003 - stereo_speaker - INFO - End to DAP Parameters write !
+2018-01-31 17:12:47,003 - stereo_speaker - INFO - ===== write content processing parameters filtered in qmf process end  =====---
+2018-01-31 17:12:47,003 - stereo_speaker - INFO - ===== filter content processing parameters in global process start=====---
+2018-01-31 17:12:47,003 - stereo_speaker - INFO - Welcome to DAP Parameters filter !
+2018-01-31 17:12:47,003 - stereo_speaker - INFO - start to filter content processing parameter in DlbDap2Process process 
+2018-01-31 17:12:47,003 - stereo_speaker - INFO -  the specified log file for filter exist ! 
+2018-01-31 17:12:47,003 - stereo_speaker - INFO -  start to parse the log ! 
+2018-01-31 17:12:47,004 - stereo_speaker - DEBUG - the param name and its value : iea = 10 
+2018-01-31 17:12:47,004 - stereo_speaker - DEBUG - the param name and its value : msce = 0 
+2018-01-31 17:12:47,004 - stereo_speaker - DEBUG - the param name and its value : mdee = 0 
+2018-01-31 17:12:47,004 - stereo_speaker - DEBUG - the param name and its value : miee = 0 
+2018-01-31 17:12:47,004 - stereo_speaker - DEBUG - the param name and its value : mdle = 0 
+2018-01-31 17:12:47,004 - stereo_speaker - DEBUG - the param name and its value : dvle = 1 
+2018-01-31 17:12:47,004 - stereo_speaker - DEBUG - the param name and its value : mave = 0 
+2018-01-31 17:12:47,004 - stereo_speaker - DEBUG - the param name and its value : vcbf = 47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688 
+2018-01-31 17:12:47,004 - stereo_speaker - DEBUG - the param name and its value : vbon = 1 
+2018-01-31 17:12:47,004 - stereo_speaker - DEBUG - the param name and its value : beon = 1 
+2018-01-31 17:12:47,004 - stereo_speaker - DEBUG - the param name and its value : geon = 0 
+2018-01-31 17:12:47,004 - stereo_speaker - DEBUG - the param name and its value : ieon = 1 
+2018-01-31 17:12:47,004 - stereo_speaker - DEBUG - the param name and its value : gebs = 20,47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+2018-01-31 17:12:47,004 - stereo_speaker - DEBUG - the param name and its value : iebs = 20,65,136,223,332,467,634,841,1098,1416,1812,2302,2909,3663,4598,5756,7194,8976,11186,13927,17326,117,133,188,176,141,149,175,185,185,200,236,242,228,213,182,132,110,68,-27,-240 
+2018-01-31 17:12:47,004 - stereo_speaker - DEBUG - the param name and its value : dea = 7 
+2018-01-31 17:12:47,004 - stereo_speaker - DEBUG - the param name and its value : dsa = 10 
+2018-01-31 17:12:47,004 - stereo_speaker - DEBUG - the param name and its value : beb = 192 
+2018-01-31 17:12:47,004 - stereo_speaker - DEBUG - the param name and its value : plb = 0 
+2018-01-31 17:12:47,004 - stereo_speaker - DEBUG - the param name and its value : vmb = 144 
+2018-01-31 17:12:47,004 - stereo_speaker - DEBUG - the param name and its value : dsb = 48 
+2018-01-31 17:12:47,004 - stereo_speaker - DEBUG - the param name and its value : ded = 0 
+2018-01-31 17:12:47,004 - stereo_speaker - DEBUG - the param name and its value : vbm = 3 
+2018-01-31 17:12:47,004 - stereo_speaker - DEBUG - the param name and its value : dom = 0 
+2018-01-31 17:12:47,004 - stereo_speaker - DEBUG - the param name and its value : bew = 16 
+2018-01-31 17:12:47,004 - stereo_speaker - DEBUG - the param name and its value : dvla = 5 
+2018-01-31 17:12:47,004 - stereo_speaker - DEBUG - the param name and its value : arra = 96 
+2018-01-31 17:12:47,004 - stereo_speaker - DEBUG - the param name and its value : dfsa = 10 
+2018-01-31 17:12:47,004 - stereo_speaker - DEBUG - the param name and its value : dhsa = 10 
+2018-01-31 17:12:47,004 - stereo_speaker - DEBUG - the param name and its value : dvmc = 0 
+2018-01-31 17:12:47,004 - stereo_speaker - DEBUG - the param name and its value : arod = 0 
+2018-01-31 17:12:47,004 - stereo_speaker - DEBUG - the param name and its value : arde = 1 
+2018-01-31 17:12:47,004 - stereo_speaker - DEBUG - the param name and its value : dvle = 1 
+2018-01-31 17:12:47,004 - stereo_speaker - DEBUG - the param name and its value : dvme = 0 
+2018-01-31 17:12:47,004 - stereo_speaker - DEBUG - the param name and its value : becf = 200 
+2018-01-31 17:12:47,004 - stereo_speaker - DEBUG - the param name and its value : vbmf = 94,469 
+2018-01-31 17:12:47,004 - stereo_speaker - DEBUG - the param name and its value : vbsf = 35,160 
+2018-01-31 17:12:47,005 - stereo_speaker - DEBUG - the param name and its value : vbhg = -32,-144,-192 
+2018-01-31 17:12:47,005 - stereo_speaker - DEBUG - the param name and its value : vbog = 0 
+2018-01-31 17:12:47,005 - stereo_speaker - DEBUG - the param name and its value : vbsg = 0 
+2018-01-31 17:12:47,005 - stereo_speaker - DEBUG - the param name and its value : dvli = -320 
+2018-01-31 17:12:47,005 - stereo_speaker - DEBUG - the param name and its value : dhfm = 2 
+2018-01-31 17:12:47,005 - stereo_speaker - DEBUG - the param name and its value : vbon = 1 
+2018-01-31 17:12:47,005 - stereo_speaker - DEBUG - the param name and its value : beon = 1 
+2018-01-31 17:12:47,005 - stereo_speaker - DEBUG - the param name and its value : deon = 1 
+2018-01-31 17:12:47,005 - stereo_speaker - DEBUG - the param name and its value : ngon = 1 
+2018-01-31 17:12:47,005 - stereo_speaker - DEBUG - the param name and its value : aoon = 1 
+2018-01-31 17:12:47,005 - stereo_speaker - DEBUG - the param name and its value : aron = 1 
+2018-01-31 17:12:47,005 - stereo_speaker - DEBUG - the param name and its value : dvlo = -320 
+2018-01-31 17:12:47,005 - stereo_speaker - DEBUG - the param name and its value : artp = 12 
+2018-01-31 17:12:47,005 - stereo_speaker - DEBUG - the param name and its value : aobs = 20,10,47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+2018-01-31 17:12:47,005 - stereo_speaker - DEBUG - the param name and its value : arbs = 20,47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+2018-01-31 17:12:47,005 - stereo_speaker - DEBUG - the param name and its value : iea = 10 
+2018-01-31 17:12:47,005 - stereo_speaker - DEBUG - the param name and its value : msce = 0 
+2018-01-31 17:12:47,005 - stereo_speaker - DEBUG - the param name and its value : mdee = 0 
+2018-01-31 17:12:47,005 - stereo_speaker - DEBUG - the param name and its value : miee = 0 
+2018-01-31 17:12:47,005 - stereo_speaker - DEBUG - the param name and its value : mdle = 0 
+2018-01-31 17:12:47,005 - stereo_speaker - DEBUG - the param name and its value : dvle = 1 
+2018-01-31 17:12:47,005 - stereo_speaker - DEBUG - the param name and its value : mave = 0 
+2018-01-31 17:12:47,005 - stereo_speaker - DEBUG - the param name and its value : vcbf = 47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688 
+2018-01-31 17:12:47,005 - stereo_speaker - DEBUG - the param name and its value : preg = -387 
+2018-01-31 17:12:47,005 - stereo_speaker - DEBUG - the param name and its value : vbon = 1 
+2018-01-31 17:12:47,005 - stereo_speaker - DEBUG - the param name and its value : beon = 1 
+2018-01-31 17:12:47,005 - stereo_speaker - DEBUG - the param name and its value : geon = 0 
+2018-01-31 17:12:47,005 - stereo_speaker - DEBUG - the param name and its value : ieon = 1 
+2018-01-31 17:12:47,005 - stereo_speaker - DEBUG - the param name and its value : gebs = 20,47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+2018-01-31 17:12:47,005 - stereo_speaker - DEBUG - the param name and its value : iebs = 20,65,136,223,332,467,634,841,1098,1416,1812,2302,2909,3663,4598,5756,7194,8976,11186,13927,17326,117,133,188,176,141,149,175,185,185,200,236,242,228,213,182,132,110,68,-27,-240 
+2018-01-31 17:12:47,005 - stereo_speaker - DEBUG - the param name and its value : dea = 7 
+2018-01-31 17:12:47,005 - stereo_speaker - DEBUG - the param name and its value : dsa = 10 
+2018-01-31 17:12:47,005 - stereo_speaker - DEBUG - the param name and its value : beb = 192 
+2018-01-31 17:12:47,005 - stereo_speaker - DEBUG - the param name and its value : plb = 0 
+2018-01-31 17:12:47,005 - stereo_speaker - DEBUG - the param name and its value : vmb = 144 
+2018-01-31 17:12:47,005 - stereo_speaker - DEBUG - the param name and its value : dsb = 48 
+2018-01-31 17:12:47,005 - stereo_speaker - DEBUG - the param name and its value : ded = 0 
+2018-01-31 17:12:47,005 - stereo_speaker - DEBUG - the param name and its value : vbm = 3 
+2018-01-31 17:12:47,005 - stereo_speaker - DEBUG - the param name and its value : dom = 0 
+2018-01-31 17:12:47,005 - stereo_speaker - DEBUG - the param name and its value : bew = 16 
+2018-01-31 17:12:47,006 - stereo_speaker - DEBUG - the param name and its value : dvla = 5 
+2018-01-31 17:12:47,006 - stereo_speaker - DEBUG - the param name and its value : arra = 96 
+2018-01-31 17:12:47,006 - stereo_speaker - DEBUG - the param name and its value : dfsa = 10 
+2018-01-31 17:12:47,006 - stereo_speaker - DEBUG - the param name and its value : dhsa = 10 
+2018-01-31 17:12:47,006 - stereo_speaker - DEBUG - the param name and its value : dvmc = 0 
+2018-01-31 17:12:47,006 - stereo_speaker - DEBUG - the param name and its value : arod = 0 
+2018-01-31 17:12:47,006 - stereo_speaker - DEBUG - the param name and its value : arde = 1 
+2018-01-31 17:12:47,006 - stereo_speaker - DEBUG - the param name and its value : dvle = 1 
+2018-01-31 17:12:47,006 - stereo_speaker - DEBUG - the param name and its value : dvme = 0 
+2018-01-31 17:12:47,006 - stereo_speaker - DEBUG - the param name and its value : becf = 200 
+2018-01-31 17:12:47,006 - stereo_speaker - DEBUG - the param name and its value : vbmf = 94,469 
+2018-01-31 17:12:47,006 - stereo_speaker - DEBUG - the param name and its value : vbsf = 35,160 
+2018-01-31 17:12:47,006 - stereo_speaker - DEBUG - the param name and its value : vbhg = -32,-144,-192 
+2018-01-31 17:12:47,006 - stereo_speaker - DEBUG - the param name and its value : vbog = 0 
+2018-01-31 17:12:47,006 - stereo_speaker - DEBUG - the param name and its value : vbsg = 0 
+2018-01-31 17:12:47,006 - stereo_speaker - DEBUG - the param name and its value : dvli = -320 
+2018-01-31 17:12:47,006 - stereo_speaker - DEBUG - the param name and its value : dhfm = 2 
+2018-01-31 17:12:47,006 - stereo_speaker - DEBUG - the param name and its value : vbon = 1 
+2018-01-31 17:12:47,006 - stereo_speaker - DEBUG - the param name and its value : beon = 1 
+2018-01-31 17:12:47,006 - stereo_speaker - DEBUG - the param name and its value : deon = 1 
+2018-01-31 17:12:47,006 - stereo_speaker - DEBUG - the param name and its value : ngon = 1 
+2018-01-31 17:12:47,006 - stereo_speaker - DEBUG - the param name and its value : aoon = 1 
+2018-01-31 17:12:47,006 - stereo_speaker - DEBUG - the param name and its value : aron = 1 
+2018-01-31 17:12:47,006 - stereo_speaker - DEBUG - the param name and its value : dvlo = -320 
+2018-01-31 17:12:47,006 - stereo_speaker - DEBUG - the param name and its value : artp = 12 
+2018-01-31 17:12:47,006 - stereo_speaker - DEBUG - the param name and its value : aobs = 20,10,47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+2018-01-31 17:12:47,006 - stereo_speaker - DEBUG - the param name and its value : arbs = 20,47,141,234,328,469,656,844,1031,1313,1688,2250,3000,3750,4688,5813,7125,9000,11250,13875,19688,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,-192,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+2018-01-31 17:12:47,006 - stereo_speaker - INFO - End to filter content processing parameter in DlbDap2Process process 
+2018-01-31 17:12:47,006 - stereo_speaker - INFO - ===== filter content processing parameters in global process end=====---
+2018-01-31 17:12:47,006 - stereo_speaker - INFO - ===== filter device processing parameters in global process start=====---
+2018-01-31 17:12:47,006 - stereo_speaker - INFO - Welcome to DAP Parameters filter !
+2018-01-31 17:12:47,006 - stereo_speaker - INFO - start to filter device processing parameter in DlbDap2QmfProcess process 
+2018-01-31 17:12:47,006 - stereo_speaker - INFO -  the specified log file for filter exist ! 
+2018-01-31 17:12:47,006 - stereo_speaker - INFO -  start to parse the log ! 
+2018-01-31 17:12:47,007 - stereo_speaker - INFO - End to filter device processing parameter in DlbDap2QmfProcess process 
+2018-01-31 17:12:47,007 - stereo_speaker - INFO - ===== filter device processing parameters in global process end  =====---
+2018-01-31 17:12:47,007 - stereo_speaker - INFO - ===== transfer to dap cp dp parameters start
+2018-01-31 17:12:47,008 - stereo_speaker - INFO - Congratulation. transfer dap cp dp parameter succeed 
+2018-01-31 17:12:47,008 - stereo_speaker - INFO - ===== transfer to dap cp dp parameters end  
+2018-01-31 17:12:47,008 - stereo_speaker - INFO - --- verify effect parameter didn't exist in qmf process 
+2018-01-31 17:12:47,008 - stereo_speaker - INFO -  Congratulation ! No effect parameter in qmf process for non Dolby content .
+2018-01-31 17:12:47,008 - stereo_speaker - INFO - --- verify no effect parameter in qmf process end   
+2018-01-31 17:12:47,008 - stereo_speaker - INFO - Congratulation. Get effect parameter value in global process: beon = 1 
+2018-01-31 17:12:47,008 - stereo_speaker - INFO - Congratulation. Get effect parameter value in global process: vbon = 1 
+2018-01-31 17:12:47,008 - stereo_speaker - INFO - get bass1 enhancer value is 1 .
+2018-01-31 17:12:47,008 - stereo_speaker - INFO - get virtual1 bass value is 1 .
+2018-01-31 17:12:47,098 - stereo_speaker - INFO - ===== run command : adb shell am broadcast -a feature_test -p com.dolby.qa.featuretest --es step change_dap_feature --ei dap_reset_universal 1 
+2018-01-31 17:12:47,198 - stereo_speaker - INFO - ===== run command : adb shell am broadcast -a feature_test -p com.dolby.qa.featuretest --es step change_dap_feature --ei dap_reset_profile 10 
+2018-01-31 17:12:48,269 - stereo_speaker - INFO - ===== run command : adb logcat -b all -c 
+2018-01-31 17:12:48,378 - stereo_speaker - INFO - ===== run command : adb shell am force-stop com.dolby.qa.featuretest 
+2018-01-31 17:12:48,418 - stereo_speaker - INFO - ===== run command : adb logcat -b all -c 

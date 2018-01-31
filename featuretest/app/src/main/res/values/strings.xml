@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Feature Test</string>
+    <string name="app_description">The app would receive broadcast intent and then parsed to next app action : play content or change dap feature</string>
+    <string name="play_content_name">play content : dummy audio track </string>
+    <string name="dap_status">dap status :</string>
+    <string name="dap_profile">dap profile :</string>
+    <string name="dap_feature_type">dap feature type :</string>
+    <string name="dap_feature_value">dap feature value :</string>
+</resources>

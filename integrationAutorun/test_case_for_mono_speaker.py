@@ -88,7 +88,7 @@ def test_log_tc78_bass(content_name, dap_status, dap_profile, dap_feature_type, 
     em1.filter_para_from_log(log_file_abs_path, effect_paras_output_file_abs_path,
                              arendered_param_output_file_abs_path, dap_cp_dp_param_output_file_abs_path)
 
-    if em1.verify_no_double_processing_for_dolby_content():
+    if em1.verify_no_double_processing_effect_for_dolby_content():
         assert True
     else:
         assert False
@@ -134,7 +134,7 @@ def test_log_tc79_bass(content_name, dap_status, dap_profile, dap_feature_type, 
     em1 = LogComparison(log_file_name_for_diff_endpoint[0])
     em1.filter_para_from_log(log_file_abs_path, effect_paras_output_file_abs_path,
                              arendered_param_output_file_abs_path, dap_cp_dp_param_output_file_abs_path)
-    if em1.verify_no_qmf_parameter_for_non_dolby_content():
+    if em1.verify_no_double_processing_effect_for_non_dolby_content():
         assert True
     else:
         assert False

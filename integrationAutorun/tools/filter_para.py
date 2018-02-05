@@ -116,6 +116,7 @@ class LogComparison:
 
         self.logger.info(">>>>> End to filter dap parameters ")
 
+    # common write function : write content in ordered dictionary to a specified file with line by line
     def __write_content_to_file(self, input_order_diction, output_file_name):
         # self.logger.info("<<<<< Welcome to DAP Parameters write !")
         # self.logger.info("<<<<< start to write para to specified file : %s" % output_file_name)
@@ -129,6 +130,7 @@ class LogComparison:
                 fp_w.write(content)
             fp_w.close()
 
+    # write global dap parameters to a file whose name is suffixed with *_effect_paras_*.txt
     def __write_global_parameter_to_file(self, output_file_name):
         self.logger.info("<<<<< write dap parameters in global process start")
         self.__write_content_to_file(LogComparison.EFFECT_PARAS_DICT, output_file_name)
@@ -143,6 +145,7 @@ class LogComparison:
         else:
             self.logger.error("!!!!! failed to filter effect param in global process")
 
+    # write qmf dap parameters to a file whose name is suffixed with *_arendered_paras_*.txt
     def __write_qmf_parameter_to_file(self, output_file_name):
         self.logger.info("<<<<< write dap parameters in qmf process start")
         self.__write_content_to_file(LogComparison.ARENDERER_PARAS_DICT, output_file_name)
@@ -157,12 +160,15 @@ class LogComparison:
         else:
             self.logger.error("!!!!! failed to write effect param in qmf process to file")
 
+    # transfer global dap effect parameters to dap ca dp parameter
+    # and saved in a file with suffixed with *dap_cp_dp_*.txt
+    # new created file could be used as a input of a stand alone library (dap_cp_dp.exe)
     def __write_dap_cp_dp_params_to_file(self, input_file_name, output_file_name):
         self.logger.info("<<<<< Transfer to dap cp dp parameters start")
         if exists(input_file_name):
             transfer_para(input_file_name, output_file_name)
         else:
-            self.logger.error("<<<<< transfer dap cp dp parameter fails ")
+            self.logger.error("<<<<< failed to transfer dap cp dp parameter!")
             self.logger.error("<<<<< input file not exist : %s " % input_file_name)
         self.logger.info("<<<<< transfer to dap cp dp parameters end  ")
         if exists(output_file_name):
@@ -175,6 +181,8 @@ class LogComparison:
         else:
             self.logger.error("!!!!! failed to transfer dap cp dp param")
 
+    # filter dap effect parameters from log captured by command : adb logcat
+    # and then save the params to three file
     def filter_para_from_log(self, input_file_name, effect_para_output_file_name,
                              arendered_para_file_name, dap_cp_dp_file_name):
         self.__filter_dap_para_from_log(input_file_name)
@@ -182,6 +190,7 @@ class LogComparison:
         self.__write_qmf_parameter_to_file(arendered_para_file_name)
         self.__write_dap_cp_dp_params_to_file(effect_para_output_file_name, dap_cp_dp_file_name)
 
+    # get value though four cc name from global dap effect parameters
     def get_parameter_value_in_global_process(self, effect_fourcc_name):
         result = None
         if effect_fourcc_name in PARA_LIST_IN_GLOBAL_PROCESS:
@@ -191,13 +200,14 @@ class LogComparison:
                 result = temp_value
             else:
                 self.logger.error("!!!!! Found no specified dap four cc name in global process : %s "
-                                 % effect_fourcc_name)
+                                  % effect_fourcc_name)
         else:
             self.logger.error(
                 "!!!!! Please specify correct dap para four cc name in global process: %s " % effect_fourcc_name)
             pass
         return result
 
+    # get value though four cc name from qmf dap effect parameters
     def get_parameter_value_in_qmf_process(self, effect_fourcc_name):
         result = None
         if effect_fourcc_name in PARA_LIST_IN_QMF_PROCESS:
@@ -214,6 +224,7 @@ class LogComparison:
             pass
         return result
 
+    # For some content playback , check no double content processing in global process
     def __verify_content_processing_parameter_in_global_process_equals_to_zero(self):
         result = True
         for effect_fourcc_name in CONTENT_PROCESSING_PARAM_LIST:
@@ -226,6 +237,7 @@ class LogComparison:
             self.logger.info(" Congratulation ! No double content processing in global process.")
         return result
 
+    # For some content playback , check no double device processing in qmf process
     def __verify_device_processing_parameter_in_qmf_process_not_exist(self):
         result = True
         for effect_fourcc_name in DEVICE_PROCESSING_PARAM_LIST:
@@ -239,6 +251,7 @@ class LogComparison:
             self.logger.info(" Congratulation ! No double device processing in qmf process.")
         return result
 
+    #
     def verify_no_double_processing_effect_for_dolby_content(self):
         result = True
         self.logger.info("----- verify no double processing effect for Dolby content ")
@@ -272,6 +285,14 @@ class LogComparison:
         return result
 
 
+help_content = (
+                "Usage: python filter_para.py -i log.txt \n"
+                "\n"
+                "Mandatory parameters:\n"
+                "-i/--input\t\t: Followed by log file name captured from the command : adb logcat \n"
+                "\n")
+
+
 def main(argvs):
     # define the logging basic configuration
     logging.basicConfig(
@@ -285,7 +306,7 @@ def main(argvs):
         print e
         sys.exit(0)
     if len(opts) == 0:
-        print("Please specify the input file name ")
+        print("Please specify the input file name captured from the command : adb logcat")
         sys.exit(0)
 
     input_file_name = None  # 'effect_params.txt'
@@ -297,7 +318,7 @@ def main(argvs):
                 print help_content
                 sys.exit(0)
             if op in ('-i', '--input'):
-                print("input file name :" + value)
+                print("input log file name :" + value)
                 input_file_name = value
                 if input_file_name is None:
                     print 'Please set the log file name captured from adb logcat command !'
@@ -318,6 +339,7 @@ def main(argvs):
         em1.filter_para_from_log(input_file_abs_path, effect_paras_output_file_abs_path,
                                  arendered_param_output_file_abs_path, dap_cp_dp_param_output_file_abs_path)
         em1.verify_no_double_processing_effect_for_dolby_content()
+        em1.verify_no_double_processing_effect_for_non_dolby_content()
         em1.get_parameter_value_in_global_process('arbs')
         em1.get_parameter_value_in_qmf_process('arbs')
         em1.get_parameter_value_in_global_process('aron')

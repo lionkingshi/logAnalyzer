@@ -10,6 +10,7 @@ play_content_device_location = '/sdcard/featureTest'
 test_apk_location = './apkSrc/app-debug.apk'
 # define test case log location on device under test
 logFileLocation = "./log/"
+logFileNameFormat = "{functionName}_{endpoint_type}_{log_type}.txt"
 # define test apk package full name
 test_package_name = 'com.dolby.qa.featuretest'
 test_package_main_activity_name = '.MainActivity'
@@ -37,6 +38,7 @@ intent_change_dap_gebg_feature = intent_change_dap + '--eia {0} {1}'
 
 # define adb logcat command
 adb_record_log = 'adb logcat -d >'
+adb_record_log_append = 'adb logcat -d >>'
 adb_clear_log = 'adb logcat -b all -c'
 
 # define change dap feature
@@ -105,4 +107,5 @@ dap_feature_value_geq_off = '0'
 dap_feature_value_geq_default = '2'
 # define universal parameter - graphic equalizer band gain  - gebg
 dap_feature_type_gebg = 'dap_universal_gebg'
+
 

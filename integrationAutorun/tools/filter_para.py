@@ -36,9 +36,12 @@ class LogComparison:
     ARENDERER_PARAS_DICT = OrderedDict()
 
     def __init__(self, logger_name=''):
-        self.logger = logging.getLogger(logger_name)
+        self.logger = None
         LogComparison.__initialize_all_para_ordered_dict()
         pass
+
+    def set_logger_name(self, logger_name):
+        self.logger = logging.getLogger(logger_name)
 
     @property
     def get_logger(self):
@@ -185,6 +188,7 @@ class LogComparison:
     # and then save the params to three file
     def filter_para_from_log(self, input_file_name, effect_para_output_file_name,
                              arendered_para_file_name, dap_cp_dp_file_name):
+        self.__initialize_all_para_ordered_dict()
         self.__filter_dap_para_from_log(input_file_name)
         self.__write_global_parameter_to_file(effect_para_output_file_name)
         self.__write_qmf_parameter_to_file(arendered_para_file_name)

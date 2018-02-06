@@ -18,10 +18,10 @@ def move_test_content(request):
     print '\n install test apk to device under test'
     # execute('adb install -r {0}'.format(test_apk_location))
     time.sleep(SLEEP_TIME_FOR_INSTALLING_APK)
-    execute(adb_clear_log)
+    # execute(adb_clear_log)
 
     def global_resource_release():
-        execute(adb_clear_log)
+        # execute(adb_clear_log)
         print '\n please release global resource'
 
     request.addfinalizer(global_resource_release)
@@ -31,7 +31,7 @@ def move_test_content(request):
 def function_set_up(request):
     print '\n each test case set up now'
     execute("adb shell am start -n {0}/{1}".format(test_package_name, test_package_main_activity_name))
-    execute(adb_clear_log)
+    # execute(adb_clear_log)
     # must sleep some time because only activity is active , it will begin to receive broadcast intent
     # or activity would crash because of receiving intent on dead main activity thread
     time.sleep(SLEEP_TIME_FOR_ACTIVITY_START)
@@ -42,7 +42,7 @@ def function_set_up(request):
             dap_feature_type_reset_universal_para, dap_feature_value_reset_universal_para))
         execute(adb_broadcast_intent + intent_change_dap_high_level_feature.format(
             dap_feature_type_reset_profile, dap_feature_value_reset_profile_all))
-        time.sleep(1)
+        time.sleep(3)
         execute(adb_clear_log)
         execute("adb shell am force-stop {0}".format(test_package_name))
         # time.sleep(3)

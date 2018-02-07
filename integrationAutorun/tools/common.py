@@ -1,9 +1,7 @@
 import subprocess
-import logging
 from constantTestData import *
 import time
-from os.path import abspath, join, exists, isfile
-from filter_para import LogComparison
+from filter_para import *
 
 logger_name = ''
 endpoint_type = 'unknown'
@@ -92,10 +90,7 @@ def verify_no_double_processing_dap_parameter(content_type):
         # False will be treated as non dolby content
         no_double_process_result = log_analysis_instance.verify_no_double_processing_effect_for_non_dolby_content()
 
-    if no_double_process_result:
-        pass
-    else:
-        assert(False, 'fail to check has a double processing')
+    return no_double_process_result
 
 
 # return a specified feature value

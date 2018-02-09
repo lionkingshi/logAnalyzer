@@ -1,4 +1,5 @@
 from constant import *
+
 content_type_1_channel_non_dolby = '1.0'
 content_type_2_channel_non_dolby = '2.0'
 content_type_51_channel_non_dolby = '5.1'
@@ -73,7 +74,7 @@ mi_off_expected_result = {'msce': '0', 'mdee': '0', 'miee': '0', 'mdle': '0', 'm
 # *****************     test data for up mix feature    ******************************
 # ************************************************************************************
 # ************************************************************************************
-up_mix_and_sv_off_test_data = [
+up_mix_and_vsv_off_test_data = [
     ('chopper_1.0_180_420_02.wav', content_type_1_channel_non_dolby, dap_status_on, dap_profile_custom,
      dap_feature_type_vsv, dap_feature_value_vsv_off),
     ('chopper_2.0_180_420_02.wav', content_type_2_channel_non_dolby, dap_status_on, dap_profile_custom,
@@ -97,9 +98,33 @@ up_mix_and_sv_off_test_data = [
     ('ChID_voices_71_640_ddp_joc.mp4', content_type_71_ddp_joc, dap_status_on, dap_profile_custom,
      dap_feature_type_vsv, dap_feature_value_vsv_off)
 ]
-up_mix_and_sv_off_expected_value = {'dom': '0'}
 
-up_mix_and_sv_on_test_data = [
+up_mix_and_hv_off_test_data = [
+    ('chopper_1.0_180_420_02.wav', content_type_1_channel_non_dolby, dap_status_on, dap_profile_custom,
+     dap_feature_type_hv, dap_feature_value_hv_off),
+    ('chopper_2.0_180_420_02.wav', content_type_2_channel_non_dolby, dap_status_on, dap_profile_custom,
+     dap_feature_type_hv, dap_feature_value_hv_off),
+    ('chopper_5.1_180_420.wav', content_type_51_channel_non_dolby, dap_status_on, dap_profile_custom,
+     dap_feature_type_hv, dap_feature_value_hv_off),
+    ('7ch_25fps.wav', content_type_71_channel_non_dolby, dap_status_on, dap_profile_custom,
+     dap_feature_type_hv, dap_feature_value_hv_off),
+    ('2ch_dd_25fps_channel_id.mp4', content_type_2_dd, dap_status_on, dap_profile_custom,
+     dap_feature_type_hv, dap_feature_value_hv_off),
+    ('Pearl_Harbour_French_5.1_dd_448Kbps.mp4', content_type_51_dd, dap_status_on, dap_profile_custom,
+     dap_feature_type_hv, dap_feature_value_hv_off),
+    ('2ch_ddp_25fps_ref_level.mp4', content_type_2_ddp, dap_status_on, dap_profile_custom,
+     dap_feature_type_hv, dap_feature_value_hv_off),
+    ('Eragon_5.1_ddp_128Kbps.mp4', content_type_51_ddp, dap_status_on, dap_profile_custom,
+     dap_feature_type_hv, dap_feature_value_hv_off),
+    ('7ch_ddp_25fps_diff_music_01.mp4', content_type_71_ddp, dap_status_on, dap_profile_custom,
+     dap_feature_type_hv, dap_feature_value_hv_off),
+    ('ChID_voices_51_384_ddp_joc.mp4', content_type_51_ddp_joc, dap_status_on, dap_profile_custom,
+     dap_feature_type_hv, dap_feature_value_hv_off),
+    ('ChID_voices_71_640_ddp_joc.mp4', content_type_71_ddp_joc, dap_status_on, dap_profile_custom,
+     dap_feature_type_hv, dap_feature_value_hv_off)
+]
+
+up_mix_and_vsv_on_test_data = [
     ('chopper_1.0_180_420_02.wav', content_type_1_channel_non_dolby, dap_status_on, dap_profile_custom,
      dap_feature_type_vsv, dap_feature_value_vsv_off),
     ('chopper_2.0_180_420_02.wav', content_type_2_channel_non_dolby, dap_status_on, dap_profile_custom,
@@ -123,8 +148,38 @@ up_mix_and_sv_on_test_data = [
     ('ChID_voices_71_640_ddp_joc.mp4', content_type_71_ddp_joc, dap_status_on, dap_profile_custom,
      dap_feature_type_vsv, dap_feature_value_vsv_off)
 ]
+
+up_mix_and_hv_on_test_data = [
+    ('chopper_1.0_180_420_02.wav', content_type_1_channel_non_dolby, dap_status_on, dap_profile_custom,
+     dap_feature_type_hv, dap_feature_value_hv_on),
+    ('chopper_2.0_180_420_02.wav', content_type_2_channel_non_dolby, dap_status_on, dap_profile_custom,
+     dap_feature_type_hv, dap_feature_value_hv_on),
+    ('chopper_5.1_180_420.wav', content_type_51_channel_non_dolby, dap_status_on, dap_profile_custom,
+     dap_feature_type_hv, dap_feature_value_hv_on),
+    ('7ch_25fps.wav', content_type_71_channel_non_dolby, dap_status_on, dap_profile_custom,
+     dap_feature_type_hv, dap_feature_value_hv_on),
+    ('2ch_dd_25fps_channel_id.mp4', content_type_2_dd, dap_status_on, dap_profile_custom,
+     dap_feature_type_hv, dap_feature_value_hv_on),
+    ('Pearl_Harbour_French_5.1_dd_448Kbps.mp4', content_type_51_dd, dap_status_on, dap_profile_custom,
+     dap_feature_type_hv, dap_feature_value_hv_on),
+    ('2ch_ddp_25fps_ref_level.mp4', content_type_2_ddp, dap_status_on, dap_profile_custom,
+     dap_feature_type_hv, dap_feature_value_hv_on),
+    ('Eragon_5.1_ddp_128Kbps.mp4', content_type_51_ddp, dap_status_on, dap_profile_custom,
+     dap_feature_type_hv, dap_feature_value_hv_on),
+    ('7ch_ddp_25fps_diff_music_01.mp4', content_type_71_ddp, dap_status_on, dap_profile_custom,
+     dap_feature_type_hv, dap_feature_value_hv_on),
+    ('ChID_voices_51_384_ddp_joc.mp4', content_type_51_ddp_joc, dap_status_on, dap_profile_custom,
+     dap_feature_type_hv, dap_feature_value_hv_on),
+    ('ChID_voices_71_640_ddp_joc.mp4', content_type_71_ddp_joc, dap_status_on, dap_profile_custom,
+     dap_feature_type_hv, dap_feature_value_hv_on)
+]
+
+up_mix_and_sv_off_expected_value = {'dom': '0'}
 up_mix_and_sv_on_mono_spk_expected_value = {'dom': '0'}
 up_mix_and_sv_on_stereo_spk_expected_value = {
     'dom': '1,16384,0,0,16384,11583,11583,8192,8192,16384,0,0,16384,16384,0,0,16384'}
 up_mix_and_sv_on_headphone_expected_value = {'dom': '2'}
 up_mix_and_sv_on_blue_tooth_expected_value = {'dom': '0'}
+
+
+

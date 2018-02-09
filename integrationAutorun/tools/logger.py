@@ -1,9 +1,13 @@
 import logging
 from os import mkdir
 from os.path import abspath, join, exists
+from constant import *
 
-log_file_name_for_diff_endpoint = ('mono_speaker', 'stereo_speaker', '35mm_headphone',
-                                   'usb_headphone', 'blue_tooth')
+log_file_name_for_diff_endpoint = (AUDIO_DEVICE_OUT_MONO_SPEAKER,
+                                   AUDIO_DEVICE_OUT_STEREO_SPEAKER,
+                                   AUDIO_DEVICE_OUT_WIRED_HEADPHONE,
+                                   AUDIO_DEVICE_OUT_DGTL_DOCK_HEADSET,
+                                   AUDIO_DEVICE_OUT_BLUETOOTH_A2DP)
 
 format_dict = {
     1: logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'),  # debug

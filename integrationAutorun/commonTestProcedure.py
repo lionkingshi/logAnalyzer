@@ -40,7 +40,8 @@ def be_test_procedure(caller_name, endpoint_id, content_name, content_type, dap_
     __assert_no_double_processing_by_content_type(content_type)
 
     if dap_feature_value == dap_feature_value_be_on:
-        if (endpoint_id == 'mono_speaker') or (endpoint_id == 'stereo_speaker'):
+        if (endpoint_id == AUDIO_DEVICE_OUT_MONO_SPEAKER) \
+                or (endpoint_id == AUDIO_DEVICE_OUT_STEREO_SPEAKER):
             __comparison_result(content_type, be_on_expected_value_speaker_endpoint)
         else:
             __comparison_result(content_type, be_on_expected_value_except_speaker_endpoint)
@@ -51,9 +52,10 @@ def be_test_procedure(caller_name, endpoint_id, content_name, content_type, dap_
 def mi_off_test_procedure(caller_name, endpoint_id, content_name, content_type, dap_status, dap_profile):
     # step 1 :register logger name to record all command to logger file except session setup() function
     register_logger_name(endpoint_id)
-    if content_type:
+    if content_type in content_type_dolby:
         logging.getLogger(endpoint_id).info(
-            "===== Verify mi steer is off when playing {} Dolby content using {}".format(content_type, endpoint_id))
+            "===== Verify mi steer is off when playing {} Dolby content using {}".format(
+                content_type, endpoint_id))
     else:
         logging.getLogger(endpoint_id).info(
             "===== Verify mi steer is off when playing {} non Dolby content using {} ".format(
@@ -155,14 +157,18 @@ def up_mix_and_sv_off_test_procedure(caller_name, endpoint_id, content_name, con
                 content_type, endpoint_id))
 
     # step 2 : change dap feature according to endpoint type
-    if endpoint_id in ('mono_speaker', 'stereo_speaker', 'blue_tooth'):
-        feature_test_procedure(content_name, dap_status_on, dap_profile_music,
-                               dap_feature_type_vsv, dap_feature_value_vsv_on)
+    if endpoint_id in (AUDIO_DEVICE_OUT_MONO_SPEAKER, AUDIO_DEVICE_OUT_STEREO_SPEAKER,
+                       AUDIO_DEVICE_OUT_BLUETOOTH_A2DP):
+        # feature_test_procedure(content_name, dap_status_on, dap_profile_music,
+        #                        dap_feature_type_vsv, dap_feature_value_vsv_on)
+        feature_test_procedure(content_name, dap_status_off)
         feature_test_procedure(content_name, dap_status_on, dap_profile_custom,
                                dap_feature_type_vsv, dap_feature_value_vsv_off)
-    elif endpoint_id in ('35mm_headphone', 'usb_headphone', 'blue_tooth'):
-        feature_test_procedure(content_name, dap_status_on, dap_profile_custom,
-                               dap_feature_type_hv, dap_feature_value_hv_on)
+    elif endpoint_id in (AUDIO_DEVICE_OUT_WIRED_HEADPHONE, AUDIO_DEVICE_OUT_DGTL_DOCK_HEADSET,
+                         AUDIO_DEVICE_OUT_BLUETOOTH_A2DP):
+        # feature_test_procedure(content_name, dap_status_on, dap_profile_custom,
+        #                        dap_feature_type_hv, dap_feature_value_hv_on)
+        feature_test_procedure(content_name, dap_status_off)
         feature_test_procedure(content_name, dap_status_on, dap_profile_custom,
                                dap_feature_type_hv, dap_feature_value_hv_off)
 
@@ -174,11 +180,12 @@ def up_mix_and_sv_off_test_procedure(caller_name, endpoint_id, content_name, con
     #                     -->check no qmf processing for non dolby content
     #                            --> check specified dap feature value is correct
     __assert_no_double_processing_by_content_type(content_type)
+    __assert_dap_output_mode_setting(content_type, endpoint_id, dap_feature_value_vsv_off)
 
     __comparison_result(content_type, up_mix_and_sv_off_expected_value)
 
 
-def up_mix_and_sv_on_test_procedure_for_speaker(caller_name, endpoint_id, content_name, content_type):
+def up_mix_and_sv_on_test_procedure(caller_name, endpoint_id, content_name, content_type):
     # step 1 :register logger name to record all command to logger file except session setup() function
     register_logger_name(endpoint_id)
 
@@ -197,14 +204,17 @@ def up_mix_and_sv_on_test_procedure_for_speaker(caller_name, endpoint_id, conten
                 content_type, endpoint_id))
 
     # step 2 : change dap feature
-    if endpoint_id in ('mono_speaker', 'stereo_speaker', 'blue_tooth'):
-        feature_test_procedure(content_name, dap_status_on, dap_profile_music,
-                               dap_feature_type_vsv, dap_feature_value_vsv_off)
+    if endpoint_id in (AUDIO_DEVICE_OUT_MONO_SPEAKER, AUDIO_DEVICE_OUT_STEREO_SPEAKER, AUDIO_DEVICE_OUT_BLUETOOTH_A2DP):
+        # feature_test_procedure(content_name, dap_status_on, dap_profile_music,
+        #                        dap_feature_type_vsv, dap_feature_value_vsv_off)
+        feature_test_procedure(content_name, dap_status_off)
         feature_test_procedure(content_name, dap_status_on, dap_profile_custom,
                                dap_feature_type_vsv, dap_feature_value_vsv_on)
-    elif endpoint_id in ('35mm_headphone', 'usb_headphone', 'blue_tooth'):
-        feature_test_procedure(content_name, dap_status_on, dap_profile_custom,
-                               dap_feature_type_hv, dap_feature_value_hv_off)
+    elif endpoint_id in (AUDIO_DEVICE_OUT_WIRED_HEADPHONE, AUDIO_DEVICE_OUT_DGTL_DOCK_HEADSET,
+                         AUDIO_DEVICE_OUT_BLUETOOTH_A2DP):
+        # feature_test_procedure(content_name, dap_status_on, dap_profile_custom,
+        #                        dap_feature_type_hv, dap_feature_value_hv_off)
+        feature_test_procedure(content_name, dap_status_off)
         feature_test_procedure(content_name, dap_status_on, dap_profile_custom,
                                dap_feature_type_hv, dap_feature_value_hv_on)
 
@@ -217,14 +227,16 @@ def up_mix_and_sv_on_test_procedure_for_speaker(caller_name, endpoint_id, conten
     #                            --> check specified dap feature value is correct
 
     __assert_no_double_processing_by_content_type(content_type)
+    __assert_dap_output_mode_setting(content_type, endpoint_id, dap_feature_value_vsv_on)
 
-    if endpoint_id == 'mono_speaker':
+    if endpoint_id == AUDIO_DEVICE_OUT_MONO_SPEAKER:
         __comparison_result(content_type, up_mix_and_sv_on_mono_spk_expected_value)
-    elif endpoint_id == 'stereo_speaker':
+    elif endpoint_id == AUDIO_DEVICE_OUT_STEREO_SPEAKER:
         __comparison_result(content_type, up_mix_and_sv_on_stereo_spk_expected_value)
-    elif endpoint_id == '35mm_headphone' or endpoint_id == 'usb_headphone':
+    elif (endpoint_id == AUDIO_DEVICE_OUT_WIRED_HEADPHONE) \
+            or (endpoint_id == AUDIO_DEVICE_OUT_DGTL_DOCK_HEADSET):
         __comparison_result(content_type, up_mix_and_sv_on_headphone_expected_value)
-    elif endpoint_id == 'blue_tooth':
+    elif endpoint_id == AUDIO_DEVICE_OUT_BLUETOOTH_A2DP:
         __comparison_result(content_type, up_mix_and_sv_on_blue_tooth_expected_value)
 
 
@@ -242,12 +254,20 @@ def __generate_and_parse_log_file(_caller_name, _endpoint_id, _content_name):
 def __comparison_result(_content_type, _expected_list):
     for _four_cc_name in _expected_list.keys():
         expected_value = _expected_list[_four_cc_name]
-        actual_data = get_feature_value_from_global_process(_four_cc_name)
+        actual_value = get_feature_value_from_global_process(_four_cc_name)
         if _content_type in content_type_dolby:
             if _four_cc_name in CONTENT_PROCESSING_PARAM_LIST:
-                actual_data = get_feature_value_from_qmf_process(_four_cc_name)
-        assert expected_value == actual_data, \
-            "{} expected value : {} but {}".format(_four_cc_name, expected_value, actual_data)
+                actual_value = get_feature_value_from_qmf_process(_four_cc_name)
+        __assert_equal(_four_cc_name, expected_value, actual_value)
+        assert expected_value == actual_value, \
+            "{} expected value : {} but {}".format(_four_cc_name, expected_value, actual_value)
+
+
+def __assert_equal(_key_word, _expected_value, _actual_value):
+    # if _expected_value is None:
+    #     __expected_value = 'null'
+    assert _expected_value == _actual_value, \
+        "{} expected value : {} but {}".format(_key_word, _expected_value, _actual_value)
 
 
 def __assert_no_double_processing_by_content_type(_content_type):
@@ -257,5 +277,154 @@ def __assert_no_double_processing_by_content_type(_content_type):
     else:
         no_double_processing_result = verify_no_double_processing_dap_parameter(False)
         assert no_double_processing_result, "!!!!!! double processing error "
+
+
+def __assert_dap_output_mode_setting(_content_type, _endpoint_id, _sv_status):
+    if _content_type in content_type_dolby:
+        if _endpoint_id == AUDIO_DEVICE_OUT_MONO_SPEAKER:
+            __assert_equal(SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_OUT_PUT_MODE_FOR_DOLBY_CONTENT_INDEX],
+                           dap_feature_output_mode_value_for_mono_spk,
+                           get_dap_output_mode_set_value(_content_type))
+            __assert_equal(SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_MIX_MATRIX_INDEX],
+                           dap_feature_mix_matrix_null,
+                           get_dap_output_mode_mix_matrix())
+            __assert_equal(SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_JOC_FORCE_DOWN_MIX_INDEX],
+                           dap_feature_down_mix_enabled,
+                           get_dap_joc_force_down_mix_mode_value())
+            pass
+        elif _endpoint_id == AUDIO_DEVICE_OUT_STEREO_SPEAKER:
+            if _sv_status == dap_feature_value_vsv_on:
+                __assert_equal(SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_OUT_PUT_MODE_FOR_DOLBY_CONTENT_INDEX],
+                               dap_feature_output_mode_value_for_stereo_spk_vsv_on,
+                               get_dap_output_mode_set_value(_content_type))
+                __assert_equal(SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_MIX_MATRIX_INDEX],
+                               dap_feature_mix_matrix_custom,
+                               get_dap_output_mode_mix_matrix())
+                __assert_equal(SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_JOC_FORCE_DOWN_MIX_INDEX],
+                               dap_feature_down_mix_disabled,
+                               get_dap_joc_force_down_mix_mode_value())
+                pass
+            elif _sv_status == dap_feature_value_vsv_off:
+                __assert_equal(SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_OUT_PUT_MODE_FOR_DOLBY_CONTENT_INDEX],
+                               dap_feature_output_mode_value_for_stereo_spk_vsv_off,
+                               get_dap_output_mode_set_value(_content_type))
+                __assert_equal(SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_MIX_MATRIX_INDEX],
+                               dap_feature_mix_matrix_null,
+                               get_dap_output_mode_mix_matrix())
+                __assert_equal(SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_JOC_FORCE_DOWN_MIX_INDEX],
+                               dap_feature_down_mix_disabled,
+                               get_dap_joc_force_down_mix_mode_value())
+                pass
+        elif _endpoint_id == AUDIO_DEVICE_OUT_WIRED_HEADPHONE:
+            if _sv_status == dap_feature_value_hv_on:
+                __assert_equal(SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_OUT_PUT_MODE_FOR_DOLBY_CONTENT_INDEX],
+                               dap_feature_output_mode_value_for_35mm_hp_vsv_on,
+                               get_dap_output_mode_set_value(_content_type))
+                __assert_equal(SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_MIX_MATRIX_INDEX],
+                               dap_feature_mix_matrix_null,
+                               get_dap_output_mode_mix_matrix())
+                __assert_equal(SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_JOC_FORCE_DOWN_MIX_INDEX],
+                               dap_feature_down_mix_disabled,
+                               get_dap_joc_force_down_mix_mode_value())
+                pass
+            elif _sv_status == dap_feature_value_hv_off:
+                __assert_equal(SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_OUT_PUT_MODE_FOR_DOLBY_CONTENT_INDEX],
+                               dap_feature_output_mode_value_for_35mm_hp_vsv_off,
+                               get_dap_output_mode_set_value(_content_type))
+                __assert_equal(SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_MIX_MATRIX_INDEX],
+                               dap_feature_mix_matrix_null,
+                               get_dap_output_mode_mix_matrix())
+                __assert_equal(SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_JOC_FORCE_DOWN_MIX_INDEX],
+                               dap_feature_down_mix_disabled,
+                               get_dap_joc_force_down_mix_mode_value())
+            pass
+        elif _endpoint_id == AUDIO_DEVICE_OUT_DGTL_DOCK_HEADSET:
+            pass
+        elif _endpoint_id == AUDIO_DEVICE_OUT_BLUETOOTH_A2DP:
+            if _sv_status == dap_feature_value_vsv_on:
+                __assert_equal(SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_OUT_PUT_MODE_FOR_DOLBY_CONTENT_INDEX],
+                               dap_feature_output_mode_value_for_stereo_spk_vsv_on,
+                               get_dap_output_mode_set_value(_content_type))
+                __assert_equal(SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_MIX_MATRIX_INDEX],
+                               dap_feature_mix_matrix_custom,
+                               get_dap_output_mode_mix_matrix())
+                __assert_equal(SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_JOC_FORCE_DOWN_MIX_INDEX],
+                               dap_feature_down_mix_disabled,
+                               get_dap_joc_force_down_mix_mode_value())
+                pass
+            elif _sv_status == dap_feature_value_vsv_off:
+                __assert_equal(SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_OUT_PUT_MODE_FOR_DOLBY_CONTENT_INDEX],
+                               dap_feature_output_mode_value_for_stereo_spk_vsv_off,
+                               get_dap_output_mode_set_value(_content_type))
+                __assert_equal(SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_MIX_MATRIX_INDEX],
+                               dap_feature_mix_matrix_null,
+                               get_dap_output_mode_mix_matrix())
+                __assert_equal(SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_JOC_FORCE_DOWN_MIX_INDEX],
+                               dap_feature_down_mix_disabled,
+                               get_dap_joc_force_down_mix_mode_value())
+            pass
+        elif _endpoint_id == AUDIO_DEVICE_OUT_AUX_DIGITAL:
+            pass
+    else:
+        # for non dolby content , we will check the dap output mode set in global process
+        if _endpoint_id == AUDIO_DEVICE_OUT_MONO_SPEAKER:
+            __assert_equal(SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_OUT_PUT_MODE_FOR_NON_DOLBY_CONTENT_INDEX], None,
+                           get_dap_output_mode_set_value(_content_type))
+            __assert_equal(SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_MIX_MATRIX_INDEX], None,
+                           get_dap_output_mode_mix_matrix())
+            __assert_equal(SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_JOC_FORCE_DOWN_MIX_INDEX], None,
+                           get_dap_joc_force_down_mix_mode_value())
+            pass
+        elif _endpoint_id == AUDIO_DEVICE_OUT_STEREO_SPEAKER:
+            if _sv_status == dap_feature_value_vsv_on:
+                __assert_equal(SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_OUT_PUT_MODE_FOR_NON_DOLBY_CONTENT_INDEX],
+                               dap_feature_output_mode_value_for_stereo_spk_vsv_on,
+                               get_dap_output_mode_set_value(_content_type))
+                __assert_equal(SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_MIX_MATRIX_INDEX],
+                               dap_feature_mix_matrix_custom,
+                               get_dap_output_mode_mix_matrix())
+                __assert_equal(SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_JOC_FORCE_DOWN_MIX_INDEX], None,
+                               get_dap_joc_force_down_mix_mode_value())
+                pass
+            elif _sv_status == dap_feature_value_vsv_off:
+                __assert_equal(SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_OUT_PUT_MODE_FOR_NON_DOLBY_CONTENT_INDEX], None,
+                               get_dap_output_mode_set_value(_content_type))
+                __assert_equal(SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_MIX_MATRIX_INDEX], None,
+                               get_dap_output_mode_mix_matrix())
+                __assert_equal(SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_JOC_FORCE_DOWN_MIX_INDEX], None,
+                               get_dap_joc_force_down_mix_mode_value())
+                pass
+        elif _endpoint_id == AUDIO_DEVICE_OUT_WIRED_HEADPHONE:
+            if _sv_status == dap_feature_value_hv_on:
+                __assert_equal(SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_OUT_PUT_MODE_FOR_NON_DOLBY_CONTENT_INDEX],
+                               dap_feature_output_mode_value_for_35mm_hp_vsv_on,
+                               get_dap_output_mode_set_value(_content_type))
+                __assert_equal(SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_MIX_MATRIX_INDEX],
+                               dap_feature_mix_matrix_null,
+                               get_dap_output_mode_mix_matrix())
+                __assert_equal(SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_JOC_FORCE_DOWN_MIX_INDEX], None,
+                               get_dap_joc_force_down_mix_mode_value())
+                pass
+            elif _sv_status == dap_feature_value_hv_off:
+                __assert_equal(SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_OUT_PUT_MODE_FOR_NON_DOLBY_CONTENT_INDEX], None,
+                               get_dap_output_mode_set_value(_content_type))
+                __assert_equal(SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_MIX_MATRIX_INDEX], None,
+                               get_dap_output_mode_mix_matrix())
+                __assert_equal(SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_JOC_FORCE_DOWN_MIX_INDEX], None,
+                               get_dap_joc_force_down_mix_mode_value())
+            pass
+        elif _endpoint_id == AUDIO_DEVICE_OUT_DGTL_DOCK_HEADSET:
+            pass
+        elif _endpoint_id == AUDIO_DEVICE_OUT_BLUETOOTH_A2DP:
+            __assert_equal(SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_OUT_PUT_MODE_FOR_NON_DOLBY_CONTENT_INDEX], None,
+                           get_dap_output_mode_set_value(_content_type))
+            __assert_equal(SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_MIX_MATRIX_INDEX], None,
+                           get_dap_output_mode_mix_matrix())
+            __assert_equal(SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_JOC_FORCE_DOWN_MIX_INDEX], None,
+                           get_dap_joc_force_down_mix_mode_value())
+            pass
+        elif _endpoint_id == AUDIO_DEVICE_OUT_AUX_DIGITAL:
+            pass
+        pass
 
 

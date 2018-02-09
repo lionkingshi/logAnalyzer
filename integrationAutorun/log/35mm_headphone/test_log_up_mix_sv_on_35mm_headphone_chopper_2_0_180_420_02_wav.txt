@@ -1,0 +1,334 @@
+--------- beginning of system
+02-05 01:03:27.677   816  2363 I ActivityManager: Force stopping com.dolby.qa.featuretest appid=10074 user=0: from pid 2077
+02-05 01:03:27.677   816  2363 I ActivityManager: Killing 1989:com.dolby.qa.featuretest/u0a74 (adj 0): stop com.dolby.qa.featuretest
+02-05 01:03:27.678   816  2363 W ActivityManager: Force removing ActivityRecord{a27a2e3 u0 com.dolby.qa.featuretest/.MainActivity t239}: app died, no saved state
+02-05 01:03:27.685   816  2363 I WindowManager: Failed to capture screenshot of Token{513b4e0 ActivityRecord{a27a2e3 u0 com.dolby.qa.featuretest/.MainActivity t239 f}} appWin=Window{1dcbc41 u0 com.dolby.qa.featuretest/com.dolby.qa.featuretest.MainActivity} drawState=4
+--------- beginning of main
+02-05 01:03:27.701   816   894 W InputDispatcher: channel '1a43a15 Toast (server)' ~ Consumer closed input channel or an error occurred.  events=0x9
+02-05 01:03:27.701   816   894 E InputDispatcher: channel '1a43a15 Toast (server)' ~ Channel is unrecoverably broken and will be disposed!
+02-05 01:03:27.702   589  1170 D NuPlayerDriver: reset(0xe5732770) at state 5
+02-05 01:03:27.704   589  1170 D NuPlayerDriver: notifyListener_l(0xe5732770), (8, 0, 0, -1), loop setting(0, 1)
+02-05 01:03:27.705   816  4855 I WindowManager: WIN DEATH: Window{1a43a15 u0 Toast}
+02-05 01:03:27.706   816  4855 W InputDispatcher: Attempted to unregister already unregistered input channel '1a43a15 Toast (server)'
+02-05 01:03:27.714   589  2040 D NuPlayerDriver: notifyResetComplete(0xe5732770)
+02-05 01:03:27.714   589  1170 D AudioTrack: stop() called with 0 frames delivered
+02-05 01:03:27.722  1232  1232 D CarrierSvcBindHelper: No carrier app for: 0
+02-05 01:03:27.726  2298  2298 D RegisteredNfcFServicesCache: Service unchanged, not updating
+02-05 01:03:27.784   816  4855 I ActivityManager: START u0 {flg=0x10000000 cmp=com.dolby.qa.featuretest/.MainActivity} from uid 2000
+02-05 01:03:27.810   816  2337 I ActivityManager: Start proc 2083:com.dolby.qa.featuretest/u0a74 for activity com.dolby.qa.featuretest/.MainActivity
+02-05 01:03:27.811  2083  2083 I zygote64: Late-enabling -Xcheck:jni
+02-05 01:03:27.841   581   724 D DlbDlbEffect: handle_EFFECT_CMD_DISABLE()
+02-05 01:03:27.841   581   724 D DlbDapCrossfadeProcess: setEnabled transitioning from DAP_ACTIVE state to FADE_TO_BYPASS
+02-05 01:03:27.842   416   416 W /system/bin/hw/android.hidl.allocator@1.0-service: ashmem_create_region(3840) returning hidl_memory(0x7590c2c2e0, 3840)
+02-05 01:03:27.843   581   724 D DlbDlbEffect: handle_EFFECT_CMD_SET_CONFIG()
+02-05 01:03:27.843   581   724 D DlbDapEndpointParamCache: setDevice(device=0x00000008)
+02-05 01:03:27.843   421   421 D DMSService: setActiveDevice called with device = 0x8
+02-05 01:03:27.843   581   724 D DlbDlbEffect: handle_EFFECT_CMD_ENABLE()
+02-05 01:03:27.843   581   724 D DlbDapCrossfadeProcess: setEnabled transitioning from FADE_TO_BYPASS state to FADE_TO_ACTIVE
+02-05 01:03:28.035  2083  2083 D featureTest: onCreate
+02-05 01:03:28.204   581   770 D audio_hw_primary: disable_audio_route: usecase(0) reset and update mixer path: deep-buffer-playback
+02-05 01:03:28.206   581   770 D audio_hw_primary: disable_snd_device: snd_device(5: headphones)
+02-05 01:03:28.230  2083  2083 D AudioTrack: Client defaulted notificationFrames to 962 for frameCount 1924
+02-05 01:03:28.237  2083  2083 W AudioTrack: Use of stream types is deprecated for operations other than volume control
+02-05 01:03:28.238  2083  2083 W AudioTrack: See the documentation of AudioTrack() for what to use instead with android.media.AudioAttributes to qualify your playback use case
+02-05 01:03:28.252  2083  2083 W DolbyAudioEffect: WARNING: attaching a DolbyAudioEffect to global output mix is deprecated!
+02-05 01:03:28.258   816   843 W ActivityManager: setHasOverlayUi called on unknown pid: 1989
+02-05 01:03:28.264  2083  2083 D featureTest: onResume
+02-05 01:03:28.280  2083  2104 D OpenGLRenderer: HWUI GL Pipeline
+02-05 01:03:28.348  2083  2104 I Adreno  : QUALCOMM build                   : 7142022, Ib5823dd10c
+02-05 01:03:28.348  2083  2104 I Adreno  : Build Date                       : 06/23/17
+02-05 01:03:28.348  2083  2104 I Adreno  : OpenGL ES Shader Compiler Version: EV031.18.00.00
+02-05 01:03:28.348  2083  2104 I Adreno  : Local Branch                     : O11A
+02-05 01:03:28.348  2083  2104 I Adreno  : Remote Branch                    : 
+02-05 01:03:28.348  2083  2104 I Adreno  : Remote Branch                    : 
+02-05 01:03:28.348  2083  2104 I Adreno  : Reconstruct Branch               : 
+02-05 01:03:28.349  2083  2104 I vndksupport: sphal namespace is not configured for this process. Loading /vendor/lib64/hw/gralloc.msm8994.so from the current namespace instead.
+02-05 01:03:28.355  2083  2104 I Adreno  : PFP: 0x00000000, ME: 0x00000000
+02-05 01:03:28.359  2083  2104 I OpenGLRenderer: Initialized EGL, version 1.4
+02-05 01:03:28.359  2083  2104 D OpenGLRenderer: Swap behavior 2
+02-05 01:03:28.369 31691 31691 I ServiceManager: Waiting for service AtCmdFwd...
+02-05 01:03:28.386   365   365 W /system/bin/hwservicemanager: getTransportFromManifest: Cannot find entry android.hardware.graphics.mapper@2.0::IMapper in either framework or device manifest, using default transport.
+02-05 01:03:28.389  2083  2104 I vndksupport: sphal namespace is not configured for this process. Loading /vendor/lib64/hw/gralloc.msm8994.so from the current namespace instead.
+02-05 01:03:28.411   816   843 I ActivityManager: Displayed com.dolby.qa.featuretest/.MainActivity: +611ms
+02-05 01:03:28.630  2401  2517 W OpenGLRenderer: Incorrectly called buildLayer on View: ShortcutAndWidgetContainer, destroying layer...
+02-05 01:03:28.863  2083  2083 D featureTest: receive broadcast , playing content location :/sdcard/featureTest/chopper_2.0_180_420_02.wav
+02-05 01:03:28.871  2083  2083 D featureTest: mMediaPlayer.getAudioSessionId(): 5033
+02-05 01:03:28.871  2083  2083 D featureTest: Playing file: /sdcard/featureTest/chopper_2.0_180_420_02.wav
+02-05 01:03:28.873  2115  2115 W generic : type=1400 audit(0.0:2976): avc: denied { read } for path="/storage/emulated/0/featuretest/chopper_2.0_180_420_02.wav" dev="sdcardfs" ino=523303 scontext=u:r:mediaextractor:s0 tcontext=u:object_r:sdcardfs:s0 tclass=file permissive=0
+02-05 01:03:28.873   589   589 D NuPlayerDriver: NuPlayerDriver(0xe5732690) created, clientPid(2083)
+02-05 01:03:28.875  2083  2083 W MediaPlayer: Use of stream types is deprecated for operations other than volume control
+02-05 01:03:28.876  2083  2083 W MediaPlayer: See the documentation of setAudioStreamType() for what to use instead with android.media.AudioAttributes to qualify your playback use case
+02-05 01:03:28.878   589  2115 D GenericSource: FileSource remote
+02-05 01:03:28.878   589  2115 W GenericSource: extractor service cannot make data source
+02-05 01:03:28.878   589  2115 D GenericSource: FileSource local
+02-05 01:03:28.894   587  1118 D MediaBufferGroup: creating MemoryDealer
+02-05 01:03:28.894   589  2114 D NuPlayerDriver: notifyListener_l(0xe5732690), (1, 0, 0, -1), loop setting(0, 0)
+02-05 01:03:28.895   816   816 W NotificationService: Object died trying to hide notification android.app.ITransientNotification$Stub$Proxy@eab3e48 in package com.dolby.qa.featuretest
+02-05 01:03:28.895   816   816 W WindowManager: removeWindowToken: Attempted to remove non-existing token: android.os.Binder@6ccc988
+02-05 01:03:28.896   816   816 W ActivityManager: setProcessForeground called on unknown pid: 1989
+02-05 01:03:28.897   816   816 W NotificationService: Object died trying to show notification android.app.ITransientNotification$Stub$Proxy@f93a4e1 in package com.dolby.qa.featuretest
+02-05 01:03:28.897   816   816 W ActivityManager: setProcessForeground called on unknown pid: 1989
+02-05 01:03:28.897   816   816 W NotificationService: Object died trying to show notification android.app.ITransientNotification$Stub$Proxy@51ff206 in package com.dolby.qa.featuretest
+02-05 01:03:28.904   589   589 D NuPlayerDriver: start(0xe5732690), state is 4, eos is 0
+02-05 01:03:28.904   589  2114 I GenericSource: start
+02-05 01:03:28.909  2083  2083 W DolbyAudioEffect: WARNING: attaching a DolbyAudioEffect to global output mix is deprecated!
+02-05 01:03:28.913   593  1187 I OMXMaster: makeComponentInstance(OMX.google.raw.decoder) in android.hardwar process
+02-05 01:03:28.916   593 20870 E OMXNodeInstance: setConfig(0xf10a3200:google.raw.decoder, ConfigPriority(0x6f800002)) ERROR: Undefined(0x80001001)
+02-05 01:03:28.916   589  2120 I ACodec  : codec does not support config priority (err -2147483648)
+02-05 01:03:28.917   593  1188 E OMXNodeInstance: getConfig(0xf10a3200:google.raw.decoder, ConfigAndroidVendorExtension(0x6f100004)) ERROR: Undefined(0x80001001)
+02-05 01:03:28.917   589  2120 I MediaCodec: MediaCodec will operate in async mode
+02-05 01:03:28.927  2083  2083 D featureTest: receive broadcast , change ds status :0
+02-05 01:03:28.931   589  2118 D AudioTrack: Client defaulted notificationFrames to 7350 for frameCount 22050
+02-05 01:03:28.932   581  5355 D DlbDlbEffect: handle_EFFECT_CMD_DISABLE()
+02-05 01:03:28.932   581  5355 D DlbDapCrossfadeProcess: setEnabled transitioning from FADE_TO_ACTIVE state to FADE_TO_BYPASS
+02-05 01:03:28.933   416   416 W /system/bin/hw/android.hidl.allocator@1.0-service: ashmem_create_region(7680) returning hidl_memory(0x7590c2c2e0, 7680)
+02-05 01:03:28.934   581  5355 D DlbDlbEffect: handle_EFFECT_CMD_SET_CONFIG()
+02-05 01:03:28.934   581  5355 D DlbDapEndpointParamCache: setDevice(device=0x00000008)
+02-05 01:03:28.934   421   421 D DMSService: setActiveDevice called with device = 0x8
+02-05 01:03:28.934   581  5355 D DlbDlbEffect: handle_EFFECT_CMD_ENABLE()
+02-05 01:03:28.934   581  5355 D DlbDapCrossfadeProcess: setEnabled transitioning from FADE_TO_BYPASS state to FADE_TO_ACTIVE
+02-05 01:03:28.935   589  2114 D NuPlayerDriver: notifyListener_l(0xe5732690), (6, 0, 0, -1), loop setting(0, 1)
+02-05 01:03:28.939   581  5115 D DlbDapCrossfadeProcess: process transitioning from FADE_TO_ACTIVE state to DAP_ACTIVE
+02-05 01:03:28.940   581  5111 D audio_hw_primary: enable_snd_device: snd_device(5: headphones)
+02-05 01:03:28.946   581  5111 D audio_hw_primary: enable_audio_route: usecase(0) apply and update mixer path: deep-buffer-playback
+02-05 01:03:28.955   581   581 D DlbDlbEffect: handle_EFFECT_CMD_SET_PARAM()
+02-05 01:03:29.011  2083  2083 D featureTest: receive broadcast , change ds profile id :2
+02-05 01:03:29.021   581  5142 D DlbDlbEffect: handle_EFFECT_CMD_SET_PARAM()
+02-05 01:03:29.021   421   460 I DapController: Profile Changed to Music
+02-05 01:03:29.026   581  5115 D DlbDapCrossfadeProcess: setEnabled transitioning from DAP_ACTIVE state to FADE_TO_BYPASS
+02-05 01:03:29.028   581  5115 D DlbDapEndpointParamCache: commitChangedParams()
+02-05 01:03:29.028   581  5115 D DlbDapEndpointParamCache: commit() Applying parameters for device 0x40000000
+02-05 01:03:29.028   581  5115 D DlbDap2Process: setParam(iea = #1[10])
+02-05 01:03:29.028   581  5115 D DlbDap2Process: setParam(msce = #1[0])
+02-05 01:03:29.028   581  5115 D DlbDap2Process: setParam(mdee = #1[0])
+02-05 01:03:29.028   581  5115 D DlbDap2Process: setParam(miee = #1[0])
+02-05 01:03:29.028   581  5115 D DlbDap2Process: setParam(mdle = #1[0])
+02-05 01:03:29.028   581  5115 D DlbDap2Process: setParam(dvle = #1[1])
+02-05 01:03:29.028   581  5115 D DlbDap2Process: setParam(mave = #1[0])
+02-05 01:03:29.028   581  5115 D DlbDap2Process: setParam(vcbf = #20[47, 141, 234, 328, 469, 656, 844, 1031, 1313, 1688, 2250, 3000, 3750, 4688, 5813, 7125, 9000, 11250, 13875, 19688])
+02-05 01:03:29.028   581  5115 D DlbDap2Process: setParam(vbon = #1[0])
+02-05 01:03:29.028   581  5115 D DlbDap2Process: setParam(beon = #1[0])
+02-05 01:03:29.028   581  5115 D DlbDap2Process: setParam(geon = #1[0])
+02-05 01:03:29.028   581  5115 D DlbDap2Process: setParam(ieon = #1[1])
+02-05 01:03:29.029   581  5115 D DlbDap2Process: setParam(gebs = #41[20, 47, 141, 234, 328, 469, 656, 844, 1031, 1313, 1688, 2250, 3000, 3750, 4688, 5813, 7125, 9000, 11250, 13875, 19688, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+02-05 01:03:29.029   581  5115 D DlbDap2Process: setParam(iebs = #41[20, 65, 136, 223, 332, 467, 634, 841, 1098, 1416, 1812, 2302, 2909, 3663, 4598, 5756, 7194, 8976, 11186, 13927, 17326, 117, 133, 188, 176, 141, 149, 175, 185, 185, 200, 236, 242, 228, 213, 182, 132, 110, 68, -27, -240])
+02-05 01:03:29.029   581  5115 D DlbDapEndpointParamCache: doCommit() Committed 15 parameters out of 16.
+02-05 01:03:29.029   581  5115 D DlbDapEndpointParamCache: commit() Overriding parameters for current device 0x00000008
+02-05 01:03:29.029   581  5115 D DlbDap2Process: setParam(dea = #1[7])
+02-05 01:03:29.029   581  5115 D DlbDap2Process: setParam(dsa = #1[10])
+02-05 01:03:29.029   581  5115 D DlbDap2Process: setParam(beb = #1[96])
+02-05 01:03:29.029   581  5115 D DlbDap2Process: setParam(plb = #1[0])
+02-05 01:03:29.029   581  5115 D DlbDap2Process: setParam(vmb = #1[144])
+02-05 01:03:29.029   581  5115 D DlbDap2Process: setParam(dsb = #1[48])
+02-05 01:03:29.029   581  5115 D DlbDap2Process: setParam(ded = #1[0])
+02-05 01:03:29.029   581  5115 D DlbDap2Process: setParam(vbm = #1[0])
+02-05 01:03:29.029   581  5115 D DlbDap2Process: setParam(dom = #1[0])
+02-05 01:03:29.029   581  5115 D DlbDap2Process: setParam(bew = #1[16])
+02-05 01:03:29.029   581  5115 D DlbDap2Process: setParam(dvla = #1[4])
+02-05 01:03:29.029   581  5115 D DlbDap2Process: setParam(arra = #1[96])
+02-05 01:03:29.029   581  5115 D DlbDap2Process: setParam(dfsa = #1[10])
+02-05 01:03:29.029   581  5115 D DlbDap2Process: setParam(dhsa = #1[10])
+02-05 01:03:29.029   581  5115 D DlbDap2Process: setParam(dvmc = #1[160])
+02-05 01:03:29.029   581  5115 D DlbDap2Process: setParam(arod = #1[0])
+02-05 01:03:29.029   581  5115 D DlbDap2Process: setParam(arde = #1[0])
+02-05 01:03:29.029   581  5115 D DlbDap2Process: setParam(dvle = #1[1])
+02-05 01:03:29.029   581  5115 D DlbDap2Process: setParam(dvme = #1[0])
+02-05 01:03:29.029   581  5115 D DlbDap2Process: setParam(becf = #1[160])
+02-05 01:03:29.029   581  5115 D DlbDap2Process: setParam(vbmf = #2[99, 281])
+02-05 01:03:29.029   581  5115 D DlbDap2Process: setParam(vbsf = #2[30, 90])
+02-05 01:03:29.029   581  5115 D DlbDap2Process: setParam(vbhg = #3[-48, -480, -240])
+02-05 01:03:29.029   581  5115 D DlbDap2Process: setParam(vbog = #1[0])
+02-05 01:03:29.029   581  5115 D DlbDap2Process: setParam(vbsg = #1[0])
+02-05 01:03:29.029   581  5115 D DlbDap2Process: setParam(dvli = #1[-320])
+02-05 01:03:29.029   581  5115 D DlbDap2Process: setParam(dhfm = #1[0])
+02-05 01:03:29.029   581  5115 D DlbDap2Process: setParam(vbon = #1[0])
+02-05 01:03:29.030   581  5115 D DlbDap2Process: setParam(beon = #1[0])
+02-05 01:03:29.030   581  5115 D DlbDap2Process: setParam(deon = #1[0])
+02-05 01:03:29.030   581  5115 D DlbDap2Process: setParam(ngon = #1[1])
+02-05 01:03:29.030   581  5115 D DlbDap2Process: setParam(aoon = #1[0])
+02-05 01:03:29.030   581  5115 D DlbDap2Process: setParam(aron = #1[1])
+02-05 01:03:29.030   581  5115 D DlbDap2Process: setParam(dvlo = #1[-320])
+02-05 01:03:29.030   581  5115 D DlbDap2Process: setParam(artp = #1[12])
+02-05 01:03:29.030   581  5115 D DlbDap2Process: setParam(aobs = #222[20, 10, 47, 141, 234, 328, 469, 656, 844, 1031, 1313, 1688, 2250, 3000, 3750, 4688, 5813, 7125, 9000, 11250, 13875, 19688, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+02-05 01:03:29.031   581  5115 D DlbDap2Process: setParam(arbs = #81[20, 47, 141, 234, 328, 469, 656, 844, 1031, 1313, 1688, 2250, 3000, 3750, 4688, 5813, 7125, 9000, 11250, 13875, 19688, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+02-05 01:03:29.031   581  5115 D DlbDapEndpointParamCache: doCommit() Committed 37 parameters out of 37.
+02-05 01:03:29.031   581  5115 D DlbDap2Process: setMave(mave = 0)
+02-05 01:03:29.068   581  5115 D DlbDapCrossfadeProcess: process transitioning from FADE_TO_BYPASS state to DAP_BYPASSED
+02-05 01:03:29.087  2083  2083 D featureTest: receive broadcast , playing content location :/sdcard/featureTest/chopper_2.0_180_420_02.wav
+02-05 01:03:29.089   589  1170 D NuPlayerDriver: stop(0xe5732690)
+02-05 01:03:29.089   589  1170 D NuPlayerDriver: notifyListener_l(0xe5732690), (8, 0, 0, -1), loop setting(0, 1)
+02-05 01:03:29.091   589   589 D NuPlayerDriver: reset(0xe5732690) at state 8
+02-05 01:03:29.097   589  2114 D NuPlayerDriver: notifyResetComplete(0xe5732690)
+02-05 01:03:29.098   589   589 D NuPlayerDriver: reset(0xe5732690) at state 0
+02-05 01:03:29.098  2083  2083 V MediaPlayer: resetDrmState:  mDrmInfo=null mDrmProvisioningThread=null mPrepareDrmInProgress=false mActiveDrmScheme=false
+02-05 01:03:29.098  2083  2083 V MediaPlayer: cleanDrmObj: mDrmObj=null mDrmSessionId=null
+02-05 01:03:29.100  2083  2083 V MediaPlayer: resetDrmState:  mDrmInfo=null mDrmProvisioningThread=null mPrepareDrmInProgress=false mActiveDrmScheme=false
+02-05 01:03:29.100  2083  2083 V MediaPlayer: cleanDrmObj: mDrmObj=null mDrmSessionId=null
+02-05 01:03:29.105  2083  2083 D featureTest: mMediaPlayer.getAudioSessionId(): 5041
+02-05 01:03:29.105  2083  2083 D featureTest: Playing file: /sdcard/featureTest/chopper_2.0_180_420_02.wav
+02-05 01:03:29.106  2135  2135 W generic : type=1400 audit(0.0:2977): avc: denied { read } for path="/storage/emulated/0/featuretest/chopper_2.0_180_420_02.wav" dev="sdcardfs" ino=523303 scontext=u:r:mediaextractor:s0 tcontext=u:object_r:sdcardfs:s0 tclass=file permissive=0
+02-05 01:03:29.106   589   709 D NuPlayerDriver: NuPlayerDriver(0xe5732a80) created, clientPid(2083)
+02-05 01:03:29.109  2083  2083 W MediaPlayer: Use of stream types is deprecated for operations other than volume control
+02-05 01:03:29.109  2083  2083 W MediaPlayer: See the documentation of setAudioStreamType() for what to use instead with android.media.AudioAttributes to qualify your playback use case
+02-05 01:03:29.111   589  2135 D GenericSource: FileSource remote
+02-05 01:03:29.111   589  2135 W GenericSource: extractor service cannot make data source
+02-05 01:03:29.111   589  2135 D GenericSource: FileSource local
+02-05 01:03:29.125   581   770 D AudioFlinger: mixer(0xf2983980) throttle end: throttle time(30)
+02-05 01:03:29.128   587   693 D MediaBufferGroup: creating MemoryDealer
+02-05 01:03:29.128   589  2134 D NuPlayerDriver: notifyListener_l(0xe5732a80), (1, 0, 0, -1), loop setting(0, 0)
+02-05 01:03:29.132   589 26717 D NuPlayerDriver: start(0xe5732a80), state is 4, eos is 0
+02-05 01:03:29.132   589  2134 I GenericSource: start
+02-05 01:03:29.135  2083  2083 W DolbyAudioEffect: WARNING: attaching a DolbyAudioEffect to global output mix is deprecated!
+02-05 01:03:29.138   593  5353 I OMXMaster: makeComponentInstance(OMX.google.raw.decoder) in android.hardwar process
+02-05 01:03:29.143   593  5352 E OMXNodeInstance: setConfig(0xf10a3980:google.raw.decoder, ConfigPriority(0x6f800002)) ERROR: Undefined(0x80001001)
+02-05 01:03:29.144   589  2140 I ACodec  : codec does not support config priority (err -2147483648)
+02-05 01:03:29.144   593   593 E OMXNodeInstance: getConfig(0xf10a3980:google.raw.decoder, ConfigAndroidVendorExtension(0x6f100004)) ERROR: Undefined(0x80001001)
+02-05 01:03:29.145   589  2140 I MediaCodec: MediaCodec will operate in async mode
+02-05 01:03:29.150  2083  2083 D featureTest: receive broadcast , change ds status :1
+02-05 01:03:29.155   589  2138 D AudioTrack: Client defaulted notificationFrames to 7350 for frameCount 22050
+02-05 01:03:29.156   589  2134 D NuPlayerDriver: notifyListener_l(0xe5732a80), (6, 0, 0, -1), loop setting(0, 1)
+02-05 01:03:29.165   581  5143 D DlbDlbEffect: handle_EFFECT_CMD_SET_PARAM()
+02-05 01:03:29.206   581  5115 D DlbDapCrossfadeProcess: setEnabled transitioning from DAP_BYPASSED state to PREROLL_ACTIVE
+02-05 01:03:29.216  2083  2083 D featureTest: receive broadcast , change ds profile id :5
+02-05 01:03:29.228   581   731 D DlbDlbEffect: handle_EFFECT_CMD_SET_PARAM()
+02-05 01:03:29.228   421   460 I DapController: Profile Changed to Custom
+02-05 01:03:29.248   581  5115 D DlbDapEndpointParamCache: commitChangedParams()
+02-05 01:03:29.248   581  5115 D DlbDapEndpointParamCache: commit() Applying parameters for device 0x40000000
+02-05 01:03:29.248   581  5115 D DlbDap2Process: setParam(iea = #1[10])
+02-05 01:03:29.248   581  5115 D DlbDap2Process: setParam(msce = #1[0])
+02-05 01:03:29.248   581  5115 D DlbDap2Process: setParam(mdee = #1[0])
+02-05 01:03:29.248   581  5115 D DlbDap2Process: setParam(miee = #1[0])
+02-05 01:03:29.248   581  5115 D DlbDap2Process: setParam(mdle = #1[0])
+02-05 01:03:29.248   581  5115 D DlbDap2Process: setParam(dvle = #1[1])
+02-05 01:03:29.248   581  5115 D DlbDap2Process: setParam(mave = #1[0])
+02-05 01:03:29.248   581  5115 D DlbDap2Process: setParam(vcbf = #20[47, 141, 234, 328, 469, 656, 844, 1031, 1313, 1688, 2250, 3000, 3750, 4688, 5813, 7125, 9000, 11250, 13875, 19688])
+02-05 01:03:29.248   581  5115 D DlbDap2Process: setParam(vbon = #1[0])
+02-05 01:03:29.248   581  5115 D DlbDap2Process: setParam(beon = #1[0])
+02-05 01:03:29.248   581  5115 D DlbDap2Process: setParam(geon = #1[0])
+02-05 01:03:29.248   581  5115 D DlbDap2Process: setParam(ieon = #1[0])
+02-05 01:03:29.248   581  5115 D DlbDap2Process: setParam(gebs = #41[20, 47, 141, 234, 328, 469, 656, 844, 1031, 1313, 1688, 2250, 3000, 3750, 4688, 5813, 7125, 9000, 11250, 13875, 19688, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+02-05 01:03:29.249   581  5115 D DlbDap2Process: setParam(iebs = #41[20, 65, 136, 223, 332, 467, 634, 841, 1098, 1416, 1812, 2302, 2909, 3663, 4598, 5756, 7194, 8976, 11186, 13927, 17326, 117, 133, 188, 176, 141, 149, 175, 185, 185, 200, 236, 242, 228, 213, 182, 132, 110, 68, -27, -240])
+02-05 01:03:29.249   581  5115 D DlbDapEndpointParamCache: doCommit() Committed 15 parameters out of 16.
+02-05 01:03:29.249   581  5115 D DlbDapEndpointParamCache: commit() Overriding parameters for current device 0x00000008
+02-05 01:03:29.249   581  5115 D DlbDap2Process: setParam(dea = #1[7])
+02-05 01:03:29.249   581  5115 D DlbDap2Process: setParam(dsa = #1[10])
+02-05 01:03:29.249   581  5115 D DlbDap2Process: setParam(beb = #1[96])
+02-05 01:03:29.249   581  5115 D DlbDap2Process: setParam(plb = #1[0])
+02-05 01:03:29.249   581  5115 D DlbDap2Process: setParam(vmb = #1[144])
+02-05 01:03:29.249   581  5115 D DlbDap2Process: setParam(dsb = #1[48])
+02-05 01:03:29.249   581  5115 D DlbDap2Process: setParam(ded = #1[0])
+02-05 01:03:29.249   581  5115 D DlbDap2Process: setParam(vbm = #1[0])
+02-05 01:03:29.249   581  5115 D DlbDap2Process: setParam(dom = #1[0])
+02-05 01:03:29.249   581  5115 D DlbDap2Process: setParam(bew = #1[16])
+02-05 01:03:29.249   581  5115 D DlbDap2Process: setParam(dvla = #1[5])
+02-05 01:03:29.249   581  5115 D DlbDap2Process: setParam(arra = #1[96])
+02-05 01:03:29.249   581  5115 D DlbDap2Process: setParam(dfsa = #1[10])
+02-05 01:03:29.249   581  5115 D DlbDap2Process: setParam(dhsa = #1[10])
+02-05 01:03:29.249   581  5115 D DlbDap2Process: setParam(dvmc = #1[160])
+02-05 01:03:29.249   581  5115 D DlbDap2Process: setParam(arod = #1[0])
+02-05 01:03:29.249   581  5115 D DlbDap2Process: setParam(arde = #1[0])
+02-05 01:03:29.249   581  5115 D DlbDap2Process: setParam(dvle = #1[1])
+02-05 01:03:29.249   581  5115 D DlbDap2Process: setParam(dvme = #1[0])
+02-05 01:03:29.249   581  5115 D DlbDap2Process: setParam(becf = #1[160])
+02-05 01:03:29.249   581  5115 D DlbDap2Process: setParam(vbmf = #2[99, 281])
+02-05 01:03:29.249   581  5115 D DlbDap2Process: setParam(vbsf = #2[30, 90])
+02-05 01:03:29.249   581  5115 D DlbDap2Process: setParam(vbhg = #3[-48, -480, -240])
+02-05 01:03:29.249   581  5115 D DlbDap2Process: setParam(vbog = #1[0])
+02-05 01:03:29.249   581  5115 D DlbDap2Process: setParam(vbsg = #1[0])
+02-05 01:03:29.249   581  5115 D DlbDap2Process: setParam(dvli = #1[-320])
+02-05 01:03:29.249   581  5115 D DlbDap2Process: setParam(dhfm = #1[0])
+02-05 01:03:29.249   581  5115 D DlbDap2Process: setParam(vbon = #1[0])
+02-05 01:03:29.249   581  5115 D DlbDap2Process: setParam(beon = #1[0])
+02-05 01:03:29.249   581  5115 D DlbDap2Process: setParam(deon = #1[0])
+02-05 01:03:29.249   581  5115 D DlbDap2Process: setParam(ngon = #1[1])
+02-05 01:03:29.249   581  5115 D DlbDap2Process: setParam(aoon = #1[0])
+02-05 01:03:29.249   581  5115 D DlbDap2Process: setParam(aron = #1[1])
+02-05 01:03:29.249   581  5115 D DlbDap2Process: setParam(dvlo = #1[-320])
+02-05 01:03:29.250   581  5115 D DlbDap2Process: setParam(artp = #1[12])
+02-05 01:03:29.250   581  5115 D DlbDap2Process: setParam(aobs = #222[20, 10, 47, 141, 234, 328, 469, 656, 844, 1031, 1313, 1688, 2250, 3000, 3750, 4688, 5813, 7125, 9000, 11250, 13875, 19688, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+02-05 01:03:29.250   581  5115 D DlbDap2Process: setParam(arbs = #81[20, 47, 141, 234, 328, 469, 656, 844, 1031, 1313, 1688, 2250, 3000, 3750, 4688, 5813, 7125, 9000, 11250, 13875, 19688, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+02-05 01:03:29.250   581  5115 D DlbDapEndpointParamCache: doCommit() Committed 37 parameters out of 37.
+02-05 01:03:29.250   581  5115 D DlbDap2Process: setMave(mave = 0)
+02-05 01:03:29.252   581  5115 D DlbDapCrossfadeProcess: process transitioning from PREROLL_ACTIVE state to FADE_TO_ACTIVE
+02-05 01:03:29.281  2083  2083 D featureTest: receive broadcast , change headphone sound virtualizer :1
+02-05 01:03:29.295   581  7829 D DlbDlbEffect: handle_EFFECT_CMD_SET_PARAM()
+02-05 01:03:29.328   581  5115 D DlbDapEndpointParamCache: commitChangedParams()
+02-05 01:03:29.328   581  5115 D DlbDapEndpointParamCache: commit() Applying parameters for device 0x40000000
+02-05 01:03:29.328   581  5115 D DlbDap2Process: setParam(iea = #1[10])
+02-05 01:03:29.328   581  5115 D DlbDap2Process: setParam(msce = #1[0])
+02-05 01:03:29.328   581  5115 D DlbDap2Process: setParam(mdee = #1[0])
+02-05 01:03:29.328   581  5115 D DlbDap2Process: setParam(miee = #1[0])
+02-05 01:03:29.328   581  5115 D DlbDap2Process: setParam(mdle = #1[0])
+02-05 01:03:29.328   581  5115 D DlbDap2Process: setParam(dvle = #1[1])
+02-05 01:03:29.328   581  5115 D DlbDap2Process: setParam(mave = #1[0])
+02-05 01:03:29.328   581  5115 D DlbDap2Process: setParam(vcbf = #20[47, 141, 234, 328, 469, 656, 844, 1031, 1313, 1688, 2250, 3000, 3750, 4688, 5813, 7125, 9000, 11250, 13875, 19688])
+02-05 01:03:29.328   581  5115 D DlbDap2Process: setParam(vbon = #1[0])
+02-05 01:03:29.328   581  5115 D DlbDap2Process: setParam(beon = #1[0])
+02-05 01:03:29.328   581  5115 D DlbDap2Process: setParam(geon = #1[0])
+02-05 01:03:29.329   581  5115 D DlbDap2Process: setParam(ieon = #1[0])
+02-05 01:03:29.329   581  5115 D DlbDap2Process: setParam(gebs = #41[20, 47, 141, 234, 328, 469, 656, 844, 1031, 1313, 1688, 2250, 3000, 3750, 4688, 5813, 7125, 9000, 11250, 13875, 19688, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+02-05 01:03:29.329   581  5115 D DlbDap2Process: setParam(iebs = #41[20, 65, 136, 223, 332, 467, 634, 841, 1098, 1416, 1812, 2302, 2909, 3663, 4598, 5756, 7194, 8976, 11186, 13927, 17326, 117, 133, 188, 176, 141, 149, 175, 185, 185, 200, 236, 242, 228, 213, 182, 132, 110, 68, -27, -240])
+02-05 01:03:29.329   581  5115 D DlbDapEndpointParamCache: doCommit() Committed 15 parameters out of 16.
+02-05 01:03:29.329   581  5115 D DlbDapEndpointParamCache: commit() Overriding parameters for current device 0x00000008
+02-05 01:03:29.329   581  5115 D DlbDap2Process: setParam(dea = #1[7])
+02-05 01:03:29.329   581  5115 D DlbDap2Process: setParam(dsa = #1[10])
+02-05 01:03:29.329   581  5115 D DlbDap2Process: setParam(beb = #1[96])
+02-05 01:03:29.329   581  5115 D DlbDap2Process: setParam(plb = #1[0])
+02-05 01:03:29.329   581  5115 D DlbDap2Process: setParam(vmb = #1[144])
+02-05 01:03:29.329   581  5115 D DlbDap2Process: setParam(dsb = #1[48])
+02-05 01:03:29.329   581  5115 D DlbDap2Process: setParam(ded = #1[0])
+02-05 01:03:29.329   581  5115 D DlbDap2Process: setParam(vbm = #1[0])
+02-05 01:03:29.329   581  5115 D DlbDap2Process: DAP output mode set to 9 with 2 output channels and null mix matrix.
+02-05 01:03:29.329   581  5115 D DlbDap2Process: setParam(dom = #1[2])
+02-05 01:03:29.329   581  5115 D DlbDap2Process: setParam(bew = #1[16])
+02-05 01:03:29.329   581  5115 D DlbDap2Process: setParam(dvla = #1[5])
+02-05 01:03:29.329   581  5115 D DlbDap2Process: setParam(arra = #1[96])
+02-05 01:03:29.329   581  5115 D DlbDap2Process: setParam(dfsa = #1[10])
+02-05 01:03:29.329   581  5115 D DlbDap2Process: setParam(dhsa = #1[10])
+02-05 01:03:29.329   581  5115 D DlbDap2Process: setParam(dvmc = #1[160])
+02-05 01:03:29.329   581  5115 D DlbDap2Process: setParam(arod = #1[0])
+02-05 01:03:29.329   581  5115 D DlbDap2Process: setParam(arde = #1[0])
+02-05 01:03:29.329   581  5115 D DlbDap2Process: setParam(dvle = #1[1])
+02-05 01:03:29.329   581  5115 D DlbDap2Process: setParam(dvme = #1[0])
+02-05 01:03:29.329   581  5115 D DlbDap2Process: setParam(becf = #1[160])
+02-05 01:03:29.329   581  5115 D DlbDap2Process: setParam(vbmf = #2[99, 281])
+02-05 01:03:29.329   581  5115 D DlbDap2Process: setParam(vbsf = #2[30, 90])
+02-05 01:03:29.330   581  5115 D DlbDap2Process: setParam(vbhg = #3[-48, -480, -240])
+02-05 01:03:29.330   581  5115 D DlbDap2Process: setParam(vbog = #1[0])
+02-05 01:03:29.330   581  5115 D DlbDap2Process: setParam(vbsg = #1[0])
+02-05 01:03:29.330   581  5115 D DlbDap2Process: setParam(dvli = #1[-320])
+02-05 01:03:29.330   581  5115 D DlbDap2Process: setParam(dhfm = #1[0])
+02-05 01:03:29.330   581  5115 D DlbDap2Process: setParam(vbon = #1[0])
+02-05 01:03:29.330   581  5115 D DlbDap2Process: setParam(beon = #1[0])
+02-05 01:03:29.330   581  5115 D DlbDap2Process: setParam(deon = #1[0])
+02-05 01:03:29.330   581  5115 D DlbDap2Process: setParam(ngon = #1[1])
+02-05 01:03:29.330   581  5115 D DlbDap2Process: setParam(aoon = #1[0])
+02-05 01:03:29.330   581  5115 D DlbDap2Process: setParam(aron = #1[1])
+02-05 01:03:29.330   581  5115 D DlbDap2Process: setParam(dvlo = #1[-320])
+02-05 01:03:29.330   581  5115 D DlbDap2Process: setParam(artp = #1[12])
+02-05 01:03:29.331   581  5115 D DlbDap2Process: setParam(aobs = #222[20, 10, 47, 141, 234, 328, 469, 656, 844, 1031, 1313, 1688, 2250, 3000, 3750, 4688, 5813, 7125, 9000, 11250, 13875, 19688, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+02-05 01:03:29.331   581  5115 D DlbDap2Process: setParam(arbs = #81[20, 47, 141, 234, 328, 469, 656, 844, 1031, 1313, 1688, 2250, 3000, 3750, 4688, 5813, 7125, 9000, 11250, 13875, 19688, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+02-05 01:03:29.331   581  5115 D DlbDapEndpointParamCache: doCommit() Committed 37 parameters out of 37.
+02-05 01:03:29.331   581  5115 D DlbDap2Process: setMave(mave = 0)
+02-05 01:03:29.350  2083  2083 D featureTest: receive broadcast , record log :0
+02-05 01:03:29.360  2083  2088 I zygote64: Do partial code cache collection, code=8KB, data=14KB
+02-05 01:03:29.360  2083  2088 I zygote64: After code cache collection, code=8KB, data=14KB
+02-05 01:03:29.360  2083  2088 I zygote64: Increasing code cache capacity to 128KB
+02-05 01:03:29.361  2083  2088 I zygote64: Do partial code cache collection, code=8KB, data=33KB
+02-05 01:03:29.361  2083  2088 I zygote64: After code cache collection, code=8KB, data=33KB
+02-05 01:03:29.361  2083  2088 I zygote64: Increasing code cache capacity to 256KB
+02-05 01:03:29.361  2083  2088 I zygote64: Compiler allocated 8MB to compile void android.widget.TextView.<init>(android.content.Context, android.util.AttributeSet, int, int)
+02-05 01:03:29.369   581  5115 D DlbDapCrossfadeProcess: process transitioning from FADE_TO_ACTIVE state to DAP_ACTIVE
+02-05 01:03:29.369 31691 31691 I ServiceManager: Waiting for service AtCmdFwd...
+02-05 01:03:29.768   581  5115 D DlbDap2Process: process() called [365000] times
+02-05 01:03:29.782   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 01:03:29.782   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 01:03:30.370 31691 31691 I ServiceManager: Waiting for service AtCmdFwd...
+02-05 01:03:30.963   816   816 W WindowManager: removeWindowToken: Attempted to remove non-existing token: android.os.Binder@944ae1d
+02-05 01:03:31.013   429   429 D SurfaceFlinger: duplicate layer name: changing Toast to Toast#1
+02-05 01:03:31.371 31691 31691 I ServiceManager: Waiting for service AtCmdFwd...
+02-05 01:03:32.337   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 01:03:32.337   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 01:03:32.372 31691 31691 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 1
+02-05 01:03:32.422   581  5115 D DlbDap2Process: process() called [365500] times
+02-05 01:03:32.990   816   816 W WindowManager: removeWindowToken: Attempted to remove non-existing token: android.os.Binder@50451bf

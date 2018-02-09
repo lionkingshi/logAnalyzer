@@ -18,28 +18,38 @@ def register_logger_name(_logger_name):
 
 
 # common serial action : plat content -> change dap parameter -> save log to a specified file for later analysis
-def feature_test_procedure(content_name, dap_status, dap_profile, dap_feature_type=None, dap_feature_value=None):
+def feature_test_procedure(content_name, dap_status, dap_profile=None, dap_feature_type=None, dap_feature_value=None):
     # play content
     execute(adb_broadcast_intent + intent_play_content + content_name)
     # time.sleep(1)
     # change dap status
-    execute(adb_broadcast_intent + intent_change_dap_status + dap_status)
-    # time.sleep(1)
-    # select a dap profile
-    execute(adb_broadcast_intent + intent_change_dap_profile + dap_profile)
-    # time.sleep(1)
-    # change dap parameter
-    if dap_feature_type is not None:
-        if dap_feature_type == dap_feature_type_gebg:
-            execute(adb_broadcast_intent + intent_change_dap_gebg_feature.format(dap_feature_type, dap_feature_value))
-        elif len(dap_feature_type) == 4:
-            execute(adb_broadcast_intent + intent_change_dap_low_level_feature.format(dap_feature_type, dap_feature_value))
-        else:
-            execute(adb_broadcast_intent + intent_change_dap_high_level_feature.format(dap_feature_type, dap_feature_value))
+    if dap_status == dap_status_on:
+        execute(adb_broadcast_intent + intent_change_dap_status + dap_status)
         # time.sleep(1)
-    # do nothing
-    execute(adb_broadcast_intent + "--es step record_log ")
-    # time.sleep(1)
+        # select a dap profile
+        execute(adb_broadcast_intent + intent_change_dap_profile + dap_profile)
+        # time.sleep(1)
+        # change dap parameter
+        if dap_feature_type is not None:
+            if dap_feature_type == dap_feature_type_gebg:
+                execute(
+                    adb_broadcast_intent + intent_change_dap_gebg_feature.format(dap_feature_type, dap_feature_value))
+            elif len(dap_feature_type) == 4:
+                execute(adb_broadcast_intent + intent_change_dap_low_level_feature.format(dap_feature_type,
+                                                                                          dap_feature_value))
+            else:
+                execute(adb_broadcast_intent + intent_change_dap_high_level_feature.format(dap_feature_type,
+                                                                                           dap_feature_value))
+                # time.sleep(1)
+        # do nothing
+        execute(adb_broadcast_intent + "--es step record_log ")
+        # time.sleep(1)
+    else:
+        # turn off dap and no need to update parameters again
+        execute(adb_broadcast_intent + intent_change_dap_status + dap_status)
+        # time.sleep(1)
+        # select a dap profile
+        execute(adb_broadcast_intent + intent_change_dap_profile + dap_profile_music)
 
 
 # capture the adb log cat stand output to a specified file
@@ -93,13 +103,32 @@ def verify_no_double_processing_dap_parameter(content_type):
     return no_double_process_result
 
 
-# return a specified feature value
+# return a specified feature value from global process
 def get_feature_value_from_global_process(effect_fourcc_name):
     return log_analysis_instance.get_parameter_value_in_global_process(effect_fourcc_name)
 
 
+# return a specified feature value from qmf process
 def get_feature_value_from_qmf_process(effect_fourcc_name):
     return log_analysis_instance.get_parameter_value_in_qmf_process(effect_fourcc_name)
+
+
+#
+def get_dap_joc_force_down_mix_mode_value():
+    return log_analysis_instance.get_dap_joc_force_down_mix_mode_value_in_ddp_joc_decoder()
+
+
+#
+def get_dap_output_mode_set_value(_content_type):
+    if _content_type in content_type_dolby:
+        return log_analysis_instance.get_dap_output_mode_set_value_in_qmf_process()
+    else:
+        return log_analysis_instance.get_dap_output_mode_set_value_in_global_process()
+
+
+#
+def get_dap_output_mode_mix_matrix():
+    return log_analysis_instance.get_dap_output_mode_mix_matrix()
 
 
 def contain_string(files, string):

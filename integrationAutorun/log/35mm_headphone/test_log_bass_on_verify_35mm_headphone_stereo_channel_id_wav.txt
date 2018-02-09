@@ -1,0 +1,1326 @@
+--------- beginning of system
+02-04 23:07:19.955   816   828 I ActivityManager: Force stopping com.dolby.qa.featuretest appid=10074 user=0: from pid 31511
+02-04 23:07:19.955   816   828 I ActivityManager: Killing 31420:com.dolby.qa.featuretest/u0a74 (adj 0): stop com.dolby.qa.featuretest
+02-04 23:07:19.960   816   828 W ActivityManager: Force removing ActivityRecord{69c6c04 u0 com.dolby.qa.featuretest/.MainActivity t215}: app died, no saved state
+02-04 23:07:19.965   816   828 I WindowManager: Failed to capture screenshot of Token{89b65ed ActivityRecord{69c6c04 u0 com.dolby.qa.featuretest/.MainActivity t215 f}} appWin=Window{9ac792a u0 com.dolby.qa.featuretest/com.dolby.qa.featuretest.MainActivity} drawState=4
+--------- beginning of main
+02-04 23:07:19.991  1232  1232 D CarrierSvcBindHelper: No carrier app for: 0
+02-04 23:07:19.993   816  1084 I WindowManager: WIN DEATH: Window{e94532e u0 Toast}
+02-04 23:07:19.993   589  1170 D NuPlayerDriver: reset(0xe3e61070) at state 5
+02-04 23:07:19.994   589  1170 D NuPlayerDriver: notifyListener_l(0xe3e61070), (8, 0, 0, -1), loop setting(0, 1)
+02-04 23:07:19.996   581  5110 D AudioFlinger: trackStateChanged() Track id 618 state changed to 6
+02-04 23:07:19.997  2298  2298 D RegisteredNfcFServicesCache: Service unchanged, not updating
+02-04 23:07:20.000   593  1162 I DDP_JOCDecoder: -> ~DDPDecoder
+02-04 23:07:20.000   593  1162 I DDP_JOCDecoder: -> stop
+02-04 23:07:20.000   593  1162 I DDP_JOCDecoder: <- stop
+02-04 23:07:20.000   593  1162 I ARenderer: ~ARenderer
+02-04 23:07:20.000   593  1162 I evo_parser: evo_parser_close
+02-04 23:07:20.001   593  1162 I DlbDap2QmfProcess: ~Dap2Process()
+02-04 23:07:20.001   593  1162 I DlbDap2QmfProcess: close()
+02-04 23:07:20.001   593  1162 I DDP_JOCDecoder: <- ~DDPDecoder
+02-04 23:07:20.012   589 31473 D NuPlayerDriver: notifyResetComplete(0xe3e61070)
+02-04 23:07:20.013   589  1170 D AudioTrack: stop() called with 0 frames delivered
+02-04 23:07:20.126   581   770 D AudioFlinger: trackStateChanged() Track id 618 state changed to 2
+02-04 23:07:20.126   581   770 I AudioFlinger: updateProcessedAudioState() Changing content processing in effect to 0
+02-04 23:07:20.127   581   770 D DlbDlbEffect: handle_EFFECT_CMD_SET_PARAM()
+02-04 23:07:20.128   581   770 I DlbEffectContext: setContentProcEnabled() Enabling content processing in global effect
+02-04 23:07:20.129   581   770 D DlbDapEndpointParamCache: commitChangedParams()
+02-04 23:07:20.129   581   770 D DlbDapEndpointParamCache: commit() Applying parameters for device 0x40000000
+02-04 23:07:20.129   581   770 D DlbDap2Process: setParam(iea = #1[10])
+02-04 23:07:20.129   581   770 D DlbDap2Process: setParam(msce = #1[0])
+02-04 23:07:20.129   581   770 D DlbDap2Process: setParam(mdee = #1[0])
+02-04 23:07:20.129   581   770 D DlbDap2Process: setParam(miee = #1[0])
+02-04 23:07:20.129   581   770 D DlbDap2Process: setParam(mdle = #1[0])
+02-04 23:07:20.129   581   770 D DlbDap2Process: setParam(dvle = #1[1])
+02-04 23:07:20.129   581   770 D DlbDap2Process: setParam(mave = #1[0])
+02-04 23:07:20.129   581   770 D DlbDap2Process: setParam(vcbf = #20[47, 141, 234, 328, 469, 656, 844, 1031, 1313, 1688, 2250, 3000, 3750, 4688, 5813, 7125, 9000, 11250, 13875, 19688])
+02-04 23:07:20.129   581   770 D DlbDap2Process: setParam(vbon = #1[0])
+02-04 23:07:20.129   581   770 D DlbDap2Process: setParam(beon = #1[0])
+02-04 23:07:20.129   581   770 D DlbDap2Process: setParam(geon = #1[0])
+02-04 23:07:20.129   581   770 D DlbDap2Process: setParam(ieon = #1[0])
+02-04 23:07:20.130   581   770 D DlbDap2Process: setParam(gebs = #41[20, 47, 141, 234, 328, 469, 656, 844, 1031, 1313, 1688, 2250, 3000, 3750, 4688, 5813, 7125, 9000, 11250, 13875, 19688, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+02-04 23:07:20.130   581   770 D DlbDap2Process: setParam(iebs = #41[20, 65, 136, 223, 332, 467, 634, 841, 1098, 1416, 1812, 2302, 2909, 3663, 4598, 5756, 7194, 8976, 11186, 13927, 17326, 117, 133, 188, 176, 141, 149, 175, 185, 185, 200, 236, 242, 228, 213, 182, 132, 110, 68, -27, -240])
+02-04 23:07:20.130   581   770 D DlbDapEndpointParamCache: doCommit() Committed 15 parameters out of 16.
+02-04 23:07:20.130   581   770 D DlbDapEndpointParamCache: commit() Overriding parameters for current device 0x00000002
+02-04 23:07:20.130   581   770 D DlbDap2Process: setParam(dea = #1[7])
+02-04 23:07:20.130   581   770 D DlbDap2Process: setParam(dsa = #1[10])
+02-04 23:07:20.130   581   770 D DlbDap2Process: setParam(beb = #1[192])
+02-04 23:07:20.130   581   770 D DlbDap2Process: setParam(plb = #1[0])
+02-04 23:07:20.130   581   770 D DlbDap2Process: setParam(vmb = #1[144])
+02-04 23:07:20.130   581   770 D DlbDap2Process: setParam(dsb = #1[48])
+02-04 23:07:20.130   581   770 D DlbDap2Process: setParam(ded = #1[0])
+02-04 23:07:20.130   581   770 D DlbDap2Process: setParam(vbm = #1[3])
+02-04 23:07:20.130   581   770 D DlbDap2Process: setParam(dom = #1[0])
+02-04 23:07:20.130   581   770 D DlbDap2Process: setParam(bew = #1[16])
+02-04 23:07:20.130   581   770 D DlbDap2Process: setParam(dvla = #1[5])
+02-04 23:07:20.130   581   770 D DlbDap2Process: setParam(arra = #1[96])
+02-04 23:07:20.130   581   770 D DlbDap2Process: setParam(dfsa = #1[10])
+02-04 23:07:20.130   581   770 D DlbDap2Process: setParam(dhsa = #1[10])
+02-04 23:07:20.130   581   770 D DlbDap2Process: setParam(dvmc = #1[0])
+02-04 23:07:20.130   581   770 D DlbDap2Process: setParam(arod = #1[0])
+02-04 23:07:20.130   581   770 D DlbDap2Process: setParam(arde = #1[1])
+02-04 23:07:20.130   581   770 D DlbDap2Process: setParam(dvle = #1[1])
+02-04 23:07:20.130   581   770 D DlbDap2Process: setParam(dvme = #1[0])
+02-04 23:07:20.130   581   770 D DlbDap2Process: setParam(becf = #1[200])
+02-04 23:07:20.130   581   770 D DlbDap2Process: setParam(vbmf = #2[94, 469])
+02-04 23:07:20.130   581   770 D DlbDap2Process: setParam(vbsf = #2[35, 160])
+02-04 23:07:20.130   581   770 D DlbDap2Process: setParam(vbhg = #3[-32, -144, -192])
+02-04 23:07:20.130   581   770 D DlbDap2Process: setParam(vbog = #1[0])
+02-04 23:07:20.130   581   770 D DlbDap2Process: setParam(vbsg = #1[0])
+02-04 23:07:20.130   581   770 D DlbDap2Process: setParam(dvli = #1[-320])
+02-04 23:07:20.130   581   770 D DlbDap2Process: setParam(dhfm = #1[2])
+02-04 23:07:20.130   581   770 D DlbDap2Process: setParam(vbon = #1[0])
+02-04 23:07:20.130   581   770 D DlbDap2Process: setParam(beon = #1[0])
+02-04 23:07:20.130   581   770 D DlbDap2Process: setParam(deon = #1[0])
+02-04 23:07:20.130   581   770 D DlbDap2Process: setParam(ngon = #1[1])
+02-04 23:07:20.130   581   770 D DlbDap2Process: setParam(aoon = #1[1])
+02-04 23:07:20.131   581   770 D DlbDap2Process: setParam(aron = #1[1])
+02-04 23:07:20.131   581   770 D DlbDap2Process: setParam(dvlo = #1[-320])
+02-04 23:07:20.131   581   770 D DlbDap2Process: setParam(artp = #1[12])
+02-04 23:07:20.131   581   770 D DlbDap2Process: setParam(aobs = #222[20, 10, 47, 141, 234, 328, 469, 656, 844, 1031, 1313, 1688, 2250, 3000, 3750, 4688, 5813, 7125, 9000, 11250, 13875, 19688, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+02-04 23:07:20.131   581   770 D DlbDap2Process: setParam(arbs = #81[20, 47, 141, 234, 328, 469, 656, 844, 1031, 1313, 1688, 2250, 3000, 3750, 4688, 5813, 7125, 9000, 11250, 13875, 19688, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+02-04 23:07:20.131   581   770 D DlbDapEndpointParamCache: doCommit() Committed 37 parameters out of 37.
+02-04 23:07:20.152   581   770 D AudioFlinger: trackDestroyed() Track id 618 no longer contains processed audio
+02-04 23:07:20.152   581   724 D DlbDlbEffect: handle_EFFECT_CMD_DISABLE()
+02-04 23:07:20.152   581   724 D DlbDapCrossfadeProcess: setEnabled transitioning from DAP_ACTIVE state to FADE_TO_BYPASS
+02-04 23:07:20.154   416   416 W /system/bin/hw/android.hidl.allocator@1.0-service: ashmem_create_region(3840) returning hidl_memory(0x7590c2c2e0, 3840)
+02-04 23:07:20.154   581   724 D DlbDlbEffect: handle_EFFECT_CMD_SET_CONFIG()
+02-04 23:07:20.155   581   724 D DlbDapEndpointParamCache: setDevice(device=0x00000002)
+02-04 23:07:20.155   421   421 D DMSService: setActiveDevice called with device = 0x2
+02-04 23:07:20.155   581   724 D DlbDlbEffect: handle_EFFECT_CMD_ENABLE()
+02-04 23:07:20.155   581   724 D DlbDapCrossfadeProcess: setEnabled transitioning from FADE_TO_BYPASS state to FADE_TO_ACTIVE
+02-04 23:07:20.493   581   770 D audio_hw_primary: disable_audio_route: usecase(0) reset and update mixer path: deep-buffer-playback speaker
+02-04 23:07:20.505   581   770 D audio_hw_primary: disable_snd_device: snd_device(2: speaker)
+02-04 23:07:20.536   816   843 W ActivityManager: setHasOverlayUi called on unknown pid: 31420
+02-04 23:07:20.547  2401  2517 W OpenGLRenderer: Incorrectly called buildLayer on View: ShortcutAndWidgetContainer, destroying layer...
+02-04 23:07:20.952 28748 28748 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:07:21.235   816   816 W NotificationService: Object died trying to hide notification android.app.ITransientNotification$Stub$Proxy@71fa63 in package com.dolby.qa.featuretest
+02-04 23:07:21.236   816   816 W WindowManager: removeWindowToken: Attempted to remove non-existing token: android.os.Binder@eb32ef5
+02-04 23:07:21.236   816   816 W ActivityManager: setProcessForeground called on unknown pid: 31420
+02-04 23:07:21.236   816   816 W NotificationService: Object died trying to show notification android.app.ITransientNotification$Stub$Proxy@663f660 in package com.dolby.qa.featuretest
+02-04 23:07:21.236   816   816 W ActivityManager: setProcessForeground called on unknown pid: 31420
+02-04 23:07:21.236   816   816 W NotificationService: Object died trying to show notification android.app.ITransientNotification$Stub$Proxy@be15719 in package com.dolby.qa.featuretest
+02-04 23:07:21.326   816   906 E HalDeviceManager: Should have at least 1 chip!
+02-04 23:07:21.327   816   906 E HalDeviceManager: getSupportedIfaceTypesInternal: no chip info found
+02-04 23:07:21.330   816   838 E BatteryStatsService: no controller energy info supplied
+02-04 23:07:21.339   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:07:21.339   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:07:21.339   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:07:21.340   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:07:21.953 28748 28748 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:07:22.953 28748 28748 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:07:23.128   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:07:23.128   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:07:23.954 28748 28748 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:07:24.955 28748 28748 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 1
+02-04 23:07:29.956 28748 28748 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:07:30.815   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:07:30.815   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:07:30.958 28748 28748 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:07:31.960 28748 28748 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 1 line
+02-04 23:07:32.961 28748 28748 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:07:33.380   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:07:33.383   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:07:33.963 28748 28748 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 2
+02-04 23:07:21.330   816   838 E BatteryStatsService: no controller energy info supplied
+02-04 23:07:35.375   816   816 I EntropyMixer: Added HW RNG output to entropy pool
+02-04 23:07:35.375   816   816 I EntropyMixer: Writing entropy...
+02-04 23:07:38.503   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:07:38.504   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:07:41.057   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:07:41.060   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:07:41.768   816  2347 W ActivityManager: Unable to start service Intent { act=com.google.android.gms.ads.identifier.service.START pkg=com.google.android.gms } U=0: not found
+02-04 23:07:41.795   816  2363 W ActivityManager: Unable to start service Intent { act=com.google.android.gms.ads.identifier.service.START pkg=com.google.android.gms } U=0: not found
+02-04 23:07:41.810   816   964 W ActivityManager: Unable to start service Intent { act=com.google.android.gms.ads.identifier.service.START pkg=com.google.android.gms } U=0: not found
+02-04 23:07:43.965 28748 28748 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:07:45.970 28748 28748 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:07:46.972 28748 28748 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:07:47.974 28748 28748 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 3
+02-04 23:07:53.847   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:07:53.847   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:07:56.421   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:07:56.423   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:08:02.977 28748 28748 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:08:03.981 28748 28748 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:08:04.098   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:08:04.099   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:08:04.984 28748 28748 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:08:05.985 28748 28748 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:08:06.987 28748 28748 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 4
+02-04 23:08:16.897   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:08:16.897   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:08:26.989 28748 28748 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:08:28.993 28748 28748 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:08:29.996 28748 28748 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:08:30.998 28748 28748 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 5
+02-04 23:08:34.663  3552  3552 W SceneBgThread: type=1400 audit(0.0:2884): avc: denied { read } for name="stat" dev="proc" ino=4026548033 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:proc_stat:s0 tclass=file permissive=0
+02-04 23:08:39.673  3552  3552 I chatty  : uid=10063(u0_a63) SceneBgThread identical 1 line
+02-04 23:08:44.680  3552  3552 W SceneBgThread: type=1400 audit(0.0:2886): avc: denied { read } for name="stat" dev="proc" ino=4026548033 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:proc_stat:s0 tclass=file permissive=0
+02-04 23:08:47.623   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:08:47.624   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:08:55.999 28748 28748 I Atfwd_Sendcmd: AtCmdFwd service not ready - Exhausted retry attempts - :6
+02-04 23:08:56.000 28748 28748 I Atfwd_Daemon: result : -1 	 ,Init step :2 	 ,qmiErrorCode: 0
+02-04 23:09:04.870   816   906 E HalDeviceManager: Should have at least 1 chip!
+02-04 23:09:04.871   816   906 E HalDeviceManager: getSupportedIfaceTypesInternal: no chip info found
+02-04 23:09:04.879   816   838 E BatteryStatsService: no controller energy info supplied
+02-04 23:09:04.880   816   838 E BatteryStatsService: no controller energy info supplied
+02-04 23:09:04.882   816  4855 E LightsService: Light requested not available on this device. 3
+02-04 23:09:04.889   419   921 E android.hardware.usb@1.0-service: uevent received SUBSYSTEM=dual_role_usb
+02-04 23:09:04.889   419   921 I android.hardware.usb@1.0-service: otg_default
+02-04 23:09:04.894   419   921 I android.hardware.usb@1.0-service: canChangeMode: 1 canChagedata: 0 canChangePower:0
+02-04 23:09:04.894   816   892 I UsbPortManager: ClientCallback: otg_default
+02-04 23:09:04.895   816   841 I UsbPortManager: USB port changed: port=UsbPort{id=otg_default, supportedModes=dual}, status=UsbPortStatus{connected=false, currentMode=none, currentPowerRole=no-power, currentDataRole=no-data, supportedRoleCombinations=[no-power:no-data]}, canChangeMode=true, canChangePowerRole=false, canChangeDataRole=false
+02-04 23:09:04.896   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:09:04.896   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:09:04.896   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:09:04.897   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:09:04.907   816   838 I BatteryStatsImpl: Resetting battery stats: level=99 status=2 dischargeLevel=99 lowAmount=2 highAmount=3
+02-04 23:09:05.534   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:09:05.534   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:09:05.916   816   841 D UsbDeviceManager: applyOemOverride usbfunctions=adb bootmode=normal
+02-04 23:09:16.003 28748 28748 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:09:18.025 28748 28748 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:09:19.038 28748 28748 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:09:20.039 28748 28748 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 1
+02-04 23:09:25.050 28748 28748 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:09:27.073 28748 28748 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:09:28.080 28748 28748 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:09:29.088 28748 28748 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 2
+02-04 23:09:39.097 28748 28748 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:09:41.110 28748 28748 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:09:42.120 28748 28748 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:09:43.130 28748 28748 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 3
+02-04 23:09:58.137 28748 28748 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:10:00.145 28748 28748 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:10:01.149 28748 28748 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:10:02.153 28748 28748 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 4
+02-04 23:10:22.156 28748 28748 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:10:24.161 28748 28748 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:10:25.163 28748 28748 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:10:26.165 28748 28748 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 5
+02-04 23:10:30.020   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:10:30.021   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:10:34.710  3552  3552 W SceneBgThread: type=1400 audit(0.0:2887): avc: denied { read } for name="stat" dev="proc" ino=4026548033 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:proc_stat:s0 tclass=file permissive=0
+02-04 23:10:35.142   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:10:35.143   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:10:39.723  3552  3552 W SceneBgThread: type=1400 audit(0.0:2888): avc: denied { read } for name="stat" dev="proc" ino=4026548033 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:proc_stat:s0 tclass=file permissive=0
+02-04 23:10:44.740  3552  3552 W SceneBgThread: type=1400 audit(0.0:2889): avc: denied { read } for name="stat" dev="proc" ino=4026548033 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:proc_stat:s0 tclass=file permissive=0
+02-04 23:10:51.180 28748 28748 I Atfwd_Sendcmd: AtCmdFwd service not ready - Exhausted retry attempts - :6
+02-04 23:10:51.180 28748 28748 I Atfwd_Daemon: result : -1 	 ,Init step :2 	 ,qmiErrorCode: 0
+02-04 23:11:16.194 28748 28751 E QC-QMI  : qmi_client [28748] cf: failed to locate client data
+02-04 23:11:16.196   571   571 E QC-QMI  : qmuxd: RX on fd=20 returned error=0 errno[2:No such file or directory]
+02-04 23:11:16.197   571   571 E QC-QMI  : QMUX qmux_client_id=cf not found in qmux client list, unable to remove
+02-04 23:11:16.200 28748 28748 I Atfwd_Daemon: Stop the daemon....
+02-04 23:11:16.271 31557 31557 I libmdmdetect: ESOC framework not supported
+02-04 23:11:16.272 31557 31557 I libmdmdetect: Found internal modem: modem
+02-04 23:11:16.284 31557 31557 I Atfwd_Daemon: result : 255 	 ,Init step :0 	 ,qmiErrorCode: 0
+02-04 23:11:16.284 31557 31557 I Atfwd_Daemon: result : 0 	 ,Init step :1 	 ,qmiErrorCode: 0
+02-04 23:11:16.286 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:11:18.305 31557 31557 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:11:19.310 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:11:20.317 31557 31557 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 1
+02-04 23:11:25.330 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:11:27.354 31557 31557 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:11:28.361 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:11:29.368 31557 31557 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 2
+02-04 23:11:39.374 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:11:41.394 31557 31557 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:11:42.407 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:11:43.416 31557 31557 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 3
+02-04 23:11:58.427 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:12:00.435 31557 31557 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:12:01.443 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:12:02.452 31557 31557 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 4
+02-04 23:12:22.459 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:12:23.467 31557 31557 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 1 line
+02-04 23:12:24.474 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:12:25.223   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:12:25.225   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:12:25.481 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:12:26.488 31557 31557 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 5
+02-04 23:12:34.790  3552  3552 W SceneBgThread: type=1400 audit(0.0:2890): avc: denied { read } for name="stat" dev="proc" ino=4026548033 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:proc_stat:s0 tclass=file permissive=0
+02-04 23:12:39.806  3552  3552 W SceneBgThread: type=1400 audit(0.0:2891): avc: denied { read } for name="stat" dev="proc" ino=4026548033 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:proc_stat:s0 tclass=file permissive=0
+02-04 23:12:40.578   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:12:40.580   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:12:44.819  3552  3552 W SceneBgThread: type=1400 audit(0.0:2892): avc: denied { read } for name="stat" dev="proc" ino=4026548033 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:proc_stat:s0 tclass=file permissive=0
+02-04 23:12:51.491 31557 31557 I Atfwd_Sendcmd: AtCmdFwd service not ready - Exhausted retry attempts - :6
+02-04 23:12:51.491 31557 31557 I Atfwd_Daemon: result : -1 	 ,Init step :2 	 ,qmiErrorCode: 0
+02-04 23:12:56.494 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:12:58.501 31557 31557 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:12:59.502 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:13:00.504 31557 31557 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 1
+02-04 23:13:03.618   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:13:03.619   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:13:05.506 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:13:07.510 31557 31557 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:13:08.517 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:13:09.518 31557 31557 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 2
+02-04 23:13:18.982   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:13:18.983   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:13:19.520 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:13:21.533 31557 31557 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:13:22.550 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:13:23.553 31557 31557 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 3
+02-04 23:13:38.570 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:13:40.580 31557 31557 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:13:41.583 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:13:42.024   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:13:42.024   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:13:42.593 31557 31557 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 4
+02-04 23:13:47.145   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:13:47.146   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:14:02.605 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:14:04.615 31557 31557 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:14:05.620 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:14:06.623 31557 31557 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 5
+02-04 23:14:31.627 31557 31557 I Atfwd_Sendcmd: AtCmdFwd service not ready - Exhausted retry attempts - :6
+02-04 23:14:31.627 31557 31557 I Atfwd_Daemon: result : -1 	 ,Init step :2 	 ,qmiErrorCode: 0
+02-04 23:14:34.903  3552  3552 W SceneBgThread: type=1400 audit(0.0:2893): avc: denied { read } for name="stat" dev="proc" ino=4026548033 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:proc_stat:s0 tclass=file permissive=0
+02-04 23:14:39.920  3552  3552 W SceneBgThread: type=1400 audit(0.0:2894): avc: denied { read } for name="stat" dev="proc" ino=4026548033 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:proc_stat:s0 tclass=file permissive=0
+02-04 23:14:40.902   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:14:40.903   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:14:41.631 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:14:42.637 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:14:43.458   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:14:43.459   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:14:43.642 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:14:44.646 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:14:44.933  3552  3552 W SceneBgThread: type=1400 audit(0.0:2895): avc: denied { read } for name="stat" dev="proc" ino=4026548033 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:proc_stat:s0 tclass=file permissive=0
+02-04 23:14:45.650 31557 31557 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 1
+02-04 23:14:50.652 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:14:52.660 31557 31557 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:14:53.665 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:14:54.669 31557 31557 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 2
+02-04 23:15:04.671 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:15:06.674 31557 31557 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:15:07.675 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:15:08.677 31557 31557 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 3
+02-04 23:15:14.185   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:15:14.185   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:15:19.307   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:15:19.308   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:15:23.681 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:15:25.699 31557 31557 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:15:26.711 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:15:27.717 31557 31557 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 4
+02-04 23:15:47.724 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:15:49.752 31557 31557 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:15:50.767 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:15:51.774 31557 31557 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 5
+02-04 23:16:07.944   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:16:07.944   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:16:16.780 31557 31557 I Atfwd_Sendcmd: AtCmdFwd service not ready - Exhausted retry attempts - :6
+02-04 23:16:16.780 31557 31557 I Atfwd_Daemon: result : -1 	 ,Init step :2 	 ,qmiErrorCode: 0
+02-04 23:16:31.788 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:16:33.798 31557 31557 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:16:34.807 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:16:34.940  3552  3552 W SceneBgThread: type=1400 audit(0.0:2896): avc: denied { read } for name="stat" dev="proc" ino=4026548033 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:proc_stat:s0 tclass=file permissive=0
+02-04 23:16:35.811 31557 31557 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 1
+02-04 23:16:39.950  3552  3552 W SceneBgThread: type=1400 audit(0.0:2897): avc: denied { read } for name="stat" dev="proc" ino=4026548033 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:proc_stat:s0 tclass=file permissive=0
+02-04 23:16:40.818 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:16:42.828 31557 31557 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:16:43.830 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:16:44.837 31557 31557 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 2
+02-04 23:16:44.960  3552  3552 W SceneBgThread: type=1400 audit(0.0:2898): avc: denied { read } for name="stat" dev="proc" ino=4026548033 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:proc_stat:s0 tclass=file permissive=0
+02-04 23:16:54.841 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:16:56.850 31557 31557 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:16:57.854 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:16:58.858 31557 31557 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 3
+02-04 23:17:13.870 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:17:15.898 31557 31557 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:17:16.917 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:17:17.933 31557 31557 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 4
+02-04 23:17:24.742   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:17:24.743   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:17:37.540   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:17:37.541   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:17:37.943 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:17:38.946 31557 31557 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 1 line
+02-04 23:17:39.956 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:17:40.106   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:17:40.107   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:17:40.973 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:17:41.975 31557 31557 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 5
+02-04 23:18:06.980 31557 31557 I Atfwd_Sendcmd: AtCmdFwd service not ready - Exhausted retry attempts - :6
+02-04 23:18:06.981 31557 31557 I Atfwd_Daemon: result : -1 	 ,Init step :2 	 ,qmiErrorCode: 0
+02-04 23:18:26.990 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:18:29.000 31557 31557 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:18:30.010 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:18:31.020 31557 31557 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 1
+02-04 23:18:31.299   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:18:31.299   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:18:35.016  3552  3552 W SceneBgThread: type=1400 audit(0.0:2899): avc: denied { read } for name="stat" dev="proc" ino=4026548033 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:proc_stat:s0 tclass=file permissive=0
+02-04 23:18:36.027 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:18:38.044 31557 31557 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:18:39.053 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:18:40.030  3552  3552 W SceneBgThread: type=1400 audit(0.0:2900): avc: denied { read } for name="stat" dev="proc" ino=4026548033 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:proc_stat:s0 tclass=file permissive=0
+02-04 23:18:40.055 31557 31557 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 2
+02-04 23:18:45.043  3552  3552 W SceneBgThread: type=1400 audit(0.0:2901): avc: denied { read } for name="stat" dev="proc" ino=4026548033 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:proc_stat:s0 tclass=file permissive=0
+02-04 23:18:50.057 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:18:52.069 31557 31557 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:18:53.074 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:18:54.080 31557 31557 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 3
+02-04 23:18:54.341   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:18:54.341   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:19:09.084 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:19:11.094 31557 31557 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:19:12.099 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:19:13.103 31557 31557 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 4
+02-04 23:19:33.121 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:19:35.150 31557 31557 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:19:36.158 31557 31557 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:19:37.177 31557 31557 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 5
+02-04 23:20:02.180 31557 31557 I Atfwd_Sendcmd: AtCmdFwd service not ready - Exhausted retry attempts - :6
+02-04 23:20:02.180 31557 31557 I Atfwd_Daemon: result : -1 	 ,Init step :2 	 ,qmiErrorCode: 0
+02-04 23:20:03.461   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:20:03.462   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:20:06.023   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:20:06.024   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:20:26.503   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:20:26.503   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:20:27.192 31557 31560 E QC-QMI  : qmi_client [31557] d0: failed to locate client data
+02-04 23:20:27.194   571   571 E QC-QMI  : qmuxd: RX on fd=20 returned error=0 errno[2:No such file or directory]
+02-04 23:20:27.195   571   571 E QC-QMI  : QMUX qmux_client_id=d0 not found in qmux client list, unable to remove
+02-04 23:20:27.199 31557 31557 I Atfwd_Daemon: Stop the daemon....
+02-04 23:20:27.275 31587 31587 I libmdmdetect: ESOC framework not supported
+02-04 23:20:27.277 31587 31587 I libmdmdetect: Found internal modem: modem
+02-04 23:20:27.288 31587 31587 I Atfwd_Daemon: result : 255 	 ,Init step :0 	 ,qmiErrorCode: 0
+02-04 23:20:27.288 31587 31587 I Atfwd_Daemon: result : 0 	 ,Init step :1 	 ,qmiErrorCode: 0
+02-04 23:20:27.289 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:20:29.295 31587 31587 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:20:30.297 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:20:31.310 31587 31587 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 1
+02-04 23:20:35.120  3552  3552 W SceneBgThread: type=1400 audit(0.0:2902): avc: denied { read } for name="stat" dev="proc" ino=4026548033 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:proc_stat:s0 tclass=file permissive=0
+02-04 23:20:36.316 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:20:38.332 31587 31587 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:20:39.338 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:20:40.136  3552  3552 W SceneBgThread: type=1400 audit(0.0:2903): avc: denied { read } for name="stat" dev="proc" ino=4026548033 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:proc_stat:s0 tclass=file permissive=0
+02-04 23:20:40.344 31587 31587 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 2
+02-04 23:20:45.153  3552  3552 W SceneBgThread: type=1400 audit(0.0:2904): avc: denied { read } for name="stat" dev="proc" ino=4026548033 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:proc_stat:s0 tclass=file permissive=0
+02-04 23:20:49.543   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:20:49.544   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:20:50.350 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:20:52.363 31587 31587 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:20:53.374 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:20:54.380 31587 31587 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 3
+02-04 23:21:04.906   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:21:04.907   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:21:05.026   816   906 E HalDeviceManager: Should have at least 1 chip!
+02-04 23:21:05.026   816   906 E HalDeviceManager: getSupportedIfaceTypesInternal: no chip info found
+02-04 23:21:05.031   816   838 E BatteryStatsService: no controller energy info supplied
+02-04 23:21:05.044   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:21:05.044   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:21:05.044   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:21:05.044   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:21:09.387 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:21:11.407 31587 31587 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:21:12.416 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:21:13.424 31587 31587 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 4
+02-04 23:21:33.430 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:21:35.437 31587 31587 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:21:36.441 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:21:37.446 31587 31587 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 5
+02-04 23:21:05.031   816   838 E BatteryStatsService: no controller energy info supplied
+02-04 23:21:41.806   816   834 I UsageStatsService: User[0] Flushing usage stats to disk
+02-04 23:21:43.290   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:21:43.291   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:21:45.863   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:21:45.864   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:21:58.666   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:21:58.666   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:22:02.451 31587 31587 I Atfwd_Sendcmd: AtCmdFwd service not ready - Exhausted retry attempts - :6
+02-04 23:22:02.451 31587 31587 I Atfwd_Daemon: result : -1 	 ,Init step :2 	 ,qmiErrorCode: 0
+02-04 23:22:07.457 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:22:09.464 31587 31587 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:22:10.470 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:22:11.471 31587 31587 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 1
+02-04 23:22:16.473 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:22:18.476 31587 31587 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:22:19.477 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:22:20.479 31587 31587 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 2
+02-04 23:22:29.382   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:22:29.383   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:22:30.482 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:22:32.485 31587 31587 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:22:33.488 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:22:34.490 31587 31587 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 3
+02-04 23:22:35.160  3552  3552 W SceneBgThread: type=1400 audit(0.0:2905): avc: denied { read } for name="stat" dev="proc" ino=4026548033 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:proc_stat:s0 tclass=file permissive=0
+02-04 23:22:37.059   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:22:37.060   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:22:39.626   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:22:39.627   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:22:40.166  3552  3552 W SceneBgThread: type=1400 audit(0.0:2906): avc: denied { read } for name="stat" dev="proc" ino=4026548033 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:proc_stat:s0 tclass=file permissive=0
+02-04 23:22:44.746   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:22:44.746   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:22:45.176  3552  3552 W SceneBgThread: type=1400 audit(0.0:2907): avc: denied { read } for name="stat" dev="proc" ino=4026548033 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:proc_stat:s0 tclass=file permissive=0
+02-04 23:22:49.492 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:22:51.496 31587 31587 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:22:52.497 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:22:53.500 31587 31587 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 4
+02-04 23:23:02.666   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:23:02.667   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:23:07.786   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:23:07.787   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:23:13.504 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:23:15.509 31587 31587 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:23:16.513 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:23:17.516 31587 31587 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 5
+02-04 23:23:42.519 31587 31587 I Atfwd_Sendcmd: AtCmdFwd service not ready - Exhausted retry attempts - :6
+02-04 23:23:42.519 31587 31587 I Atfwd_Daemon: result : -1 	 ,Init step :2 	 ,qmiErrorCode: 0
+02-04 23:23:52.521 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:23:54.538 31587 31587 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:23:55.542 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:23:56.551 31587 31587 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 1
+02-04 23:24:01.553 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:24:03.559 31587 31587 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:24:04.567 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:24:05.568 31587 31587 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 2
+02-04 23:24:15.572 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:24:17.584 31587 31587 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:24:18.590 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:24:19.594 31587 31587 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 3
+02-04 23:24:34.597 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:24:35.233  3552  3552 W SceneBgThread: type=1400 audit(0.0:2908): avc: denied { read } for name="stat" dev="proc" ino=4026548033 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:proc_stat:s0 tclass=file permissive=0
+02-04 23:24:35.598 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:24:36.602 31587 31587 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 1 line
+02-04 23:24:37.622 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:24:38.630 31587 31587 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 4
+02-04 23:24:40.253  3552  3552 W SceneBgThread: type=1400 audit(0.0:2909): avc: denied { read } for name="stat" dev="proc" ino=4026548033 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:proc_stat:s0 tclass=file permissive=0
+02-04 23:24:45.263  3552  3552 W SceneBgThread: type=1400 audit(0.0:2910): avc: denied { read } for name="stat" dev="proc" ino=4026548033 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:proc_stat:s0 tclass=file permissive=0
+02-04 23:24:58.636 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:25:00.644 31587 31587 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:25:01.653 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:25:02.657 31587 31587 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 5
+02-04 23:25:27.661 31587 31587 I Atfwd_Sendcmd: AtCmdFwd service not ready - Exhausted retry attempts - :6
+02-04 23:25:27.662 31587 31587 I Atfwd_Daemon: result : -1 	 ,Init step :2 	 ,qmiErrorCode: 0
+02-04 23:25:42.664 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:25:44.680 31587 31587 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:25:45.690 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:25:46.696 31587 31587 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 1
+02-04 23:25:51.701 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:25:53.718 31587 31587 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:25:54.727 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:25:55.733 31587 31587 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 2
+02-04 23:25:56.739   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:25:56.739   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:25:59.305   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:25:59.308   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:26:05.740 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:26:07.751 31587 31587 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:26:08.758 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:26:09.764 31587 31587 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 3
+02-04 23:26:24.769 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:26:26.775 31587 31587 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:26:27.780 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:26:28.782 31587 31587 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 4
+02-04 23:26:35.340  3552  3552 W SceneBgThread: type=1400 audit(0.0:2911): avc: denied { read } for name="stat" dev="proc" ino=4026548033 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:proc_stat:s0 tclass=file permissive=0
+02-04 23:26:40.360  3552  3552 I chatty  : uid=10063(u0_a63) SceneBgThread identical 1 line
+02-04 23:26:45.373  3552  3552 W SceneBgThread: type=1400 audit(0.0:2913): avc: denied { read } for name="stat" dev="proc" ino=4026548033 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:proc_stat:s0 tclass=file permissive=0
+02-04 23:26:48.794 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:26:50.810 31587 31587 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:26:51.817 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:26:52.831 31587 31587 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 5
+02-04 23:27:17.835 31587 31587 I Atfwd_Sendcmd: AtCmdFwd service not ready - Exhausted retry attempts - :6
+02-04 23:27:17.835 31587 31587 I Atfwd_Daemon: result : -1 	 ,Init step :2 	 ,qmiErrorCode: 0
+02-04 23:27:36.588   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:27:36.589   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:27:37.839 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:27:39.858 31587 31587 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:27:40.868 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:27:41.873 31587 31587 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 1
+02-04 23:27:44.265   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:27:44.265   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:27:46.820   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:27:46.822   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:27:46.876 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:27:48.880 31587 31587 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:27:49.884 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:27:50.894 31587 31587 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 2
+02-04 23:27:59.618   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:27:59.619   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:28:00.896 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:28:02.906 31587 31587 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:28:03.914 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:28:04.923 31587 31587 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 3
+02-04 23:28:07.307   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:28:07.307   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:28:14.982   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:28:14.982   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:28:17.537   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:28:17.540   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:28:19.929 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:28:21.940 31587 31587 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:28:22.944 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:28:23.948 31587 31587 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 4
+02-04 23:28:30.343   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:28:30.344   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:28:35.386  3552  3552 W SceneBgThread: type=1400 audit(0.0:2914): avc: denied { read } for name="stat" dev="proc" ino=4026548033 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:proc_stat:s0 tclass=file permissive=0
+02-04 23:28:38.024   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:28:38.024   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:28:40.400  3552  3552 W SceneBgThread: type=1400 audit(0.0:2915): avc: denied { read } for name="stat" dev="proc" ino=4026548033 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:proc_stat:s0 tclass=file permissive=0
+02-04 23:28:43.958 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:28:44.976 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:28:45.413  3552  3552 W SceneBgThread: type=1400 audit(0.0:2916): avc: denied { read } for name="stat" dev="proc" ino=4026548033 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:proc_stat:s0 tclass=file permissive=0
+02-04 23:28:45.700   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:28:45.701   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:28:45.984 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:28:46.987 31587 31587 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:28:47.988 31587 31587 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 5
+02-04 23:28:48.267   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:28:48.267   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:29:01.063   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:29:01.063   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:29:03.619   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:29:03.620   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:29:11.304   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:29:11.304   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:29:13.002 31587 31587 I Atfwd_Sendcmd: AtCmdFwd service not ready - Exhausted retry attempts - :6
+02-04 23:29:13.003 31587 31587 I Atfwd_Daemon: result : -1 	 ,Init step :2 	 ,qmiErrorCode: 0
+02-04 23:29:18.984   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:29:18.985   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:29:24.105   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:29:24.105   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:29:31.780   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:29:31.781   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:29:34.346   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:29:34.347   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:29:38.024 31587 31590 E QC-QMI  : qmi_client [31587] d1: failed to locate client data
+02-04 23:29:38.026   571   571 E QC-QMI  : qmuxd: RX on fd=20 returned error=0 errno[2:No such file or directory]
+02-04 23:29:38.026   571   571 E QC-QMI  : QMUX qmux_client_id=d1 not found in qmux client list, unable to remove
+02-04 23:29:38.029 31587 31587 I Atfwd_Daemon: Stop the daemon....
+02-04 23:29:38.102 31639 31639 I libmdmdetect: ESOC framework not supported
+02-04 23:29:38.103 31639 31639 I libmdmdetect: Found internal modem: modem
+02-04 23:29:38.113 31639 31639 I Atfwd_Daemon: result : 255 	 ,Init step :0 	 ,qmiErrorCode: 0
+02-04 23:29:38.113 31639 31639 I Atfwd_Daemon: result : 0 	 ,Init step :1 	 ,qmiErrorCode: 0
+02-04 23:29:38.114 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:29:39.125 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:29:39.464   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:29:39.465   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:29:40.139 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:29:41.153 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:29:42.024   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:29:42.027   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:29:42.155 31639 31639 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 1
+02-04 23:29:47.144   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:29:47.145   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:29:47.157 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:29:48.162 31639 31639 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 1 line
+02-04 23:29:49.164 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:29:49.701   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:29:49.702   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:29:50.167 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:29:51.180 31639 31639 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 2
+02-04 23:29:54.822   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:29:54.826   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:29:57.387   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:29:57.390   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:30:00.061   816   816 D ConditionProviders.SCP: onReceive ScheduleConditionProvider.EVALUATE
+02-04 23:30:00.062   816   816 D ConditionProviders.SCP: notifyCondition condition://android/schedule?days=6.7&start=23.30&end=10.0&exitAtAlarm=false STATE_TRUE reason=meetsSchedule
+02-04 23:30:00.063   816   816 D ConditionProviders.SCP: notifyCondition condition://android/schedule?days=1.2.3.4.5&start=22.0&end=7.0&exitAtAlarm=false STATE_FALSE reason=!meetsSchedule
+02-04 23:30:00.064   816   816 D ConditionProviders.SCP: Scheduling evaluate for Sat Feb 05 07:00:00 GMT+00:00 1972 (66121200000), in +7h29m59s939ms, now=Fri Feb 04 23:30:00 GMT+00:00 1972 (66094200061)
+02-04 23:30:00.071   816   816 D ZenLog  : config: conditionChanged,ZenModeConfig[user=0,allowCalls=true,allowRepeatCallers=false,allowMessages=false,allowCallsFrom=contacts,allowMessagesFrom=contacts,allowReminders=true,allowEvents=true,allowWhenScreenOff=true,allowWhenScreenOn=true,automaticRules={fac2fcd2b08948a7adfe251d4e0d6763=ZenRule[enabled=false,snoozing=false,name=Weekend,zenMode=ZEN_MODE_ALARMS,conditionId=condition://android/schedule?days=6.7&start=23.30&end=10.0&exitAtAlarm=false,condition=Condition[id=condition://android/schedule?days=6.7&start=23.30&end=10.0&exitAtAlarm=false,summary=...,line1=...,line2=...,icon=0,state=STATE_TRUE,flags=2],component=ComponentInfo{android/com.android.server.notification.ScheduleConditionProvider},id=fac2fcd2b08948a7adfe251d4e0d6763,creationTime=65726929246,enabler=null], b462c7ed0a7c4dd3a4d44f91b45879d8=ZenRule[enabled=false,snoozing=false,name=Weeknight,zenMode=ZEN_MODE_ALARMS,conditionId=condition://android/schedule?days=1.2.3.4.5&start=22.0&end=7.0&exitAtAlarm=false,condition=Condition[id=condition://android/schedule?days=1.2.3.4.5&start=22.0&end=7.0&exitAtAlarm=false,summary=...,line1=...,line2=...,icon=0,state=STATE_FALSE,flags=2],component=ComponentInfo{android/com.android.server.notification.ScheduleConditionProvider},id=b462c7ed0a7c4dd3a4d44f91b45879d8,creationTime=65726929246,enabler=null], 421391c62ead4cc09323c73edd2db020=ZenRule[enabled=false,snoozing=false,name=Event,zenMode=ZEN_MODE_ALARMS,conditionId=condition://android/event?userId=-10000&calendar=&reply=1,condition=Condition[id=condition://android/event?userId=-10000&calendar=&reply=1,summary=...,line1=...,line2=...,icon=0,state=STATE_FALSE,flags=2],component=ComponentInfo{android/com.android.server.notification.EventConditionProvider},id=421391c62ead4cc09323c73edd2db020,creationTime=65726929247,enabler=null]},manualRule=null],Diff[automaticRule[fac2fcd2b08948a7adfe251d4e0d6763].condition:Condition[id=condition://android/schedule?days=6.7&start=23.30&end=10.0&exitAtAlarm=false,summary=...,line1=...,line2=...,icon=0,state=STATE_FALSE,flags=2]->Condition[id=condition://android/schedule?days=6.7&start=23.30&end=10.0&exitAtAlarm=false,summary=...,line1=...,line2=...,icon=0,state=STATE_TRUE,flags=2]]
+02-04 23:30:00.198   816   816 D ZenLog  : set_zen_mode: off,conditionChanged
+02-04 23:30:01.183 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:30:03.198 31639 31639 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:30:04.202 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:30:05.204 31639 31639 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 3
+02-04 23:30:10.187   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:30:10.187   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:30:12.730   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:30:12.733   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:30:17.862   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:30:17.863   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:30:20.214 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:30:22.227 31639 31639 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:30:23.237 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:30:24.241 31639 31639 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 4
+02-04 23:30:35.467  3552  3552 W SceneBgThread: type=1400 audit(0.0:2917): avc: denied { read } for name="stat" dev="proc" ino=4026548033 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:proc_stat:s0 tclass=file permissive=0
+02-04 23:30:40.480  3552  3552 W SceneBgThread: type=1400 audit(0.0:2918): avc: denied { read } for name="stat" dev="proc" ino=4026548033 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:proc_stat:s0 tclass=file permissive=0
+02-04 23:30:43.459   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:30:43.460   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:30:44.246 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:30:45.250 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:30:45.493  3552  3552 W SceneBgThread: type=1400 audit(0.0:2919): avc: denied { read } for name="stat" dev="proc" ino=4026548033 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:proc_stat:s0 tclass=file permissive=0
+02-04 23:30:46.254 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:30:47.260 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:30:48.266 31639 31639 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 5
+02-04 23:31:13.268 31639 31639 I Atfwd_Sendcmd: AtCmdFwd service not ready - Exhausted retry attempts - :6
+02-04 23:31:13.268 31639 31639 I Atfwd_Daemon: result : -1 	 ,Init step :2 	 ,qmiErrorCode: 0
+02-04 23:31:14.188   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:31:14.189   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:31:18.287 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:31:20.308 31639 31639 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:31:21.313 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:31:22.333 31639 31639 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 1
+02-04 23:31:26.984   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:31:26.985   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:31:27.339 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:31:29.365 31639 31639 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:31:30.372 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:31:31.376 31639 31639 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 2
+02-04 23:31:34.661   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:31:34.661   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:31:41.384 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:31:42.350   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:31:42.350   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:31:42.387 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:31:43.393 31639 31639 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 1 line
+02-04 23:31:44.400 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:31:45.407 31639 31639 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 3
+02-04 23:31:52.583   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:31:52.583   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:32:00.409 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:32:02.418 31639 31639 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:32:03.433 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:32:04.447 31639 31639 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 4
+02-04 23:32:05.379   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:32:05.380   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:32:13.067   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:32:13.068   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:32:24.458 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:32:26.471 31639 31639 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:32:27.484 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:32:28.495 31639 31639 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 5
+02-04 23:32:35.566  3552  3552 W SceneBgThread: type=1400 audit(0.0:2920): avc: denied { read } for name="stat" dev="proc" ino=4026548033 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:proc_stat:s0 tclass=file permissive=0
+02-04 23:32:40.580  3552  3552 I chatty  : uid=10063(u0_a63) SceneBgThread identical 1 line
+02-04 23:32:45.593  3552  3552 W SceneBgThread: type=1400 audit(0.0:2922): avc: denied { read } for name="stat" dev="proc" ino=4026548033 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:proc_stat:s0 tclass=file permissive=0
+02-04 23:32:53.503 31639 31639 I Atfwd_Sendcmd: AtCmdFwd service not ready - Exhausted retry attempts - :6
+02-04 23:32:53.503 31639 31639 I Atfwd_Daemon: result : -1 	 ,Init step :2 	 ,qmiErrorCode: 0
+02-04 23:33:01.694   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:33:01.694   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:33:03.504 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:33:05.516 31639 31639 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:33:06.520 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:33:07.522 31639 31639 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 1
+02-04 23:33:12.526 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:33:14.537 31639 31639 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:33:15.540 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:33:16.544 31639 31639 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 2
+02-04 23:33:26.548 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:33:28.553 31639 31639 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:33:29.555 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:33:30.556 31639 31639 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 3
+02-04 23:33:45.563 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:33:47.570 31639 31639 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:33:48.585 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:33:49.591 31639 31639 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 4
+02-04 23:34:03.147   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:34:03.148   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:34:05.248   816   906 E HalDeviceManager: Should have at least 1 chip!
+02-04 23:34:05.249   816   906 E HalDeviceManager: getSupportedIfaceTypesInternal: no chip info found
+02-04 23:34:05.253   816   838 E BatteryStatsService: no controller energy info supplied
+02-04 23:34:05.272   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:34:05.273   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:34:05.273   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:34:05.273   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:34:09.594 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:34:11.600 31639 31639 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:34:12.604 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:34:13.609 31639 31639 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 5
+02-04 23:34:15.943   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:34:15.944   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:34:35.606  3552  3552 W SceneBgThread: type=1400 audit(0.0:2923): avc: denied { read } for name="stat" dev="proc" ino=4026548033 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:proc_stat:s0 tclass=file permissive=0
+02-04 23:34:38.619 31639 31639 I Atfwd_Sendcmd: AtCmdFwd service not ready - Exhausted retry attempts - :6
+02-04 23:34:38.619 31639 31639 I Atfwd_Daemon: result : -1 	 ,Init step :2 	 ,qmiErrorCode: 0
+02-04 23:34:40.623  3552  3552 W SceneBgThread: type=1400 audit(0.0:2924): avc: denied { read } for name="stat" dev="proc" ino=4026548033 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:proc_stat:s0 tclass=file permissive=0
+02-04 23:34:41.541   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:34:41.542   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:34:45.633  3552  3552 W SceneBgThread: type=1400 audit(0.0:2925): avc: denied { read } for name="stat" dev="proc" ino=4026548033 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:proc_stat:s0 tclass=file permissive=0
+02-04 23:34:49.220   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:34:49.220   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:34:53.623 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:34:54.340   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:34:54.341   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:34:54.630 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:34:55.636 31639 31639 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 1 line
+02-04 23:34:56.641 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:34:56.905   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:34:56.906   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:34:57.645 31639 31639 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 1
+02-04 23:35:02.648 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:35:04.658 31639 31639 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:35:05.662 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:35:06.669 31639 31639 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 2
+02-04 23:35:16.674 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:35:17.381   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:35:17.381   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:35:17.678 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:35:18.683 31639 31639 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 1 line
+02-04 23:35:19.688 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:35:19.944   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:35:19.947   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:35:20.693 31639 31639 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 3
+02-04 23:35:27.624   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:35:27.625   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:35:32.744   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:35:32.745   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:35:35.697 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:35:37.711 31639 31639 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:35:38.733 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:35:39.739 31639 31639 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 4
+02-04 23:35:42.987   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:35:42.987   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:35:50.664   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:35:50.665   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:35:59.746 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:36:01.771 31639 31639 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:36:02.777 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:36:03.784 31639 31639 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 5
+02-04 23:36:28.796 31639 31639 I Atfwd_Sendcmd: AtCmdFwd service not ready - Exhausted retry attempts - :6
+02-04 23:36:28.796 31639 31639 I Atfwd_Daemon: result : -1 	 ,Init step :2 	 ,qmiErrorCode: 0
+02-04 23:36:35.680  3552  3552 W SceneBgThread: type=1400 audit(0.0:2926): avc: denied { read } for name="stat" dev="proc" ino=4026548033 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:proc_stat:s0 tclass=file permissive=0
+02-04 23:36:40.693  3552  3552 I chatty  : uid=10063(u0_a63) SceneBgThread identical 1 line
+02-04 23:36:45.703  3552  3552 W SceneBgThread: type=1400 audit(0.0:2928): avc: denied { read } for name="stat" dev="proc" ino=4026548033 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:proc_stat:s0 tclass=file permissive=0
+02-04 23:36:48.805 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:36:50.818 31639 31639 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:36:51.827 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:36:52.833 31639 31639 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 1
+02-04 23:36:57.840 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:36:59.855 31639 31639 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:37:00.857 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:37:01.865 31639 31639 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 2
+02-04 23:37:11.870 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:37:13.877 31639 31639 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:37:14.884 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:37:15.890 31639 31639 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 3
+02-04 23:37:21.393   816   906 E HalDeviceManager: Should have at least 1 chip!
+02-04 23:37:21.393   816   906 E HalDeviceManager: getSupportedIfaceTypesInternal: no chip info found
+02-04 23:34:05.253   816   838 E BatteryStatsService: no controller energy info supplied
+02-04 23:37:21.397   816   838 E BatteryStatsService: no controller energy info supplied
+02-04 23:37:21.406   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:37:21.407   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:37:21.407   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:37:21.407   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:37:30.894 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:37:32.901 31639 31639 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:37:33.905 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:37:34.908 31639 31639 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 4
+02-04 23:37:53.544   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:37:53.545   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:37:54.914 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:37:56.926 31639 31639 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:37:57.934 31639 31639 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:37:58.950 31639 31639 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 5
+02-04 23:38:23.959 31639 31639 I Atfwd_Sendcmd: AtCmdFwd service not ready - Exhausted retry attempts - :6
+02-04 23:38:23.959 31639 31639 I Atfwd_Daemon: result : -1 	 ,Init step :2 	 ,qmiErrorCode: 0
+02-04 23:38:24.259   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:38:24.260   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:38:35.783  3552  3552 W SceneBgThread: type=1400 audit(0.0:2929): avc: denied { read } for name="stat" dev="proc" ino=4026548033 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:proc_stat:s0 tclass=file permissive=0
+02-04 23:38:37.060   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:38:37.060   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:38:40.800  3552  3552 W SceneBgThread: type=1400 audit(0.0:2930): avc: denied { read } for name="stat" dev="proc" ino=4026548033 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:proc_stat:s0 tclass=file permissive=0
+02-04 23:38:45.817  3552  3552 W SceneBgThread: type=1400 audit(0.0:2931): avc: denied { read } for name="stat" dev="proc" ino=4026548033 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:proc_stat:s0 tclass=file permissive=0
+02-04 23:38:47.303   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:38:47.303   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:38:48.978 31639 31642 E QC-QMI  : qmi_client [31639] d2: failed to locate client data
+02-04 23:38:48.981   571   571 E QC-QMI  : qmuxd: RX on fd=20 returned error=0 errno[2:No such file or directory]
+02-04 23:38:48.981   571   571 E QC-QMI  : QMUX qmux_client_id=d2 not found in qmux client list, unable to remove
+02-04 23:38:48.984 31639 31639 I Atfwd_Daemon: Stop the daemon....
+02-04 23:38:49.044 31691 31691 I libmdmdetect: ESOC framework not supported
+02-04 23:38:49.045 31691 31691 I libmdmdetect: Found internal modem: modem
+02-04 23:38:49.055 31691 31691 I Atfwd_Daemon: result : 255 	 ,Init step :0 	 ,qmiErrorCode: 0
+02-04 23:38:49.056 31691 31691 I Atfwd_Daemon: result : 0 	 ,Init step :1 	 ,qmiErrorCode: 0
+02-04 23:38:49.057 31691 31691 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:38:51.076 31691 31691 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:38:52.089 31691 31691 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:38:53.098 31691 31691 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 1
+02-04 23:38:58.099 31691 31691 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:39:00.109 31691 31691 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:39:01.111 31691 31691 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:39:02.113 31691 31691 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 2
+02-04 23:39:12.121 31691 31691 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:37:21.398   816   838 E BatteryStatsService: no controller energy info supplied
+02-04 23:39:14.915   816   845 I PowerManagerService: Going to sleep due to screen timeout (uid 1000)...
+02-04 23:39:14.140 31691 31691 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-04 23:39:15.141 31691 31691 I ServiceManager: Waiting for service AtCmdFwd...
+02-04 23:39:15.431   816   845 I DisplayPowerController: Blocking screen off
+02-04 23:39:15.444   816   845 I DisplayPowerController: Unblocked screen off after 13 ms
+02-04 23:39:15.475   816   845 I QCOMPowerHAL: Got set_interactive hint
+02-04 23:39:15.528   816   845 I DreamManagerService: Entering dreamland.
+02-04 23:39:15.528   816   843 I DisplayManagerService: Display device changed state: "Built-in Screen", OFF
+02-04 23:39:15.533   816   845 I PowerManagerService: Dozing...
+02-04 23:39:15.536   429   429 D SurfaceFlinger: Set power mode=0, type=0 flinger=0x7a32e5e000
+02-04 23:39:15.541   816   895 I InputReader: Reconfiguring input devices.  changes=0x00000004
+02-04 23:39:15.542   429   429 D qdhwcomposer: hwc_setPowerMode: Setting mode 0 on display: 0
+02-04 23:39:15.549   816   841 I DreamController: Starting dream: name=ComponentInfo{com.android.systemui/com.android.systemui.doze.DozeService}, isTest=false, canDoze=true, userId=0
+02-04 23:39:15.560   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:39:15.560   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:39:15.565   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:39:15.565   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:39:15.567   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:39:15.567   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:39:15.573   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:39:15.573   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:39:15.578   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:39:15.578   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:39:15.581   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:39:15.581   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:39:15.585   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:39:15.585   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-04 23:39:15.851   429   531 I qdhwcomposer: handle_blank_event: dpy:0 panel power state: 0
+02-04 23:39:15.852   429   429 D qdhwcomposer: hwc_setPowerMode: Done setting mode 0 on display 0
+02-04 23:39:15.853   816   935 D SurfaceControl: Excessive delay in setPowerMode(): 317ms
+02-04 23:39:16.142 31691 31691 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 3
+02-04 23:39:20.023   958   958 D StatusBar: disable<e i a s b h r c s q >
+02-04 23:39:20.072   958   958 D StatusBar: disable<e i a s b H!R!c s q >
+02-05 00:09:06.354   816   816 D AlarmManagerService: Kernel timezone updated to 0 minutes west of GMT
+02-05 00:09:06.371   816   975 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DATE_CHANGED flg=0x20200010 } to com.android.deskclock/com.android.alarmclock.DigitalAppWidgetProvider
+02-05 00:09:06.376   816   975 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DATE_CHANGED flg=0x20200010 } to com.qualcomm.timeservice/.TimeServiceBroadcastReceiver
+02-05 00:50:17.417   816  2363 I ActivityManager: START u0 {flg=0x10800000 cmp=com.estrongs.android.pop/.app.RemainTransitionActivity} from uid 10063
+02-05 00:50:17.435   816   895 I InputReader: Reconfiguring input devices.  changes=0x00000004
+02-05 00:50:17.452  2763  2763 W ResourceType: No package identifier when getting value for resource number 0x00000000
+02-05 00:50:17.472  2763 31771 W System.err: java.net.UnknownHostException: Unable to resolve host "www.estrongs.com": No address associated with hostname
+02-05 00:50:17.472  2763 31771 W System.err: 	at java.net.Inet6AddressImpl.lookupHostByName(Inet6AddressImpl.java:141)
+02-05 00:50:17.472  2763 31771 W System.err: 	at java.net.Inet6AddressImpl.lookupAllHostAddr(Inet6AddressImpl.java:90)
+02-05 00:50:17.472  2763 31771 W System.err: 	at java.net.InetAddress.getAllByName(InetAddress.java:787)
+02-05 00:50:17.472  2763 31771 W System.err: 	at com.android.okhttp.Dns$1.lookup(Dns.java:39)
+02-05 00:50:17.473  2763 31771 W System.err: 	at com.android.okhttp.internal.http.RouteSelector.resetNextInetSocketAddress(RouteSelector.java:175)
+02-05 00:50:17.473  2763 31771 W System.err: 	at com.android.okhttp.internal.http.RouteSelector.nextProxy(RouteSelector.java:141)
+02-05 00:50:17.473  2763 31771 W System.err: 	at com.android.okhttp.internal.http.RouteSelector.next(RouteSelector.java:83)
+02-05 00:50:17.473  2763 31771 W System.err: 	at com.android.okhttp.internal.http.StreamAllocation.findConnection(StreamAllocation.java:174)
+02-05 00:50:17.473  2763 31771 W System.err: 	at com.android.okhttp.internal.http.StreamAllocation.findHealthyConnection(StreamAllocation.java:126)
+02-05 00:50:17.473  2763 31771 W System.err: 	at com.android.okhttp.internal.http.StreamAllocation.newStream(StreamAllocation.java:95)
+02-05 00:50:17.473  2763 31771 W System.err: 	at com.android.okhttp.internal.http.HttpEngine.connect(HttpEngine.java:281)
+02-05 00:50:17.473  2763 31771 W System.err: 	at com.android.okhttp.internal.http.HttpEngine.sendRequest(HttpEngine.java:224)
+02-05 00:50:17.473  2763 31771 W System.err: 	at com.android.okhttp.internal.huc.HttpURLConnectionImpl.execute(HttpURLConnectionImpl.java:461)
+02-05 00:50:17.473  2763 31771 W System.err: 	at com.android.okhttp.internal.huc.HttpURLConnectionImpl.connect(HttpURLConnectionImpl.java:127)
+02-05 00:50:17.473  2763 31771 W System.err: 	at com.estrongs.android.util.ac.l(Unknown Source:317)
+02-05 00:50:17.473  2763 31771 W System.err: 	at com.estrongs.android.util.ac.a(Unknown Source:0)
+02-05 00:50:17.473  2763 31771 W System.err: 	at com.estrongs.android.util.ae.run(Unknown Source:2)
+02-05 00:50:17.473  2763 31771 W System.err: Caused by: android.system.GaiException: android_getaddrinfo failed: EAI_NODATA (No address associated with hostname)
+02-05 00:50:17.473  2763 31771 W System.err: 	at libcore.io.Linux.android_getaddrinfo(Native Method)
+02-05 00:50:17.473  2763 31771 W System.err: 	at libcore.io.ForwardingOs.android_getaddrinfo(ForwardingOs.java:58)
+02-05 00:50:17.473  2763 31771 W System.err: 	at java.net.Inet6AddressImpl.lookupHostByName(Inet6AddressImpl.java:122)
+02-05 00:50:17.473  2763 31771 W System.err: 	... 16 more
+02-05 00:50:17.482  2763 31783 W System.err: java.net.UnknownHostException: Unable to resolve host "conf.international.baidu.com": No address associated with hostname
+02-05 00:50:17.482  2763 31783 W System.err: 	at java.net.Inet6AddressImpl.lookupHostByName(Inet6AddressImpl.java:141)
+02-05 00:50:17.482  2763 31783 W System.err: 	at java.net.Inet6AddressImpl.lookupAllHostAddr(Inet6AddressImpl.java:90)
+02-05 00:50:17.482  2763 31783 W System.err: 	at java.net.InetAddress.getAllByName(InetAddress.java:787)
+02-05 00:50:17.482  2763 31783 W System.err: 	at com.android.okhttp.Dns$1.lookup(Dns.java:39)
+02-05 00:50:17.482  2763 31783 W System.err: 	at com.android.okhttp.internal.http.RouteSelector.resetNextInetSocketAddress(RouteSelector.java:175)
+02-05 00:50:17.482  2763 31783 W System.err: 	at com.android.okhttp.internal.http.RouteSelector.nextProxy(RouteSelector.java:141)
+02-05 00:50:17.482  2763 31783 W System.err: 	at com.android.okhttp.internal.http.RouteSelector.next(RouteSelector.java:83)
+02-05 00:50:17.482  2763 31783 W System.err: 	at com.android.okhttp.internal.http.StreamAllocation.findConnection(StreamAllocation.java:174)
+02-05 00:50:17.482  2763 31783 W System.err: 	at com.android.okhttp.internal.http.StreamAllocation.findHealthyConnection(StreamAllocation.java:126)
+02-05 00:50:17.482  2763 31783 W System.err: 	at com.android.okhttp.internal.http.StreamAllocation.newStream(StreamAllocation.java:95)
+02-05 00:50:17.482  2763 31783 W System.err: 	at com.android.okhttp.internal.http.HttpEngine.connect(HttpEngine.java:281)
+02-05 00:50:17.482  2763 31783 W System.err: 	at com.android.okhttp.internal.http.HttpEngine.sendRequest(HttpEngine.java:224)
+02-05 00:50:17.482  2763 31783 W System.err: 	at com.android.okhttp.internal.huc.HttpURLConnectionImpl.execute(HttpURLConnectionImpl.java:461)
+02-05 00:50:17.482  2763 31783 W System.err: 	at com.android.okhttp.internal.huc.HttpURLConnectionImpl.connect(HttpURLConnectionImpl.java:127)
+02-05 00:50:17.483  2763 31783 W System.err: 	at com.estrongs.android.util.ac.l(Unknown Source:317)
+02-05 00:50:17.483  2763 31783 W System.err: 	at com.estrongs.android.util.ac.a(Unknown Source:0)
+02-05 00:50:17.483  2763 31783 W System.err: 	at com.estrongs.android.util.ae.run(Unknown Source:2)
+02-05 00:50:17.483  2763 31783 W System.err: Caused by: android.system.GaiException: android_getaddrinfo failed: EAI_NODATA (No address associated with hostname)
+02-05 00:50:17.483  2763 31783 W System.err: 	at libcore.io.Linux.android_getaddrinfo(Native Method)
+02-05 00:50:17.483  2763 31783 W System.err: 	at libcore.io.ForwardingOs.android_getaddrinfo(ForwardingOs.java:58)
+02-05 00:50:17.483  2763 31783 W System.err: 	at java.net.Inet6AddressImpl.lookupHostByName(Inet6AddressImpl.java:122)
+02-05 00:50:17.483  2763 31783 W System.err: 	... 16 more
+02-05 00:50:17.494  1232  1477 E PhoneInterfaceManager: [PhoneIntfMgr] getIccId: No UICC
+02-05 00:58:47.938  2763  2787 I zygote  : Background concurrent copying GC freed 22620(1733KB) AllocSpace objects, 12(240KB) LOS objects, 50% free, 2MB/5MB, paused 635us total 354.885ms
+02-05 00:58:48.143   816   895 V WiredAccessoryManager: notifyWiredAccessoryChanged: when=99124476358000 bits=SW_HEADPHONE_INSERT SW_MICROPHONE_INSERT mask=20094
+02-05 00:58:48.144   816   895 V WiredAccessoryManager: newName=h2w newState=1 headsetState=1 prev headsetState=0
+02-05 00:58:48.144   816   895 I WiredAccessoryManager: MSG_NEW_DEVICE_STATE
+02-05 00:58:48.145   816   816 V WiredAccessoryManager: headsetName:  connected
+02-05 00:58:48.152   581   581 I AudioFlinger: openOutput() this 0xf52bd000, module 10 Device 4, SamplingRate 8000, Format 0x1000000, Channels 1, flags 31
+02-05 00:58:48.155   581   581 I AudioFlinger: HAL output buffer size 262144 frames, normal sink buffer size 262144 frames
+02-05 00:58:48.156   581 31795 I AudioFlinger: AudioFlinger's thread 0xf4a74000 tid=31795 ready to run
+02-05 00:58:48.162   581 31795 D audio_hw_primary: out_set_parameters: enter: usecase(3: compress-offload-playback) kvpairs: closing=true
+02-05 00:58:48.163   581   581 D audio_hw_primary: out_set_parameters: enter: usecase(3: compress-offload-playback) kvpairs: exiting=1
+02-05 00:58:48.163   581 31791 E audio_hw_primary: offload_thread_loop: Compress handle is NULL
+02-05 00:58:48.166   581   761 D audio_hw_primary: out_set_parameters: enter: usecase(1: low-latency-playback) kvpairs: routing=0
+02-05 00:58:48.170   581   764 D audio_hw_primary: out_set_parameters: enter: usecase(5: audio-ull-playback) kvpairs: routing=0
+02-05 00:58:48.173   581   770 D audio_hw_primary: out_set_parameters: enter: usecase(0: deep-buffer-playback) kvpairs: routing=0
+02-05 00:58:48.174   581   774 D audio_hw_primary: out_set_parameters: enter: usecase(24: afe-proxy-playback) kvpairs: routing=0
+02-05 00:58:48.180   581  5355 W DeviceHAL: Device 0xf4a34000 open_input_stream: Invalid argument
+02-05 00:58:48.182   581 31797 I AudioFlinger: AudioFlinger's thread 0xf001f380 tid=31797 ready to run
+02-05 00:58:48.183   581  5355 W DeviceHAL: Device 0xf4a34000 open_input_stream: Invalid argument
+02-05 00:58:48.184   581 31799 I AudioFlinger: AudioFlinger's thread 0xf0783d00 tid=31799 ready to run
+02-05 00:58:48.189   581   793 I SoundTriggerHwService::Module: onCallbackEvent no clients
+02-05 00:58:48.202   816   816 V MediaRouter: Dispatching route change: RouteInfo{ name=Headphones, description=null, status=null, category=RouteCategory{ name=System types=ROUTE_TYPE_LIVE_AUDIO ROUTE_TYPE_LIVE_VIDEO  groupable=false }, supportedTypes=ROUTE_TYPE_LIVE_AUDIO ROUTE_TYPE_LIVE_VIDEO , presentationDisplay=null }
+02-05 00:58:48.202   816   816 V MediaRouter: Audio routes updated: AudioRoutesInfo{ type=HEADSET }, a2dp=false
+02-05 00:58:48.203   816   816 I Telecom : WiredHeadsetManager: ACTION_HEADSET_PLUG event, plugged in: true, : WHC.oADA@AEc
+02-05 00:58:48.204   958   958 V MediaRouter: Dispatching route change: RouteInfo{ name=Headphones, description=null, status=null, category=RouteCategory{ name=System types=ROUTE_TYPE_LIVE_AUDIO ROUTE_TYPE_LIVE_VIDEO  groupable=false }, supportedTypes=ROUTE_TYPE_LIVE_AUDIO ROUTE_TYPE_LIVE_VIDEO , presentationDisplay=null }
+02-05 00:58:48.204   958   958 V MediaRouter: Audio routes updated: AudioRoutesInfo{ type=HEADSET }, a2dp=false
+02-05 00:58:48.205   816  1318 I Telecom : CallAudioRouteStateMachine: Message received: CONNECT_WIRED_HEADSET=1, arg1=0: WHC.oADA->CARSM.pM_CONNECT_WIRED_HEADSET@AEc
+02-05 00:58:48.205   958  1189 I vol.Events: writeEvent level_changed STREAM_SYSTEM 5
+02-05 00:58:48.205   816  1318 I Telecom : Logging.Events: Non-call EVENT: AUDIO_ROUTE, Wired headset connected: WHC.oADA->CARSM.pM_CONNECT_WIRED_HEADSET@AEc
+02-05 00:58:48.205   816  1318 I Telecom : CallAudioRouteStateMachine: Message received: SWITCH_HEADSET=1003, arg1=0: WHC.oADA->CARSM.pM_CONNECT_WIRED_HEADSET->CARSM.pM_SWITCH_HEADSET@AEc
+02-05 00:58:48.206   816  1318 I Telecom : Logging.Events: Non-call EVENT: AUDIO_ROUTE, Leaving state QuiescentEarpieceRoute: WHC.oADA->CARSM.pM_CONNECT_WIRED_HEADSET->CARSM.pM_SWITCH_HEADSET@AEc
+02-05 00:58:48.206   816  1318 I Telecom : Logging.Events: Non-call EVENT: AUDIO_ROUTE, Entering state QuiescentHeadsetRoute: WHC.oADA->CARSM.pM_CONNECT_WIRED_HEADSET->CARSM.pM_SWITCH_HEADSET@AEc
+02-05 00:58:48.208   958  1189 I vol.Events: writeEvent level_changed STREAM_MUSIC 4
+02-05 00:58:49.100   816   836 I MediaSessionService: voice-based interactions: about to use ACTION_VOICE_SEARCH_HANDS_FREE
+02-05 00:58:49.102   816   836 I ActivityManager: START u0 {act=android.speech.action.VOICE_SEARCH_HANDS_FREE flg=0x10800000 (has extras)} from uid 1000
+02-05 00:58:51.533   419   921 E android.hardware.usb@1.0-service: uevent received SUBSYSTEM=dual_role_usb
+02-05 00:58:51.534   419   921 I android.hardware.usb@1.0-service: otg_default
+02-05 00:58:51.550   419   921 I android.hardware.usb@1.0-service: canChangeMode: 1 canChagedata: 0 canChangePower:0
+02-05 00:58:51.551   816   893 I UsbPortManager: ClientCallback: otg_default
+02-05 00:58:51.552   816   841 I UsbPortManager: USB port changed: port=UsbPort{id=otg_default, supportedModes=dual}, status=UsbPortStatus{connected=true, currentMode=ufp, currentPowerRole=sink, currentDataRole=device, supportedRoleCombinations=[source:host, sink:device]}, canChangeMode=true, canChangePowerRole=false, canChangeDataRole=false
+02-05 00:58:52.238   816   906 E HalDeviceManager: Should have at least 1 chip!
+02-05 00:58:52.240   816   906 E HalDeviceManager: getSupportedIfaceTypesInternal: no chip info found
+02-05 00:58:52.242   816   816 I EntropyMixer: Writing entropy...
+02-05 00:58:52.242   816   838 E BatteryStatsService: no controller energy info supplied
+02-05 00:58:52.243   816   838 E BatteryStatsService: no controller energy info supplied
+02-05 00:58:52.244   816   845 I PowerManagerService: Waking up from dozing (uid 1000)...
+02-05 00:58:52.250   816   845 I QCOMPowerHAL: Got set_interactive hint
+02-05 00:58:52.264   816   845 I DisplayPowerController: Blocking screen on until initial contents have been drawn.
+02-05 00:58:52.272   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:58:52.272   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:58:52.272   816   843 I DisplayManagerService: Display device changed state: "Built-in Screen", ON
+02-05 00:58:52.274   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:58:52.274   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:58:52.274   429   429 D SurfaceFlinger: Set power mode=2, type=0 flinger=0x7a32e5e000
+02-05 00:58:52.274   429   429 D qdhwcomposer: hwc_setPowerMode: Setting mode 2 on display: 0
+02-05 00:58:52.280   816   895 I InputReader: Reconfiguring input devices.  changes=0x00000004
+02-05 00:58:52.284   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:58:52.284   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:58:52.286   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:58:52.287   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:58:52.290   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:58:52.290   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:58:52.292   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:58:52.292   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:58:52.292   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:58:52.292   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:58:52.297   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:58:52.297   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:58:52.302   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:58:52.303   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:58:52.304   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:58:52.304   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:58:52.308   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:58:52.308   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:58:52.310   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:58:52.311   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:58:52.313   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:58:52.313   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:58:52.316   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:58:52.316   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:58:52.317   816   845 I DisplayPowerController: Unblocked screen on after 53 ms
+02-05 00:58:52.318   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:58:52.318   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:58:52.331   816  4855 I ActivityManager: START u0 {flg=0x10000000 cmp=com.estrongs.android.pop/com.lemon.sweetcandy.SweetCandyContainer} from uid 10063
+02-05 00:58:52.346   816   895 I InputReader: Reconfiguring input devices.  changes=0x00000004
+02-05 00:58:52.369   816   843 D ActivityManager: awakeFromSleepingLocked: previously pausing activity didn't pause
+02-05 00:58:52.386  2763  2763 W FragmentManager: moveToState: Fragment state for m{4676031 #0 id=0x7f0e06be android:switcher:2131625662:0} not updated inline; expected state 3 found 2
+02-05 00:58:52.560   816  2347 E LightsService: Light requested not available on this device. 3
+02-05 00:58:52.593   816   895 I PowerManagerService: Going to sleep due to power button (uid 1000)...
+02-05 00:58:52.604   429   531 I qdhwcomposer: handle_blank_event: dpy:0 panel power state: 1
+02-05 00:58:52.606   429   429 D qdhwcomposer: hwc_setPowerMode: Done setting mode 2 on display 0
+02-05 00:58:52.607   816   935 D SurfaceControl: Excessive delay in setPowerMode(): 334ms
+02-05 00:58:52.623   816  1084 W zygote64: Long monitor contention with owner Binder:816_A (4855) at int com.android.server.wm.WindowManagerService.relayoutWindow(com.android.server.wm.Session, android.view.IWindow, int, android.view.WindowManager$LayoutParams, int, int, int, int, android.graphics.Rect, android.graphics.Rect, android.graphics.Rect, android.graphics.Rect, android.graphics.Rect, android.graphics.Rect, android.graphics.Rect, android.util.MergedConfiguration, android.view.Surface)(WindowManagerService.java:1898) waiters=1 in void com.android.server.wm.TaskWindowContainerController.setTaskDescription(android.app.ActivityManager$TaskDescription) for 148ms
+02-05 00:58:52.633   816   843 I DisplayManagerService: Display device changed state: "Built-in Screen", OFF
+02-05 00:58:52.634   429   429 D SurfaceFlinger: Set power mode=0, type=0 flinger=0x7a32e5e000
+02-05 00:58:52.636   816   895 I InputReader: Reconfiguring input devices.  changes=0x00000004
+02-05 00:58:52.636   429   429 D qdhwcomposer: hwc_setPowerMode: Setting mode 0 on display: 0
+02-05 00:58:52.649   816   915 D NotificationSQLiteLog: Pruned event entries: 0
+02-05 00:58:52.659  2763  2763 W Settings: Setting stay_on_while_plugged_in has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+02-05 00:58:52.670   958   958 D StatusBar: disable<e i a s b H R c s q >
+02-05 00:58:52.692   958   958 D StatusBar: disable<e i a s b h!R c s q >
+02-05 00:58:52.948   429   531 I qdhwcomposer: handle_blank_event: dpy:0 panel power state: 0
+02-05 00:58:52.948   429   429 D qdhwcomposer: hwc_setPowerMode: Done setting mode 0 on display 0
+02-05 00:58:52.948   816   935 D SurfaceControl: Excessive delay in setPowerMode(): 315ms
+02-05 00:58:52.950   816   845 I QCOMPowerHAL: Got set_interactive hint
+02-05 00:58:52.952   816   845 I DreamManagerService: Gently waking up from dream.
+02-05 00:58:52.952   816   841 I DreamManagerService: Performing gentle wake from dream.
+02-05 00:58:52.953   816   845 I DreamManagerService: Already in target dream.
+02-05 00:58:52.953   816   845 I PowerManagerService: Sleeping (uid 1000)...
+02-05 00:58:52.975   816  2356 I DreamManagerService: Leaving dreamland.
+02-05 00:58:52.975   816   841 I DreamManagerService: Performing gentle wake from dream.
+02-05 00:58:52.975   816   841 I DreamController: Stopping dream: name=ComponentInfo{com.android.systemui/com.android.systemui.doze.DozeService}, isTest=false, canDoze=true, userId=0
+02-05 00:58:52.989   816   895 I InputReader: Reconfiguring input devices.  changes=0x00000004
+02-05 00:58:53.016   816   895 I InputReader: Reconfiguring input devices.  changes=0x00000004
+02-05 00:58:53.284   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:58:53.284   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:58:53.975   816   895 I PowerManagerService: Waking up from sleep (uid 1000)...
+02-05 00:58:53.982   816   895 I QCOMPowerHAL: Got set_interactive hint
+02-05 00:58:53.982   816   845 I DisplayPowerController: Blocking screen on until initial contents have been drawn.
+02-05 00:58:54.002   816   895 I InputReader: Reconfiguring input devices.  changes=0x00000004
+02-05 00:58:54.005   816   843 I DisplayManagerService: Display device changed state: "Built-in Screen", ON
+02-05 00:58:54.005   429   429 D SurfaceFlinger: Set power mode=2, type=0 flinger=0x7a32e5e000
+02-05 00:58:54.005   429   429 D qdhwcomposer: hwc_setPowerMode: Setting mode 2 on display: 0
+02-05 00:58:54.009   816   895 I InputReader: Reconfiguring input devices.  changes=0x00000004
+02-05 00:58:54.019  2763  2763 W Settings: Setting stay_on_while_plugged_in has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+02-05 00:58:54.040   816   845 I DisplayPowerController: Unblocked screen on after 58 ms
+02-05 00:58:54.322   429   531 I qdhwcomposer: handle_blank_event: dpy:0 panel power state: 1
+02-05 00:58:54.323   429   429 D qdhwcomposer: hwc_setPowerMode: Done setting mode 2 on display 0
+02-05 00:58:54.324   816   935 D SurfaceControl: Excessive delay in setPowerMode(): 319ms
+02-05 00:58:54.326   816   845 W PowerManagerService: Screen on took 357 ms
+02-05 00:58:55.306 31691 31691 I ServiceManager: Waiting for service AtCmdFwd...
+02-05 00:58:55.480   816   895 I InputReader: Reconfiguring input devices.  changes=0x00000004
+02-05 00:58:55.506   958   958 D StatusBar: disable<e i a s b h R c s q >
+02-05 00:58:55.559   958   958 D StatusBar: disable<e i a s b H!R c s q >
+02-05 00:58:55.625   958   958 D StatusBar: disable<e i a s b H R c s q >
+02-05 00:58:55.849   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:58:55.849   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:58:55.878   816  5052 I OpenGLRenderer: Initialized EGL, version 1.4
+02-05 00:58:55.878   816  5052 D OpenGLRenderer: Swap behavior 2
+02-05 00:58:56.307 31691 31691 I ServiceManager: Waiting for service AtCmdFwd...
+02-05 00:58:56.377   958   958 D StatusBar: disable<e i a s b H R c s q >
+02-05 00:58:56.443   958   958 D StatusBar: disable<e i a s b H R c s q >
+02-05 00:58:56.493   958  1079 W AudioTrack: dead IAudioTrack, PCM, creating a new one from getTimestampExtended()
+02-05 00:58:56.493   958   958 D StatusBar: disable<e i a s b H R c s q >
+02-05 00:58:56.494   958   958 D StatusBar: disable<e i a s b H R c s q >
+02-05 00:58:56.496   958  1079 W AudioTrack: AUDIO_OUTPUT_FLAG_FAST denied by client; transfer 4, track 44100 Hz, output 48000 Hz
+02-05 00:58:56.530   958   958 D StatusBar: disable<e i a s b h!r!c s q >
+02-05 00:58:56.596   581   764 D audio_hw_primary: out_set_parameters: enter: usecase(5: audio-ull-playback) kvpairs: routing=4
+02-05 00:58:56.601   581  4729 D audio_hw_primary: select_devices: changing use case audio-ull-playback output device from(2: speaker, acdb 15) to (5: headphones, acdb 10)
+02-05 00:58:56.601   581  4729 D audio_hw_primary: enable_snd_device: snd_device(5: headphones)
+02-05 00:58:56.611   581  4729 D audio_hw_primary: enable_audio_route: usecase(5) apply and update mixer path: audio-ull-playback
+02-05 00:58:56.991  2401  2517 W OpenGLRenderer: Incorrectly called buildLayer on View: ShortcutAndWidgetContainer, destroying layer...
+02-05 00:58:57.216   581   764 D audio_hw_primary: disable_audio_route: usecase(5) reset and update mixer path: audio-ull-playback
+02-05 00:58:57.218   581   764 D audio_hw_primary: disable_snd_device: snd_device(5: headphones)
+02-05 00:58:57.307 31691 31691 I ServiceManager: Waiting for service AtCmdFwd...
+02-05 00:58:58.308 31691 31691 I ServiceManager: Waiting for service AtCmdFwd...
+02-05 00:58:59.309 31691 31691 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 4
+02-05 00:59:00.970   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:59:00.970   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:59:03.527   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:59:03.527   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:59:08.649   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:59:08.650   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:59:16.337   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:59:16.337   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:59:18.901   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:59:18.902   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:59:19.311 31691 31691 I ServiceManager: Waiting for service AtCmdFwd...
+02-05 00:59:21.315 31691 31691 I chatty  : uid=1000(system) /vendor/bin/ATFWD-daemon identical 2 lines
+02-05 00:59:22.317 31691 31691 I ServiceManager: Waiting for service AtCmdFwd...
+02-05 00:59:23.318 31691 31691 W Atfwd_Sendcmd: AtCmdFwd service not published, waiting... retryCnt : 5
+02-05 00:59:30.684   816  2356 I ActivityManager: START u0 {flg=0x10000000 cmp=com.dolby.qa.featuretest/.MainActivity} from uid 2000
+02-05 00:59:30.712 31902 31902 I zygote64: Late-enabling -Xcheck:jni
+02-05 00:59:30.713   816   828 I ActivityManager: Start proc 31902:com.dolby.qa.featuretest/u0a74 for activity com.dolby.qa.featuretest/.MainActivity
+02-05 00:59:30.923 31902 31902 D featureTest: onCreate
+02-05 00:59:30.929 31902 31902 D AudioTrack: Client defaulted notificationFrames to 962 for frameCount 1924
+02-05 00:59:30.933 31902 31902 W AudioTrack: Use of stream types is deprecated for operations other than volume control
+02-05 00:59:30.934 31902 31902 W AudioTrack: See the documentation of AudioTrack() for what to use instead with android.media.AudioAttributes to qualify your playback use case
+02-05 00:59:30.941 31902 31902 W DolbyAudioEffect: WARNING: attaching a DolbyAudioEffect to global output mix is deprecated!
+02-05 00:59:30.946 31902 31902 D featureTest: onResume
+02-05 00:59:30.964 31902 31919 D OpenGLRenderer: HWUI GL Pipeline
+02-05 00:59:31.006 31902 31919 I Adreno  : QUALCOMM build                   : 7142022, Ib5823dd10c
+02-05 00:59:31.006 31902 31919 I Adreno  : Build Date                       : 06/23/17
+02-05 00:59:31.006 31902 31919 I Adreno  : OpenGL ES Shader Compiler Version: EV031.18.00.00
+02-05 00:59:31.006 31902 31919 I Adreno  : Local Branch                     : O11A
+02-05 00:59:31.006 31902 31919 I Adreno  : Remote Branch                    : 
+02-05 00:59:31.006 31902 31919 I Adreno  : Remote Branch                    : 
+02-05 00:59:31.006 31902 31919 I Adreno  : Reconstruct Branch               : 
+02-05 00:59:31.007 31902 31919 I vndksupport: sphal namespace is not configured for this process. Loading /vendor/lib64/hw/gralloc.msm8994.so from the current namespace instead.
+02-05 00:59:31.015 31902 31919 I Adreno  : PFP: 0x00000000, ME: 0x00000000
+02-05 00:59:31.023 31902 31919 I OpenGLRenderer: Initialized EGL, version 1.4
+02-05 00:59:31.023 31902 31919 D OpenGLRenderer: Swap behavior 2
+02-05 00:59:31.047   365   365 W /system/bin/hwservicemanager: getTransportFromManifest: Cannot find entry android.hardware.graphics.mapper@2.0::IMapper in either framework or device manifest, using default transport.
+02-05 00:59:31.051 31902 31919 I vndksupport: sphal namespace is not configured for this process. Loading /vendor/lib64/hw/gralloc.msm8994.so from the current namespace instead.
+02-05 00:59:31.080   816   843 I ActivityManager: Displayed com.dolby.qa.featuretest/.MainActivity: +380ms
+02-05 00:59:31.689   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:59:31.690   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:59:31.785 31902 31902 D featureTest: receive broadcast , playing content location :/sdcard/featureTest/stereo_channel_id.wav
+02-05 00:59:31.794 31902 31902 D featureTest: mMediaPlayer.getAudioSessionId(): 4553
+02-05 00:59:31.794 31902 31902 D featureTest: Playing file: /sdcard/featureTest/stereo_channel_id.wav
+02-05 00:59:31.796 31930 31930 W generic : type=1400 audit(0.0:2932): avc: denied { read } for path="/storage/emulated/0/featuretest/stereo_channel_id.wav" dev="sdcardfs" ino=523295 scontext=u:r:mediaextractor:s0 tcontext=u:object_r:sdcardfs:s0 tclass=file permissive=0
+02-05 00:59:31.796   589 26717 D NuPlayerDriver: NuPlayerDriver(0xe57328c0) created, clientPid(31902)
+02-05 00:59:31.799 31902 31902 W MediaPlayer: Use of stream types is deprecated for operations other than volume control
+02-05 00:59:31.799 31902 31902 W MediaPlayer: See the documentation of setAudioStreamType() for what to use instead with android.media.AudioAttributes to qualify your playback use case
+02-05 00:59:31.801   589 31930 D GenericSource: FileSource remote
+02-05 00:59:31.802   589 31930 W GenericSource: extractor service cannot make data source
+02-05 00:59:31.802   589 31930 D GenericSource: FileSource local
+02-05 00:59:31.827   587  1118 D MediaBufferGroup: creating MemoryDealer
+02-05 00:59:31.828   588  5235 D MediaAnalyticsService: MediaAnalyticsService::newSummarizerSet
+02-05 00:59:31.829   589 31929 D NuPlayerDriver: notifyListener_l(0xe57328c0), (1, 0, 0, -1), loop setting(0, 0)
+02-05 00:59:31.838   589 26717 D NuPlayerDriver: start(0xe57328c0), state is 4, eos is 0
+02-05 00:59:31.838   589 31929 I GenericSource: start
+02-05 00:59:31.844 31902 31902 W DolbyAudioEffect: WARNING: attaching a DolbyAudioEffect to global output mix is deprecated!
+02-05 00:59:31.846   593  1188 I OMXMaster: makeComponentInstance(OMX.google.raw.decoder) in android.hardwar process
+02-05 00:59:31.850 31902 31902 D featureTest: receive broadcast , change ds status :1
+02-05 00:59:31.852   593 20514 E OMXNodeInstance: setConfig(0xf0d07180:google.raw.decoder, ConfigPriority(0x6f800002)) ERROR: Undefined(0x80001001)
+02-05 00:59:31.852   589 31935 I ACodec  : codec does not support config priority (err -2147483648)
+02-05 00:59:31.853   593 20870 E OMXNodeInstance: getConfig(0xf0d07180:google.raw.decoder, ConfigAndroidVendorExtension(0x6f100004)) ERROR: Undefined(0x80001001)
+02-05 00:59:31.856   589 31935 I MediaCodec: MediaCodec will operate in async mode
+02-05 00:59:31.870   589 31933 D AudioTrack: Client defaulted notificationFrames to 12000 for frameCount 24000
+02-05 00:59:31.871   581  5355 D DlbDlbEffect: handle_EFFECT_CMD_DISABLE()
+02-05 00:59:31.871   581  5355 D DlbDapCrossfadeProcess: setEnabled transitioning from FADE_TO_ACTIVE state to FADE_TO_BYPASS
+02-05 00:59:31.872   581  5110 D DlbDlbEffect: handle_EFFECT_CMD_SET_PARAM()
+02-05 00:59:31.880   416   416 W /system/bin/hw/android.hidl.allocator@1.0-service: ashmem_create_region(7680) returning hidl_memory(0x7590c2c2e0, 7680)
+02-05 00:59:31.881   581  5355 D DlbDlbEffect: handle_EFFECT_CMD_SET_CONFIG()
+02-05 00:59:31.881   581  5355 D DlbDlbEffect: handle_EFFECT_CMD_ENABLE()
+02-05 00:59:31.881   581  5355 D DlbDapCrossfadeProcess: setEnabled transitioning from FADE_TO_BYPASS state to FADE_TO_ACTIVE
+02-05 00:59:31.947 31902 31902 D featureTest: receive broadcast , change ds profile id :5
+02-05 00:59:31.959   581  5142 D DlbDlbEffect: handle_EFFECT_CMD_SET_PARAM()
+02-05 00:59:32.016 31902 31902 D featureTest: receive broadcast , change bass enable :0
+02-05 00:59:32.030   581   581 D DlbDlbEffect: handle_EFFECT_CMD_SET_PARAM()
+02-05 00:59:32.044   581   770 D DlbDapEndpointParamCache: setDevice(device=0x00000008)
+02-05 00:59:32.044   581   770 D DlbDapEndpointParamCache: setDevice() Applying parameters for new device 0x00000008
+02-05 00:59:32.044   581   770 D DlbDap2Process: setParam(dea = #1[7])
+02-05 00:59:32.044   581   770 D DlbDap2Process: setParam(dsa = #1[10])
+02-05 00:59:32.044   581   770 D DlbDap2Process: setParam(beb = #1[96])
+02-05 00:59:32.044   581   770 D DlbDap2Process: setParam(plb = #1[0])
+02-05 00:59:32.044   581   770 D DlbDap2Process: setParam(vmb = #1[144])
+02-05 00:59:32.044   581   770 D DlbDap2Process: setParam(dsb = #1[48])
+02-05 00:59:32.044   581   770 D DlbDap2Process: setParam(ded = #1[0])
+02-05 00:59:32.044   581   770 D DlbDap2Process: setParam(vbm = #1[0])
+02-05 00:59:32.044   581   770 D DlbDap2Process: setParam(dom = #1[0])
+02-05 00:59:32.044   581   770 D DlbDap2Process: setParam(bew = #1[16])
+02-05 00:59:32.044   581   770 D DlbDap2Process: setParam(dvla = #1[5])
+02-05 00:59:32.044   581   770 D DlbDap2Process: setParam(arra = #1[96])
+02-05 00:59:32.044   581   770 D DlbDap2Process: setParam(dfsa = #1[10])
+02-05 00:59:32.044   581   770 D DlbDap2Process: setParam(dhsa = #1[10])
+02-05 00:59:32.044   581   770 D DlbDap2Process: setParam(dvmc = #1[160])
+02-05 00:59:32.044   581   770 D DlbDap2Process: setParam(arod = #1[0])
+02-05 00:59:32.044   581   770 D DlbDap2Process: setParam(arde = #1[0])
+02-05 00:59:32.044   581   770 D DlbDap2Process: setParam(dvle = #1[1])
+02-05 00:59:32.044   581   770 D DlbDap2Process: setParam(dvme = #1[0])
+02-05 00:59:32.044   581   770 D DlbDap2Process: setParam(becf = #1[160])
+02-05 00:59:32.044   581   770 D DlbDap2Process: setParam(vbmf = #2[99, 281])
+02-05 00:59:32.044   581   770 D DlbDap2Process: setParam(vbsf = #2[30, 90])
+02-05 00:59:32.044   581   770 D DlbDap2Process: setParam(vbhg = #3[-48, -480, -240])
+02-05 00:59:32.044   581   770 D DlbDap2Process: setParam(vbog = #1[0])
+02-05 00:59:32.044   581   770 D DlbDap2Process: setParam(vbsg = #1[0])
+02-05 00:59:32.044   581   770 D DlbDap2Process: setParam(dvli = #1[-320])
+02-05 00:59:32.044   581   770 D DlbDap2Process: setParam(dhfm = #1[0])
+02-05 00:59:32.044   581   770 D DlbDap2Process: setParam(vbon = #1[0])
+02-05 00:59:32.044   581   770 D DlbDap2Process: setParam(beon = #1[0])
+02-05 00:59:32.044   581   770 D DlbDap2Process: setParam(deon = #1[0])
+02-05 00:59:32.044   581   770 D DlbDap2Process: setParam(ngon = #1[1])
+02-05 00:59:32.044   581   770 D DlbDap2Process: setParam(aoon = #1[0])
+02-05 00:59:32.044   581   770 D DlbDap2Process: setParam(aron = #1[1])
+02-05 00:59:32.044   581   770 D DlbDap2Process: setParam(dvlo = #1[-320])
+02-05 00:59:32.044   581   770 D DlbDap2Process: setParam(artp = #1[12])
+02-05 00:59:32.045   581   770 D DlbDap2Process: setParam(aobs = #222[20, 10, 47, 141, 234, 328, 469, 656, 844, 1031, 1313, 1688, 2250, 3000, 3750, 4688, 5813, 7125, 9000, 11250, 13875, 19688, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+02-05 00:59:32.045   581   770 D DlbDap2Process: setParam(arbs = #81[20, 47, 141, 234, 328, 469, 656, 844, 1031, 1313, 1688, 2250, 3000, 3750, 4688, 5813, 7125, 9000, 11250, 13875, 19688, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+02-05 00:59:32.045   581   770 D DlbDapEndpointParamCache: doCommit() Committed 37 parameters out of 37.
+02-05 00:59:32.046   421   421 D DMSService: setActiveDevice called with device = 0x8
+02-05 00:59:32.046   581   770 D audio_hw_primary: out_set_parameters: enter: usecase(0: deep-buffer-playback) kvpairs: routing=4
+02-05 00:59:32.050   589 31929 D NuPlayerDriver: notifyListener_l(0xe57328c0), (6, 0, 0, -1), loop setting(0, 1)
+02-05 00:59:32.052   581  5115 D DlbDap2Process: setMave(mave = 0)
+02-05 00:59:32.055   581  5115 D DlbDapCrossfadeProcess: process transitioning from FADE_TO_ACTIVE state to DAP_ACTIVE
+02-05 00:59:32.056   581  5111 D audio_hw_primary: select_devices: changing use case deep-buffer-playback output device from(2: speaker, acdb 15) to (5: headphones, acdb 10)
+02-05 00:59:32.057   581  5111 D audio_hw_primary: enable_snd_device: snd_device(5: headphones)
+02-05 00:59:32.065   581  5111 D audio_hw_primary: enable_audio_route: usecase(0) apply and update mixer path: deep-buffer-playback
+02-05 00:59:32.094 31902 31902 D featureTest: receive broadcast , record log :0
+02-05 00:59:32.151 31902 31902 D featureTest: receive broadcast , playing content location :/sdcard/featureTest/stereo_channel_id.wav
+02-05 00:59:32.155   589   589 D NuPlayerDriver: stop(0xe57328c0)
+02-05 00:59:32.155   589   589 D NuPlayerDriver: notifyListener_l(0xe57328c0), (8, 0, 0, -1), loop setting(0, 1)
+02-05 00:59:32.157   589   709 D NuPlayerDriver: reset(0xe57328c0) at state 8
+02-05 00:59:32.165   589 31929 D NuPlayerDriver: notifyResetComplete(0xe57328c0)
+02-05 00:59:32.165   589   589 D NuPlayerDriver: reset(0xe57328c0) at state 0
+02-05 00:59:32.166 31902 31902 V MediaPlayer: resetDrmState:  mDrmInfo=null mDrmProvisioningThread=null mPrepareDrmInProgress=false mActiveDrmScheme=false
+02-05 00:59:32.167 31902 31902 V MediaPlayer: cleanDrmObj: mDrmObj=null mDrmSessionId=null
+02-05 00:59:32.168 31902 31902 V MediaPlayer: resetDrmState:  mDrmInfo=null mDrmProvisioningThread=null mPrepareDrmInProgress=false mActiveDrmScheme=false
+02-05 00:59:32.169 31902 31902 V MediaPlayer: cleanDrmObj: mDrmObj=null mDrmSessionId=null
+02-05 00:59:32.175 31902 31902 D featureTest: mMediaPlayer.getAudioSessionId(): 4561
+02-05 00:59:32.175 31902 31902 D featureTest: Playing file: /sdcard/featureTest/stereo_channel_id.wav
+02-05 00:59:32.176 31958 31958 W generic : type=1400 audit(0.0:2933): avc: denied { read } for path="/storage/emulated/0/featuretest/stereo_channel_id.wav" dev="sdcardfs" ino=523295 scontext=u:r:mediaextractor:s0 tcontext=u:object_r:sdcardfs:s0 tclass=file permissive=0
+02-05 00:59:32.176   589 26717 D NuPlayerDriver: NuPlayerDriver(0xe5732540) created, clientPid(31902)
+02-05 00:59:32.178 31902 31902 W MediaPlayer: Use of stream types is deprecated for operations other than volume control
+02-05 00:59:32.178 31902 31902 W MediaPlayer: See the documentation of setAudioStreamType() for what to use instead with android.media.AudioAttributes to qualify your playback use case
+02-05 00:59:32.181   589 31958 D GenericSource: FileSource remote
+02-05 00:59:32.181   589 31958 W GenericSource: extractor service cannot make data source
+02-05 00:59:32.181   589 31958 D GenericSource: FileSource local
+02-05 00:59:32.207   587   587 D MediaBufferGroup: creating MemoryDealer
+02-05 00:59:32.208   589 31957 D NuPlayerDriver: notifyListener_l(0xe5732540), (1, 0, 0, -1), loop setting(0, 0)
+02-05 00:59:32.213   589 26717 D NuPlayerDriver: start(0xe5732540), state is 4, eos is 0
+02-05 00:59:32.213   589 31957 I GenericSource: start
+02-05 00:59:32.216 31902 31902 W DolbyAudioEffect: WARNING: attaching a DolbyAudioEffect to global output mix is deprecated!
+02-05 00:59:32.222   593  5353 I OMXMaster: makeComponentInstance(OMX.google.raw.decoder) in android.hardwar process
+02-05 00:59:32.227 31902 31902 D featureTest: receive broadcast , change ds status :1
+02-05 00:59:32.227   593 20870 E OMXNodeInstance: setConfig(0xf0d07240:google.raw.decoder, ConfigPriority(0x6f800002)) ERROR: Undefined(0x80001001)
+02-05 00:59:32.227   589 31964 I ACodec  : codec does not support config priority (err -2147483648)
+02-05 00:59:32.228   593   712 E OMXNodeInstance: getConfig(0xf0d07240:google.raw.decoder, ConfigAndroidVendorExtension(0x6f100004)) ERROR: Undefined(0x80001001)
+02-05 00:59:32.231   589 31964 I MediaCodec: MediaCodec will operate in async mode
+02-05 00:59:32.244   581  5142 D DlbDlbEffect: handle_EFFECT_CMD_SET_PARAM()
+02-05 00:59:32.250   589 31961 D AudioTrack: Client defaulted notificationFrames to 12000 for frameCount 24000
+02-05 00:59:32.252   589 31957 D NuPlayerDriver: notifyListener_l(0xe5732540), (6, 0, 0, -1), loop setting(0, 1)
+02-05 00:59:32.283   581   770 D DlbDlbEffect: handle_EFFECT_CMD_SET_PARAM()
+02-05 00:59:32.283   581   770 D DlbEffectContext: setPregain(volume=249588)
+02-05 00:59:32.283   581   770 D DlbEffectContext: transformExternalGain() fVol:0.014877 extVal:-584
+02-05 00:59:32.283   581   770 D DlbDapEndpointParamCache: commitChangedParams()
+02-05 00:59:32.283   581   770 D DlbDapEndpointParamCache: commit() Applying parameters for device 0x40000000
+02-05 00:59:32.283   581   770 D DlbDap2Process: setParam(preg = #1[-584])
+02-05 00:59:32.283   581   770 D DlbDapEndpointParamCache: doCommit() Committed 1 parameters out of 16.
+02-05 00:59:32.284   581   770 D DlbDapEndpointParamCache: commit() Overriding parameters for current device 0x00000008
+02-05 00:59:32.284   581   770 D DlbDap2Process: setParam(vbon = #1[0])
+02-05 00:59:32.284   581   770 D DlbDapEndpointParamCache: doCommit() Committed 1 parameters out of 37.
+02-05 00:59:32.311 31902 31902 D featureTest: receive broadcast , change ds profile id :5
+02-05 00:59:32.323   581   770 D AudioFlinger: mixer(0xf2983980) throttle end: throttle time(34)
+02-05 00:59:32.323   581   731 D DlbDlbEffect: handle_EFFECT_CMD_SET_PARAM()
+02-05 00:59:32.385 31902 31902 D featureTest: receive broadcast , change bass enable :1
+02-05 00:59:32.397   581   730 D DlbDlbEffect: handle_EFFECT_CMD_SET_PARAM()
+02-05 00:59:32.406   581  5115 D DlbDapEndpointParamCache: commitChangedParams()
+02-05 00:59:32.406   581  5115 D DlbDapEndpointParamCache: commit() Applying parameters for device 0x40000000
+02-05 00:59:32.406   581  5115 D DlbDap2Process: setParam(iea = #1[10])
+02-05 00:59:32.406   581  5115 D DlbDap2Process: setParam(msce = #1[0])
+02-05 00:59:32.406   581  5115 D DlbDap2Process: setParam(mdee = #1[0])
+02-05 00:59:32.406   581  5115 D DlbDap2Process: setParam(miee = #1[0])
+02-05 00:59:32.406   581  5115 D DlbDap2Process: setParam(mdle = #1[0])
+02-05 00:59:32.406   581  5115 D DlbDap2Process: setParam(dvle = #1[1])
+02-05 00:59:32.406   581  5115 D DlbDap2Process: setParam(mave = #1[0])
+02-05 00:59:32.406   581  5115 D DlbDap2Process: setParam(vcbf = #20[47, 141, 234, 328, 469, 656, 844, 1031, 1313, 1688, 2250, 3000, 3750, 4688, 5813, 7125, 9000, 11250, 13875, 19688])
+02-05 00:59:32.406   581  5115 D DlbDap2Process: setParam(vbon = #1[1])
+02-05 00:59:32.406   581  5115 D DlbDap2Process: setParam(beon = #1[1])
+02-05 00:59:32.406   581  5115 D DlbDap2Process: setParam(geon = #1[0])
+02-05 00:59:32.406   581  5115 D DlbDap2Process: setParam(ieon = #1[0])
+02-05 00:59:32.406   581  5115 D DlbDap2Process: setParam(gebs = #41[20, 47, 141, 234, 328, 469, 656, 844, 1031, 1313, 1688, 2250, 3000, 3750, 4688, 5813, 7125, 9000, 11250, 13875, 19688, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+02-05 00:59:32.406   581  5115 D DlbDap2Process: setParam(iebs = #41[20, 65, 136, 223, 332, 467, 634, 841, 1098, 1416, 1812, 2302, 2909, 3663, 4598, 5756, 7194, 8976, 11186, 13927, 17326, 117, 133, 188, 176, 141, 149, 175, 185, 185, 200, 236, 242, 228, 213, 182, 132, 110, 68, -27, -240])
+02-05 00:59:32.407   581  5115 D DlbDapEndpointParamCache: doCommit() Committed 15 parameters out of 16.
+02-05 00:59:32.407   581  5115 D DlbDapEndpointParamCache: commit() Overriding parameters for current device 0x00000008
+02-05 00:59:32.407   581  5115 D DlbDap2Process: setParam(dea = #1[7])
+02-05 00:59:32.407   581  5115 D DlbDap2Process: setParam(dsa = #1[10])
+02-05 00:59:32.407   581  5115 D DlbDap2Process: setParam(beb = #1[96])
+02-05 00:59:32.407   581  5115 D DlbDap2Process: setParam(plb = #1[0])
+02-05 00:59:32.407   581  5115 D DlbDap2Process: setParam(vmb = #1[144])
+02-05 00:59:32.407   581  5115 D DlbDap2Process: setParam(dsb = #1[48])
+02-05 00:59:32.407   581  5115 D DlbDap2Process: setParam(ded = #1[0])
+02-05 00:59:32.407   581  5115 D DlbDap2Process: setParam(vbm = #1[0])
+02-05 00:59:32.407   581  5115 D DlbDap2Process: setParam(dom = #1[0])
+02-05 00:59:32.407   581  5115 D DlbDap2Process: setParam(bew = #1[16])
+02-05 00:59:32.407   581  5115 D DlbDap2Process: setParam(dvla = #1[5])
+02-05 00:59:32.407   581  5115 D DlbDap2Process: setParam(arra = #1[96])
+02-05 00:59:32.407   581  5115 D DlbDap2Process: setParam(dfsa = #1[10])
+02-05 00:59:32.407   581  5115 D DlbDap2Process: setParam(dhsa = #1[10])
+02-05 00:59:32.407   581  5115 D DlbDap2Process: setParam(dvmc = #1[160])
+02-05 00:59:32.407   581  5115 D DlbDap2Process: setParam(arod = #1[0])
+02-05 00:59:32.407   581  5115 D DlbDap2Process: setParam(arde = #1[0])
+02-05 00:59:32.407   581  5115 D DlbDap2Process: setParam(dvle = #1[1])
+02-05 00:59:32.407   581  5115 D DlbDap2Process: setParam(dvme = #1[0])
+02-05 00:59:32.407   581  5115 D DlbDap2Process: setParam(becf = #1[160])
+02-05 00:59:32.407   581  5115 D DlbDap2Process: setParam(vbmf = #2[99, 281])
+02-05 00:59:32.407   581  5115 D DlbDap2Process: setParam(vbsf = #2[30, 90])
+02-05 00:59:32.407   581  5115 D DlbDap2Process: setParam(vbhg = #3[-48, -480, -240])
+02-05 00:59:32.407   581  5115 D DlbDap2Process: setParam(vbog = #1[0])
+02-05 00:59:32.407   581  5115 D DlbDap2Process: setParam(vbsg = #1[0])
+02-05 00:59:32.407   581  5115 D DlbDap2Process: setParam(dvli = #1[-320])
+02-05 00:59:32.407   581  5115 D DlbDap2Process: setParam(dhfm = #1[0])
+02-05 00:59:32.407   581  5115 D DlbDap2Process: setParam(vbon = #1[0])
+02-05 00:59:32.407   581  5115 D DlbDap2Process: setParam(beon = #1[1])
+02-05 00:59:32.407   581  5115 D DlbDap2Process: setParam(deon = #1[0])
+02-05 00:59:32.407   581  5115 D DlbDap2Process: setParam(ngon = #1[1])
+02-05 00:59:32.407   581  5115 D DlbDap2Process: setParam(aoon = #1[0])
+02-05 00:59:32.407   581  5115 D DlbDap2Process: setParam(aron = #1[1])
+02-05 00:59:32.407   581  5115 D DlbDap2Process: setParam(dvlo = #1[-320])
+02-05 00:59:32.407   581  5115 D DlbDap2Process: setParam(artp = #1[12])
+02-05 00:59:32.408   581  5115 D DlbDap2Process: setParam(aobs = #222[20, 10, 47, 141, 234, 328, 469, 656, 844, 1031, 1313, 1688, 2250, 3000, 3750, 4688, 5813, 7125, 9000, 11250, 13875, 19688, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+02-05 00:59:32.408   581  5115 D DlbDap2Process: setParam(arbs = #81[20, 47, 141, 234, 328, 469, 656, 844, 1031, 1313, 1688, 2250, 3000, 3750, 4688, 5813, 7125, 9000, 11250, 13875, 19688, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, -192, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+02-05 00:59:32.408   581  5115 D DlbDapEndpointParamCache: doCommit() Committed 37 parameters out of 37.
+02-05 00:59:32.408   581  5115 D DlbDap2Process: setMave(mave = 0)
+02-05 00:59:32.415 31902 31907 I zygote64: Do partial code cache collection, code=8KB, data=14KB
+02-05 00:59:32.415 31902 31907 I zygote64: After code cache collection, code=8KB, data=14KB
+02-05 00:59:32.415 31902 31907 I zygote64: Increasing code cache capacity to 128KB
+02-05 00:59:32.416 31902 31907 I zygote64: Do partial code cache collection, code=8KB, data=33KB
+02-05 00:59:32.416 31902 31907 I zygote64: After code cache collection, code=8KB, data=33KB
+02-05 00:59:32.416 31902 31907 I zygote64: Increasing code cache capacity to 256KB
+02-05 00:59:32.416 31902 31907 I zygote64: Compiler allocated 8MB to compile void android.widget.TextView.<init>(android.content.Context, android.util.AttributeSet, int, int)
+02-05 00:59:32.450 31902 31902 D featureTest: receive broadcast , record log :0
+02-05 00:59:33.124   581  5115 D DlbDap2Process: process() called [325500] times
+02-05 00:59:33.745  2763  2763 W Settings: Setting stay_on_while_plugged_in has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+02-05 00:59:33.748   816   906 E HalDeviceManager: Should have at least 1 chip!
+02-05 00:59:33.749   816   906 E HalDeviceManager: getSupportedIfaceTypesInternal: no chip info found
+02-05 00:59:33.754   816   838 E BatteryStatsService: no controller energy info supplied
+02-05 00:59:33.754   816   838 E BatteryStatsService: no controller energy info supplied
+02-05 00:59:33.764   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:59:33.764   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:59:33.765   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:59:33.765   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:59:33.877   816   816 W WindowManager: removeWindowToken: Attempted to remove non-existing token: android.os.Binder@98afa56
+02-05 00:59:33.901   429   429 D SurfaceFlinger: duplicate layer name: changing Toast to Toast#1
+02-05 00:59:34.244   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_lock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:59:34.245   571   940 E QC-QMI  : linux_qmi_qmux_io_wake_unlock: Err in writing wakelock=qmuxd_port_wl_0, error [1:Operation not permitted]
+02-05 00:59:35.773   581  5115 D DlbDap2Process: process() called [326000] times
+02-05 00:59:35.900   816   816 W WindowManager: removeWindowToken: Attempted to remove non-existing token: android.os.Binder@947d430

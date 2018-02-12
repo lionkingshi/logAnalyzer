@@ -121,8 +121,10 @@ def get_dap_joc_force_down_mix_mode_value():
 #
 def get_dap_output_mode_set_value(_content_type):
     if _content_type in content_type_dolby:
+        # for dolby content decoded by udc decoder , dap2qmf instance will be created
         return log_analysis_instance.get_dap_output_mode_set_value_in_qmf_process()
     else:
+        # for non dolby content , global processing will process up mix and down mix
         return log_analysis_instance.get_dap_output_mode_set_value_in_global_process()
 
 

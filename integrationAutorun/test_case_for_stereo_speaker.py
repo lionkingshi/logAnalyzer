@@ -134,6 +134,12 @@ def test_log_up_mix_sv_off(content_name, content_type,
     """
     caller_name = test_log_up_mix_sv_off.__name__
     up_mix_and_sv_off_test_procedure(caller_name, endpoint_type_in_module, content_name, content_type)
+    dom = {'dom': '0'}
+    # output channel count is 2 with order L, R
+    dap_output_mode = '1'
+    dap_mix_matrix = 'null'
+    ddp_down_mix = '0'
+    assert_up_mix_related_feature_result(content_type, dap_output_mode, dap_mix_matrix, dom, ddp_down_mix)
 
 
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
@@ -155,3 +161,11 @@ def test_log_up_mix_sv_on(content_name, content_type,
     """
     caller_name = test_log_up_mix_sv_on.__name__
     up_mix_and_sv_on_test_procedure(caller_name, endpoint_type_in_module, content_name, content_type)
+    # this means speaker virtualizer with height and input will be up mixed to 5.1.2
+    # not matter the content type
+    dom = {'dom': '1,16384,0,0,16384,11583,11583,8192,8192,16384,0,0,16384,16384,0,0,16384'}
+    # output channel count is 8 with order L, R, C, LFE, Ls, Rs, Ltm, Rtm
+    dap_output_mode = '11'
+    dap_mix_matrix = 'custom'
+    ddp_down_mix = '0'
+    assert_up_mix_related_feature_result(content_type, dap_output_mode, dap_mix_matrix, dom, ddp_down_mix)

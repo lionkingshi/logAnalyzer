@@ -115,18 +115,6 @@ AUDIO_DEVICE_OUT_WIRED_HEADPHONE = '35mm_headphone'
 AUDIO_DEVICE_OUT_DGTL_DOCK_HEADSET = 'usb_headphone'
 AUDIO_DEVICE_OUT_AUX_DIGITAL = 'hdmi'
 AUDIO_DEVICE_OUT_BLUETOOTH_A2DP = 'blue_tooth'
-# define specified feature expected value
-dap_feature_mix_matrix_null = 'null'
-dap_feature_mix_matrix_custom = 'custom'
-dap_feature_down_mix_enabled = '1'
-dap_feature_down_mix_disabled = '0'
-dap_feature_output_mode_value_for_mono_spk = '1'
-dap_feature_output_mode_value_for_stereo_spk_vsv_off = dap_feature_output_mode_value_for_mono_spk
-dap_feature_output_mode_value_for_35mm_hp_vsv_off = '1'
-dap_feature_output_mode_value_for_stereo_spk_vsv_on = '11'
-dap_feature_output_mode_value_for_35mm_hp_vsv_on = '9'
-# dap_feature_output_mode_value_for_wired_hp = '9'
-dap_feature_output_mode_value_for_wired_ = '2'
 
 
 

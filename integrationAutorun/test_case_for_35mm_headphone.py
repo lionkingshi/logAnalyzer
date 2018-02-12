@@ -134,6 +134,14 @@ def test_log_up_mix_sv_off(content_name, content_type,
     """
     caller_name = test_log_up_mix_sv_off.__name__
     up_mix_and_sv_off_test_procedure(caller_name, endpoint_type_in_module, content_name, content_type)
+    # no virtualizer when speaker or headphone virtual is off
+    dom = {'dom': '0'}
+    # output channel count is 2 with order L, R
+    dap_output_mode = '1'
+    dap_mix_matrix = 'null'
+    # for multi channel , dap will simple down town to 2 channel output from dap
+    ddp_down_mix = '0'
+    assert_up_mix_related_feature_result(content_type, dap_output_mode, dap_mix_matrix, dom, ddp_down_mix)
 
 
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
@@ -155,5 +163,15 @@ def test_log_up_mix_sv_on(content_name, content_type,
     """
     caller_name = test_log_up_mix_sv_on.__name__
     up_mix_and_sv_on_test_procedure(caller_name, endpoint_type_in_module, content_name, content_type)
+    # this means headphone virtualizer with height channel and input will be up mixed to 5.1.2
+    # except 2 channel dolby content up mixed to 5.1 ????
+    # not matter the content type
+    dom = {'dom': '2'}
+    # output channel count is 2 with order L, R
+    dap_output_mode = '9'
+    dap_mix_matrix = 'null'
+    # for multi channel , dap will simple down town to 2 channel output from dap
+    ddp_down_mix = '0'
+    assert_up_mix_related_feature_result(content_type, dap_output_mode, dap_mix_matrix, dom, ddp_down_mix)
 
 

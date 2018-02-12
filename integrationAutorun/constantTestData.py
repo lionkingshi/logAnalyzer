@@ -174,12 +174,5 @@ up_mix_and_hv_on_test_data = [
      dap_feature_type_hv, dap_feature_value_hv_on)
 ]
 
-up_mix_and_sv_off_expected_value = {'dom': '0'}
-up_mix_and_sv_on_mono_spk_expected_value = {'dom': '0'}
-up_mix_and_sv_on_stereo_spk_expected_value = {
-    'dom': '1,16384,0,0,16384,11583,11583,8192,8192,16384,0,0,16384,16384,0,0,16384'}
-up_mix_and_sv_on_headphone_expected_value = {'dom': '2'}
-up_mix_and_sv_on_blue_tooth_expected_value = {'dom': '0'}
-
 
 

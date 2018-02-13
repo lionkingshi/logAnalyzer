@@ -4,8 +4,10 @@ content_type_1_channel_non_dolby = '1.0'
 content_type_2_channel_non_dolby = '2.0'
 content_type_51_channel_non_dolby = '5.1'
 content_type_71_channel_non_dolby = '7.1'
+content_type_1_dd = '1_dd'
 content_type_2_dd = '2_dd'
 content_type_51_dd = '51_dd'
+content_type_1_ddp = '1_ddp'
 content_type_2_ddp = '2_ddp'
 content_type_51_ddp = '51_ddp'
 content_type_71_ddp = '71_ddp'
@@ -14,9 +16,9 @@ content_type_71_ddp_joc = '71_ddp_joc'
 
 content_type_non_dolby = [content_type_1_channel_non_dolby, content_type_2_channel_non_dolby,
                           content_type_51_channel_non_dolby, content_type_71_channel_non_dolby]
-content_type_dolby = [content_type_2_dd, content_type_51_dd,
-                      content_type_2_ddp, content_type_51_ddp, content_type_71_ddp,
-                      content_type_51_ddp_joc, content_type_71_ddp_joc]
+content_type_dolby = [content_type_1_dd, content_type_2_dd, content_type_51_dd,
+                      content_type_1_ddp, content_type_2_ddp, content_type_51_ddp,
+                      content_type_71_ddp, content_type_51_ddp_joc, content_type_71_ddp_joc]
 # 2 channel dolby content will be up mixed to 5.1 channel, instead of up mixing to 5.1.2 ,
 content_type_2_channel_dolby = [content_type_2_dd, content_type_2_ddp]
 
@@ -83,9 +85,13 @@ up_mix_and_vsv_off_test_data = [
      dap_feature_type_vsv, dap_feature_value_vsv_off),
     ('7ch_25fps.wav', content_type_71_channel_non_dolby, dap_status_on, dap_profile_custom,
      dap_feature_type_vsv, dap_feature_value_vsv_off),
+    ('1ch_dd_25fps_acmod_1.mp4', content_type_1_dd, dap_status_on, dap_profile_custom,
+     dap_feature_type_vsv, dap_feature_value_vsv_off),
     ('2ch_dd_25fps_channel_id.mp4', content_type_2_dd, dap_status_on, dap_profile_custom,
      dap_feature_type_vsv, dap_feature_value_vsv_off),
     ('Pearl_Harbour_French_5.1_dd_448Kbps.mp4', content_type_51_dd, dap_status_on, dap_profile_custom,
+     dap_feature_type_vsv, dap_feature_value_vsv_off),
+    ('1ch_ddp_25fps_acmod_1.mp4', content_type_1_ddp, dap_status_on, dap_profile_custom,
      dap_feature_type_vsv, dap_feature_value_vsv_off),
     ('2ch_ddp_25fps_ref_level.mp4', content_type_2_ddp, dap_status_on, dap_profile_custom,
      dap_feature_type_vsv, dap_feature_value_vsv_off),
@@ -108,9 +114,13 @@ up_mix_and_hv_off_test_data = [
      dap_feature_type_hv, dap_feature_value_hv_off),
     ('7ch_25fps.wav', content_type_71_channel_non_dolby, dap_status_on, dap_profile_custom,
      dap_feature_type_hv, dap_feature_value_hv_off),
+    ('1ch_dd_25fps_acmod_1.mp4', content_type_1_dd, dap_status_on, dap_profile_custom,
+     dap_feature_type_hv, dap_feature_value_hv_off),
     ('2ch_dd_25fps_channel_id.mp4', content_type_2_dd, dap_status_on, dap_profile_custom,
      dap_feature_type_hv, dap_feature_value_hv_off),
     ('Pearl_Harbour_French_5.1_dd_448Kbps.mp4', content_type_51_dd, dap_status_on, dap_profile_custom,
+     dap_feature_type_hv, dap_feature_value_hv_off),
+    ('1ch_ddp_25fps_acmod_1.mp4', content_type_1_ddp, dap_status_on, dap_profile_custom,
      dap_feature_type_hv, dap_feature_value_hv_off),
     ('2ch_ddp_25fps_ref_level.mp4', content_type_2_ddp, dap_status_on, dap_profile_custom,
      dap_feature_type_hv, dap_feature_value_hv_off),
@@ -133,9 +143,13 @@ up_mix_and_vsv_on_test_data = [
      dap_feature_type_vsv, dap_feature_value_vsv_off),
     ('7ch_25fps.wav', content_type_71_channel_non_dolby, dap_status_on, dap_profile_custom,
      dap_feature_type_vsv, dap_feature_value_vsv_off),
+    ('1ch_dd_25fps_acmod_1.mp4', content_type_1_dd, dap_status_on, dap_profile_custom,
+     dap_feature_type_vsv, dap_feature_value_vsv_off),
     ('2ch_dd_25fps_channel_id.mp4', content_type_2_dd, dap_status_on, dap_profile_custom,
      dap_feature_type_vsv, dap_feature_value_vsv_off),
     ('Pearl_Harbour_French_5.1_dd_448Kbps.mp4', content_type_51_dd, dap_status_on, dap_profile_custom,
+     dap_feature_type_vsv, dap_feature_value_vsv_off),
+    ('1ch_ddp_25fps_acmod_1.mp4', content_type_1_ddp, dap_status_on, dap_profile_custom,
      dap_feature_type_vsv, dap_feature_value_vsv_off),
     ('2ch_ddp_25fps_ref_level.mp4', content_type_2_ddp, dap_status_on, dap_profile_custom,
      dap_feature_type_vsv, dap_feature_value_vsv_off),
@@ -158,9 +172,13 @@ up_mix_and_hv_on_test_data = [
      dap_feature_type_hv, dap_feature_value_hv_on),
     ('7ch_25fps.wav', content_type_71_channel_non_dolby, dap_status_on, dap_profile_custom,
      dap_feature_type_hv, dap_feature_value_hv_on),
+    ('1ch_dd_25fps_acmod_1.mp4', content_type_1_dd, dap_status_on, dap_profile_custom,
+     dap_feature_type_hv, dap_feature_value_hv_on),
     ('2ch_dd_25fps_channel_id.mp4', content_type_2_dd, dap_status_on, dap_profile_custom,
      dap_feature_type_hv, dap_feature_value_hv_on),
     ('Pearl_Harbour_French_5.1_dd_448Kbps.mp4', content_type_51_dd, dap_status_on, dap_profile_custom,
+     dap_feature_type_hv, dap_feature_value_hv_on),
+    ('1ch_ddp_25fps_acmod_1.mp4', content_type_1_ddp, dap_status_on, dap_profile_custom,
      dap_feature_type_hv, dap_feature_value_hv_on),
     ('2ch_ddp_25fps_ref_level.mp4', content_type_2_ddp, dap_status_on, dap_profile_custom,
      dap_feature_type_hv, dap_feature_value_hv_on),

@@ -102,8 +102,8 @@ def test_log_mi_on_multi_channel_verify(content_name, content_type, dap_status, 
 
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
                          mi_on_non_dolby_test_data)
-def test_log_mi_on_non_dolby_content(content_name, content_type,
-                                     dap_status, dap_profile, dap_feature_type, dap_feature_value):
+def test_log_mi_on_non_dolby_content_verify(content_name, content_type,
+                                            dap_status, dap_profile, dap_feature_type, dap_feature_value):
     """
     Test Case ID    :   TC-56
 
@@ -114,15 +114,15 @@ def test_log_mi_on_non_dolby_content(content_name, content_type,
     Test Check Point:   for non dolby content , msce, mdee, miee, mdle, mave values are equal to 1
                         meanwhile volume level can be turn off ig dvle = 0 in global process
     """
-    caller_name = test_log_mi_on_non_dolby_content.__name__
+    caller_name = test_log_mi_on_non_dolby_content_verify.__name__
     mi_on_dolby_content_test_procedure(caller_name, endpoint_type_in_module,
                                        content_name, content_type, dap_status, dap_profile)
 
 
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
                          up_mix_and_vsv_off_test_data)
-def test_log_up_mix_sv_off(content_name, content_type,
-                           dap_status, dap_profile, dap_feature_type, dap_feature_value):
+def test_log_up_mix_sv_off_verify(content_name, content_type,
+                                  dap_status, dap_profile, dap_feature_type, dap_feature_value):
     """
     Test Case ID    :   TC-2627, 2628, 2629, 2630, 2631, 2632, 2633
 
@@ -132,7 +132,7 @@ def test_log_up_mix_sv_off(content_name, content_type,
 
     Test Check Point:   dom : 0
     """
-    caller_name = test_log_up_mix_sv_off.__name__
+    caller_name = test_log_up_mix_sv_off_verify.__name__
     up_mix_and_sv_off_test_procedure(caller_name, endpoint_type_in_module, content_name, content_type)
     dom = {'dom': '0'}
     dap_output_mode = '1'
@@ -143,8 +143,8 @@ def test_log_up_mix_sv_off(content_name, content_type,
 
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
                          up_mix_and_vsv_on_test_data)
-def test_log_up_mix_sv_on(content_name, content_type,
-                           dap_status, dap_profile, dap_feature_type, dap_feature_value):
+def test_log_up_mix_sv_on_verify(content_name, content_type,
+                                 dap_status, dap_profile, dap_feature_type, dap_feature_value):
     """
     Test Case ID    :   TC-2627, 2628, 2629, 2630, 2631, 2632, 2633
 
@@ -158,7 +158,7 @@ def test_log_up_mix_sv_on(content_name, content_type,
                               [1,16384,0,0,16384,11583,11583,8192,8192,16384,0,0,16384,16384,0,0,16384]
                                    for stereo speaker
     """
-    caller_name = test_log_up_mix_sv_on.__name__
+    caller_name = test_log_up_mix_sv_on_verify.__name__
     up_mix_and_sv_on_test_procedure(caller_name, endpoint_type_in_module, content_name, content_type)
     dom = {'dom': '0'}
     dap_output_mode = '1'

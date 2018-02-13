@@ -84,7 +84,12 @@ public class MainActivity extends AppCompatActivity {
                             mDAP.release();
                             mDAP=null;
                         }
-                        mDAP = new DolbyAudioEffect(5, mSession);
+                        if (mTrack != null){
+                            mTrack.release();
+                            mTrack = null;
+                        }
+//                        mDAP = new DolbyAudioEffect(5, mSession);
+                        mDAP = new DolbyAudioEffect(5, 0);
                         break;
                     case Constants.MSG_STOP_PLAYBACK:
                         stopPlayback();
@@ -131,7 +136,16 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case Constants.MSG_CHANGE_DAP_FEATURE_DAP_PROFILE_VSV:
                         show_dap_feature_type_tv.setText(String.format(Locale.getDefault(), "change speaker virtualizer : %b", msg.arg1 != 0));
-                        mDAP.setDolbyVirtualSpeakerVirtualizerEnabled(msg.arg1 != 0);
+                        if (!mDAP.isMonoSpeaker()){
+                            mDAP.setDolbyVirtualSpeakerVirtualizerEnabled(msg.arg1 != 0);
+                        }else{
+                            try{
+                                mDAP.setDolbyVirtualSpeakerVirtualizerEnabled(msg.arg1 != 0);
+                            }catch (UnsupportedOperationException e){
+                                e.printStackTrace();
+                                Log.d(TAG,"virtual speaker virtualizer can not be operate for mono speaker endpoint!");
+                            }
+                        }
                         break;
                     case Constants.MSG_CHANGE_DAP_FEATURE_DAP_UNIVERSAL_VL:
                         show_dap_feature_type_tv.setText(String.format(Locale.getDefault(), "change vl : %b", msg.arg1 != 0));
@@ -423,7 +437,8 @@ public class MainActivity extends AppCompatActivity {
             if (mTrack == null) {
                 throw new AssertionError("create dummy audio track failed!");
             }
-            mDAP=new DolbyAudioEffect(0,mTrack.getAudioSessionId());
+//            mDAP=new DolbyAudioEffect(0,mTrack.getAudioSessionId());
+            mDAP=new DolbyAudioEffect(1,0);
         }
     }
 

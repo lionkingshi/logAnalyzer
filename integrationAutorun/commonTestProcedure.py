@@ -81,7 +81,7 @@ def mi_off_test_procedure(caller_name, endpoint_id, content_name, content_type, 
     __comparison_result(content_type, mi_off_expected_result)
 
 
-def mi_on_dolby_content_test_procedure(caller_name, endpoint_id, content_name, content_type, dap_status, dap_profile):
+def mi_on_test_procedure(caller_name, endpoint_id, content_name, content_type, dap_status, dap_profile):
     # step 1 :register logger name to record all command to logger file except session setup() function
     register_logger_name(endpoint_id)
 
@@ -104,25 +104,13 @@ def mi_on_dolby_content_test_procedure(caller_name, endpoint_id, content_name, c
     #                     -->check no double processing for dolby content
     #                     -->check no qmf processing for non dolby content
     #                            --> check specified dap feature value is correct
-    __assert_no_double_processing_by_content_type(content_type)
-
-    if content_type in content_type_2_channel_dolby:
-        __comparison_result(content_type, mi_on_2_channel_expected_result)
-    elif content_type in content_type_dolby:
-        __comparison_result(content_type, mi_on_multi_channel_expected_result)
-    else:
-        __comparison_result(content_type, mi_on_non_dolby_content_expected_result)
-
-    if content_type in content_type_dolby:
-        vl_actual_value = get_feature_value_from_qmf_process("dvle")
-        assert '1' == vl_actual_value, "Volume leveler change to turn off for dolby content !"
-
-    # step 5 : even through changing volume level , values should always be true
+    # step 5 : even through changing volume level to off for dolby content , values should always be true
     # to make qmf output level from line-mode -31db to portable mode -14db
+    assert_mi_related_feature_result(content_type, True, dap_feature_value_vl_on)
+
     execute(adb_broadcast_intent +
             intent_change_dap_high_level_feature.format(dap_feature_type_vl, dap_feature_value_vl_off))
 
-    # step 6 : capture adb log to a file
     # step 6 : capture adb log to a file and parse dap parameter from log
     __generate_and_parse_log_file(caller_name, endpoint_id, 'new_' + content_name)
 
@@ -131,21 +119,49 @@ def mi_on_dolby_content_test_procedure(caller_name, endpoint_id, content_name, c
     #                     -->check no double processing for dolby content
     #                     -->check no qmf processing for non dolby content
     #                            --> check specified dap feature value is correct
-    __assert_no_double_processing_by_content_type(content_type)
+    assert_mi_related_feature_result(content_type, True, dap_feature_value_vl_off)
 
-    if content_type in content_type_2_channel_dolby:
-        __comparison_result(content_type, mi_on_2_channel_expected_result)
-    elif content_type in content_type_dolby:
-        __comparison_result(content_type, mi_on_multi_channel_expected_result)
+    # step 8 : turn off dap and verify mi feature is expected (off)
+    execute(adb_broadcast_intent + intent_change_dap_status + dap_status_off)
+    # capture adb log to a file and parse dap parameter from log
+    __generate_and_parse_log_file(caller_name, endpoint_id, 'dap_off_' + content_name)
+    assert_mi_related_feature_result(content_type, False, dap_feature_value_vl_off)
+
+    # step 9 : turn on dap and verify mi feature is expected (on)
+    execute(adb_broadcast_intent + intent_change_dap_status + dap_status_on)
+    # capture adb log to a file and parse dap parameter from log
+    __generate_and_parse_log_file(caller_name, endpoint_id, 'dap_on_' + content_name)
+    assert_mi_related_feature_result(content_type, True, dap_feature_value_vl_on)
+
+
+def assert_mi_related_feature_result(_content_type, _mi_expected_value, _vl_expected_value):
+    # verify no dap double processing
+    __assert_no_double_processing_by_content_type(_content_type)
+
+    # verify mi related value is expected
+    if _mi_expected_value:
+        if _content_type in content_type_2_channel_dolby:
+            __comparison_result(_content_type, mi_on_2_channel_expected_result)
+        elif _content_type in content_type_dolby:
+            __comparison_result(_content_type, mi_on_multi_channel_expected_result)
+        else:
+            __comparison_result(_content_type, mi_on_non_dolby_content_expected_result)
     else:
-        __comparison_result(content_type, mi_on_non_dolby_content_expected_result)
+        __comparison_result(_content_type, mi_off_expected_result)
 
-    if content_type in content_type_dolby:
+    # verify volume level will always turn on for dolby content
+    assert_vl_related_feature_result(_content_type, _vl_expected_value)
+
+
+def assert_vl_related_feature_result(_content_type, _vl_expected_value):
+    if _content_type in content_type_dolby:
         vl_actual_value = get_feature_value_from_qmf_process("dvle")
-        assert '1' == vl_actual_value, "Volume leveler change to turn off for dolby content !"
+        assert '1' == vl_actual_value, \
+            "!!!!!error: Volume leveler turned off unexpectedly when playing dolby content!"
     else:
         vl_actual_value = get_feature_value_from_global_process("dvle")
-        assert '0' == vl_actual_value, "Volume leveler should off but on for non dolby content !"
+        assert _vl_expected_value == vl_actual_value, \
+            "!!!!! error: Volume leveler should off but on when playing non dolby content!"
 
 
 def up_mix_and_sv_off_test_procedure(caller_name, endpoint_id, content_name, content_type):

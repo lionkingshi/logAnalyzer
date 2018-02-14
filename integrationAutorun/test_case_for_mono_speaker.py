@@ -65,7 +65,7 @@ def test_log_mi_off_verify(content_name, content_type, dap_status, dap_profile, 
                          mi_on_2_channel_dolby_test_data)
 def test_log_mi_on_2ch_verify(content_name, content_type, dap_status, dap_profile, dap_feature_type, dap_feature_value):
     """
-    Test Case ID    :   TC-54
+    Test Case ID    :   TC-57
 
     Test Condition  :   make sure device endpoint is mono speaker
 
@@ -75,8 +75,8 @@ def test_log_mi_on_2ch_verify(content_name, content_type, dap_status, dap_profil
                         meanwhile volume level can't be turn off ig dvle = 1 in qmf process
     """
     caller_name = test_log_mi_on_2ch_verify.__name__
-    mi_on_dolby_content_test_procedure(caller_name, endpoint_type_in_module,
-                                       content_name, content_type, dap_status, dap_profile)
+    mi_on_test_procedure(caller_name, endpoint_type_in_module,
+                         content_name, content_type, dap_status, dap_profile)
 
 
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
@@ -84,7 +84,7 @@ def test_log_mi_on_2ch_verify(content_name, content_type, dap_status, dap_profil
 def test_log_mi_on_multi_channel_verify(content_name, content_type, dap_status, dap_profile, dap_feature_type,
                                         dap_feature_value):
     """
-    Test Case ID    :   TC-55
+    Test Case ID    :   TC-58
 
     Test Condition  :   make sure device endpoint is mono speaker
 
@@ -96,8 +96,8 @@ def test_log_mi_on_multi_channel_verify(content_name, content_type, dap_status, 
                         meanwhile volume level can't be turn off ig dvle = 1 in qmf process
     """
     caller_name = test_log_mi_on_multi_channel_verify.__name__
-    mi_on_dolby_content_test_procedure(caller_name, endpoint_type_in_module,
-                                       content_name, content_type, dap_status, dap_profile)
+    mi_on_test_procedure(caller_name, endpoint_type_in_module,
+                         content_name, content_type, dap_status, dap_profile)
 
 
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
@@ -105,7 +105,7 @@ def test_log_mi_on_multi_channel_verify(content_name, content_type, dap_status, 
 def test_log_mi_on_non_dolby_content_verify(content_name, content_type,
                                             dap_status, dap_profile, dap_feature_type, dap_feature_value):
     """
-    Test Case ID    :   TC-56
+    Test Case ID    :   TC-59
 
     Test Condition  :   make sure device endpoint is mono speaker
 
@@ -115,8 +115,8 @@ def test_log_mi_on_non_dolby_content_verify(content_name, content_type,
                         meanwhile volume level can be turn off ig dvle = 0 in global process
     """
     caller_name = test_log_mi_on_non_dolby_content_verify.__name__
-    mi_on_dolby_content_test_procedure(caller_name, endpoint_type_in_module,
-                                       content_name, content_type, dap_status, dap_profile)
+    mi_on_test_procedure(caller_name, endpoint_type_in_module,
+                         content_name, content_type, dap_status, dap_profile)
 
 
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',

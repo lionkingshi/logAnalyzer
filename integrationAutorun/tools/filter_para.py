@@ -237,7 +237,8 @@ class LogComparison:
                                        input_file_name, input_file_name + ".key")
         self.__write_global_parameter_to_file(effect_para_output_file_name)
         self.__write_qmf_parameter_to_file(a_renderer_para_file_name)
-        self.__write_dap_cp_dp_params_to_file(effect_para_output_file_name, dap_cp_dp_file_name)
+        if not verify_all_dap_parameters_equals_to_non_exist:
+            self.__write_dap_cp_dp_params_to_file(effect_para_output_file_name, dap_cp_dp_file_name)
 
     # get value though four cc name from global dap effect parameters
     def get_parameter_value_in_global_process(self, effect_fourcc_name):
@@ -274,7 +275,7 @@ class LogComparison:
         return result
 
     # get dap force down mix value
-    def get_dap_joc_force_down_mix_mode_value_in_ddp_joc_decoder(self):
+    def get_decoder_joc_force_down_mix_mode_value_in_ddp_joc_decoder(self):
         result = None
         key = SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_JOC_FORCE_DOWN_MIX_INDEX]
         value = LogComparison.SPECIFIED_FEATURE_PARAS_DICT[key]
@@ -382,6 +383,17 @@ class LogComparison:
         return result
 
 
+def verify_all_dap_parameters_equals_to_non_exist():
+    result = False
+    for key in PARA_LIST_IN_GLOBAL_PROCESS:
+        if LogComparison.EFFECT_PARAS_DICT[key] != 'non-exist':
+            result = True
+    for key_other in PARA_LIST_IN_QMF_PROCESS:
+        if LogComparison.A_RENDERER_PARAS_DICT[key_other] != 'non-exist':
+            result = True
+    return result
+
+
 # filter by key word from log file
 def filter_audio_key_word_from_log(key_word_list, input_file_name, output_file_name):
     # Read data from log file
@@ -459,7 +471,7 @@ def main(argvs):
         em1.get_parameter_value_in_qmf_process('aron')
         em1.get_parameter_value_in_global_process('dea')
         em1.get_parameter_value_in_qmf_process('dea')
-        force_down_mix_value = em1.get_dap_joc_force_down_mix_mode_value_in_ddp_joc_decoder()
+        force_down_mix_value = em1.get_decoder_joc_force_down_mix_mode_value_in_ddp_joc_decoder()
         if force_down_mix_value is not None:
             print "force down value : %s" % force_down_mix_value
         dap_output_mode_set = em1.get_dap_output_mode_set_value_in_global_process()

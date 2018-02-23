@@ -27,6 +27,9 @@ def test_log_bass_on_verify(content_name, content_type, dap_status, dap_profile,
     caller_name = test_log_bass_on_verify.__name__
     be_test_procedure(caller_name, endpoint_type_in_module, content_name, content_type, dap_feature_value)
 
+    be_and_vb_expected_dictionary = {'beon': '1', 'vbon': '1'}
+    assert_dap_be_related_feature_result(content_type, be_and_vb_expected_dictionary)
+
 
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
                          be_off_test_data)
@@ -44,6 +47,9 @@ def test_log_bass_off_verify(content_name, content_type, dap_status, dap_profile
     caller_name = test_log_bass_off_verify.__name__
     be_test_procedure(caller_name, endpoint_type_in_module, content_name, content_type, dap_feature_value)
 
+    be_and_vb_expected_dictionary = {'beon': '0', 'vbon': '0'}
+    assert_dap_be_related_feature_result(content_type, be_and_vb_expected_dictionary)
+
 
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
                          mi_off_test_data)
@@ -60,12 +66,25 @@ def test_log_mi_off_verify(content_name, content_type, dap_status, dap_profile, 
     caller_name = test_log_mi_off_verify.__name__
     mi_off_test_procedure(caller_name, endpoint_type_in_module, content_name, content_type, dap_status, dap_profile)
 
+    mi_off_expected_dictionary = {'msce': '0', 'mdee': '0', 'miee': '0', 'mdle': '0', 'mave': '0'}
+    ref_lvl_expected_dictionary = {'dvle': '1', 'dvla': '5', 'dvli': '-496', 'dvlo': '-176', 'vmb': '144'}
+    if dap_profile in (dap_profile_dynamic, dap_profile_movie) :
+        ref_lvl_expected_dictionary['dvla'] = '7'
+    elif dap_profile in (dap_profile_game, dap_profile_music):
+        ref_lvl_expected_dictionary['dvla'] = '0'
+    elif dap_profile == dap_profile_music:
+        ref_lvl_expected_dictionary['dvla'] = '4'
+    elif dap_profile == dap_profile_custom:
+        ref_lvl_expected_dictionary['dvla'] = '5'
+
+    assert_dap_mi_and_vl_related_feature_result(content_type, mi_off_expected_dictionary, ref_lvl_expected_dictionary)
+
 
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
                          mi_on_2_channel_dolby_test_data)
 def test_log_mi_on_2ch_verify(content_name, content_type, dap_status, dap_profile, dap_feature_type, dap_feature_value):
     """
-    Test Case ID    :   TC-54
+    Test Case ID    :   TC-54, 68
 
     Test Condition  :   make sure device endpoint is stereo speaker
 
@@ -84,7 +103,7 @@ def test_log_mi_on_2ch_verify(content_name, content_type, dap_status, dap_profil
 def test_log_mi_on_multi_channel_verify(content_name, content_type, dap_status, dap_profile, dap_feature_type,
                                         dap_feature_value):
     """
-    Test Case ID    :   TC-55
+    Test Case ID    :   TC-55, 68
 
     Test Condition  :   make sure device endpoint is stereo speaker
 
@@ -105,7 +124,7 @@ def test_log_mi_on_multi_channel_verify(content_name, content_type, dap_status, 
 def test_log_mi_on_non_dolby_content_verify(content_name, content_type,
                                             dap_status, dap_profile, dap_feature_type, dap_feature_value):
     """
-    Test Case ID    :   TC-56
+    Test Case ID    :   TC-56, 68
 
     Test Condition  :   make sure device endpoint is stereo speaker
 
@@ -124,7 +143,7 @@ def test_log_mi_on_non_dolby_content_verify(content_name, content_type,
 def test_log_up_mix_sv_off_verify(content_name, content_type,
                                   dap_status, dap_profile, dap_feature_type, dap_feature_value):
     """
-    Test Case ID    :   TC-2627, 2628, 2629, 2630, 2631, 2632, 2633
+    Test Case ID    :   TC-2627, 2628, 2629, 2630, 2631, 2632, 2633 and 169, 170, 171, 172, 173
 
     Test Condition  :   make sure device endpoint is stereo speaker
 
@@ -147,7 +166,7 @@ def test_log_up_mix_sv_off_verify(content_name, content_type,
 def test_log_up_mix_sv_on_verify(content_name, content_type,
                                  dap_status, dap_profile, dap_feature_type, dap_feature_value):
     """
-    Test Case ID    :   TC-2627, 2628, 2629, 2630, 2631, 2632, 2633
+    Test Case ID    :   TC-2627, 2628, 2629, 2630, 2631, 2632, 2633 and 169, 170, 171, 172, 173
 
     Test Condition  :   make sure device endpoint is stereo speaker
 
@@ -169,3 +188,82 @@ def test_log_up_mix_sv_on_verify(content_name, content_type,
     dap_mix_matrix = 'custom'
     ddp_down_mix = '0'
     assert_up_mix_related_feature_result(content_type, dap_output_mode, dap_mix_matrix, dom, ddp_down_mix)
+
+
+@pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
+                         dap_off_test_data)
+def test_log_on_log_print_when_dap_off_verify(content_name, content_type,
+                                 dap_status, dap_profile, dap_feature_type, dap_feature_value):
+    """
+    Test Case ID    :   TC-169, 170, 171, 172, 173
+
+    Test Condition  :   make sure device endpoint is stereo speaker
+
+    Test Description:   no log print when dap off
+
+    Test Check Point:   no dap parameter relating log print in stand output
+    """
+    caller_name = test_log_on_log_print_when_dap_off_verify.__name__
+    no_log_print_when_dap_off_test_procedure(caller_name, endpoint_type_in_module, content_name, content_type)
+
+
+@pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
+                         decoder_joc_force_down_mix_test_data)
+def test_log_decoder_joc_force_down_mix_verify(content_name, content_type,
+                                 dap_status, dap_profile, dap_feature_type, dap_feature_value):
+    """
+    Test Case ID    :   TC-4021
+
+    Test Condition  :   make sure device endpoint is stereo speaker
+
+    Test Description:   always decode object for headphone, usb, stereo speaker endpoint
+
+    Test Check Point:   in udc decoder , its value should be 0 for stereo speaker
+    """
+    caller_name = test_log_decoder_joc_force_down_mix_verify.__name__
+    up_mix_and_sv_on_test_procedure(caller_name, endpoint_type_in_module, content_name, content_type)
+
+    decoder_down_mix = '1'
+    assert_decoding_joc_down_mix_related_feature_result(content_type, decoder_down_mix)
+
+
+@pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
+                         reference_level_test_data)
+def test_log_reference_level_when_dap_off_verify(content_name, content_type,
+                                                 dap_status, dap_profile, dap_feature_type, dap_feature_value):
+    caller_name = test_log_reference_level_when_dap_off_verify.__name__
+    reference_level_when_dap_off_test_procedure(caller_name, endpoint_type_in_module, content_name, content_type)
+
+    ref_lvl_expected_dictionary = {'dvle': '1', 'dvla': '5', 'dvli': '-496', 'dvlo': '-224', 'vmb': '144'}
+    if dap_profile in (dap_profile_dynamic, dap_profile_movie):
+        ref_lvl_expected_dictionary['dvla'] = '7'
+    elif dap_profile in (dap_profile_game, dap_profile_music):
+        ref_lvl_expected_dictionary['dvla'] = '0'
+    elif dap_profile == dap_profile_music:
+        ref_lvl_expected_dictionary['dvla'] = '4'
+    elif dap_profile == dap_profile_custom:
+        ref_lvl_expected_dictionary['dvla'] = '5'
+
+    assert_dap_reference_level_related_feature_result(content_type, ref_lvl_expected_dictionary)
+
+
+@pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
+                         reference_level_test_data)
+def test_log_reference_level_when_dap_on_verify(content_name, content_type,
+                                                dap_status, dap_profile, dap_feature_type, dap_feature_value):
+    caller_name = test_log_reference_level_when_dap_on_verify.__name__
+    reference_level_when_dap_on_test_procedure(caller_name, endpoint_type_in_module, content_name, content_type)
+
+    # for diff profile , the dvla value is diff
+    # here dvla = 5 when custom profile is selected
+    ref_lvl_expected_dictionary = {'dvle': '1', 'dvla': '5', 'dvli': '-496', 'dvlo': '-176', 'vmb': '144'}
+    if dap_profile in (dap_profile_dynamic, dap_profile_movie):
+        ref_lvl_expected_dictionary['dvla'] = '7'
+    elif dap_profile in (dap_profile_game, dap_profile_music):
+        ref_lvl_expected_dictionary['dvla'] = '0'
+    elif dap_profile == dap_profile_music:
+        ref_lvl_expected_dictionary['dvla'] = '4'
+    elif dap_profile == dap_profile_custom:
+        ref_lvl_expected_dictionary['dvla'] = '5'
+
+    assert_dap_reference_level_related_feature_result(content_type, ref_lvl_expected_dictionary)

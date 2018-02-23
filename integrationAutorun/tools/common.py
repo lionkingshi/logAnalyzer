@@ -49,7 +49,7 @@ def feature_test_procedure(content_name, dap_status, dap_profile=None, dap_featu
         execute(adb_broadcast_intent + intent_change_dap_status + dap_status)
         # time.sleep(1)
         # select a dap profile
-        execute(adb_broadcast_intent + intent_change_dap_profile + dap_profile_music)
+        # execute(adb_broadcast_intent + intent_change_dap_profile + dap_profile_music)
 
 
 # capture the adb log cat stand output to a specified file
@@ -90,6 +90,10 @@ def parse_dap_feature_value_from_log_file(log_file_name):
                                                dap_cp_dp_param_output_file_abs_path)
 
 
+def get_result_no_log_exist_when_dap_off():
+    return verify_all_dap_parameters_equals_to_non_exist()
+
+
 # check no double processing for dolby content and no qmf processing for non dolby content
 def verify_no_double_processing_dap_parameter(content_type):
     no_double_process_result = False
@@ -114,8 +118,8 @@ def get_feature_value_from_qmf_process(effect_fourcc_name):
 
 
 #
-def get_dap_joc_force_down_mix_mode_value():
-    return log_analysis_instance.get_dap_joc_force_down_mix_mode_value_in_ddp_joc_decoder()
+def get_decoder_joc_force_down_mix_mode_value():
+    return log_analysis_instance.get_decoder_joc_force_down_mix_mode_value_in_ddp_joc_decoder()
 
 
 #

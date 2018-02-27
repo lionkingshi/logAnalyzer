@@ -101,6 +101,8 @@ up_mix_and_vsv_off_test_data = [
      dap_feature_type_vsv, dap_feature_value_vsv_off),
     ('ChID_voices_51_384_ddp_joc.mp4', content_type_51_ddp_joc, dap_status_on, dap_profile_custom,
      dap_feature_type_vsv, dap_feature_value_vsv_off),
+    ('Leaf_5P1JOC.mp4', content_type_51_ddp_joc, dap_status_on, dap_profile_custom,
+     dap_feature_type_vsv, dap_feature_value_vsv_off),
     ('ChID_voices_71_640_ddp_joc.mp4', content_type_71_ddp_joc, dap_status_on, dap_profile_custom,
      dap_feature_type_vsv, dap_feature_value_vsv_off)
 ]
@@ -129,6 +131,8 @@ up_mix_and_hv_off_test_data = [
     ('7ch_ddp_25fps_diff_music_01.mp4', content_type_71_ddp, dap_status_on, dap_profile_custom,
      dap_feature_type_hv, dap_feature_value_hv_off),
     ('ChID_voices_51_384_ddp_joc.mp4', content_type_51_ddp_joc, dap_status_on, dap_profile_custom,
+     dap_feature_type_hv, dap_feature_value_hv_off),
+    ('Leaf_5P1JOC.mp4', content_type_51_ddp_joc, dap_status_on, dap_profile_custom,
      dap_feature_type_hv, dap_feature_value_hv_off),
     ('ChID_voices_71_640_ddp_joc.mp4', content_type_71_ddp_joc, dap_status_on, dap_profile_custom,
      dap_feature_type_hv, dap_feature_value_hv_off)
@@ -159,6 +163,8 @@ up_mix_and_vsv_on_test_data = [
      dap_feature_type_vsv, dap_feature_value_vsv_off),
     ('ChID_voices_51_384_ddp_joc.mp4', content_type_51_ddp_joc, dap_status_on, dap_profile_custom,
      dap_feature_type_vsv, dap_feature_value_vsv_off),
+    ('Leaf_5P1JOC.mp4', content_type_51_ddp_joc, dap_status_on, dap_profile_custom,
+     dap_feature_type_vsv, dap_feature_value_vsv_off),
     ('ChID_voices_71_640_ddp_joc.mp4', content_type_71_ddp_joc, dap_status_on, dap_profile_custom,
      dap_feature_type_vsv, dap_feature_value_vsv_off)
 ]
@@ -187,6 +193,8 @@ up_mix_and_hv_on_test_data = [
     ('7ch_ddp_25fps_diff_music_01.mp4', content_type_71_ddp, dap_status_on, dap_profile_custom,
      dap_feature_type_hv, dap_feature_value_hv_on),
     ('ChID_voices_51_384_ddp_joc.mp4', content_type_51_ddp_joc, dap_status_on, dap_profile_custom,
+     dap_feature_type_hv, dap_feature_value_hv_on),
+    ('Leaf_5P1JOC.mp4', content_type_51_ddp_joc, dap_status_on, dap_profile_custom,
      dap_feature_type_hv, dap_feature_value_hv_on),
     ('ChID_voices_71_640_ddp_joc.mp4', content_type_71_ddp_joc, dap_status_on, dap_profile_custom,
      dap_feature_type_hv, dap_feature_value_hv_on)

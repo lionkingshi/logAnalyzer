@@ -50,6 +50,7 @@ be_off_expected_value = {'beon': '0', 'vbon': '0'}
 # ************************************************************************************
 # ************************************************************************************
 mi_on_2_channel_dolby_test_data = [
+    ('1ch_ddp_25fps_acmod_1.mp4', content_type_1_ddp, dap_status_on, dap_profile_dynamic, None, None),
     ('stereo_dd_25fps_channel_id.m4a', content_type_2_dd, dap_status_on, dap_profile_dynamic, None, None)
 ]
 mi_on_2_channel_expected_result = {'msce': '1', 'mdee': '1', 'miee': '1', 'mdle': '1', 'mave': '1'}

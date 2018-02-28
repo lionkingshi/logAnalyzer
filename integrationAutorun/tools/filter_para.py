@@ -237,7 +237,7 @@ class LogComparison:
                                        input_file_name, input_file_name + ".key")
         self.__write_global_parameter_to_file(effect_para_output_file_name)
         self.__write_qmf_parameter_to_file(a_renderer_para_file_name)
-        if not verify_all_dap_parameters_equals_to_non_exist:
+        if not verify_dap_global_parameters_equals_to_non_exist():
             self.__write_dap_cp_dp_params_to_file(effect_para_output_file_name, dap_cp_dp_file_name)
 
     # get value though four cc name from global dap effect parameters
@@ -384,13 +384,34 @@ class LogComparison:
 
 
 def verify_all_dap_parameters_equals_to_non_exist():
-    result = False
+    result = True
+    if not verify_dap_global_parameters_equals_to_non_exist():
+        result = False
+
+    if not verify_dap_decoder_parameters_equals_to_non_exist():
+        result = False
+    # for key in PARA_LIST_IN_GLOBAL_PROCESS:
+    #     if LogComparison.EFFECT_PARAS_DICT[key] != 'non-exist':
+    #         result = True
+    # for key_other in PARA_LIST_IN_QMF_PROCESS:
+    #     if LogComparison.A_RENDERER_PARAS_DICT[key_other] != 'non-exist':
+    #         result = True
+    return result
+
+
+def verify_dap_global_parameters_equals_to_non_exist():
+    result = True
     for key in PARA_LIST_IN_GLOBAL_PROCESS:
         if LogComparison.EFFECT_PARAS_DICT[key] != 'non-exist':
-            result = True
+            result = False
+    return result
+
+
+def verify_dap_decoder_parameters_equals_to_non_exist():
+    result = True
     for key_other in PARA_LIST_IN_QMF_PROCESS:
         if LogComparison.A_RENDERER_PARAS_DICT[key_other] != 'non-exist':
-            result = True
+            result = False
     return result
 
 

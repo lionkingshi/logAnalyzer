@@ -67,7 +67,7 @@ DAP1_2_DAP2 = {
     'gebs'     :   'graphic-equalizer-bands',
     'iebs'     :   'ieq-bands',
     'aobs'     :   'audio-optimizer-bands',
-    'arbs'     :   'regulator-tuning',
+    'arbs'     :   'regulator-tuning'
 }
 
 

@@ -29,6 +29,7 @@ PARA_LIST_IN_GLOBAL_PROCESS = ('dea', 'iea', 'dsa', 'beb', 'plb', 'vmb', 'dsb', 
 # define the process name as first filter key word in log file
 QMF_PROCESS_NAME = 'DlbDap2QmfProcess'
 GLOBAL_PROCESS_NAME = 'DlbDap2Process'
+
 # define key words in audio chain for dolby content
 KEY_WORDS_IN_AUDIO_CHAIN_FOR_DOLBY_CONTENT = [
     'featureTest', 'AudioTrack', 'AudioFlinger', 'OMXMaster',

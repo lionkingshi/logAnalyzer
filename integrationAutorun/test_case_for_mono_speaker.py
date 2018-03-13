@@ -28,7 +28,7 @@ def test_log_bass_on_verify(content_name, content_type, dap_status, dap_profile,
     be_test_procedure(caller_name, endpoint_type_in_module, content_name, content_type, dap_feature_value)
 
     be_and_vb_expected_dictionary = {'beon': '1', 'vbon': '1'}
-    assert_dap_be_related_feature_result(content_type, be_and_vb_expected_dictionary)
+    assert_dap_be_related_feature_result(endpoint_type_in_module, content_type, be_and_vb_expected_dictionary)
 
 
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
@@ -48,7 +48,7 @@ def test_log_bass_off_verify(content_name, content_type, dap_status, dap_profile
     be_test_procedure(caller_name, endpoint_type_in_module, content_name, content_type, dap_feature_value)
 
     be_and_vb_expected_dictionary = {'beon': '0', 'vbon': '0'}
-    assert_dap_be_related_feature_result(content_type, be_and_vb_expected_dictionary)
+    assert_dap_be_related_feature_result(endpoint_type_in_module, content_type, be_and_vb_expected_dictionary)
 
 
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
@@ -77,7 +77,8 @@ def test_log_mi_off_verify(content_name, content_type, dap_status, dap_profile, 
     elif dap_profile == dap_profile_custom:
         ref_lvl_expected_dictionary['dvla'] = '5'
 
-    assert_dap_mi_and_vl_related_feature_result(content_type, mi_off_expected_dictionary, ref_lvl_expected_dictionary)
+    assert_dap_mi_and_vl_related_feature_result(endpoint_type_in_module, content_type,
+                                                mi_off_expected_dictionary, ref_lvl_expected_dictionary)
 
 
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
@@ -158,7 +159,8 @@ def test_log_up_mix_sv_off_verify(content_name, content_type,
     dap_output_mode = '1'
     dap_mix_matrix = 'null'
     ddp_down_mix = '1'
-    assert_up_mix_related_feature_result(content_type, dap_output_mode, dap_mix_matrix, dom, ddp_down_mix)
+    assert_up_mix_related_feature_result(endpoint_type_in_module, content_type,
+                                         dap_output_mode, dap_mix_matrix, dom, ddp_down_mix)
 
 
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
@@ -184,7 +186,8 @@ def test_log_up_mix_sv_on_verify(content_name, content_type,
     dap_output_mode = '1'
     dap_mix_matrix = 'null'
     ddp_down_mix = '1'
-    assert_up_mix_related_feature_result(content_type, dap_output_mode, dap_mix_matrix, dom, ddp_down_mix)
+    assert_up_mix_related_feature_result(endpoint_type_in_module, content_type,
+                                         dap_output_mode, dap_mix_matrix, dom, ddp_down_mix)
 
 
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
@@ -221,7 +224,7 @@ def test_log_decoder_joc_force_down_mix_verify(content_name, content_type,
     up_mix_and_sv_on_test_procedure(caller_name, endpoint_type_in_module, content_name, content_type)
 
     decoder_down_mix = '1'
-    assert_decoding_joc_down_mix_related_feature_result(content_type, decoder_down_mix)
+    assert_decoding_joc_down_mix_related_feature_result(endpoint_type_in_module, content_type, decoder_down_mix)
 
 
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
@@ -241,7 +244,8 @@ def test_log_reference_level_when_dap_off_verify(content_name, content_type,
     elif dap_profile == dap_profile_custom:
         ref_lvl_expected_dictionary['dvla'] = '5'
 
-    assert_dap_reference_level_related_feature_result(content_type, ref_lvl_expected_dictionary)
+    assert_dap_reference_level_related_feature_result(endpoint_type_in_module, content_type,
+                                                      ref_lvl_expected_dictionary)
 
 
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
@@ -263,4 +267,5 @@ def test_log_reference_level_when_dap_on_verify(content_name, content_type,
     elif dap_profile == dap_profile_custom:
         ref_lvl_expected_dictionary['dvla'] = '5'
 
-    assert_dap_reference_level_related_feature_result(content_type, ref_lvl_expected_dictionary)
+    assert_dap_reference_level_related_feature_result(endpoint_type_in_module, content_type,
+                                                      ref_lvl_expected_dictionary)

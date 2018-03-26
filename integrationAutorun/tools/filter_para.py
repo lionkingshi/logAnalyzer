@@ -16,16 +16,18 @@ CONTENT_PROCESSING_PARAM_LIST = ('deon', 'dvle', 'ieon', 'dvme', 'dom', 'msce', 
 DEVICE_PROCESSING_PARAM_LIST = ('aoon', 'beon', 'vbon', 'vbm', 'bexe', 'geon', 'aron', 'arde', 'arra', 'arod', 'artp',
                                 'arbs')
 # define qmf process expected parameter list
+# for dax3 project , vol represents the system volume and exist in qmf and global process
 PARA_LIST_IN_QMF_PROCESS = ('dea', 'iea', 'dsa', 'beb', 'plb', 'vmb', 'dsb', 'ded', 'vol', 'dom', 'bew', 'dvla', 'dfsa',
                             'dhsa', 'dvmc', 'msce', 'mdee', 'miee', 'mdle', 'dvle', 'dvme', 'mave', 'vcbf', 'becf',
                             'vbmf', 'vbsf', 'preg', 'vbhg', 'vbog', 'vbsg', 'dvli', 'dhfm', 'deon', 'ieon', 'ngon',
-                            'dvlo', 'gebs', 'iebs', 'aobs')
+                            'dvlo', 'gebs', 'iebs', 'aobs', 'vol')
 # define global process expected parameter list
+# for dax3 project , added vol, ceon, ceqt to the tuple elements
 PARA_LIST_IN_GLOBAL_PROCESS = ('dea', 'iea', 'dsa', 'beb', 'plb', 'vmb', 'dsb', 'ded', 'vbm', 'dom', 'bew', 'dvla',
                                'arra', 'dfsa', 'dhsa', 'dvmc', 'arod', 'msce', 'arde', 'mdee', 'miee', 'mdle', 'dvle',
                                'dvme', 'mave', 'vcbf', 'becf', 'vbmf', 'vbsf', 'preg', 'vbhg', 'vbog', 'vbsg', 'dvli',
                                'dhfm', 'vbon', 'beon', 'deon', 'geon', 'ieon', 'ngon', 'aoon', 'aron', 'dvlo', 'artp',
-                               'pstg', 'gebs', 'iebs', 'aobs', 'arbs')
+                               'pstg', 'gebs', 'iebs', 'aobs', 'arbs', 'vol', 'ceon', 'ceqt')
 # define the process name as first filter key word in log file
 QMF_PROCESS_NAME = 'DlbDap2QmfProcess'
 GLOBAL_PROCESS_NAME = 'DlbDap2Process'
@@ -36,7 +38,7 @@ KEY_WORDS_IN_AUDIO_CHAIN_FOR_DOLBY_CONTENT = [
     'NuPlayer', 'ARenderer:', ' ACodec  :', 'MediaCodec:',
     'DlbDlbEffect', 'DlbDapCrossfadeProcess', 'DlbDapEndpointParamCache', 'DapController',
     'DMSService', 'DlbDap2Process', 'DlbDap2QmfProcess', 'DlbEffectContext',
-    'DDP_JOCDecoder', 'evo_parser', 'udc_user', 'ddpdec_client_joc',
+    'DDP_JOCDecoder', 'evo_parser', 'udc_user', 'ddpdec_client_joc'
 ]
 # define key words in audio chain for non dolby content
 KEY_WORDS_IN_AUDIO_CHAIN_FOR_NON_DOLBY_CONTENT = [
@@ -150,16 +152,32 @@ class LogComparison:
 
             # start to parse the log using four cc key word defined before
             self.logger.info('>>>>> start to filter dap parameter in global and qmf process ')
+            ceqt_combined_list = ''
             for line in lines:
                 line = line.strip('\n')
                 self.__search_dap_specified_feature_by_file(line)
                 line = line.replace(' ', '')  # remove empty char
+                # add code to handle specified ceqt filer law in dax3 project
+                if GLOBAL_PROCESS_NAME in line:
+                    if 'ceqt' in line:
+                        if 'setParam(ceqt' in line:
+                            ceqt_combined_list = line
+                        elif 'ceqtcontinue' in line:
+                            ceqt_combined_list += line.split(':')[-1]
+                        else:
+                            ceqt_combined_list = ''
+                            self.logger.debug("ceqt format is not expected ! error in filter !")
                 if line != "":
                     self.__search_dap_para_line_by_line(GLOBAL_PROCESS_NAME, line)
                     self.__search_dap_para_line_by_line(QMF_PROCESS_NAME, line)
                 else:
                     # self.logger.debug("read empty line in log !")
                     pass
+            # add code to handle specified ceqt filer law in dax3 project
+            if ceqt_combined_list != "":
+                # self.logger.info("++++++"+ceqt_combined_list)
+                new_ceqt_combined_string = ceqt_combined_list.replace(',])', '])')
+                self.__search_dap_para_line_by_line(GLOBAL_PROCESS_NAME, new_ceqt_combined_string)
 
         self.logger.info(">>>>> End to filter dap parameters ")
 
@@ -323,11 +341,38 @@ class LogComparison:
             pass
         return result
 
+    # get dap output mode mix matrix in qmf process
+    def get_mix_matrix_in_qmf_process(self):
+        result = None
+        key = SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_OUT_PUT_MODE_FOR_DOLBY_CONTENT_INDEX]
+        value = LogComparison.SPECIFIED_FEATURE_PARAS_DICT[key]
+        if value != 'non-exist':
+            value = value.strip('\n')
+            result = value.split(" ")[-3]
+            self.logger.info(".................. %s mix matrix (QMF)" % result)
+            pass
+        return result
+
+    # get dap output mode mix matrix in global process
+    def get_mix_matrix_in_global_process(self):
+        result = None
+        key = SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_OUT_PUT_MODE_FOR_NON_DOLBY_CONTENT_INDEX]
+        value = LogComparison.SPECIFIED_FEATURE_PARAS_DICT[key]
+        if value != 'non-exist':
+            value = value.strip('\n')
+            result = value.split(" ")[-3]
+            self.logger.info(".................. %s mix matrix" % result)
+            pass
+        return result
+
     # For some content playback , check no double content processing in global process
     def __verify_content_processing_parameter_in_global_process_equals_to_zero(self):
         result = True
         for effect_fourcc_name in CONTENT_PROCESSING_PARAM_LIST:
-            if LogComparison.EFFECT_PARAS_DICT[effect_fourcc_name] != '0':
+            # edit code for dax3 project ,
+            # dom list contains 19 elements and the first element means vir on or off
+            # For dax2 project , dom list only has 1 element and the first element means vir on or off
+            if LogComparison.EFFECT_PARAS_DICT[effect_fourcc_name][0] != '0':
                 self.logger.error("!!!!! double content processing in global process ")
                 temp_string = LogComparison.EFFECT_PARAS_DICT[effect_fourcc_name]
                 self.logger.error("!!!!! %s = %s " % (effect_fourcc_name, temp_string))

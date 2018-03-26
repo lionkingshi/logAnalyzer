@@ -39,6 +39,10 @@ public class Constants {
     //key matched by low level api
     public static final String EXTRA_CMD_FEATURE_DAP_FEATURE_TYPE = "dap_feature_type";
     public static final String EXTRA_CMD_FEATURE_DAP_FEATURE_VALUE = "dap_feature_value";
+    //keys matched by changing tuning device name by port
+    public static final String EXTRA_CMD_FEATURE_DAP_TUNING_PORT = "dap_tuning_port";
+    public static final String EXTRA_CMD_FEATURE_DAP_TUNING_DEVICE = "dap_tuning_device";
+
 
 
     //message type
@@ -72,6 +76,8 @@ public class Constants {
     public static final int MSG_RECORD_LOG=0X130;
     //release all resource : dap ,audio track instance
     public static final int MSG_RELEASE_RESOURCE=0X140;
+    //change tuning device name
+    public static final int MSG_CHANGE_TUNING_DEVICE_NAME = 0X150;
 
     //message type for update ui display
     public static final int MSG_UPDATE_UI_DEFAULT = 0x200;

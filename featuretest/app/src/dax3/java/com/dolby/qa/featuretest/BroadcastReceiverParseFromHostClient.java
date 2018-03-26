@@ -10,8 +10,60 @@ import android.widget.Toast;
 
 import com.dolby.dax.DsParams;
 
+import static com.dolby.qa.featuretest.ConstantdDax3.TUNING_DEVICE_NAME_LIST;
+import static com.dolby.qa.featuretest.Constants.EXTRA_CMD_ACTION;
+import static com.dolby.qa.featuretest.Constants.EXTRA_CMD_CONTENT_LOCATION;
+import static com.dolby.qa.featuretest.Constants.EXTRA_CMD_FEATURE_DAP_FEATURE_TYPE;
+import static com.dolby.qa.featuretest.Constants.EXTRA_CMD_FEATURE_DAP_FEATURE_VALUE;
+import static com.dolby.qa.featuretest.Constants.EXTRA_CMD_FEATURE_DAP_PROFILE;
+import static com.dolby.qa.featuretest.Constants.EXTRA_CMD_FEATURE_DAP_PROFILE_BE;
+import static com.dolby.qa.featuretest.Constants.EXTRA_CMD_FEATURE_DAP_PROFILE_DE;
+import static com.dolby.qa.featuretest.Constants.EXTRA_CMD_FEATURE_DAP_PROFILE_DEA;
+import static com.dolby.qa.featuretest.Constants.EXTRA_CMD_FEATURE_DAP_PROFILE_GEBG;
+import static com.dolby.qa.featuretest.Constants.EXTRA_CMD_FEATURE_DAP_PROFILE_HV;
+import static com.dolby.qa.featuretest.Constants.EXTRA_CMD_FEATURE_DAP_PROFILE_IEQ;
+import static com.dolby.qa.featuretest.Constants.EXTRA_CMD_FEATURE_DAP_PROFILE_VL;
+import static com.dolby.qa.featuretest.Constants.EXTRA_CMD_FEATURE_DAP_PROFILE_VSV;
+import static com.dolby.qa.featuretest.Constants.EXTRA_CMD_FEATURE_DAP_RESET_PROFILE;
+import static com.dolby.qa.featuretest.Constants.EXTRA_CMD_FEATURE_DAP_RESET_UNIVERSAL;
+import static com.dolby.qa.featuretest.Constants.EXTRA_CMD_FEATURE_DAP_STATUS;
+import static com.dolby.qa.featuretest.Constants.EXTRA_CMD_FEATURE_DAP_TUNING_DEVICE;
+import static com.dolby.qa.featuretest.Constants.EXTRA_CMD_FEATURE_DAP_TUNING_PORT;
+import static com.dolby.qa.featuretest.Constants.EXTRA_CMD_FEATURE_DAP_UNIVERSAL_BE;
+import static com.dolby.qa.featuretest.Constants.EXTRA_CMD_FEATURE_DAP_UNIVERSAL_GEBG;
+import static com.dolby.qa.featuretest.Constants.EXTRA_CMD_FEATURE_DAP_UNIVERSAL_GEQ;
+import static com.dolby.qa.featuretest.Constants.EXTRA_CMD_FEATURE_DAP_UNIVERSAL_VL;
+import static com.dolby.qa.featuretest.Constants.EXTRA_CMD_STEP;
+import static com.dolby.qa.featuretest.Constants.EXTRA_CMD_STEP_CHANGE_DAP_FEATURE;
+import static com.dolby.qa.featuretest.Constants.EXTRA_CMD_STEP_PLAY_CONTENT;
+import static com.dolby.qa.featuretest.Constants.EXTRA_CMD_STEP_RECORD_LOG;
+import static com.dolby.qa.featuretest.Constants.EXTRA_CMD_STEP_RELEASE_RESOURCE;
+import static com.dolby.qa.featuretest.Constants.EXTRA_CMD_STEP_RESTART_PLAYBACK;
+import static com.dolby.qa.featuretest.Constants.EXTRA_CMD_STEP_STOP_PLAYBACK;
+import static com.dolby.qa.featuretest.Constants.INVALID_DAP_PROFILE_ID;
+import static com.dolby.qa.featuretest.Constants.MSG_ARG1_DEFAULT;
+import static com.dolby.qa.featuretest.Constants.MSG_CHANGE_DAP_FEATURE_DAP_FEATURE_TYPE;
+import static com.dolby.qa.featuretest.Constants.MSG_CHANGE_DAP_FEATURE_DAP_PROFILE;
+import static com.dolby.qa.featuretest.Constants.MSG_CHANGE_DAP_FEATURE_DAP_PROFILE_BE;
+import static com.dolby.qa.featuretest.Constants.MSG_CHANGE_DAP_FEATURE_DAP_PROFILE_DE;
+import static com.dolby.qa.featuretest.Constants.MSG_CHANGE_DAP_FEATURE_DAP_PROFILE_DEA;
+import static com.dolby.qa.featuretest.Constants.MSG_CHANGE_DAP_FEATURE_DAP_PROFILE_GEBG;
+import static com.dolby.qa.featuretest.Constants.MSG_CHANGE_DAP_FEATURE_DAP_PROFILE_HV;
+import static com.dolby.qa.featuretest.Constants.MSG_CHANGE_DAP_FEATURE_DAP_PROFILE_IEQ;
+import static com.dolby.qa.featuretest.Constants.MSG_CHANGE_DAP_FEATURE_DAP_PROFILE_VL;
+import static com.dolby.qa.featuretest.Constants.MSG_CHANGE_DAP_FEATURE_DAP_PROFILE_VSV;
+import static com.dolby.qa.featuretest.Constants.MSG_CHANGE_DAP_FEATURE_DAP_RESET_PROFILE;
+import static com.dolby.qa.featuretest.Constants.MSG_CHANGE_DAP_FEATURE_DAP_STATUS;
+import static com.dolby.qa.featuretest.Constants.MSG_CHANGE_TUNING_DEVICE_NAME;
+import static com.dolby.qa.featuretest.Constants.MSG_PLAY_CONTENT;
+import static com.dolby.qa.featuretest.Constants.MSG_RECORD_LOG;
+import static com.dolby.qa.featuretest.Constants.MSG_RELEASE_RESOURCE;
+import static com.dolby.qa.featuretest.Constants.MSG_RESTART_PLAYBACK;
+import static com.dolby.qa.featuretest.Constants.MSG_STOP_PLAYBACK;
+import static com.dolby.qa.featuretest.Constants.RESET_DAP_ALL_PROFILE_PARA;
+
 public class BroadcastReceiverParseFromHostClient extends BroadcastReceiver {
-    private static final String TAG = BroadcastReceiverParseFromHostClient.class.getSimpleName();
+    private static final String TAG = ConstantdDax3.TAG;
     private Handler mBroadcastReceiverParseHandlerInMainUi;
 
     public BroadcastReceiverParseFromHostClient(Handler mBroadcastReceiverParseHandlerInMainUi) {
@@ -21,25 +73,25 @@ public class BroadcastReceiverParseFromHostClient extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         String action=intent.getAction();
-        if (action.equals(Constants.EXTRA_CMD_ACTION)){
-            String type=intent.getStringExtra(Constants.EXTRA_CMD_STEP);
+        if (action.equals(EXTRA_CMD_ACTION)){
+            String type=intent.getStringExtra(EXTRA_CMD_STEP);
             switch (type) {
-                case Constants.EXTRA_CMD_STEP_PLAY_CONTENT:
+                case EXTRA_CMD_STEP_PLAY_CONTENT:
                     parseIntentPlayContent(context, intent);
                     break;
-                case Constants.EXTRA_CMD_STEP_CHANGE_DAP_FEATURE:
+                case EXTRA_CMD_STEP_CHANGE_DAP_FEATURE:
                     parseIntentChangeFeature(context, intent);
                     break;
-                case Constants.EXTRA_CMD_STEP_RECORD_LOG:
+                case EXTRA_CMD_STEP_RECORD_LOG:
                     parseIntentRecordLog(context, intent);
                     break;
-                case Constants.EXTRA_CMD_STEP_RELEASE_RESOURCE:
+                case EXTRA_CMD_STEP_RELEASE_RESOURCE:
                     parseIntentReleaseResource(context, intent);
                     break;
-                case Constants.EXTRA_CMD_STEP_STOP_PLAYBACK:
+                case EXTRA_CMD_STEP_STOP_PLAYBACK:
                     parseIntentStopPlayback(context, intent);
                     break;
-                case Constants.EXTRA_CMD_STEP_RESTART_PLAYBACK:
+                case EXTRA_CMD_STEP_RESTART_PLAYBACK:
                     parseIntentRestartPlayback(context, intent);
                     break;
                 default:
@@ -57,152 +109,184 @@ public class BroadcastReceiverParseFromHostClient extends BroadcastReceiver {
         mBroadcastReceiverParseHandlerInMainUi.sendMessage(msg);
     }
 
+    public void handleIntentAndThenSendMessage(int msgType, int msgArg1, int msgArg2){
+        Message msg= mBroadcastReceiverParseHandlerInMainUi.obtainMessage();
+        msg.what=msgType;
+        msg.arg1= msgArg1;
+        msg.arg2 = msgArg2;
+        mBroadcastReceiverParseHandlerInMainUi.sendMessage(msg);
+    }
+
+
     public void parseIntentPlayContent(Context context,Intent intent){
-        String mContentLocation=intent.getStringExtra(Constants.EXTRA_CMD_CONTENT_LOCATION);
+        String mContentLocation=intent.getStringExtra(EXTRA_CMD_CONTENT_LOCATION);
         Log.d(TAG,"receive broadcast , playing content location :"+mContentLocation);
         //Toast.makeText(context,mContentLocation,Toast.LENGTH_SHORT).show();
-        handleIntentAndThenSendMessage(Constants.MSG_PLAY_CONTENT,Constants.MSG_ARG1_DEFAULT,mContentLocation);
+        handleIntentAndThenSendMessage(MSG_PLAY_CONTENT,MSG_ARG1_DEFAULT,mContentLocation);
     }
 
     public void parseIntentStopPlayback(Context context,Intent intent){
         Log.d(TAG,"receive broadcast , stop music player audio track playback .......");
-        handleIntentAndThenSendMessage(Constants.MSG_STOP_PLAYBACK,Constants.MSG_ARG1_DEFAULT,null);
+        handleIntentAndThenSendMessage(MSG_STOP_PLAYBACK,MSG_ARG1_DEFAULT,null);
     }
 
     public void parseIntentRestartPlayback(Context context,Intent intent){
         Log.d(TAG,"receive broadcast , restart music player audio track playback .......");
-        handleIntentAndThenSendMessage(Constants.MSG_RESTART_PLAYBACK,Constants.MSG_ARG1_DEFAULT,null);
+        handleIntentAndThenSendMessage(MSG_RESTART_PLAYBACK,MSG_ARG1_DEFAULT,null);
     }
 
     public void parseIntentChangeFeature(Context context,Intent intent){
         // create a dummy audio track if no playing content intent was received
         // create a dummy audio track to attach it to dolby audio processing
         configDAPWithDummyAudioTrack();
-        if (intent.hasExtra(Constants.EXTRA_CMD_FEATURE_DAP_STATUS)){
-            int dsStatus=intent.getIntExtra(Constants.EXTRA_CMD_FEATURE_DAP_STATUS,2);
+        if (intent.hasExtra(EXTRA_CMD_FEATURE_DAP_STATUS)){
+            int dsStatus=intent.getIntExtra(EXTRA_CMD_FEATURE_DAP_STATUS,2);
             Log.d(TAG,"receive broadcast , change ds status :"+dsStatus);
             Toast.makeText(context,Integer.toString(dsStatus),Toast.LENGTH_SHORT).show();
-            handleIntentAndThenSendMessage(Constants.MSG_CHANGE_DAP_FEATURE_DAP_STATUS,dsStatus,null);
+            handleIntentAndThenSendMessage(MSG_CHANGE_DAP_FEATURE_DAP_STATUS,dsStatus,null);
         }
 
-        if (intent.hasExtra(Constants.EXTRA_CMD_FEATURE_DAP_PROFILE)){
-            int profileID=intent.getIntExtra(Constants.EXTRA_CMD_FEATURE_DAP_PROFILE,Constants.INVALID_DAP_PROFILE_ID);
+        if (intent.hasExtra(EXTRA_CMD_FEATURE_DAP_PROFILE)){
+            int profileID=intent.getIntExtra(EXTRA_CMD_FEATURE_DAP_PROFILE,INVALID_DAP_PROFILE_ID);
             Log.d(TAG,"receive broadcast , change ds profile id :"+profileID);
             Toast.makeText(context,Integer.toString(profileID),Toast.LENGTH_SHORT).show();
-            handleIntentAndThenSendMessage(Constants.MSG_CHANGE_DAP_FEATURE_DAP_PROFILE,profileID,null);
+            handleIntentAndThenSendMessage(MSG_CHANGE_DAP_FEATURE_DAP_PROFILE,profileID,null);
         }
 
-        if (intent.hasExtra(Constants.EXTRA_CMD_FEATURE_DAP_RESET_PROFILE)){
-            int profileID=intent.getIntExtra(Constants.EXTRA_CMD_FEATURE_DAP_RESET_PROFILE,Constants.INVALID_DAP_PROFILE_ID);
-            if (profileID == Constants.RESET_DAP_ALL_PROFILE_PARA){
+        if (intent.hasExtra(EXTRA_CMD_FEATURE_DAP_RESET_PROFILE)){
+            int profileID=intent.getIntExtra(EXTRA_CMD_FEATURE_DAP_RESET_PROFILE,INVALID_DAP_PROFILE_ID);
+            if (profileID == RESET_DAP_ALL_PROFILE_PARA){
                 Log.d(TAG,"receive broadcast , reset all profile para !");
             }else {
                 Log.d(TAG,"receive broadcast , reset one profile para : "+profileID);
             }
 
             Toast.makeText(context,Integer.toString(profileID),Toast.LENGTH_SHORT).show();
-            handleIntentAndThenSendMessage(Constants.MSG_CHANGE_DAP_FEATURE_DAP_RESET_PROFILE,profileID,null);
+            handleIntentAndThenSendMessage(MSG_CHANGE_DAP_FEATURE_DAP_RESET_PROFILE,profileID,null);
         }
 
-        if (intent.hasExtra(Constants.EXTRA_CMD_FEATURE_DAP_RESET_UNIVERSAL)){
+        if (intent.hasExtra(EXTRA_CMD_FEATURE_DAP_RESET_UNIVERSAL)){
             errorLog();
         }
 
-        if (intent.hasExtra(Constants.EXTRA_CMD_FEATURE_DAP_PROFILE_DE)){
-            int deStatus=intent.getIntExtra(Constants.EXTRA_CMD_FEATURE_DAP_PROFILE_DE,2);
+        if (intent.hasExtra(EXTRA_CMD_FEATURE_DAP_PROFILE_DE)){
+            int deStatus=intent.getIntExtra(EXTRA_CMD_FEATURE_DAP_PROFILE_DE,2);
             Log.d(TAG,"receive broadcast , change dialog enhancement :"+deStatus);
             Toast.makeText(context,Integer.toString(deStatus),Toast.LENGTH_SHORT).show();
-            handleIntentAndThenSendMessage(Constants.MSG_CHANGE_DAP_FEATURE_DAP_PROFILE_DE,deStatus,null);
+            handleIntentAndThenSendMessage(MSG_CHANGE_DAP_FEATURE_DAP_PROFILE_DE,deStatus,null);
         }
 
-        if (intent.hasExtra(Constants.EXTRA_CMD_FEATURE_DAP_PROFILE_DEA)){
-            int deaNum=intent.getIntExtra(Constants.EXTRA_CMD_FEATURE_DAP_PROFILE_DEA,20);
+        if (intent.hasExtra(EXTRA_CMD_FEATURE_DAP_PROFILE_DEA)){
+            int deaNum=intent.getIntExtra(EXTRA_CMD_FEATURE_DAP_PROFILE_DEA,20);
             Log.d(TAG,"receive broadcast , change dialogue enhancer amount value  :"+deaNum);
             Toast.makeText(context,Integer.toString(deaNum),Toast.LENGTH_SHORT).show();
-            handleIntentAndThenSendMessage(Constants.MSG_CHANGE_DAP_FEATURE_DAP_PROFILE_DEA,deaNum,null);
+            handleIntentAndThenSendMessage(MSG_CHANGE_DAP_FEATURE_DAP_PROFILE_DEA,deaNum,null);
         }
 
-        if (intent.hasExtra(Constants.EXTRA_CMD_FEATURE_DAP_PROFILE_IEQ)){
-            int ieqID=intent.getIntExtra(Constants.EXTRA_CMD_FEATURE_DAP_PROFILE_IEQ,10);
+        if (intent.hasExtra(EXTRA_CMD_FEATURE_DAP_PROFILE_IEQ)){
+            int ieqID=intent.getIntExtra(EXTRA_CMD_FEATURE_DAP_PROFILE_IEQ,10);
             Log.d(TAG,"receive broadcast , change intelligent equalizer :"+ieqID);
             Toast.makeText(context,Integer.toString(ieqID),Toast.LENGTH_SHORT).show();
-            handleIntentAndThenSendMessage(Constants.MSG_CHANGE_DAP_FEATURE_DAP_PROFILE_IEQ,ieqID,null);
+            handleIntentAndThenSendMessage(MSG_CHANGE_DAP_FEATURE_DAP_PROFILE_IEQ,ieqID,null);
         }
 
-        if (intent.hasExtra(Constants.EXTRA_CMD_FEATURE_DAP_PROFILE_HV)){
-            int hsvStatus=intent.getIntExtra(Constants.EXTRA_CMD_FEATURE_DAP_PROFILE_HV,2);
+        if (intent.hasExtra(EXTRA_CMD_FEATURE_DAP_PROFILE_HV)){
+            int hsvStatus=intent.getIntExtra(EXTRA_CMD_FEATURE_DAP_PROFILE_HV,2);
             Log.d(TAG,"receive broadcast , change headphone sound virtualizer :"+hsvStatus);
             Toast.makeText(context,Integer.toString(hsvStatus),Toast.LENGTH_SHORT).show();
-            handleIntentAndThenSendMessage(Constants.MSG_CHANGE_DAP_FEATURE_DAP_PROFILE_HV,hsvStatus,null);
+            handleIntentAndThenSendMessage(MSG_CHANGE_DAP_FEATURE_DAP_PROFILE_HV,hsvStatus,null);
         }
 
-        if (intent.hasExtra(Constants.EXTRA_CMD_FEATURE_DAP_PROFILE_VSV)){
-            int ssvStatus=intent.getIntExtra(Constants.EXTRA_CMD_FEATURE_DAP_PROFILE_VSV,2);
+        if (intent.hasExtra(EXTRA_CMD_FEATURE_DAP_PROFILE_VSV)){
+            int ssvStatus=intent.getIntExtra(EXTRA_CMD_FEATURE_DAP_PROFILE_VSV,2);
             Log.d(TAG,"receive broadcast , change virtual speaker  virtualizer :"+ssvStatus);
             Toast.makeText(context,Integer.toString(ssvStatus),Toast.LENGTH_SHORT).show();
-            handleIntentAndThenSendMessage(Constants.MSG_CHANGE_DAP_FEATURE_DAP_PROFILE_VSV,ssvStatus,null);
+            handleIntentAndThenSendMessage(MSG_CHANGE_DAP_FEATURE_DAP_PROFILE_VSV,ssvStatus,null);
         }
 
-        if (intent.hasExtra(Constants.EXTRA_CMD_FEATURE_DAP_UNIVERSAL_VL)){
+        if (intent.hasExtra(EXTRA_CMD_FEATURE_DAP_UNIVERSAL_VL)){
             errorLog();
         }
 
-        if (intent.hasExtra(Constants.EXTRA_CMD_FEATURE_DAP_PROFILE_VL)){
-            int vlStatus=intent.getIntExtra(Constants.EXTRA_CMD_FEATURE_DAP_PROFILE_VL,2);
+        if (intent.hasExtra(EXTRA_CMD_FEATURE_DAP_PROFILE_VL)){
+            int vlStatus=intent.getIntExtra(EXTRA_CMD_FEATURE_DAP_PROFILE_VL,2);
             Log.d(TAG,"receive broadcast , change volume leveler :"+vlStatus);
             Toast.makeText(context,Integer.toString(vlStatus),Toast.LENGTH_SHORT).show();
-            handleIntentAndThenSendMessage(Constants.MSG_CHANGE_DAP_FEATURE_DAP_PROFILE_VL,vlStatus,null);
+            handleIntentAndThenSendMessage(MSG_CHANGE_DAP_FEATURE_DAP_PROFILE_VL,vlStatus,null);
         }
 
-        if (intent.hasExtra(Constants.EXTRA_CMD_FEATURE_DAP_UNIVERSAL_GEQ)){
+        if (intent.hasExtra(EXTRA_CMD_FEATURE_DAP_UNIVERSAL_GEQ)){
             errorLog();
         }
 
-        if (intent.hasExtra(Constants.EXTRA_CMD_FEATURE_DAP_UNIVERSAL_GEBG)){
+        if (intent.hasExtra(EXTRA_CMD_FEATURE_DAP_UNIVERSAL_GEBG)){
             errorLog();
         }
 
-        if (intent.hasExtra(Constants.EXTRA_CMD_FEATURE_DAP_PROFILE_GEBG)){
-            int[] geqbgValue=intent.getIntArrayExtra(Constants.EXTRA_CMD_FEATURE_DAP_PROFILE_GEBG);
+        if (intent.hasExtra(EXTRA_CMD_FEATURE_DAP_PROFILE_GEBG)){
+            int[] geqbgValue=intent.getIntArrayExtra(EXTRA_CMD_FEATURE_DAP_PROFILE_GEBG);
             Log.d(TAG,"receive broadcast , change graphic equalizer band gain !"+geqbgValue.length);
-            handleIntentAndThenSendMessage(Constants.MSG_CHANGE_DAP_FEATURE_DAP_PROFILE_GEBG,Constants.MSG_ARG1_DEFAULT,geqbgValue);
+            handleIntentAndThenSendMessage(MSG_CHANGE_DAP_FEATURE_DAP_PROFILE_GEBG,MSG_ARG1_DEFAULT,geqbgValue);
         }
 
-        if (intent.hasExtra(Constants.EXTRA_CMD_FEATURE_DAP_UNIVERSAL_BE)){
+        if (intent.hasExtra(EXTRA_CMD_FEATURE_DAP_UNIVERSAL_BE)){
             errorLog();
         }
 
-        if (intent.hasExtra(Constants.EXTRA_CMD_FEATURE_DAP_PROFILE_BE)){
-            int beStatus=intent.getIntExtra(Constants.EXTRA_CMD_FEATURE_DAP_PROFILE_BE,2);
+        if (intent.hasExtra(EXTRA_CMD_FEATURE_DAP_PROFILE_BE)){
+            int beStatus=intent.getIntExtra(EXTRA_CMD_FEATURE_DAP_PROFILE_BE,2);
             Log.d(TAG,"receive broadcast , change bass enable :"+beStatus);
             Toast.makeText(context,Integer.toString(beStatus),Toast.LENGTH_SHORT).show();
-            handleIntentAndThenSendMessage(Constants.MSG_CHANGE_DAP_FEATURE_DAP_PROFILE_BE,beStatus,null);
+            handleIntentAndThenSendMessage(MSG_CHANGE_DAP_FEATURE_DAP_PROFILE_BE,beStatus,null);
         }
 
-        if (intent.hasExtra(Constants.EXTRA_CMD_FEATURE_DAP_FEATURE_TYPE)){
-            String featureType=intent.getStringExtra(Constants.EXTRA_CMD_FEATURE_DAP_FEATURE_TYPE);
+        if (intent.hasExtra(EXTRA_CMD_FEATURE_DAP_FEATURE_TYPE)){
+            String featureType=intent.getStringExtra(EXTRA_CMD_FEATURE_DAP_FEATURE_TYPE);
             int featureID= DsParams.FromString(featureType).toInt();
             Log.d(TAG,"receive broadcast , change ds feature type :"+featureType+" and id :"+featureID);
             Toast.makeText(context,featureType,Toast.LENGTH_SHORT).show();
-            int[] featureValue=intent.getIntArrayExtra(Constants.EXTRA_CMD_FEATURE_DAP_FEATURE_VALUE);
+            int[] featureValue=intent.getIntArrayExtra(EXTRA_CMD_FEATURE_DAP_FEATURE_VALUE);
             Log.d(TAG,"receive broadcast , change ds feature values size :"+featureValue.length);
             for (int i=0;i<featureValue.length;i++){
                 Log.d(TAG,"receive broadcast , change ds feature values :"+featureValue[i]);
                 Toast.makeText(context,Integer.toString(featureValue[i]),Toast.LENGTH_SHORT).show();
             }
-            handleIntentAndThenSendMessage(Constants.MSG_CHANGE_DAP_FEATURE_DAP_FEATURE_TYPE,featureID,featureValue);
+            handleIntentAndThenSendMessage(MSG_CHANGE_DAP_FEATURE_DAP_FEATURE_TYPE,featureID,featureValue);
         }
+
+        if (intent.hasExtra(EXTRA_CMD_FEATURE_DAP_TUNING_PORT)){
+            int mPortId =
+                    intent.getIntExtra(
+                            EXTRA_CMD_FEATURE_DAP_TUNING_PORT,
+                            INVALID_DAP_PROFILE_ID);
+            int mDeviceNameId =
+                    intent.getIntExtra(
+                            EXTRA_CMD_FEATURE_DAP_TUNING_DEVICE,
+                            INVALID_DAP_PROFILE_ID);
+
+            Log.d(TAG,"receive broadcast , tuning port :" + mPortId );
+            Log.d(TAG,"receive broadcast , tuning device name :" +
+                    TUNING_DEVICE_NAME_LIST[mPortId][mDeviceNameId]);
+
+            Toast.makeText(
+                    context,
+                    TUNING_DEVICE_NAME_LIST[mPortId][mDeviceNameId],
+                    Toast.LENGTH_SHORT).show();
+
+            handleIntentAndThenSendMessage(MSG_CHANGE_TUNING_DEVICE_NAME,mPortId,mDeviceNameId);
+        }
+
     }
 
     public void parseIntentRecordLog(Context context,Intent intent){
-        int temp=intent.getIntExtra(Constants.EXTRA_CMD_STEP_RECORD_LOG,0);
+        int temp=intent.getIntExtra(EXTRA_CMD_STEP_RECORD_LOG,0);
         Log.d(TAG,"receive broadcast , record log :"+temp);
-        handleIntentAndThenSendMessage(Constants.MSG_RECORD_LOG,Constants.MSG_ARG1_DEFAULT,null);
+        handleIntentAndThenSendMessage(MSG_RECORD_LOG,MSG_ARG1_DEFAULT,null);
     }
 
     public void parseIntentReleaseResource(Context context,Intent intent){
         Log.d(TAG,"receive broadcast , release resource : dap and audio track instance .......");
-        handleIntentAndThenSendMessage(Constants.MSG_RELEASE_RESOURCE,Constants.MSG_ARG1_DEFAULT,null);
+        handleIntentAndThenSendMessage(MSG_RELEASE_RESOURCE,MSG_ARG1_DEFAULT,null);
     }
 
     public void errorLog(){

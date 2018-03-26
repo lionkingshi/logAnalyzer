@@ -31,7 +31,7 @@ def move_test_content(request):
 def function_set_up(request):
     print '\n each test case set up now'
     execute("adb shell am start -n {0}/{1}".format(test_package_name, test_package_main_activity_name))
-    # execute(adb_clear_log)
+    execute(adb_clear_log)
     # must sleep some time because only activity is active , it will begin to receive broadcast intent
     # or activity would crash because of receiving intent on dead main activity thread
     time.sleep(SLEEP_TIME_FOR_ACTIVITY_START)

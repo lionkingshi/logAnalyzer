@@ -11,9 +11,10 @@ import com.dolby.dax.DsParams;
 import java.util.Arrays;
 import java.util.Locale;
 
-import static android.content.ContentValues.TAG;
+import static com.dolby.qa.featuretest.ConstantdDax3.TUNING_DEVICE_NAME_LIST;
 import static com.dolby.qa.featuretest.Constants.GLOBAL_SESSION_ID_NUM;
 import static com.dolby.qa.featuretest.Constants.MIDDLE_PRIORITY_NUM;
+import static com.dolby.qa.featuretest.Constants.MSG_CHANGE_TUNING_DEVICE_NAME;
 import static com.dolby.qa.featuretest.Constants.MSG_UPDATE_DAP_FEATURE_TYPE_TV;
 import static com.dolby.qa.featuretest.Constants.MSG_UPDATE_DAP_FEATURE_VALUE_TV;
 import static com.dolby.qa.featuretest.Constants.MSG_UPDATE_DAP_PROFILE_TV;
@@ -30,7 +31,7 @@ import static com.dolby.qa.featuretest.MainActivity.restartPlayback;
 import static com.dolby.qa.featuretest.MainActivity.stopPlayback;
 
 public class DapControllerHandlerCallback implements Handler.Callback{
-    private final String TAG = DapControllerHandlerCallback.class.getSimpleName();
+    private final String TAG = ConstantdDax3.TAG;
     private Handler mUpdateUIHandlerInMainUi;
 
     public DapControllerHandlerCallback(Handler mUpdateUIHandlerInMainUi) {
@@ -68,6 +69,33 @@ public class DapControllerHandlerCallback implements Handler.Callback{
                 String mContentShowInDapStatusTV = String.format(Locale.getDefault(), "set ds status : %b", msg.arg1 != 0);
                 packageIntentForUIUpdate(MSG_UPDATE_DAP_STATUS_TV,MSG_UPDATE_UI_ARG1_DEFAULT,mContentShowInDapStatusTV);
                 mDAP.setDsOn(msg.arg1 != 0);
+                break;
+
+            case MSG_CHANGE_TUNING_DEVICE_NAME:
+                String mTuningInfoShowInTV =
+                        String.format(
+                                Locale.getDefault(),
+                                "change tuning device name to : %s",
+                                TUNING_DEVICE_NAME_LIST[msg.arg1][msg.arg2]);
+
+                packageIntentForUIUpdate(
+                        MSG_UPDATE_DAP_FEATURE_TYPE_TV,
+                        MSG_UPDATE_UI_ARG1_DEFAULT,
+                        mTuningInfoShowInTV);
+
+                try {
+                    Log.d(TAG,"change tuning port :" + msg.arg1);
+                    Log.d(TAG,"change tuning device name :" +
+                            TUNING_DEVICE_NAME_LIST[msg.arg1][msg.arg2]);
+
+                    mDAP.setSelectedTuningDevice(
+                            msg.arg1,
+                            TUNING_DEVICE_NAME_LIST[msg.arg1][msg.arg2]);
+                }catch (UnsupportedOperationException e3){
+                    e3.printStackTrace();
+                    Log.d(TAG,"fail to change to tuning device name : "+
+                            TUNING_DEVICE_NAME_LIST[msg.arg1][msg.arg2]);
+                }
                 break;
             case Constants.MSG_CHANGE_DAP_FEATURE_DAP_PROFILE:
                 String mContentShowInDapProfileTV = String.format(Locale.getDefault(), "set profile id: %d", msg.arg1);

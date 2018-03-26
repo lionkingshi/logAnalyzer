@@ -29,7 +29,7 @@ import static com.dolby.qa.featuretest.Constants.MSG_UPDATE_DAP_FEATURE_VALUE_TV
 import static com.dolby.qa.featuretest.Constants.MSG_UPDATE_UI_ARG1_VISIBLE;
 
 public class MainActivity extends AppCompatActivity {
-    private final static String TAG="featureTest";
+    private final static String TAG = "<<<< Dax3FeatureTest: ";
     private final static int SAMPLING_RATE=48000;
 
     private TextView show_play_content_tv;

@@ -16,6 +16,9 @@ UTF_8 = 'utf-8'
 STEREO = '1'
 HEADPHONE = '9'
 
+# define unique added four cc name in dax3 project
+DAX3_UNIQUE_PARA = ('vol', 'ceon', 'ceqt')
+
 #  "DAPv1 parameters name" to "DAPv2 parameters name"
 DAP1_2_DAP2 = {
     'dea'      :   'dialog-enhancer-amount',
@@ -67,7 +70,10 @@ DAP1_2_DAP2 = {
     'gebs'     :   'graphic-equalizer-bands',
     'iebs'     :   'ieq-bands',
     'aobs'     :   'audio-optimizer-bands',
-    'arbs'     :   'regulator-tuning'
+    'arbs'     :   'regulator-tuning',
+    'vol'      :   'system-gain',
+    'ceon'     :   'complex-equalizer-enable',
+    'ceqt'     :   'complex-equalizer-tuning'
 }
 
 
@@ -87,24 +93,24 @@ def mapping(id, value):
     elif id == 'dom':
         return dom(value)
 
-    elif id == 'vbmf' or id == 'vbsf':
+    elif id == 'vbmf' or id == 'vbsf' or id == 'ceqt':
         return value.replace(',', ':')
-
     else:
         return value
 
 
 def dom(value):
-    if value == '0':
-        return STEREO
-    elif value == '2':
-        return HEADPHONE
-    else:
-        parameter = '11:2:'
-        for eachNum in range(8):
-            parameter += (value.split(',')[2*eachNum+1]) + ',' + (value.split(',')[2*eachNum+2]) + ':'
-        result = parameter[:-1]
-        return result
+    return STEREO
+    # if value == '0':
+    #     return STEREO
+    # elif value == '2':
+    #     return HEADPHONE
+    # else:
+    #     parameter = '11:2:'
+    #     for eachNum in range(8):
+    #         parameter += (value.split(',')[2*eachNum+1]) + ',' + (value.split(',')[2*eachNum+2]) + ':'
+    #     result = parameter[:-1]
+    #     return result
 
 
 def gebs(value):
@@ -180,7 +186,17 @@ def transfer_para(input_file_name=INPUT, output_file_name=OUTPUT):
                 continue
             else:
                 continue
-        content += translate(keys, values)
+        # add code for dax3 project
+        if keys in DAX3_UNIQUE_PARA:
+            if values == 'non-exist':
+                continue
+            else:
+                content += translate(keys, values)
+        else:
+            if values == 'non-exist':
+                continue
+            else:
+                content += translate(keys, values)
 
     # generate output
     # fp_w = codecs.open(OUTPUT, 'w', UTF_8)
@@ -198,9 +214,10 @@ def main():
 
 
 if __name__ == "__main__":
-    sys.exit(main())
-
-
-
-
+    try:
+        sys.exit(main())
+    except SystemExit:
+        print ('!!!!! error info' + sys.exc_info()[0])
+        print ('!!!!! fail DAP Parameters Converter ')
+        pass
 

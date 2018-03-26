@@ -1,3 +1,6 @@
+# define project id info
+PROJECT_ID_DAX3 = 3
+PROJECT_ID_DAX2 = 2
 # define sleep time before record device log
 SLEEP_TIME_BEFORE_RECORD_LOG = 5
 SLEEP_TIME_FOR_PUSH_MEDIA_TO_DUT = 15
@@ -35,11 +38,37 @@ intent_change_dap_low_level_feature = intent_change_dap + '--es dap_feature_type
 intent_change_dap_high_level_feature = intent_change_dap + '--ei {0} {1}'
 # intent type 2.5 : invoke high level api : set graphic equalizer band gain
 intent_change_dap_gebg_feature = intent_change_dap + '--eia {0} {1}'
+# intent type 2.6 : change tuning device name for specified port :
+intent_change_dap_tuning_device = intent_change_dap + '--ei dap_tuning_port {0} --ei dap_tuning_device {1}'
 
 # define adb logcat command
 adb_record_log = 'adb logcat -d >'
 adb_record_log_append = 'adb logcat -d >>'
 adb_clear_log = 'adb logcat -b all -c'
+
+# define dolby content category
+content_type_1_channel_non_dolby = '1.0'
+content_type_2_channel_non_dolby = '2.0'
+content_type_51_channel_non_dolby = '5.1'
+content_type_71_channel_non_dolby = '7.1'
+content_type_1_dd = '1_dd'
+content_type_2_dd = '2_dd'
+content_type_51_dd = '51_dd'
+content_type_1_ddp = '1_ddp'
+content_type_2_ddp = '2_ddp'
+content_type_51_ddp = '51_ddp'
+content_type_71_ddp = '71_ddp'
+content_type_51_ddp_joc = '51_ddp_joc'
+content_type_71_ddp_joc = '71_ddp_joc'
+
+content_type_non_dolby = [content_type_1_channel_non_dolby, content_type_2_channel_non_dolby,
+                          content_type_51_channel_non_dolby, content_type_71_channel_non_dolby]
+content_type_dolby = [content_type_1_dd, content_type_2_dd, content_type_51_dd,
+                      content_type_1_ddp, content_type_2_ddp, content_type_51_ddp,
+                      content_type_71_ddp, content_type_51_ddp_joc, content_type_71_ddp_joc]
+# 2 channel dolby content will be up mixed to 5.1 channel, instead of up mixing to 5.1.2 ,
+content_type_2_channel_dolby = [content_type_2_dd, content_type_2_ddp]
+
 
 # define change dap feature
 # define dolby audio processing instance status
@@ -115,6 +144,87 @@ AUDIO_DEVICE_OUT_WIRED_HEADPHONE = '35mm_headphone'
 AUDIO_DEVICE_OUT_DGTL_DOCK_HEADSET = 'usb_headphone'
 AUDIO_DEVICE_OUT_AUX_DIGITAL = 'hdmi'
 AUDIO_DEVICE_OUT_BLUETOOTH_A2DP = 'blue_tooth'
+
+# define constants for dax3 project
+# ************************************************************************************
+# ************************************************************************************
+# *****************     test constant for dax3          ******************************
+# ************************************************************************************
+# ************************************************************************************
+# define profile name
+dap_profile_custom_dax3 = str(3)
+dap_profile_unchanged_dax3 = str(6)
+# define dolby audio effect feature
+# define reset profile intent
+dap_feature_value_reset_profile_custom_dax3 = dap_profile_custom_dax3
+# define intelligent equalizer
+dap_feature_value_ieq_detailed_dax3 = '1'
+dap_feature_value_ieq_balanced_dax3 = '2'
+dap_feature_value_ieq_warm_dax3 = '3'
+# define dax3 profile based parameter - volume leveler - dvle
+dap_feature_type_vl_dax3 = 'dap_profile_vl'
+# define dax3 profile based parameter - bass enable - beon
+dap_feature_type_be_dax3 = 'dap_profile_be'
+# define dax3 profile based parameter - dialogue enhancer amount - dea
+dap_feature_type_dea_dax3 = 'dap_profile_dea'
+# define universal parameter - graphic equalizer band gain  - gebg
+dap_feature_type_gebg_dax3 = 'dap_profile_gebg'
+# define tuning port parameter
+dap_feature_type_tuning_port_dax3 = 'dap_tuning_port'
+# define detailed port information
+dap_tuning_port_internal_speaker = str(0)
+dap_tuning_port_hdmi = str(1)
+dap_tuning_port_miracast = str(2)
+dap_tuning_port_headphone_port = str(3)
+dap_tuning_port_bluetooth = str(4)
+dap_tuning_port_usb = str(5)
+dap_tuning_port_other = str(6)
+# define tuning device name parameter
+dap_feature_type_tuning_device_name_dax3 = 'dap_tuning_device'
+dap_tuning_device_name_speaker_portrait = str(0)
+dap_tuning_device_name_speaker_landscape = str(1)
+dap_tuning_device_name_internal_speaker = str(2)
+dap_tuning_device_name_hdmi = str(0)
+dap_tuning_device_name_miracast = str(0)
+dap_tuning_device_name_headphone_port = str(0)
+dap_tuning_device_name_bluetooth = str(0)
+dap_tuning_device_name_headphone_bluetooth = str(1)
+dap_tuning_device_name_speaker_bluetooth = str(2)
+dap_tuning_device_name_usb = str(0)
+dap_tuning_device_name_headphone_usb = str(1)
+dap_tuning_device_name_speaker_usb = str(2)
+
+# define dap four cc expected value when dap off for dolby content
+# dolby content will apply the off profile value in qmf process
+# non-dolby content will bypass all dap features
+dap_off_four_cc_expected_dictionary_for_dolby_content_in_dax3 = {
+    'dvle': '1',
+    'dvlo': '-272',
+    'vol': '0',
+    'deon': '0',
+    'ieon': '0',
+    'dvme': '0',
+    'dom': '0',
+    'msce': '0',
+    'miee': '0',
+    'mdle': '0',
+    'mdee': '0',
+    'mave': '0',
+    'ngon': '0'
+}
+# endpoint type defined in dom list
+# index 0 means virtualizer enable or disable
+# index 1 is ,
+# index 2 means endpoint type : 0-spk 1-hp 2-pass though 3-other 4-default
+# index 3 is ,
+# index 4 means orientation : 0-portrait 1-landscape 2-N/A
+endpoint_type_index_in_dom = 2
+endpoint_type_speaker_in_dom = '0'
+endpoint_type_headphone_in_dom = '1'
+endpoint_type_pass_through_in_dom = '2'
+endpoint_type_other_in_dom = '3'
+endpoint_type_default_in_dom = '4'
+
 
 
 

@@ -1,5 +1,5 @@
 import subprocess
-from constantTestData import *
+from constant import *
 import time
 from filter_para import *
 
@@ -132,9 +132,25 @@ def get_dap_output_mode_set_value(_content_type):
         return log_analysis_instance.get_dap_output_mode_set_value_in_global_process()
 
 
+def get_output_mode_in_qmf_process():
+    return log_analysis_instance.get_dap_output_mode_set_value_in_qmf_process()
+
+
+def get_output_mode_in_global_process():
+    return log_analysis_instance.get_dap_output_mode_set_value_in_global_process()
+
+
 #
 def get_dap_output_mode_mix_matrix():
     return log_analysis_instance.get_dap_output_mode_mix_matrix()
+
+
+def get_mix_matrix_in_qmf_process():
+    return log_analysis_instance.get_mix_matrix_in_qmf_process()
+
+
+def get_mix_matrix_in_global_process():
+    return log_analysis_instance.get_mix_matrix_in_global_process()
 
 
 def contain_string(files, string):

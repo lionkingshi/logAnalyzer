@@ -1,5 +1,6 @@
 import pytest
-from commonTestProcedure import *
+from dax251CommonTestProcedure import *
+from dax251ConstantTestData import *
 
 # register the logging configuration
 endpoint_type_in_module = AUDIO_DEVICE_OUT_BLUETOOTH_A2DP

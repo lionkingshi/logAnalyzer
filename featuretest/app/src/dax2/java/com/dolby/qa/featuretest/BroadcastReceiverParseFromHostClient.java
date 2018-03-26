@@ -11,7 +11,7 @@ import android.widget.Toast;
 import com.dolby.dax.DsParams;
 
 public class BroadcastReceiverParseFromHostClient extends BroadcastReceiver {
-    private static final String TAG = BroadcastReceiverParseFromHostClient.class.getSimpleName();
+    private static final String TAG = ConstantdDax2.TAG;
     private Handler mBroadcastReceiverParseHandlerInMainUi;
 
     public BroadcastReceiverParseFromHostClient(Handler mBroadcastReceiverParseHandlerInMainUi) {

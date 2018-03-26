@@ -1,9 +1,9 @@
-# coding=utf-8
 import pytest
-from commonTestProcedure import *
+from dax3CommonTestProcedure import *
+from dax3ConstantTestData import *
 
 # register the logging configuration
-endpoint_type_in_module = AUDIO_DEVICE_OUT_DGTL_DOCK_HEADSET
+endpoint_type_in_module = AUDIO_DEVICE_OUT_WIRED_HEADPHONE
 logging_file_name = abspath(join('.', 'log', endpoint_type_in_module, __name__))
 logger = Logger(log_name=logging_file_name + '.log', log_level='1',
                 logger_name=endpoint_type_in_module).get_log
@@ -12,15 +12,14 @@ logger = Logger(log_name=logging_file_name + '.log', log_level='1',
 log_file_name = abspath(join('.', 'log', 'log.txt'))
 
 
-# usb headphone's behavior is same as 3.5mm headphone's
-# these cases copied from 3.5mm headphone's cases
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
                          be_on_test_data)
-def test_log_bass_on_verify(content_name, content_type, dap_status, dap_profile, dap_feature_type, dap_feature_value):
+def test_log_bass_on_verify(content_name, content_type,
+                            dap_status, dap_profile, dap_feature_type, dap_feature_value):
     """
     Test Case ID    : TC-82
 
-    Test Condition  : make sure device endpoint is usb headphone
+    Test Condition  : make sure device endpoint is wired headphone
 
     Test Description: Verify VB & BE are on when Bass enhance button is on
 
@@ -28,7 +27,7 @@ def test_log_bass_on_verify(content_name, content_type, dap_status, dap_profile,
                       vbon = 0 and beon = 1 for endpoint except speaker
     """
     caller_name = test_log_bass_on_verify.__name__
-    be_test_procedure(caller_name, endpoint_type_in_module, content_name, content_type, dap_feature_value)
+    be_test_procedure_dax3(caller_name, endpoint_type_in_module, content_name, content_type, dap_feature_value)
 
     be_and_vb_expected_dictionary = {'beon': '1', 'vbon': '0'}
     assert_dap_be_related_feature_result(endpoint_type_in_module, content_type, be_and_vb_expected_dictionary)
@@ -36,11 +35,12 @@ def test_log_bass_on_verify(content_name, content_type, dap_status, dap_profile,
 
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
                          be_off_test_data)
-def test_log_bass_off_verify(content_name, content_type, dap_status, dap_profile, dap_feature_type, dap_feature_value):
+def test_log_bass_off_verify(content_name, content_type,
+                             dap_status, dap_profile, dap_feature_type, dap_feature_value):
     """
     Test Case ID    : TC-83
 
-    Test Condition  : make sure device endpoint is usb headphone
+    Test Condition  : make sure device endpoint is wired headphone
 
     Test Description: Verify VB & BE are off when Bass enhance button is off
 
@@ -48,7 +48,7 @@ def test_log_bass_off_verify(content_name, content_type, dap_status, dap_profile
     """
 
     caller_name = test_log_bass_off_verify.__name__
-    be_test_procedure(caller_name, endpoint_type_in_module, content_name, content_type, dap_feature_value)
+    be_test_procedure_dax3(caller_name, endpoint_type_in_module, content_name, content_type, dap_feature_value)
 
     be_and_vb_expected_dictionary = {'beon': '0', 'vbon': '0'}
     assert_dap_be_related_feature_result(endpoint_type_in_module, content_type, be_and_vb_expected_dictionary)
@@ -60,7 +60,7 @@ def test_log_mi_off_verify(content_name, content_type, dap_status, dap_profile, 
     """
     Test Case ID    :   TC-53
 
-    Test Condition  :   make sure device endpoint is usb headphone
+    Test Condition  :   make sure device endpoint is wired headphone
 
     Test Description:   verify MI steer is off no matter what is playing content using any endpoint
 
@@ -70,27 +70,53 @@ def test_log_mi_off_verify(content_name, content_type, dap_status, dap_profile, 
     mi_off_test_procedure(caller_name, endpoint_type_in_module, content_name, content_type, dap_status, dap_profile)
 
     mi_off_expected_dictionary = {'msce': '0', 'mdee': '0', 'miee': '0', 'mdle': '0', 'mave': '0'}
-    ref_lvl_expected_dictionary = {'dvle': '1', 'dvla': '5', 'dvli': '-496', 'dvlo': '-176', 'vmb': '144'}
-    if dap_profile in (dap_profile_dynamic, dap_profile_movie) :
+    ref_lvl_expected_dictionary = {'dvle': '1', 'dvla': '5', 'dvlo': '-320', 'vmb': '144', 'vol': '96'}
+    if dap_profile in (dap_profile_dynamic, dap_profile_movie):
         ref_lvl_expected_dictionary['dvla'] = '7'
-    elif dap_profile in (dap_profile_game, dap_profile_music):
-        ref_lvl_expected_dictionary['dvla'] = '0'
     elif dap_profile == dap_profile_music:
         ref_lvl_expected_dictionary['dvla'] = '4'
-    elif dap_profile == dap_profile_custom:
-        ref_lvl_expected_dictionary['dvla'] = '5'
+    elif dap_profile == dap_profile_custom_dax3:
+        ref_lvl_expected_dictionary['dvla'] = '0'
+
+    # for dolby content (except ac4 dolby content) when dap on and vl on or off in dax3 project ,
+    # output reference level is equals to -14db (-224) no matter vl on or off
+    # dvle value in qmf process should always be true no matter vl is on or off
+    #            --> dvle = 1 in qmf and dvle = 0 in global process
+    # dvlo=-320 in qmf process and vol=96 in global process when dap on and vl on , and totally -14db
+    # dvlo=-272 in qmf process and vol=96 in global process when dap on and vl off , and totally -11db
+    # dvlo=-272 in qmf process and vol=0 in global process when dap off , and totally -17db
+
+    # for non-dolby content and dap and vl on , the output reference level is equals to -14db
+    # dvle = 1 , then dvlo=-320 and vmb=96 ,and sum them to -14db
+    # for non-dolby content and dap on and vl off , the output reference level depends on input audio
+    # for non-dolby content and dap off , the output reference level depends on input audio
+
+    # in current dax3 project , vl value in 4 profiles is always true and could not controlled by Consumer UI
+    # two ways could change vl value in a profile , call DolbyAudioEffect class api or change dax-default.xml files .
+    if content_type in content_type_dolby:
+        ref_lvl_expected_dictionary['dvle'] = '1'
+        ref_lvl_expected_dictionary['dvlo'] = '-320'
+        ref_lvl_expected_dictionary['vol'] = '96'
+        ref_lvl_expected_dictionary.pop('vmb')
+    else:
+        ref_lvl_expected_dictionary['dvle'] = '1'
+        ref_lvl_expected_dictionary['dvlo'] = '-320'
+        ref_lvl_expected_dictionary['vmb'] = '96'
+        ref_lvl_expected_dictionary.pop('vol')
 
     assert_dap_mi_and_vl_related_feature_result(endpoint_type_in_module, content_type,
-                                                mi_off_expected_dictionary, ref_lvl_expected_dictionary)
+                                                mi_off_expected_dictionary, ref_lvl_expected_dictionary,
+                                                PROJECT_ID_DAX3)
 
 
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
                          mi_on_2_channel_dolby_test_data)
-def test_log_mi_on_2ch_verify(content_name, content_type, dap_status, dap_profile, dap_feature_type, dap_feature_value):
+def test_log_mi_on_2ch_verify(content_name, content_type, dap_status, dap_profile,
+                              dap_feature_type, dap_feature_value):
     """
     Test Case ID    :   TC-60, 68
 
-    Test Condition  :   make sure device endpoint is usb headphone
+    Test Condition  :   make sure device endpoint is wired headphone
 
     Test Description:   verify MI steer and MI controlling features' status are ok.
 
@@ -99,7 +125,7 @@ def test_log_mi_on_2ch_verify(content_name, content_type, dap_status, dap_profil
     """
     caller_name = test_log_mi_on_2ch_verify.__name__
     mi_on_test_procedure(caller_name, endpoint_type_in_module,
-                         content_name, content_type, dap_status, dap_profile)
+                         content_name, content_type, dap_status, dap_profile, PROJECT_ID_DAX3)
 
 
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
@@ -109,7 +135,7 @@ def test_log_mi_on_multi_channel_verify(content_name, content_type, dap_status, 
     """
     Test Case ID    :   TC-61, 68
 
-    Test Condition  :   make sure device endpoint is usb headphone
+    Test Condition  :   make sure device endpoint is wired headphone
 
     Test Description:   verify MI steer and MI controlling features' status are ok.
 
@@ -120,7 +146,7 @@ def test_log_mi_on_multi_channel_verify(content_name, content_type, dap_status, 
     """
     caller_name = test_log_mi_on_multi_channel_verify.__name__
     mi_on_test_procedure(caller_name, endpoint_type_in_module,
-                         content_name, content_type, dap_status, dap_profile)
+                         content_name, content_type, dap_status, dap_profile, PROJECT_ID_DAX3)
 
 
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
@@ -130,7 +156,7 @@ def test_log_mi_on_non_dolby_content_verify(content_name, content_type,
     """
     Test Case ID    :   TC-62, 68
 
-    Test Condition  :   make sure device endpoint is usb headphone
+    Test Condition  :   make sure device endpoint is wired headphone
 
     Test Description:   verify MI steer and MI controlling features' status are ok.
 
@@ -139,7 +165,7 @@ def test_log_mi_on_non_dolby_content_verify(content_name, content_type,
     """
     caller_name = test_log_mi_on_non_dolby_content_verify.__name__
     mi_on_test_procedure(caller_name, endpoint_type_in_module,
-                         content_name, content_type, dap_status, dap_profile)
+                         content_name, content_type, dap_status, dap_profile, PROJECT_ID_DAX3)
 
 
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
@@ -149,17 +175,17 @@ def test_log_up_mix_sv_off_verify(content_name, content_type,
     """
     Test Case ID    :   TC-2627, 2628, 2629, 2630, 2631, 2632, 2633 and 169, 170, 171, 172, 173
 
-    Test Condition  :   make sure device endpoint is usb headphone
+    Test Condition  :   make sure device endpoint is wired headphone
 
     Test Description:   non-Dolby and Dolby content can not be up mixed to 5.1.2 when sv off
 
-    Test Check Point:   dom : 0
+    Test Check Point:
     """
     caller_name = test_log_up_mix_sv_off_verify.__name__
     up_mix_and_sv_off_test_procedure(caller_name, endpoint_type_in_module, content_name, content_type)
     # no virtualizer when speaker or headphone virtual is off
-    dom = {'dom': '0'}
-    # output channel count is 2 with order L, R
+    dom = {'dom': '0,1,2'}
+    # output mode = 1 : output channel count is 2 with order L, R
     dap_output_mode = '1'
     dap_mix_matrix = 'null'
     # for multi channel , dap will simple down town to 2 channel output from dap
@@ -175,24 +201,26 @@ def test_log_up_mix_sv_on_verify(content_name, content_type,
     """
     Test Case ID    :   TC-2627, 2628, 2629, 2630, 2631, 2632, 2633 and 169, 170, 171, 172, 173
 
-    Test Condition  :   make sure device endpoint is usb headphone
+    Test Condition  :   make sure device endpoint is wired headphone
 
     Test Description:   content should be up mixed to 5.1.2 when sv on
                            except 2 channel dolby content up mixed to 5.1
 
-    Test Check Point:   dom = 0 for blue tooth and mono speaker
-                              2 for headphone
-                              [1,16384,0,0,16384,11583,11583,8192,8192,16384,0,0,16384,16384,0,0,16384]
-                                   for stereo speaker
+    Test Check Point:
     """
     caller_name = test_log_up_mix_sv_on_verify.__name__
     up_mix_and_sv_on_test_procedure(caller_name, endpoint_type_in_module, content_name, content_type)
     # this means headphone virtualizer with height channel and input will be up mixed to 5.1.2
-    # except 2 channel dolby content up mixed to 5.1 ????
-    # not matter the content type
-    dom = {'dom': '2'}
-    # output channel count is 2 with order L, R
-    dap_output_mode = '9'
+    # except 2 channel dolby content up mixed to 5.1
+    dom = {'dom': '1,1,2'}
+    # output mode = 9 : output channel count is 2 with order L, R
+    #                   and headphone virtualizer with height channel enabled
+    # output mode = 8 : output channel count is 2 with order L, R
+    #                   and headphone virtualizer without height channel enabled
+    if content_type in content_type_2_channel_dolby:
+        dap_output_mode = '8'
+    else:
+        dap_output_mode = '9'
     dap_mix_matrix = 'null'
     # for multi channel , dap will simple down town to 2 channel output from dap
     ddp_down_mix = '0'
@@ -202,19 +230,24 @@ def test_log_up_mix_sv_on_verify(content_name, content_type,
 
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
                          dap_off_test_data)
-def test_log_on_log_print_when_dap_off_verify(content_name, content_type,
+def test_log_print_situation_when_dap_off_verify(content_name, content_type,
                                  dap_status, dap_profile, dap_feature_type, dap_feature_value):
     """
     Test Case ID    :   TC-169, 170, 171, 172, 173
 
-    Test Condition  :   make sure device endpoint is usb headphone
+    Test Condition  :   make sure device endpoint is wired headphone
 
     Test Description:   no log print when dap off
 
-    Test Check Point:   no dap parameter relating log print in stand output
+    Test Check Point:   dap parameter relating log print in stand output
     """
-    caller_name = test_log_on_log_print_when_dap_off_verify.__name__
-    no_log_print_when_dap_off_test_procedure(caller_name, endpoint_type_in_module, content_name, content_type)
+    caller_name = test_log_print_situation_when_dap_off_verify.__name__
+    log_print_when_dap_off_test_procedure(caller_name, endpoint_type_in_module, content_name, content_type)
+
+    if content_type in content_type_non_dolby:
+        assert_no_log_print_when_dap_off_for_non_dolby_content(endpoint_type_in_module)
+    elif content_type in content_type_dolby:
+        assert_apply_dap_off_profile_values_when_dap_off_for_dolby_content(endpoint_type_in_module)
 
 
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
@@ -224,11 +257,11 @@ def test_log_decoder_joc_force_down_mix_verify(content_name, content_type,
     """
     Test Case ID    :   TC-4021
 
-    Test Condition  :   make sure device endpoint is usb headphone
+    Test Condition  :   make sure device endpoint is wired headphone
 
     Test Description:   always decode object for headphone, usb, stereo speaker endpoint
 
-    Test Check Point:   in udc decoder , its value should be 0 for usb headphone
+    Test Check Point:   in udc decoder , its value should be 0 for wired headphone
     """
     caller_name = test_log_decoder_joc_force_down_mix_verify.__name__
     up_mix_and_sv_on_test_procedure(caller_name, endpoint_type_in_module, content_name, content_type)
@@ -247,15 +280,25 @@ def test_log_reference_level_when_dap_off_verify(content_name, content_type,
     ref_lvl_expected_dictionary = {'dvle': '1', 'dvla': '5', 'dvli': '-496', 'dvlo': '-224', 'vmb': '144'}
     if dap_profile in (dap_profile_dynamic, dap_profile_movie):
         ref_lvl_expected_dictionary['dvla'] = '7'
-    elif dap_profile in (dap_profile_game, dap_profile_music):
-        ref_lvl_expected_dictionary['dvla'] = '0'
     elif dap_profile == dap_profile_music:
         ref_lvl_expected_dictionary['dvla'] = '4'
-    elif dap_profile == dap_profile_custom:
-        ref_lvl_expected_dictionary['dvla'] = '5'
+    elif dap_profile == dap_profile_custom_dax3:
+        ref_lvl_expected_dictionary['dvla'] = '0'
+
+    if content_type in content_type_dolby:
+        ref_lvl_expected_dictionary['dvle'] = '1'
+        ref_lvl_expected_dictionary['dvlo'] = '-272'
+        ref_lvl_expected_dictionary['vol'] = '0'
+        ref_lvl_expected_dictionary.pop('vmb')
+    else:
+        ref_lvl_expected_dictionary['dvle'] = '0'
+        ref_lvl_expected_dictionary.pop('dvlo')
+        ref_lvl_expected_dictionary.pop('vmb')
+        ref_lvl_expected_dictionary.pop('vol')
 
     assert_dap_reference_level_related_feature_result(endpoint_type_in_module, content_type,
-                                                      ref_lvl_expected_dictionary)
+                                                      ref_lvl_expected_dictionary, PROJECT_ID_DAX3)
+    assert_endpoint_type_in_dom_list(endpoint_type_in_module, dap_status_off)
 
 
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
@@ -265,19 +308,47 @@ def test_log_reference_level_when_dap_on_verify(content_name, content_type,
     caller_name = test_log_reference_level_when_dap_on_verify.__name__
     reference_level_when_dap_on_test_procedure(caller_name, endpoint_type_in_module, content_name, content_type)
 
+    # for dolby content (except ac4 dolby content) when dap on and vl on or off in dax3 project ,
+    # output reference level is equals to -14db (-224) no matter vl on or off
+    # dvle value in qmf process should always be true no matter vl is on or off
+    #            --> dvle = 1 in qmf and dvle = 0 in global process
+    # dvlo=-320 in qmf process and vol=96 in global process when dap on and vl on , and totally -14db
+    # dvlo=-272 in qmf process and vol=96 in global process when dap on and vl off , and totally -11db
+    # dvlo=-272 in qmf process and vol=0 in global process when dap off , and totally -17db
+
+    # for non-dolby content and dap and vl on , the output reference level is equals to -14db
+    # dvle = 1 , then dvlo=-320 and vmb=96 ,and sum them to -14db
+    # for non-dolby content and dap on and vl off , the output reference level depends on input audio
+    # for non-dolby content and dap off , the output reference level depends on input audio
+
+    # in current dax3 project , vl value in 4 profiles is always true and could not controlled by Consumer UI
+    # two ways could change vl value in a profile , call DolbyAudioEffect class api or change dax-default.xml files .
+
     # for diff profile , the dvla value is diff
-    # here dvla = 5 when custom profile is selected
+    # here dvla = 0 when custom profile is selected
     ref_lvl_expected_dictionary = {'dvle': '1', 'dvla': '5', 'dvli': '-496', 'dvlo': '-176', 'vmb': '144'}
     if dap_profile in (dap_profile_dynamic, dap_profile_movie):
         ref_lvl_expected_dictionary['dvla'] = '7'
-    elif dap_profile in (dap_profile_game, dap_profile_music):
-        ref_lvl_expected_dictionary['dvla'] = '0'
     elif dap_profile == dap_profile_music:
         ref_lvl_expected_dictionary['dvla'] = '4'
-    elif dap_profile == dap_profile_custom:
-        ref_lvl_expected_dictionary['dvla'] = '5'
+    elif dap_profile == dap_profile_custom_dax3:
+        ref_lvl_expected_dictionary['dvla'] = '0'
+
+    if content_type in content_type_dolby:
+        ref_lvl_expected_dictionary['dvle'] = '1'
+        ref_lvl_expected_dictionary['dvlo'] = '-320'
+        ref_lvl_expected_dictionary['vol'] = '96'
+        ref_lvl_expected_dictionary.pop('vmb')
+    else:
+        ref_lvl_expected_dictionary['dvle'] = '1'
+        ref_lvl_expected_dictionary['dvlo'] = '-320'
+        ref_lvl_expected_dictionary['vmb'] = '96'
+        ref_lvl_expected_dictionary.pop('vol')
 
     assert_dap_reference_level_related_feature_result(endpoint_type_in_module, content_type,
-                                                      ref_lvl_expected_dictionary)
+                                                      ref_lvl_expected_dictionary, PROJECT_ID_DAX3)
+    assert_endpoint_type_in_dom_list(endpoint_type_in_module, dap_status_on)
+
+
 
 

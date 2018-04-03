@@ -229,6 +229,27 @@ reference_level_test_data = [
     ('5ch_ddp_joc_25fps_ref_level.mp4', content_type_51_ddp_joc, dap_status_on, dap_profile_custom_dax3,
      dap_feature_type_hv, dap_feature_value_hv_on),
 ]
+# ************************************************************************************
+# ************************************************************************************
+# *******     test data for profile default value verify      ************************
+# ************************************************************************************
+# ************************************************************************************
+dynamic_profile_default_value_test_data = [
+    ('7ch_25fps.wav', content_type_71_channel_non_dolby, dap_status_on, dap_profile_dynamic,
+     dap_feature_type_hv, dap_feature_value_hv_on)
+]
+movie_profile_default_value_test_data = [
+    ('7ch_25fps.wav', content_type_71_channel_non_dolby, dap_status_on, dap_profile_movie,
+     dap_feature_type_hv, dap_feature_value_hv_on)
+]
+music_profile_default_value_test_data = [
+    ('7ch_25fps.wav', content_type_71_channel_non_dolby, dap_status_on, dap_profile_music,
+     dap_feature_type_hv, dap_feature_value_hv_on)
+]
+custom_profile_default_value_test_data = [
+    ('7ch_25fps.wav', content_type_71_channel_non_dolby, dap_status_on, dap_profile_custom_dax3,
+     dap_feature_type_hv, dap_feature_value_hv_on)
+]
 
 
 

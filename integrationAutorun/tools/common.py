@@ -17,7 +17,7 @@ def register_logger_name(_logger_name):
     log_analysis_instance.set_logger_name(_logger_name)
 
 
-# common serial action : plat content -> change dap parameter -> save log to a specified file for later analysis
+# common serial action : play content -> change dap parameter -> save log to a specified file for later analysis
 def feature_test_procedure(content_name, dap_status, dap_profile=None, dap_feature_type=None, dap_feature_value=None):
     # play content
     execute(adb_broadcast_intent + intent_play_content + content_name)
@@ -108,12 +108,12 @@ def verify_no_double_processing_dap_parameter(content_type):
 
 
 # return a specified feature value from global process
-def get_feature_value_from_global_process(effect_fourcc_name):
+def get_feature_value_from_global_process(effect_fourcc_name=None):
     return log_analysis_instance.get_parameter_value_in_global_process(effect_fourcc_name)
 
 
 # return a specified feature value from qmf process
-def get_feature_value_from_qmf_process(effect_fourcc_name):
+def get_feature_value_from_qmf_process(effect_fourcc_name=None):
     return log_analysis_instance.get_parameter_value_in_qmf_process(effect_fourcc_name)
 
 

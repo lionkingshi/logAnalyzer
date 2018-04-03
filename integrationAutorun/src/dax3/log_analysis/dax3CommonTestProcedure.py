@@ -1,5 +1,90 @@
 from tools.common import *
 from tools.logger import *
+from src.dax3.log_analysis.dax3XMLParser.XMLUpdater import *
+
+
+def specified_profile_default_value_test_procedure_dax3(caller_name, endpoint_id, content_name, content_type,
+                                                        _dap_profile, _dap_status=dap_status_on):
+    # step 1 :register logger name to record all command to logger file except session setup() function
+    register_logger_name(endpoint_id)
+
+    if _dap_profile == dap_profile_custom_dax3:
+        _profile_name = 'Custom'
+    elif _dap_profile == dap_profile_dynamic:
+        _profile_name = 'Dynamic'
+    elif _dap_profile == dap_profile_movie:
+        _profile_name = 'Movie'
+    elif _dap_profile == dap_profile_music:
+        _profile_name = 'Music'
+
+    if content_type in content_type_dolby:
+        logging.getLogger(endpoint_id).info(
+            "===== Verify {} profile default values when playing {} Dolby content using {} ".format(
+                _profile_name, content_type, endpoint_id))
+    else:
+        logging.getLogger(endpoint_id).info(
+            "===== Verify {} profile default values when playing {} non Dolby content using {} ".format(
+                _profile_name, content_type, endpoint_id))
+
+    # step 2 : change dap profile
+    if _dap_profile != dap_profile_custom_dax3:
+        feature_test_procedure(content_name, dap_status_on, dap_profile_custom_dax3)
+        feature_test_procedure(content_name, dap_status_on, _dap_profile)
+    else:
+        feature_test_procedure(content_name, dap_status_on, dap_profile_dynamic)
+        feature_test_procedure(content_name, dap_status_on, _dap_profile)
+
+    # step 3 : capture adb log to a file and parse dap parameter from log
+    __generate_and_parse_log_file(caller_name, endpoint_id, content_name)
+
+
+def assert_specified_profile_default_values_result(_profile_name, tuning_device_name,
+                                                   _endpoint_type=AUDIO_DEVICE_OUT_STEREO_SPEAKER):
+    post_para_dict_from_log = get_feature_value_from_global_process()
+    if _endpoint_type == AUDIO_DEVICE_OUT_MONO_SPEAKER:
+        default_xml_file_name = abspath(join('.', 'dax3XMLParser', 'mono', 'dax3-default-mono-speaker.xml'))
+    else:
+        default_xml_file_name = abspath(join('.', 'dax3XMLParser', 'stereo', 'dax3-default-stereo-speaker.xml'))
+    xml_parser_class = TuningFileParser(default_xml_file_name)
+    post_para_dict_from_xml = xml_parser_class.print_expect_value(_profile_name=_profile_name,
+                                                                  tuning_device_name_endpoint=tuning_device_name)
+
+    for __index in range(len(PARA_LIST_IN_GLOBAL_PROCESS)):
+        four_cc_name = PARA_LIST_IN_GLOBAL_PROCESS[__index]
+        assert isinstance(post_para_dict_from_xml[four_cc_name], str)
+        assert isinstance(post_para_dict_from_log[four_cc_name], str)
+        if four_cc_name not in ('vcbf', 'preg', 'pstg', 'vol'):
+            if four_cc_name == 'ceqt':
+                if len(post_para_dict_from_xml[four_cc_name]) == len(post_para_dict_from_log[four_cc_name]):
+                    logging.getLogger(_endpoint_type).info("ceqt length from log and xml is equals : {} !".format(
+                        len(post_para_dict_from_log[four_cc_name]))
+                    )
+                    __assert_equal(
+                        _endpoint_type,
+                        four_cc_name,
+                        post_para_dict_from_xml[four_cc_name],
+                        post_para_dict_from_log[four_cc_name])
+                else:
+                    logging.getLogger(_endpoint_type).info("ceqt length from xml:{} and log:{} is not equals !".format(
+                        len(post_para_dict_from_xml[four_cc_name]), len(post_para_dict_from_log[four_cc_name]))
+                    )
+                    __assert_equal(
+                        _endpoint_type,
+                        four_cc_name,
+                        post_para_dict_from_xml[four_cc_name],
+                        post_para_dict_from_log[four_cc_name][:-1])
+            else:
+                # for custom profile , ieq status is off and iebs values remains as previous
+                if _profile_name == profile_name[3]:
+                    if four_cc_name == 'iebs':
+                        continue
+
+                __assert_equal(
+                    _endpoint_type,
+                    four_cc_name,
+                    post_para_dict_from_xml[four_cc_name],
+                    post_para_dict_from_log[four_cc_name])
+        pass
 
 
 def be_test_procedure_dax3(caller_name, endpoint_id, content_name, content_type, dap_feature_value):
@@ -555,7 +640,6 @@ def assert_dap_dom_related_feature_result(_endpoint_id, _content_type, _dap_dom)
 def assert_up_mix_related_feature_result(
         _endpoint_id, _content_type, _dap_output_mode, _dap_mix_matrix, _dom,
         _down_mix=None, _tuning_device_name=dap_tuning_device_name_speaker_landscape):
-
     __assert_no_double_processing_by_content_type(_endpoint_id, _content_type)
 
     if _content_type in content_type_dolby:
@@ -598,7 +682,7 @@ def assert_processing_mode_in_global_process_for_dolby_content(
             (_tuning_device_name == dap_tuning_device_name_speaker_portrait):
 
         _temp_dom = '0' + _dom['dom'][1:]
-        _temp_dom_dict = {'dom' : _temp_dom}
+        _temp_dom_dict = {'dom': _temp_dom}
         assert_processing_mode_in_global_process(_endpoint_id, '0', 'custom', _temp_dom_dict)
     else:
         _temp_dom = '0' + _dom['dom'][1:]

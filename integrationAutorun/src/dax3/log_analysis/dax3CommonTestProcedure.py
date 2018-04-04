@@ -4,7 +4,9 @@ from src.dax3.log_analysis.dax3XMLParser.XMLUpdater import *
 
 
 def specified_profile_default_value_test_procedure_dax3(caller_name, endpoint_id, content_name, content_type,
-                                                        _dap_profile, _dap_status=dap_status_on):
+                                                        _dap_profile,
+                                                        _tuning_port=dap_tuning_port_internal_speaker,
+                                                        _tuning_device_name=dap_tuning_device_name_speaker_landscape):
     # step 1 :register logger name to record all command to logger file except session setup() function
     register_logger_name(endpoint_id)
 
@@ -18,15 +20,28 @@ def specified_profile_default_value_test_procedure_dax3(caller_name, endpoint_id
         _profile_name = 'Music'
 
     if content_type in content_type_dolby:
+        index = int(_tuning_device_name)
         logging.getLogger(endpoint_id).info(
-            "===== Verify {} profile default values when playing {} Dolby content using {} ".format(
-                _profile_name, content_type, endpoint_id))
+            "===== Verify {} profile default values when playing {} Dolby content using {} and {} mode".format(
+                _profile_name, content_type, endpoint_id, tuning_endpoint_name[index]))
     else:
+        index = int(_tuning_device_name)
         logging.getLogger(endpoint_id).info(
-            "===== Verify {} profile default values when playing {} non Dolby content using {} ".format(
-                _profile_name, content_type, endpoint_id))
+            "===== Verify {} profile default values when playing {} non Dolby content using {} and {} mode".format(
+                _profile_name, content_type, endpoint_id, tuning_endpoint_name[index]))
 
-    # step 2 : change dap profile
+    # step 2 : change tuning device name for speaker port
+    if endpoint_id in (AUDIO_DEVICE_OUT_MONO_SPEAKER, AUDIO_DEVICE_OUT_STEREO_SPEAKER):
+        if _tuning_device_name == dap_tuning_device_name_speaker_landscape:
+            execute(adb_broadcast_intent + intent_change_dap_tuning_device.format(
+                _tuning_port,
+                dap_tuning_device_name_speaker_landscape))
+        elif _tuning_device_name == dap_tuning_device_name_speaker_portrait:
+            execute(adb_broadcast_intent + intent_change_dap_tuning_device.format(
+                _tuning_port,
+                dap_tuning_device_name_speaker_portrait))
+
+    # step 3 : change dap profile
     if _dap_profile != dap_profile_custom_dax3:
         feature_test_procedure(content_name, dap_status_on, dap_profile_custom_dax3)
         feature_test_procedure(content_name, dap_status_on, _dap_profile)
@@ -34,7 +49,7 @@ def specified_profile_default_value_test_procedure_dax3(caller_name, endpoint_id
         feature_test_procedure(content_name, dap_status_on, dap_profile_dynamic)
         feature_test_procedure(content_name, dap_status_on, _dap_profile)
 
-    # step 3 : capture adb log to a file and parse dap parameter from log
+    # step 4 : capture adb log to a file and parse dap parameter from log
     __generate_and_parse_log_file(caller_name, endpoint_id, content_name)
 
 
@@ -65,7 +80,7 @@ def assert_specified_profile_default_values_result(_profile_name, tuning_device_
                         post_para_dict_from_xml[four_cc_name],
                         post_para_dict_from_log[four_cc_name])
                 else:
-                    logging.getLogger(_endpoint_type).info("ceqt length from xml:{} and log:{} is not equals !".format(
+                    logging.getLogger(_endpoint_type).debug("ceqt length from xml:{} and log:{} is not equals !".format(
                         len(post_para_dict_from_xml[four_cc_name]), len(post_para_dict_from_log[four_cc_name]))
                     )
                     __assert_equal(
@@ -85,6 +100,8 @@ def assert_specified_profile_default_values_result(_profile_name, tuning_device_
                     post_para_dict_from_xml[four_cc_name],
                     post_para_dict_from_log[four_cc_name])
         pass
+    logging.getLogger(_endpoint_type).info(
+        "====== {} profile default params are same as one parsing from xml !!!!!".format(_profile_name))
 
 
 def be_test_procedure_dax3(caller_name, endpoint_id, content_name, content_type, dap_feature_value):

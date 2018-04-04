@@ -13,6 +13,90 @@ log_file_name = abspath(join('.', 'log', 'log.txt'))
 
 
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
+                         dynamic_profile_default_value_test_data)
+def test_log_dynamic_profile_default_value_verify(content_name, content_type,
+                                                  dap_status, dap_profile, dap_feature_type, dap_feature_value):
+    """
+    Test Case ID    : TC-new
+
+    Test Check Point: dynamic profile parameter's value is expected as xml parsing ones
+                      And it is only effective for non dolby content playback
+    """
+    caller_name = test_log_dynamic_profile_default_value_verify.__name__
+    specified_profile_default_value_test_procedure_dax3(
+        caller_name,
+        endpoint_type_in_module,
+        content_name,
+        content_type,
+        dap_profile)
+
+    assert_specified_profile_default_values_result(profile_name[0], tuning_endpoint_name[6], endpoint_type_in_module)
+
+
+@pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
+                         movie_profile_default_value_test_data)
+def test_log_movie_profile_default_value_verify_for_non_dolby_content(content_name, content_type,
+                                          dap_status, dap_profile, dap_feature_type, dap_feature_value):
+    """
+    Test Case ID    : TC-new
+
+    Test Check Point: movie profile parameter's value is expected as xml parsing ones
+                      And it is only effective for non dolby content playback
+    """
+    caller_name = test_log_movie_profile_default_value_verify_for_non_dolby_content.__name__
+    specified_profile_default_value_test_procedure_dax3(
+        caller_name,
+        endpoint_type_in_module,
+        content_name,
+        content_type,
+        dap_profile)
+
+    assert_specified_profile_default_values_result(profile_name[1], tuning_endpoint_name[6], endpoint_type_in_module)
+
+
+@pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
+                         music_profile_default_value_test_data)
+def test_log_music_profile_default_value_verify_for_non_dolby_content(content_name, content_type,
+                                          dap_status, dap_profile, dap_feature_type, dap_feature_value):
+    """
+    Test Case ID    : TC-new
+
+    Test Check Point: music profile parameter's value is expected as xml parsing ones
+                      And it is only effective for non dolby content playback
+    """
+    caller_name = test_log_music_profile_default_value_verify_for_non_dolby_content.__name__
+    specified_profile_default_value_test_procedure_dax3(
+        caller_name,
+        endpoint_type_in_module,
+        content_name,
+        content_type,
+        dap_profile)
+
+    assert_specified_profile_default_values_result(profile_name[2], tuning_endpoint_name[6], endpoint_type_in_module)
+
+
+@pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
+                         custom_profile_default_value_test_data)
+def test_log_custom_profile_default_value_verify_for_non_dolby_content(content_name, content_type,
+                                          dap_status, dap_profile, dap_feature_type, dap_feature_value):
+    """
+    Test Case ID    : TC-new
+
+    Test Check Point: Custom profile parameter's value is expected as xml parsing ones
+                      And it is only effective for non dolby content playbacks
+    """
+    caller_name = test_log_custom_profile_default_value_verify_for_non_dolby_content.__name__
+    specified_profile_default_value_test_procedure_dax3(
+        caller_name,
+        endpoint_type_in_module,
+        content_name,
+        content_type,
+        dap_profile)
+
+    assert_specified_profile_default_values_result(profile_name[3], tuning_endpoint_name[6], endpoint_type_in_module)
+
+
+@pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
                          be_on_test_data)
 def test_log_bass_on_verify(content_name, content_type, dap_status, dap_profile, dap_feature_type, dap_feature_value):
     """

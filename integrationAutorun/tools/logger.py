@@ -29,7 +29,8 @@ class Logger:
         # create folder for log
         parent_abs_folder = abspath(join('.', 'log'))
         for index in range(len(log_file_name_for_diff_endpoint)):
-            folder_name_abs_path = parent_abs_folder + '/' + log_file_name_for_diff_endpoint[index]
+            folder_name_abs_path = abspath(join(parent_abs_folder, log_file_name_for_diff_endpoint[index]))
+            # folder_name_abs_path = parent_abs_folder + '/' + log_file_name_for_diff_endpoint[index]
             print ("create folder name is %s" % folder_name_abs_path)
             if not exists(folder_name_abs_path):
                 mkdir(folder_name_abs_path)

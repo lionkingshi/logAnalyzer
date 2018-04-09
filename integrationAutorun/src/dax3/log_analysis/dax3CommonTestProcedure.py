@@ -498,7 +498,7 @@ def reference_level_when_dap_on_test_procedure(caller_name, endpoint_id, content
     register_logger_name(endpoint_id)
 
     logging.getLogger(endpoint_id).info(
-        "===== Verify the output reference level is correct when dap is disable")
+        "===== Verify the output reference level is correct when dap is enable")
     logging.getLogger(endpoint_id).info(
         "===== playing {} channel Dolby content using {} ".format(
             content_type, endpoint_id))

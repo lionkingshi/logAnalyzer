@@ -50,7 +50,7 @@ def specified_profile_default_value_test_procedure_dax3(caller_name, endpoint_id
         feature_test_procedure(content_name, dap_status_on, _dap_profile)
 
     # step 4 : capture adb log to a file and parse dap parameter from log
-    __generate_and_parse_log_file(caller_name, endpoint_id, content_name)
+    __generate_and_parse_log_file(caller_name, endpoint_id, content_name, content_type)
 
 
 def assert_specified_profile_default_values_result(_profile_name, tuning_device_name,
@@ -87,7 +87,7 @@ def assert_specified_profile_default_values_result(_profile_name, tuning_device_
                         _endpoint_type,
                         four_cc_name,
                         post_para_dict_from_xml[four_cc_name],
-                        post_para_dict_from_log[four_cc_name][:-1])
+                        post_para_dict_from_log[four_cc_name][:-4])
             else:
                 # for custom profile , ieq status is off and iebs values remains as previous
                 if _profile_name == profile_name[3]:
@@ -133,7 +133,7 @@ def be_test_procedure_dax3(caller_name, endpoint_id, content_name, content_type,
                            dap_feature_type_be_dax3, dap_feature_value)
 
     # step 3 : capture adb log to a file and parse dap parameter from log
-    __generate_and_parse_log_file(caller_name, endpoint_id, content_name)
+    __generate_and_parse_log_file(caller_name, endpoint_id, content_name, content_type)
     # print ("module name is :" + __name__)
     # step 4 : verify dap feature is correct or not , and include below step :
     #                     -->check no double processing for dolby content
@@ -172,7 +172,7 @@ def mi_off_test_procedure(caller_name, endpoint_id, content_name, content_type, 
     feature_test_procedure(content_name, dap_status, dap_profile)
 
     # step 3 : capture adb log to a file and parse dap parameter from log
-    __generate_and_parse_log_file(caller_name, endpoint_id, content_name)
+    __generate_and_parse_log_file(caller_name, endpoint_id, content_name, content_type)
 
     # step 4 : verify dap feature is correct or not , and include below step :
     #                     -->check no double processing for dolby content
@@ -201,7 +201,7 @@ def mi_on_test_procedure(caller_name, endpoint_id, content_name, content_type, d
     feature_test_procedure(content_name, dap_status, dap_profile)
 
     # step 3 : capture adb log to a file and parse dap parameter from log
-    __generate_and_parse_log_file(caller_name, endpoint_id, 'dynamic_' + content_name)
+    __generate_and_parse_log_file(caller_name, endpoint_id, 'dynamic_' + content_name, content_type)
 
     # step 4 : verify dap feature is correct or not , and include below step :
     #                     -->check no double processing for dolby content
@@ -236,7 +236,7 @@ def mi_on_test_procedure(caller_name, endpoint_id, content_name, content_type, d
     # step 6 : turn off volume leveler when dap on
     execute(adb_broadcast_intent +
             intent_change_dap_high_level_feature.format(dap_feature_type_vl_dax3, dap_feature_value_vl_off))
-    __generate_and_parse_log_file(caller_name, endpoint_id, 'vl_off_' + content_name)
+    __generate_and_parse_log_file(caller_name, endpoint_id, 'vl_off_' + content_name, content_type)
 
     # step 7 :
     # dap on and vl off ,
@@ -267,7 +267,7 @@ def mi_on_test_procedure(caller_name, endpoint_id, content_name, content_type, d
     execute(adb_broadcast_intent +
             intent_change_dap_high_level_feature.format(dap_feature_type_vl_dax3, dap_feature_value_vl_off))
     # capture adb log to a file and parse dap parameter from log
-    __generate_and_parse_log_file(caller_name, endpoint_id, 'dap_off_' + content_name)
+    __generate_and_parse_log_file(caller_name, endpoint_id, 'dap_off_' + content_name, content_type)
     mi_off_expected_dictionary = {'msce': '0', 'mdee': '0', 'miee': '0', 'mdle': '0', 'mave': '0'}
     # step 8 : dap off , check reference level equals to -17db
     if content_type in content_type_dolby:
@@ -287,7 +287,7 @@ def mi_on_test_procedure(caller_name, endpoint_id, content_name, content_type, d
     # step 9 : turn on dap and verify mi feature is expected (on)
     execute(adb_broadcast_intent + intent_change_dap_status + dap_status_on)
     # capture adb log to a file and parse dap parameter from log
-    __generate_and_parse_log_file(caller_name, endpoint_id, 'dap_on_' + content_name)
+    __generate_and_parse_log_file(caller_name, endpoint_id, 'dap_on_' + content_name, content_type)
     # step 10 :
     # dap on and vl off ,
     #     for dolby content : check reference level equals to -11db which is not expected !!!
@@ -347,7 +347,7 @@ def up_mix_and_sv_off_test_procedure(caller_name, endpoint_id, content_name, con
                                dap_feature_type_hv, dap_feature_value_hv_off)
 
     # step 4 : capture adb log to a file and parse dap parameter from log
-    __generate_and_parse_log_file(caller_name, endpoint_id, content_name)
+    __generate_and_parse_log_file(caller_name, endpoint_id, content_name, content_type)
 
     # step 5 : verify dap feature is correct or not , and include below step :
     #                     -->check no double processing for dolby content
@@ -405,7 +405,7 @@ def up_mix_and_sv_on_test_procedure(caller_name, endpoint_id, content_name, cont
                                dap_feature_type_hv, dap_feature_value_hv_on)
 
     # step 4 : capture adb log to a file and parse dap parameter from log
-    __generate_and_parse_log_file(caller_name, endpoint_id, content_name)
+    __generate_and_parse_log_file(caller_name, endpoint_id, content_name, content_type)
 
     # step 5 : verify dap feature is correct or not , and include below step
     #                     -->check no double processing for dolby content
@@ -457,7 +457,7 @@ def log_print_when_dap_off_test_procedure(caller_name, endpoint_id, content_name
     execute(adb_broadcast_intent + intent_change_dap_status + dap_status_off)
 
     # step 4 : check no log printing in stand output console
-    __generate_and_parse_log_file(caller_name, endpoint_id, content_name)
+    __generate_and_parse_log_file(caller_name, endpoint_id, content_name, content_type)
     # assert_no_log_print_when_dap_off(endpoint_id)
 
 
@@ -490,7 +490,7 @@ def reference_level_when_dap_off_test_procedure(caller_name, endpoint_id, conten
         execute(adb_broadcast_intent + intent_change_dap_status + dap_status_off)
 
     # step 3 : capture adb log to a file and parse dap parameter from log
-    __generate_and_parse_log_file(caller_name, endpoint_id, content_name)
+    __generate_and_parse_log_file(caller_name, endpoint_id, content_name, content_type)
 
 
 def reference_level_when_dap_on_test_procedure(caller_name, endpoint_id, content_name, content_type):
@@ -520,7 +520,7 @@ def reference_level_when_dap_on_test_procedure(caller_name, endpoint_id, content
                 intent_change_dap_high_level_feature.format(dap_feature_type_vl_dax3, dap_feature_value_vl_on))
 
     # step 3 : capture adb log to a file and parse dap parameter from log
-    __generate_and_parse_log_file(caller_name, endpoint_id, content_name)
+    __generate_and_parse_log_file(caller_name, endpoint_id, content_name, content_type)
 
 
 def assert_no_log_print_when_dap_off_for_non_dolby_content(_endpoint_id):
@@ -766,7 +766,7 @@ def assert_dom_value_in_global_process():
     pass
 
 
-def __generate_and_parse_log_file(_caller_name, _endpoint_id, _content_name):
+def __generate_and_parse_log_file(_caller_name, _endpoint_id, _content_name, _content_type):
     # generate log file
     temp_log_name = logFileNameFormat.format(functionName=_caller_name,
                                              endpoint_type=_endpoint_id,
@@ -774,7 +774,10 @@ def __generate_and_parse_log_file(_caller_name, _endpoint_id, _content_name):
     sv_log_file_name = abspath(join('.', 'log', _endpoint_id, temp_log_name))
     generate_log_file(sv_log_file_name)
     # parse log file
+    if _content_type in content_type_2_channel_dolby:
+        set_special_flag_for_specified_channel_num(flag_channel_num_equal_to_two=True)
     parse_dap_feature_value_from_log_file(sv_log_file_name)
+    set_special_flag_for_specified_channel_num(flag_channel_num_equal_to_two=False)
 
 
 def __comparison_result(_endpoint_id, _content_type, _expected_list):

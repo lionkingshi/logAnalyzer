@@ -223,8 +223,9 @@ class TuningFileParser:
             for each in dap_tuning_dict[dap_feature_s]:
                 e_dap_feature_tuning = self.get_dapE_tuning(each, endpoint)
                 temp = e_dap_feature_tuning.get('value')
-                value = value + temp + ","
-                # value=value[:-1]
+                value = value + temp + ','
+            # omit the last string ','
+            value = value[:-1]
         else:
             try:
                 dap_feature = dap_tuning_dict[dap_feature_s]

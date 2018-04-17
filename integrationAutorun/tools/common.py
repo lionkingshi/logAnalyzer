@@ -75,19 +75,30 @@ def parse_dap_feature_value_from_log_file(log_file_name):
     effect_paras_output_file_abs_path = abspath(log_file_abs_path_except_extension + "_effect_params_from_log.txt")
     arendered_param_output_file_abs_path = abspath(
         log_file_abs_path_except_extension + "_arendered_params_from_log.txt")
-    dap_cp_dp_param_output_file_abs_path = abspath(log_file_abs_path_except_extension + "_dap_cp_dp_from_log.txt")
+    dap_global_cp_dp_param_output_file_abs_path = \
+        abspath(log_file_abs_path_except_extension + "_dap_global_cp_dp_from_log.txt")
+    dap_qmf_cp_dp_param_output_file_abs_path = abspath(
+        log_file_abs_path_except_extension + "_dap_qmf_cp_dp_from_log.txt")
     logging.getLogger(logger_name).debug(
         "effect para in global process saved at : %s" % effect_paras_output_file_abs_path)
     logging.getLogger(logger_name).debug(
         "effect para in qmf process saved at : %s" % arendered_param_output_file_abs_path)
     logging.getLogger(logger_name).debug(
-        "dap cp and dp para saved at : %s" % dap_cp_dp_param_output_file_abs_path)
+        "dap global cp and dp para saved at : %s" % dap_global_cp_dp_param_output_file_abs_path)
+    logging.getLogger(logger_name).debug(
+        "dap qmf cp and dp para saved at : %s" % dap_qmf_cp_dp_param_output_file_abs_path)
     # global log_analysis_instance
     # log_analysis_instance = LogComparison(endpoint_type)
     log_analysis_instance.filter_para_from_log(log_file_name,
                                                effect_paras_output_file_abs_path,
                                                arendered_param_output_file_abs_path,
-                                               dap_cp_dp_param_output_file_abs_path)
+                                               dap_global_cp_dp_param_output_file_abs_path,
+                                               dap_qmf_cp_dp_param_output_file_abs_path)
+
+
+# special handle for 2 channel content when creating binary command line
+def set_special_flag_for_specified_channel_num(flag_channel_num_equal_to_two=False):
+    log_analysis_instance.set_special_flag_for_specified_channel_num(flag_channel_num_equal_to_two)
 
 
 def get_result_no_log_exist_when_dap_off():

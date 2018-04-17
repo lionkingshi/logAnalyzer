@@ -1,9 +1,11 @@
 #!/usr/bin/python
 """
-Created on Mar 21st, 2017
-@author: twang
+Created on Apr 18st, 2018 (my son has just already one and half year)
+@author: twang and hshi
 """
 import sys
+from os.path import abspath, join
+import logging
 
 # Input File
 INPUT = 'effect_params.txt'
@@ -13,11 +15,47 @@ OUTPUT = 'dap_cpdp.txt'
 
 UTF_8 = 'utf-8'
 
+# define output mode
+DAP_CPDP_PROCESS_1 = '0'
+DAP_CPDP_PROCESS_2 = '1'
+DAP_CPDP_PROCESS_2_HEADPHONE = '8'
+DAP_CPDP_PROCESS_2_HEADPHONE_HEIGHT = '9'
+DAP_CPDP_PROCESS_5_1_SPEAKER = '10'
+DAP_CPDP_PROCESS_5_1_2_SPEAKER = '11'
+
 STEREO = '1'
 HEADPHONE = '9'
 
 # define unique added four cc name in dax3 project
 DAX3_UNIQUE_PARA = ('vol', 'ceon', 'ceqt')
+
+# define project name for the script
+PROJECT_NAME_DAX2 = 'dax2'
+PROJECT_NAME_DAX3 = 'dax3'
+PREDICTED_PROJECT_NAME = PROJECT_NAME_DAX2
+PROCESS_NAME_QMF = 'qmf'
+PROCESS_NAME_GLOBAL = 'global'
+PREDICTED_PROCESS_NAME = PROCESS_NAME_GLOBAL
+# define orientation type
+ORIENTATION_LANDSCAPE = '1'
+ORIENTATION_PORTRAIT = '0'
+ORIENTATION_NA = '2'
+# define endpoint type
+ENDPOINT_TYPE_SPEAKER = '0'
+ENDPOINT_TYPE_HEADPHONE = '1'
+ENDPOINT_TYPE_HDMI = '2'
+ENDPOINT_TYPE_MIRACAST = '3'
+ENDPOINT_TYPE_OTHER = '4'
+# deine virtual enable status
+VIRTUAL_STATUS_ON = '1'
+VIRTUAL_STATUS_OFF = '0'
+# define dom key index
+START_INDEX_DOM_VALUE_IN_DOM_LIST = 6
+VIRTUAL_STATUS_INDEX_IN_DOM = 0
+ENDPOINT_TYPE_INDEX_IN_DOM = 2
+ORIENTATION_INDEX_IN_DOM = 4
+# special handle for 2 chanel content
+FLAG_2_CHANNEL_CONTENT = False
 
 #  "DAPv1 parameters name" to "DAPv2 parameters name"
 DAP1_2_DAP2 = {
@@ -76,6 +114,16 @@ DAP1_2_DAP2 = {
     'ceqt'     :   'complex-equalizer-tuning'
 }
 
+# define the logging basic configuration
+# logging.basicConfig(
+#     level=logging.INFO,
+#     format='%(asctime)s %(name)s %(filename)s[line:%(lineno)d] %(levelname)s ->> %(message)s',
+#     datefmt='%a, %d %b %Y %H:%M:%S')
+# logging.basicConfig(
+#     level=logging.INFO,
+#     format='%(asctime)s %(name)s %(filename)s[line:%(lineno)d] %(levelname)s ->> %(message)s',
+#     datefmt='%a, %d %b %Y %H:%M:%S')
+
 
 def mapping(id, value):
     if id == 'gebs':
@@ -100,17 +148,106 @@ def mapping(id, value):
 
 
 def dom(value):
-    return STEREO
-    # if value == '0':
-    #     return STEREO
-    # elif value == '2':
-    #     return HEADPHONE
-    # else:
-    #     parameter = '11:2:'
-    #     for eachNum in range(8):
-    #         parameter += (value.split(',')[2*eachNum+1]) + ',' + (value.split(',')[2*eachNum+2]) + ':'
-    #     result = parameter[:-1]
-    #     return result
+    if PREDICTED_PROJECT_NAME == PROJECT_NAME_DAX2:
+        logging.getLogger().info("predicted project name is dax2 and start to transfer dom value")
+        if value == '0':
+            return STEREO
+        elif value == '2':
+            return HEADPHONE
+        else:
+            parameter = '11:2:'
+            result = create_mix_matrix(parameter, value)
+            # for eachNum in range(8):
+            #     parameter += (value.split(',')[2 * eachNum + 1]) + ',' + (value.split(',')[2 * eachNum + 2]) + ':'
+            # result = parameter[:-1]
+            return result
+    elif PREDICTED_PROJECT_NAME == PROJECT_NAME_DAX3:
+        logging.getLogger().info("predicted project name is dax3 and start to transfer dom value")
+        if PREDICTED_PROCESS_NAME == PROCESS_NAME_GLOBAL:
+            if value[ENDPOINT_TYPE_INDEX_IN_DOM] == ENDPOINT_TYPE_SPEAKER:
+                if value[ORIENTATION_INDEX_IN_DOM] == ORIENTATION_PORTRAIT:
+                    # when endpoint is stereo speaker and orientation is portrait mode , mix matrix would be applied.
+                    # But for mono speaker and portrait orientation mode , mix matrix would be null which is exception
+                    # Must modify the ctl_cmd manually : output-mode=1
+                    parameter = '0:2:'
+                    output_mode_value = create_mix_matrix(parameter, value)
+                    return output_mode_value
+                elif value[ORIENTATION_INDEX_IN_DOM] == ORIENTATION_LANDSCAPE:
+                    # when endpoint is stereo speaker , landscape orientation and vir enable ,
+                    # mix matrix would be applied.
+                    # for mono speaker , the vir status would always be false
+                    if value[VIRTUAL_STATUS_INDEX_IN_DOM] == VIRTUAL_STATUS_ON:
+                        parameter = '11:2:'
+                        output_mode_value = create_mix_matrix(parameter, value)
+                        return output_mode_value
+                    else:
+                        return DAP_CPDP_PROCESS_2
+            elif value[ENDPOINT_TYPE_INDEX_IN_DOM] == ENDPOINT_TYPE_HEADPHONE:
+                if value[VIRTUAL_STATUS_INDEX_IN_DOM] == VIRTUAL_STATUS_ON:
+                    return DAP_CPDP_PROCESS_2_HEADPHONE_HEIGHT
+                else:
+                    return DAP_CPDP_PROCESS_2
+            else:
+                return DAP_CPDP_PROCESS_2
+        elif PREDICTED_PROCESS_NAME == PROCESS_NAME_QMF:
+            if value[VIRTUAL_STATUS_INDEX_IN_DOM] == VIRTUAL_STATUS_ON:
+                # when sv status is enabled and endpoint type is headphone ,
+                # for 2 channel content , the output mode is 8
+                # for not 2 channel content , the output mode is 9
+                # no mix matrix would be applied
+                if value[ENDPOINT_TYPE_INDEX_IN_DOM] == ENDPOINT_TYPE_HEADPHONE:
+                    if FLAG_2_CHANNEL_CONTENT:
+                        return DAP_CPDP_PROCESS_2_HEADPHONE
+                    else:
+                        return DAP_CPDP_PROCESS_2_HEADPHONE_HEIGHT
+                elif value[ENDPOINT_TYPE_INDEX_IN_DOM] == ENDPOINT_TYPE_SPEAKER:
+                    # when sv status is enabled, endpoint type is speaker, and orientation mode is landscape
+                    # for 2 channel content , the output mode is 10
+                    # for not 2 channel content , the output mode is 11
+                    # mix matrix would be applied
+                    # But for portrait orientation mode , the output mode is 1 which is default setting
+                    if value[ORIENTATION_INDEX_IN_DOM] == ORIENTATION_LANDSCAPE:
+                        if FLAG_2_CHANNEL_CONTENT:
+                            parameter = '10:2:'
+                        else:
+                            parameter = '11:2:'
+                        # print("+++++code run this trip :", parameter)
+                        output_mode_value = create_mix_matrix(parameter, value)
+                        return output_mode_value
+                    elif value[ORIENTATION_INDEX_IN_DOM] == ORIENTATION_PORTRAIT:
+                        return DAP_CPDP_PROCESS_2
+                else:
+                    return DAP_CPDP_PROCESS_2
+                pass
+            else:
+                return DAP_CPDP_PROCESS_2
+                pass
+        pass
+
+
+def create_mix_matrix(_prefix, _value):
+    mix_matrix_value = _value[START_INDEX_DOM_VALUE_IN_DOM_LIST:]
+    logging.getLogger().info("mix matrix value list :" + mix_matrix_value)
+    parameter = _prefix
+    mix_matrix_length = len(mix_matrix_value.split(','))
+    logging.getLogger().info("mix matrix value list length: {}".format(mix_matrix_length))
+    for eachNum in range(mix_matrix_length/2):
+        parameter += \
+            (mix_matrix_value.split(',')[2 * eachNum]) + ',' + (mix_matrix_value.split(',')[2 * eachNum + 1]) + ':'
+        result = parameter[:-1]
+    return result
+
+
+def set_content_channel_num_equal_to_two():
+    global FLAG_2_CHANNEL_CONTENT
+    FLAG_2_CHANNEL_CONTENT = True
+    logging.getLogger().info("set content channel num to 2 ")
+
+
+def set_content_channel_num_not_equal_to_two():
+    global FLAG_2_CHANNEL_CONTENT
+    FLAG_2_CHANNEL_CONTENT = False
+    logging.getLogger().info("set content channel num not equals to 2 ")
 
 
 def gebs(value):
@@ -158,13 +295,66 @@ def translate(name, value):
     return parameter
 
 
-def transfer_para(input_file_name=INPUT, output_file_name=OUTPUT):
-    print('Welcome to DAP Parameters Converter!')
+def predict_process_project_name(lines):
+    # for dax2 project , default value of 'ceon' key word should be non-exist
+    # and dom value's length should be 1 or 16
+    # Note : when dap off for dax3 project , dom default value length is also 1 which is only one exception.
+    #        But it does not affect this code logic because the handle logic for dom is same between dax2 and dax3
+    FLAG_CEON_FOUR_CC_EXIST = False
+    FLAG_CEON_FOUR_CC_EQUAL_TO_NON_EXIST = True
+    FLAG_DOM_VALUE_LENGTH_EQUAL_TO_3_5_19 = False
+    for line in lines:
+        if 'ceon' in line:
+            FLAG_CEON_FOUR_CC_EXIST = True
+            line = line.strip('\n')
+            keys = (line.split('=')[0])
+            values = (line.split('=')[1])
+            if keys == 'ceon':
+                if values != 'non-exist':
+                    FLAG_CEON_FOUR_CC_EQUAL_TO_NON_EXIST = False
+                else:
+                    FLAG_CEON_FOUR_CC_EQUAL_TO_NON_EXIST = True
+        if 'dom' in line:
+            line.strip('\n')
+            keys = line.split('=')[0]
+            values = line.split('=')[1]
+            if keys == 'dom':
+                dom_length = len(values.split(','))
+                if dom_length in (3, 5, 19):
+                    FLAG_DOM_VALUE_LENGTH_EQUAL_TO_3_5_19 = True
+                elif dom_length in (1, 16):
+                    FLAG_DOM_VALUE_LENGTH_EQUAL_TO_3_5_19 = False
+                else:
+                    FLAG_DOM_VALUE_LENGTH_EQUAL_TO_3_5_19 = False
 
-    # Read data from dump file
-    # fp_r = codecs.open(INPUT, 'r', UTF_8)
-    # lines = fp_r.readlines()
-    # fp_r.close()
+    global PREDICTED_PROJECT_NAME
+    global PREDICTED_PROCESS_NAME
+    # if four cc name list contains 'ceon' key words, the process name should be global process
+    # otherwise it should be qmf process
+    if FLAG_CEON_FOUR_CC_EXIST:
+        PREDICTED_PROCESS_NAME = PROCESS_NAME_GLOBAL
+        # if 'ceon' values are equal to 'non-exist' which is its default values, the project name should be dax2
+        # otherwise it should be dax3
+        if FLAG_CEON_FOUR_CC_EQUAL_TO_NON_EXIST:
+            PREDICTED_PROJECT_NAME = PROJECT_NAME_DAX2
+        else:
+            PREDICTED_PROJECT_NAME = PROJECT_NAME_DAX3
+    else:
+        # if four cc name list not contain 'ceon' key words, judge the project through dom value's length
+        PREDICTED_PROCESS_NAME = PROCESS_NAME_QMF
+        if FLAG_DOM_VALUE_LENGTH_EQUAL_TO_3_5_19:
+            PREDICTED_PROJECT_NAME = PROJECT_NAME_DAX3
+        else:
+            PREDICTED_PROJECT_NAME = PROJECT_NAME_DAX2
+    logging.getLogger().info('!!!!! predicted project name is {}'.format(PREDICTED_PROJECT_NAME))
+    logging.getLogger().info('!!!!! predicted process name is {}'.format(PREDICTED_PROCESS_NAME))
+
+
+def transfer_para(input_file_name=INPUT, output_file_name=OUTPUT):
+    logging.getLogger().info('Welcome to DAP Parameters Converter!')
+    logging.getLogger().info("the input file name : {}".format(input_file_name))
+    logging.getLogger().info("the output file name : {}".format(output_file_name))
+
     with open(input_file_name, 'r') as fp_r:
         lines = fp_r.readlines()
         fp_r.close()
@@ -173,7 +363,10 @@ def transfer_para(input_file_name=INPUT, output_file_name=OUTPUT):
     content = 'dap_cpdp.exe --init=mi_process_disable=0,virtual_bass_process_enable=0,mode=0,max_num_objects=16\
     DapPcmInput.wav --out=processed.wav'
 
-    # translate strings and values
+    # firstly traverse the file to predict the project and process name according to 'dom' value's length and 'ceon'
+    predict_process_project_name(lines)
+
+    # secondly traverse to translate strings and values
     for line in lines:
         line = line.strip('\n')
         keys = (line.split('=')[0])
@@ -206,18 +399,80 @@ def transfer_para(input_file_name=INPUT, output_file_name=OUTPUT):
         fp_w.write(content)
         fp_w.close()
 
-    print('Done! Refer to %s ' % output_file_name)
+    logging.getLogger().info('Done!')
+    logging.getLogger().info('Refer to %s ' % output_file_name)
 
 
-def main():
-    transfer_para()
+help_content = (
+    "this is used to : \n"
+    "\t convert the four cc key words to binary command line . \n"
+    "Usage: \n"
+    "1. python transfer_para.py \n"
+    "2. python transfer_para.py -2 \n"
+    "3. python transfer_para.py -i effects_paras.txt \n"
+    "4. python transfer_para.py -i effects_paras.txt -2 \n"
+    "for item 1 and 2, the default input and output file name : effect_params.txt and dap_cpdp.txt \n"
+    "Optional parameters: \n"
+    "-i/--input\t: Followed by file name containing four cc key words and \n "
+    "\t\t output file name would be suffixed with dap_cpdp_ under input file name \n"
+    "-2/--channel\t: if content type is 2 channel Dolby content, add this flag \n"
+)
+
+
+def main(argvs):
+    # define the logging basic configuration
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s %(name)s %(filename)s[line:%(lineno)d] %(levelname)s ->> %(message)s',
+        datefmt='%a, %d %b %Y %H:%M:%S')
+
+    import getopt
+    try:
+        opts, args = getopt.getopt(argvs, 'hi:2', ['help', 'input', 'channel'])
+    except Exception, e:
+        print e
+        sys.exit(0)
+    # if len(opts) == 0:
+    #     print("Please specify the input file name containing four cc key words! ")
+    #     sys.exit(0)
+
+    _input_file_name = None
+    logging.getLogger().info(" opts :" + str(opts))
+
+    FLAG_HAS_INPUT_FILE = False
+    try:
+        for op, value in opts:
+            if op in ('-h', '--help'):
+                print help_content
+                sys.exit(0)
+            if op in ('-i', '--input'):
+                print("file name containing four cc key words :" + value)
+                _input_file_name = abspath(join('.', value))
+                _output_file_name = _input_file_name[:-4] + "_dap_cpdp.txt"
+                FLAG_HAS_INPUT_FILE = True
+                if _input_file_name is None:
+                    print 'Please set file name containing four cc key words!'
+                    sys.exit(0)
+            if op in ('-2', '--channel'):
+                print("special handle for 2 channel content!")
+                set_content_channel_num_equal_to_two()
+
+        if FLAG_HAS_INPUT_FILE:
+            transfer_para(input_file_name=_input_file_name, output_file_name=_output_file_name)
+        else:
+            transfer_para()
+        # finally set the 2 channel num flag to false
+        set_content_channel_num_not_equal_to_two()
+    except Exception, e:
+        print ('Encounter an exception : %s' % e)
 
 
 if __name__ == "__main__":
-    try:
-        sys.exit(main())
-    except SystemExit:
-        print ('!!!!! error info' + sys.exc_info()[0])
-        print ('!!!!! fail DAP Parameters Converter ')
-        pass
+    main(sys.argv[1:])
+    # try:
+    #     sys.exit(main(sys.argv[1:]))
+    # except SystemExit:
+    #     print ('!!!!! error info' + sys.exc_info()[0])
+    #     print ('!!!!! fail DAP Parameters Converter ')
+    #     pass
 

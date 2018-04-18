@@ -124,32 +124,41 @@ DAP1_2_DAP2 = {
 #     format='%(asctime)s %(name)s %(filename)s[line:%(lineno)d] %(levelname)s ->> %(message)s',
 #     datefmt='%a, %d %b %Y %H:%M:%S')
 
+# define logger name
+logger_print = ''
+logger_print_name = 'test'
+
+
+def register_transfer_para_logger_name(_logger_name, _level=logging.DEBUG):
+    global logger_print
+    global logger_print_name
+    logger_print_name = _logger_name
+    logger_print = logging.getLogger(_logger_name)
+    logger_print.setLevel(_level)
+
 
 def mapping(id, value):
     if id == 'gebs':
         return gebs(value)
-
     elif id == 'iebs':
         return iebs(value)
-
     elif id == 'aobs':
         return aobs(value)
-
     elif id == 'arbs':
         return arbs(value)
-
     elif id == 'dom':
         return dom(value)
-
-    elif id == 'vbmf' or id == 'vbsf' or id == 'ceqt':
+    elif id == 'vbmf' or id == 'vbsf':
         return value.replace(',', ':')
+    elif id == 'ceqt':
+        return value[5:].replace(',', ':')
     else:
         return value
 
 
 def dom(value):
     if PREDICTED_PROJECT_NAME == PROJECT_NAME_DAX2:
-        logging.getLogger().info("predicted project name is dax2 and start to transfer dom value")
+        logging.getLogger(logger_print_name).info("predicted project name is dax2 and start to transfer dom value")
         if value == '0':
             return STEREO
         elif value == '2':
@@ -162,7 +171,7 @@ def dom(value):
             # result = parameter[:-1]
             return result
     elif PREDICTED_PROJECT_NAME == PROJECT_NAME_DAX3:
-        logging.getLogger().info("predicted project name is dax3 and start to transfer dom value")
+        logging.getLogger(logger_print_name).info("predicted project name is dax3 and start to transfer dom value")
         if PREDICTED_PROCESS_NAME == PROCESS_NAME_GLOBAL:
             if value[ENDPOINT_TYPE_INDEX_IN_DOM] == ENDPOINT_TYPE_SPEAKER:
                 if value[ORIENTATION_INDEX_IN_DOM] == ORIENTATION_PORTRAIT:
@@ -226,28 +235,33 @@ def dom(value):
 
 
 def create_mix_matrix(_prefix, _value):
-    mix_matrix_value = _value[START_INDEX_DOM_VALUE_IN_DOM_LIST:]
-    logging.getLogger().info("mix matrix value list :" + mix_matrix_value)
-    parameter = _prefix
-    mix_matrix_length = len(mix_matrix_value.split(','))
-    logging.getLogger().info("mix matrix value list length: {}".format(mix_matrix_length))
-    for eachNum in range(mix_matrix_length/2):
-        parameter += \
-            (mix_matrix_value.split(',')[2 * eachNum]) + ',' + (mix_matrix_value.split(',')[2 * eachNum + 1]) + ':'
-        result = parameter[:-1]
-    return result
+    try:
+        mix_matrix_value = _value[START_INDEX_DOM_VALUE_IN_DOM_LIST:]
+        logging.getLogger(logger_print_name).debug("mix matrix value list :" + mix_matrix_value)
+        parameter = _prefix
+        mix_matrix_length = len(mix_matrix_value.split(','))
+        logging.getLogger(logger_print_name).debug("mix matrix value list length: {}".format(mix_matrix_length))
+        for eachNum in range(mix_matrix_length / 2):
+            parameter += \
+                (mix_matrix_value.split(',')[2 * eachNum]) + ',' + (mix_matrix_value.split(',')[2 * eachNum + 1]) + ':'
+            result = parameter[:-1]
+        return result
+    except IndexError, e:
+        logging.getLogger(logger_print_name).error("create mix matrix array error :"+e.message)
+    except UnboundLocalError, e1:
+        logging.getLogger(logger_print_name).error("create mix matrix array error :" + e1.message)
 
 
 def set_content_channel_num_equal_to_two():
     global FLAG_2_CHANNEL_CONTENT
     FLAG_2_CHANNEL_CONTENT = True
-    logging.getLogger().info("set content channel num to 2 ")
+    logging.getLogger(logger_print_name).debug("set content channel num to 2 ")
 
 
 def set_content_channel_num_not_equal_to_two():
     global FLAG_2_CHANNEL_CONTENT
     FLAG_2_CHANNEL_CONTENT = False
-    logging.getLogger().info("set content channel num not equals to 2 ")
+    logging.getLogger(logger_print_name).debug("set content channel num not equals to 2 ")
 
 
 def gebs(value):
@@ -291,6 +305,8 @@ def arbs(value):
 def translate(name, value):
     namev2 = DAP1_2_DAP2[name]
     valuev2 = mapping(name, value)
+    if name == 'dom':
+        logging.getLogger(logger_print_name).warning("!!!!! output-mode={}".format(valuev2))
     parameter = ' --' + namev2 + '=' + valuev2
     return parameter
 
@@ -340,20 +356,24 @@ def predict_process_project_name(lines):
         else:
             PREDICTED_PROJECT_NAME = PROJECT_NAME_DAX3
     else:
-        # if four cc name list not contain 'ceon' key words, judge the project through dom value's length
+        # if four cc name list not contain 'ceon' key words, the process name should be qmf process
         PREDICTED_PROCESS_NAME = PROCESS_NAME_QMF
-        if FLAG_DOM_VALUE_LENGTH_EQUAL_TO_3_5_19:
-            PREDICTED_PROJECT_NAME = PROJECT_NAME_DAX3
-        else:
-            PREDICTED_PROJECT_NAME = PROJECT_NAME_DAX2
-    logging.getLogger().info('!!!!! predicted project name is {}'.format(PREDICTED_PROJECT_NAME))
-    logging.getLogger().info('!!!!! predicted process name is {}'.format(PREDICTED_PROCESS_NAME))
+
+    # if length of dom value is 3 ,5 ,19 (only one exception : when dap off ,the dom length is 1),
+    # the project name should be dax3
+    if FLAG_DOM_VALUE_LENGTH_EQUAL_TO_3_5_19:
+        PREDICTED_PROJECT_NAME = PROJECT_NAME_DAX3
+    else:
+        PREDICTED_PROJECT_NAME = PROJECT_NAME_DAX2
+
+    logging.getLogger(logger_print_name).warning('!!!!! predicted project name is {}'.format(PREDICTED_PROJECT_NAME))
+    logging.getLogger(logger_print_name).warning('!!!!! predicted process name is {}'.format(PREDICTED_PROCESS_NAME))
 
 
 def transfer_para(input_file_name=INPUT, output_file_name=OUTPUT):
-    logging.getLogger().info('Welcome to DAP Parameters Converter!')
-    logging.getLogger().info("the input file name : {}".format(input_file_name))
-    logging.getLogger().info("the output file name : {}".format(output_file_name))
+    logging.getLogger(logger_print_name).info('Welcome to DAP Parameters Converter!')
+    logging.getLogger(logger_print_name).debug("the input file name : {}".format(input_file_name))
+    logging.getLogger(logger_print_name).debug("the output file name : {}".format(output_file_name))
 
     with open(input_file_name, 'r') as fp_r:
         lines = fp_r.readlines()
@@ -399,8 +419,8 @@ def transfer_para(input_file_name=INPUT, output_file_name=OUTPUT):
         fp_w.write(content)
         fp_w.close()
 
-    logging.getLogger().info('Done!')
-    logging.getLogger().info('Refer to %s ' % output_file_name)
+    logging.getLogger(logger_print_name).info('Done!')
+    logging.getLogger(logger_print_name).info('Refer to %s ' % output_file_name)
 
 
 help_content = (
@@ -423,8 +443,8 @@ def main(argvs):
     # define the logging basic configuration
     logging.basicConfig(
         level=logging.INFO,
-        format='%(asctime)s %(name)s %(filename)s[line:%(lineno)d] %(levelname)s ->> %(message)s',
-        datefmt='%a, %d %b %Y %H:%M:%S')
+        format=' %(filename)s[%(lineno)d] %(levelname)s ->> %(message)s')
+    register_transfer_para_logger_name(logger_print_name, _level=logging.INFO)
 
     import getopt
     try:
@@ -437,8 +457,8 @@ def main(argvs):
     #     sys.exit(0)
 
     _input_file_name = None
-    logging.getLogger().info(" opts :" + str(opts))
 
+    logging.getLogger(logger_print_name).debug(" opts :" + str(opts))
     FLAG_HAS_INPUT_FILE = False
     try:
         for op, value in opts:
@@ -446,15 +466,15 @@ def main(argvs):
                 print help_content
                 sys.exit(0)
             if op in ('-i', '--input'):
-                print("file name containing four cc key words :" + value)
+                logging.getLogger(logger_print_name).debug("file name containing four cc key words :" + value)
                 _input_file_name = abspath(join('.', value))
                 _output_file_name = _input_file_name[:-4] + "_dap_cpdp.txt"
                 FLAG_HAS_INPUT_FILE = True
                 if _input_file_name is None:
-                    print 'Please set file name containing four cc key words!'
+                    logging.getLogger(logger_print_name).error('Please set file name containing four cc key words!')
                     sys.exit(0)
             if op in ('-2', '--channel'):
-                print("special handle for 2 channel content!")
+                logging.getLogger(logger_print_name).info("special handle for 2 channel num content!")
                 set_content_channel_num_equal_to_two()
 
         if FLAG_HAS_INPUT_FILE:
@@ -464,7 +484,7 @@ def main(argvs):
         # finally set the 2 channel num flag to false
         set_content_channel_num_not_equal_to_two()
     except Exception, e:
-        print ('Encounter an exception : %s' % e)
+        logging.getLogger(logger_print_name).error('Encounter an exception : %s' % e)
 
 
 if __name__ == "__main__":

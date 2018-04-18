@@ -5,6 +5,7 @@ from os.path import abspath, join, exists, isfile
 from transfer_para import transfer_para
 from transfer_para import set_content_channel_num_equal_to_two
 from transfer_para import set_content_channel_num_not_equal_to_two
+from transfer_para import register_transfer_para_logger_name
 from filter_para_config import *
 
 # define the logging basic configuration
@@ -24,8 +25,10 @@ class LogComparison:
         LogComparison.__initialize_all_para_ordered_dict()
         pass
 
-    def set_logger_name(self, logger_name):
+    def set_logger_name(self, logger_name, _level_no=logging.DEBUG):
         self.logger = logging.getLogger(logger_name)
+        self.logger.setLevel(_level_no)
+        register_transfer_para_logger_name(logger_name, _level=_level_no)
 
     @property
     def get_logger(self):
@@ -98,7 +101,7 @@ class LogComparison:
         if not exists(abspath(input_file_name)):
             self.logger.error("!!!!! the specified log file for filter not exist : %s " % input_file_name)
         else:
-            self.logger.info(">>>>> the specified log file for filter exist ! ")
+            self.logger.debug(">>>>> the specified log file for filter exist ! ")
             # Read data from log file
             with open(input_file_name, 'r') as fp_r:
                 lines = fp_r.readlines()
@@ -121,7 +124,7 @@ class LogComparison:
                             ceqt_combined_list += line.split(':')[-1]
                         else:
                             ceqt_combined_list = ''
-                            self.logger.debug("ceqt format is not expected ! error in filter !")
+                            self.logger.error("ceqt format is not expected ! error in filter !")
 
                 if line != "":
                     self.__search_dap_para_line_by_line(GLOBAL_PROCESS_NAME, line)
@@ -161,12 +164,8 @@ class LogComparison:
         self.__write_content_to_file(LogComparison.EFFECT_PARAS_DICT, output_file_name)
         self.logger.info("<<<<< write dap parameters in global process end  ")
         if exists(output_file_name):
-            self.logger.info("-----------------------------------------------------")
-            self.logger.info("-----------------------------------------------------")
-            self.logger.info("Congratulation. filter dap param in global process succeed ")
-            self.logger.info(" Please refer to the file : %s " % output_file_name)
-            self.logger.info("-----------------------------------------------------")
-            self.logger.info("-----------------------------------------------------")
+            self.logger.info("<<<<< Congratulation. filter dap param in global process succeed ")
+            self.logger.warning("<<<<< Please refer to the file : %s " % output_file_name)
         else:
             self.logger.error("!!!!! failed to filter effect param in global process")
 
@@ -176,12 +175,8 @@ class LogComparison:
         self.__write_content_to_file(LogComparison.A_RENDERER_PARAS_DICT, output_file_name)
         self.logger.info("<<<<< write dap parameters in qmf process end  ")
         if exists(output_file_name):
-            self.logger.info("-----------------------------------------------------")
-            self.logger.info("-----------------------------------------------------")
-            self.logger.info("Congratulation. filter dap param in qmf process succeed ")
-            self.logger.info(" Please refer to the file : %s " % output_file_name)
-            self.logger.info("-----------------------------------------------------")
-            self.logger.info("-----------------------------------------------------")
+            self.logger.info("<<<<< Congratulation. filter dap param in qmf process succeed ")
+            self.logger.warning("<<<<< Please refer to the file : %s " % output_file_name)
         else:
             self.logger.error("!!!!! failed to write effect param in qmf process to file")
 
@@ -206,12 +201,8 @@ class LogComparison:
             self.logger.error("<<<<< input file not exist : %s " % input_file_name)
         self.logger.info("<<<<< transfer to dap cp dp parameters end  ")
         if exists(output_file_name):
-            self.logger.info("-----------------------------------------------------")
-            self.logger.info("-----------------------------------------------------")
-            self.logger.info("Congratulation. transfer dap cp dp parameter succeed ")
-            self.logger.info(" Please refer to the file : %s " % output_file_name)
-            self.logger.info("-----------------------------------------------------")
-            self.logger.info("-----------------------------------------------------")
+            self.logger.info("<<<<< Congratulation. transfer dap cp dp parameter succeed ")
+            self.logger.warning("<<<<< Please refer to the file : %s " % output_file_name)
         else:
             self.logger.error("!!!!! failed to transfer dap cp dp param")
 
@@ -360,7 +351,7 @@ class LogComparison:
                 self.logger.error("!!!!! %s = %s " % (effect_fourcc_name, temp_string))
                 result = False
         if result:
-            self.logger.info(" Congratulation ! No double content processing in global process.")
+            self.logger.info("----- Congratulation ! No double content processing in global process.")
         return result
 
     # For some content playback , check no double device processing in qmf process
@@ -374,7 +365,7 @@ class LogComparison:
                 result = False
                 pass
         if result:
-            self.logger.info(" Congratulation ! No double device processing in qmf process.")
+            self.logger.info("----- Congratulation ! No double device processing in qmf process.")
         return result
 
     #
@@ -393,6 +384,8 @@ class LogComparison:
         if not result_device_double_processing:
             result = False
             pass
+        if result:
+            self.logger.info("----- Congratulation ! No double processing for Dolby content .")
 
         return result
 
@@ -407,7 +400,7 @@ class LogComparison:
                 result = False
                 pass
         if result:
-            self.logger.info(" Congratulation ! No effect parameter in qmf process for non Dolby content .")
+            self.logger.info("----- Congratulation ! No effect parameter in qmf process for non Dolby content .")
         return result
 
 
@@ -467,8 +460,9 @@ help_content = (
     "2. python filter_para.py -i log.txt -2 \n"
     "\n"
     "Mandatory parameters:\n"
-    "-i/--input\t\t: Followed by log file name captured from the command : adb logcat \n"
-    "-2/--channel\t: For 2 channel Dolby content, Should add this flag \n"
+    "-i/--input\t: Followed by log file name captured from the command : adb logcat \n"
+    "Optional parameters: \n"
+    "-2/--channel\t: For 2 channel Dolby content, add this flag \n"
     "\n")
 
 
@@ -476,8 +470,11 @@ def main(argvs):
     # define the logging basic configuration
     logging.basicConfig(
         level=logging.INFO,
-        format='%(asctime)s %(name)s %(filename)s[line:%(lineno)d] %(levelname)s ->> %(message)s',
-        datefmt='%a, %d %b %Y %H:%M:%S')
+        format='%(filename)s[%(lineno)d] %(levelname)s ->> %(message)s')
+    em1 = LogComparison()
+    temp_logger_name = 'test'
+    em1.set_logger_name(temp_logger_name, logging.INFO)
+    em1.get_logger.setLevel(logging.WARNING)
 
     import getopt
     try:
@@ -486,13 +483,14 @@ def main(argvs):
         print e
         sys.exit(0)
     if len(opts) == 0:
-        print("Please specify the input file name captured from the command : adb logcat")
+        logging.getLogger(temp_logger_name).warning(
+            "Please specify the input file name captured from the command : adb logcat")
         sys.exit(0)
 
     input_file_name = None
     FLAG_CHANNEL_NUM_TWO = False
 
-    print(" opts :" + str(opts))
+    logging.getLogger(temp_logger_name).debug(" opts :" + str(opts))
 
     try:
         for op, value in opts:
@@ -500,34 +498,33 @@ def main(argvs):
                 print help_content
                 sys.exit(0)
             if op in ('-i', '--input'):
-                print("input log file name :" + value)
+                logging.getLogger(temp_logger_name).debug("input log file name :" + value)
                 input_file_name = value
                 if input_file_name is None:
-                    print 'Please set the log file name captured from adb logcat command !'
+                    logging.getLogger(temp_logger_name).error(
+                        'Please set the log file name captured from adb logcat command')
                     sys.exit(0)
             if op in ('-2', '--channel'):
                 FLAG_CHANNEL_NUM_TWO = True
-                print("content channel num is 2 !!!", FLAG_CHANNEL_NUM_TWO)
+                logging.getLogger(temp_logger_name).warning("content channel num is 2 : "+str(FLAG_CHANNEL_NUM_TWO))
 
         # first specified the log file we want to filter effect parameters
         input_file_abs_path = abspath(join('.', input_file_name))
-        logging.getLogger().info("specified log file : %s" % input_file_abs_path)
+        logging.getLogger(temp_logger_name).info("specified log file : %s" % input_file_abs_path)
         # specified the output file name , and default it will be saved at current location
         effect_paras_output_file_abs_path = abspath(join('.', "effect_params.txt"))
         a_renderer_param_output_file_abs_path = abspath(join('.', "ARenderer_params.txt"))
         dap_global_cp_dp_param_output_file_abs_path = abspath(join('.', "dap_global_cp_dp.txt"))
         dap_qmf_cp_dp_param_output_file_abs_path = abspath(join('.', "dap_qmf_cp_dp.txt"))
-        logging.getLogger().debug(
+        logging.getLogger(temp_logger_name).debug(
             "dap effect para in global process saved at : %s" % effect_paras_output_file_abs_path)
-        logging.getLogger().debug(
+        logging.getLogger(temp_logger_name).debug(
             "dap effect para in qmf process saved at : %s" % a_renderer_param_output_file_abs_path)
-        logging.getLogger().debug(
+        logging.getLogger(temp_logger_name).debug(
             "dap global cp and dp para saved at : %s" % dap_global_cp_dp_param_output_file_abs_path)
-        logging.getLogger().debug(
+        logging.getLogger(temp_logger_name).debug(
             "dap qmf cp and dp para saved at : %s" % dap_qmf_cp_dp_param_output_file_abs_path)
 
-        em1 = LogComparison()
-        em1.set_logger_name('test')
         if FLAG_CHANNEL_NUM_TWO:
             em1.set_special_flag_for_specified_channel_num(channel_num_two_flag=True)
 
@@ -538,34 +535,8 @@ def main(argvs):
                                  dap_qmf_cp_dp_param_output_file_abs_path)
 
         em1.set_special_flag_for_specified_channel_num(channel_num_two_flag=False)
-
-        # em1.verify_no_double_processing_effect_for_dolby_content()
-        # # em1.verify_no_double_processing_effect_for_non_dolby_content()
-        # em1.get_parameter_value_in_global_process('arbs')
-        # em1.get_parameter_value_in_qmf_process('arbs')
-        # em1.get_parameter_value_in_global_process('aron')
-        # em1.get_parameter_value_in_qmf_process('aron')
-        # em1.get_parameter_value_in_global_process('dea')
-        # em1.get_parameter_value_in_qmf_process('dea')
-        force_down_mix_value = em1.get_decoder_joc_force_down_mix_mode_value_in_ddp_joc_decoder()
-        if force_down_mix_value is not None:
-            print "force down value : %s" % force_down_mix_value
-        dap_output_mode_set = em1.get_dap_output_mode_set_value_in_global_process()
-        if dap_output_mode_set is not None:
-            print "dap output mode set value in global process: %s " % dap_output_mode_set
-        dap_mix_matrix_value = em1.get_mix_matrix_in_global_process()
-        if dap_mix_matrix_value is not None:
-            print "dap mix matrix in global process : %s " % dap_mix_matrix_value
-
-        dap_output_mode_set_qmf = em1.get_dap_output_mode_set_value_in_qmf_process()
-        if dap_output_mode_set_qmf is not None:
-            print "dap output mode set value in qmf process: %s " % dap_output_mode_set_qmf
-        dap_mix_matrix_value_qmf = em1.get_mix_matrix_in_qmf_process()
-        if dap_mix_matrix_value_qmf is not None:
-            print "dap mix matrix in qmf process : %s " % dap_mix_matrix_value_qmf
-
     except Exception, e:
-        logging.getLogger().error('Encounter an exception : %s' % e)
+        logging.getLogger(temp_logger_name).error('Encounter an exception : %s' % e)
 
 
 if __name__ == "__main__":

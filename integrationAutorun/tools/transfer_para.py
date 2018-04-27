@@ -151,9 +151,53 @@ def mapping(id, value):
     elif id == 'vbmf' or id == 'vbsf':
         return value.replace(',', ':')
     elif id == 'ceqt':
-        return value[5:].replace(',', ':')
+        return ceqt(value)
     else:
         return value
+
+
+def ceqt(value):
+    parameter = ""
+    # check the ceqt format is correctly set
+    temp_ceqt = value.split(",")
+    ceqt_length = len(temp_ceqt)
+    channel_num = int(temp_ceqt[0])
+    length_in_each_channel = int(temp_ceqt[1])
+    # logging.getLogger(logger_print_name).info("ceqt length: {}:{}:{}".format(
+    #     ceqt_length, channel_num, length_in_each_channel))
+
+    if (channel_num*length_in_each_channel+2) == ceqt_length:
+        effective_ceqt = temp_ceqt[2:]
+        # logging.getLogger(logger_print_name).info("ceqt length temp: {}".format(len(effective_ceqt)))
+        logging.getLogger(logger_print_name).info("ceqt format check succeed !!!!!")
+        for index_channel in range(channel_num):
+            for index_channel_num_list in range(length_in_each_channel):
+                if index_channel_num_list == (length_in_each_channel-1):
+                    parameter += (effective_ceqt[index_channel*length_in_each_channel+index_channel_num_list] + ",")
+                else:
+                    parameter += (effective_ceqt[index_channel*length_in_each_channel+index_channel_num_list] + ":")
+        result = parameter[:-1]
+        flag_check_1 = False
+        flag_check_2 = True
+        if len(result.split(",")) == channel_num:
+            # logging.getLogger(logger_print_name).info("ceqt format check succeed 2!!!!!")
+            flag_check_1 = True
+            for index_check in range(channel_num):
+                # logging.getLogger(logger_print_name).info("ceqt format check succeed 3!!!!!")
+                if len(result.split(",")[index_check].split(":")) != length_in_each_channel:
+                    # logging.getLogger(logger_print_name).info("ceqt format check succeed 4!!!!!")
+                    flag_check_2 = False
+        if flag_check_1 and flag_check_2:
+            logging.getLogger(logger_print_name).info("complex-equalizer-tuning={}".format(result))
+            return result
+        else:
+            logging.getLogger(logger_print_name).error("return wrong ceqt value !!!!!")
+            return ","
+        pass
+    else:
+        logging.getLogger(logger_print_name).info("ceqt format check failed !!!!!")
+        pass
+    pass
 
 
 def dom(value):

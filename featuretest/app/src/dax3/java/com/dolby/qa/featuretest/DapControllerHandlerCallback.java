@@ -8,6 +8,7 @@ import android.util.Log;
 import com.dolby.dax.DolbyAudioEffect;
 import com.dolby.dax.DsParams;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.Locale;
 
@@ -72,29 +73,39 @@ public class DapControllerHandlerCallback implements Handler.Callback{
                 break;
 
             case MSG_CHANGE_TUNING_DEVICE_NAME:
-                String mTuningInfoShowInTV =
-                        String.format(
-                                Locale.getDefault(),
-                                "change tuning device name to : %s",
-                                TUNING_DEVICE_NAME_LIST[msg.arg1][msg.arg2]);
-
-                packageIntentForUIUpdate(
-                        MSG_UPDATE_DAP_FEATURE_TYPE_TV,
-                        MSG_UPDATE_UI_ARG1_DEFAULT,
-                        mTuningInfoShowInTV);
+                int mPortId = msg.arg1;
+                int mTuningDeviceNameIndex = msg.arg2;
 
                 try {
-                    Log.d(TAG,"change tuning port :" + msg.arg1);
-                    Log.d(TAG,"change tuning device name :" +
-                            TUNING_DEVICE_NAME_LIST[msg.arg1][msg.arg2]);
+                    String[] mTuningDeviceNameList = mDAP.getTuningDevicesList(mPortId);
+                    if (mTuningDeviceNameIndex >= mTuningDeviceNameList.length){
+                        Log.d(TAG,"tuning device name index invalid: "+
+                        mTuningDeviceNameIndex + "not in range [0:" + mTuningDeviceNameList.length+"]");
+                    }else {
+                        String mTuningInfoShowInTV =
+                                String.format(
+                                        Locale.getDefault(),
+                                        "change tuning device name to : %s",
+                                        mTuningDeviceNameList[mTuningDeviceNameIndex]);
 
-                    mDAP.setSelectedTuningDevice(
-                            msg.arg1,
-                            TUNING_DEVICE_NAME_LIST[msg.arg1][msg.arg2]);
-                }catch (UnsupportedOperationException e3){
-                    e3.printStackTrace();
-                    Log.d(TAG,"fail to change to tuning device name : "+
-                            TUNING_DEVICE_NAME_LIST[msg.arg1][msg.arg2]);
+                        packageIntentForUIUpdate(
+                                MSG_UPDATE_DAP_FEATURE_TYPE_TV,
+                                MSG_UPDATE_UI_ARG1_DEFAULT,
+                                mTuningInfoShowInTV);
+
+                        Log.d(TAG,"change tuning port :" + msg.arg1);
+                        Log.d(TAG,"change tuning device name :" +
+                                mTuningDeviceNameList[mTuningDeviceNameIndex]);
+
+                        mDAP.setSelectedTuningDevice(
+                                mPortId,
+                                mTuningDeviceNameList[mTuningDeviceNameIndex]);
+
+                    }
+                }catch (UnsupportedEncodingException e1){
+                    e1.printStackTrace();
+                    Log.d(TAG,"fail to change to tuning device name : port-tuning = "+
+                            msg.arg1+"-"+msg.arg2);
                 }
                 break;
             case Constants.MSG_CHANGE_DAP_FEATURE_DAP_PROFILE:

@@ -264,14 +264,17 @@ public class BroadcastReceiverParseFromHostClient extends BroadcastReceiver {
                             EXTRA_CMD_FEATURE_DAP_TUNING_DEVICE,
                             INVALID_DAP_PROFILE_ID);
 
-            Log.d(TAG,"receive broadcast , tuning port :" + mPortId );
-            Log.d(TAG,"receive broadcast , tuning device name :" +
-                    TUNING_DEVICE_NAME_LIST[mPortId][mDeviceNameId]);
+            try{
+                Log.d(TAG,"receive broadcast , tuning port index:" + mPortId );
+                Log.d(TAG,"receive broadcast , tuning device name index:" + mDeviceNameId);
 
-            Toast.makeText(
-                    context,
-                    TUNING_DEVICE_NAME_LIST[mPortId][mDeviceNameId],
-                    Toast.LENGTH_SHORT).show();
+                Toast.makeText(
+                        context,
+                        TUNING_DEVICE_NAME_LIST[mPortId][mDeviceNameId],
+                        Toast.LENGTH_SHORT).show();
+            }catch (IndexOutOfBoundsException e){
+                e.printStackTrace();
+            }
 
             handleIntentAndThenSendMessage(MSG_CHANGE_TUNING_DEVICE_NAME,mPortId,mDeviceNameId);
         }

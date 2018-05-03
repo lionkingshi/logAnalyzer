@@ -1,22 +1,24 @@
 import time
-
 import pytest
-
+import os
 from tools.common import *
 
 
 @pytest.fixture(scope="session", autouse=True)
 def move_test_content(request):
     # first move all test content to device
-    print '\n move all test content to device directory: /sdcard/feature/'
-    execute('adb shell mkdir {0}'.format(play_content_device_location))
-    # execute('adb push {0} {1}'.format(play_content_local_location, play_content_device_location))
-    # time.sleep(SLEEP_TIME_FOR_PUSH_MEDIA_TO_DUT)
+    print '\n move all test content to device directory: /sdcard/dolby/featureTest/'
+    execute('adb shell mkdir {0}'.format(play_content_device_parent_location))
+    m_content_parent_location = os.path.dirname(os.path.abspath(__file__))
+    m_content_location = os.path.join(m_content_parent_location, play_content_folder_name)
+    execute('adb push {0} {1}'.format(m_content_location, play_content_device_parent_location))
+    time.sleep(SLEEP_TIME_FOR_PUSH_MEDIA_TO_DUT)
 
     # next install test application to device
     # first time installation require human to permit the permission
     print '\n install test apk to device under test'
-    # execute('adb install -r {0}'.format(test_apk_location))
+    m_test_apk_location = os.path.join(m_content_parent_location, test_apk_parent_location, test_apk_file_name)
+    # execute('adb install -r {0}'.format(m_test_apk_location))
     time.sleep(SLEEP_TIME_FOR_INSTALLING_APK)
     # execute(adb_clear_log)
 

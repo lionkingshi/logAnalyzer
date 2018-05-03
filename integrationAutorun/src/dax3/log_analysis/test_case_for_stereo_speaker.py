@@ -15,7 +15,8 @@ log_file_name = abspath(join('.', 'log', 'log.txt'))
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
                          dynamic_profile_default_value_test_data)
 def test_log_dynamic_profile_default_value_verify_landscape(content_name, content_type,
-                                                            dap_status, dap_profile, dap_feature_type, dap_feature_value):
+                                                            dap_status, dap_profile,
+                                                            dap_feature_type, dap_feature_value):
     """
     Test Case ID    : TC-new
 
@@ -37,7 +38,10 @@ def test_log_dynamic_profile_default_value_verify_landscape(content_name, conten
         _tuning_device_name=dap_tuning_device_name_speaker_landscape
     )
 
-    assert_specified_profile_default_values_result(profile_name[0], tuning_endpoint_name[1], endpoint_type_in_module)
+    assert_specified_profile_default_values_result(
+        profile_name[0],
+        speaker_tuning_name[dap_tuning_device_name_speaker_landscape],
+        endpoint_type_in_module)
 
 
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
@@ -65,7 +69,10 @@ def test_log_dynamic_profile_default_value_verify_portrait(content_name, content
         _tuning_device_name=dap_tuning_device_name_speaker_portrait
     )
 
-    assert_specified_profile_default_values_result(profile_name[0], tuning_endpoint_name[0], endpoint_type_in_module)
+    assert_specified_profile_default_values_result(
+        profile_name[0],
+        speaker_tuning_name[dap_tuning_device_name_speaker_portrait],
+        endpoint_type_in_module)
 
 
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
@@ -89,7 +96,10 @@ def test_log_movie_profile_default_value_verify_landscape(content_name, content_
         _tuning_device_name=dap_tuning_device_name_speaker_landscape
     )
 
-    assert_specified_profile_default_values_result(profile_name[1], tuning_endpoint_name[1], endpoint_type_in_module)
+    assert_specified_profile_default_values_result(
+        profile_name[1],
+        speaker_tuning_name[dap_tuning_device_name_speaker_landscape],
+        endpoint_type_in_module)
 
 
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
@@ -113,7 +123,10 @@ def test_log_movie_profile_default_value_verify_portrait(content_name, content_t
         _tuning_device_name=dap_tuning_device_name_speaker_portrait
     )
 
-    assert_specified_profile_default_values_result(profile_name[1], tuning_endpoint_name[0], endpoint_type_in_module)
+    assert_specified_profile_default_values_result(
+        profile_name[1],
+        speaker_tuning_name[dap_tuning_device_name_speaker_portrait],
+        endpoint_type_in_module)
 
 
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
@@ -137,7 +150,10 @@ def test_log_music_profile_default_value_verify_landscape(content_name, content_
         _tuning_device_name=dap_tuning_device_name_speaker_landscape
     )
 
-    assert_specified_profile_default_values_result(profile_name[2], tuning_endpoint_name[1], endpoint_type_in_module)
+    assert_specified_profile_default_values_result(
+        profile_name[2],
+        speaker_tuning_name[dap_tuning_device_name_speaker_landscape],
+        endpoint_type_in_module)
 
 
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
@@ -157,11 +173,14 @@ def test_log_music_profile_default_value_verify_portrait(content_name, content_t
         content_name,
         content_type,
         dap_profile,
-        _tuning_device_name=dap_tuning_port_internal_speaker,
-        _tuning_port=dap_tuning_device_name_speaker_portrait
+        _tuning_port=dap_tuning_port_internal_speaker,
+        _tuning_device_name=dap_tuning_device_name_speaker_portrait
     )
 
-    assert_specified_profile_default_values_result(profile_name[2], tuning_endpoint_name[0], endpoint_type_in_module)
+    assert_specified_profile_default_values_result(
+        profile_name[2],
+        speaker_tuning_name[dap_tuning_device_name_speaker_portrait],
+        endpoint_type_in_module)
 
 
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
@@ -185,7 +204,10 @@ def test_log_custom_profile_default_value_verify_landscape(content_name, content
         _tuning_device_name=dap_tuning_device_name_speaker_landscape
     )
 
-    assert_specified_profile_default_values_result(profile_name[3], tuning_endpoint_name[1], endpoint_type_in_module)
+    assert_specified_profile_default_values_result(
+        profile_name[3],
+        speaker_tuning_name[dap_tuning_device_name_speaker_landscape],
+        endpoint_type_in_module)
 
 
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
@@ -209,7 +231,10 @@ def test_log_custom_profile_default_value_verify_portrait(content_name, content_
         _tuning_device_name=dap_tuning_device_name_speaker_portrait
     )
 
-    assert_specified_profile_default_values_result(profile_name[3], tuning_endpoint_name[0], endpoint_type_in_module)
+    assert_specified_profile_default_values_result(
+        profile_name[3],
+        speaker_tuning_name[dap_tuning_device_name_speaker_portrait],
+        endpoint_type_in_module)
 
 
 @pytest.mark.bass

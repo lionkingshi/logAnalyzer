@@ -103,9 +103,12 @@ class LogComparison:
         else:
             self.logger.debug(">>>>> the specified log file for filter exist ! ")
             # Read data from log file
-            with open(input_file_name, 'r') as fp_r:
-                lines = fp_r.readlines()
-                fp_r.close()
+            try:
+                with open(input_file_name, 'r') as fp_r:
+                    lines = fp_r.readlines()
+                    fp_r.close()
+            except EnvironmentError, e:
+                print ("!!!!!failed to open logcat file captured from device :" + e.message)
 
             # start to parse the log using four cc key word defined before
             self.logger.info('>>>>> start to filter dap parameter in global and qmf process ')
@@ -149,14 +152,17 @@ class LogComparison:
         # self.logger.info("<<<<< Welcome to DAP Parameters write !")
         # self.logger.info("<<<<< start to write para to specified file : %s" % output_file_name)
         assert isinstance(input_order_diction, OrderedDict)
-        with open(output_file_name, 'w') as fp_w:
-            for key, value in input_order_diction.items():
-                content = key + "=" + value + '\n'
-                temp_content = content.strip('\n')
-                self.logger.debug("<<<<< %s " % temp_content)
-                # print("write content to file :" + content)
-                fp_w.write(content)
-            fp_w.close()
+        try:
+            with open(output_file_name, 'w') as fp_w:
+                for key, value in input_order_diction.items():
+                    content = key + "=" + value + '\n'
+                    temp_content = content.strip('\n')
+                    self.logger.debug("<<<<< %s " % temp_content)
+                    # print("write content to file :" + content)
+                    fp_w.write(content)
+                fp_w.close()
+        except EnvironmentError, e:
+            self.logger.debug("!!!!!failed to open input file"+e.message)
 
     # write global dap parameters to a file whose name is suffixed with *_effect_paras_*.txt
     def __write_global_parameter_to_file(self, output_file_name):
@@ -192,6 +198,9 @@ class LogComparison:
     # and saved in a file as suffixed with *dap_cp_dp_*.txt
     # new created file could be used as a input of a stand alone library (dap_cp_dp.exe)
     def __write_dap_cp_dp_params_to_file(self, input_file_name, output_file_name, channel_num=None):
+        if output_file_name is None:
+            return None
+
         self.logger.info("<<<<< Transfer to dap cp dp parameters start")
         if exists(input_file_name):
             transfer_para(input_file_name, output_file_name)
@@ -285,7 +294,8 @@ class LogComparison:
         value = LogComparison.SPECIFIED_FEATURE_PARAS_DICT[key]
         if value != 'non-exist':
             value = value.strip('\n')
-            result = value.split(" ")[-9]
+            # DlbDap2Process: DAP output mode set to 11 with 2 output channels and custom mix matrix.
+            result = value.split(" ")[INDEX_OUTPUT_MODE_IN_GLOBAL_PROCESS_LIST]
             self.logger.info("in global process , dap output mode set to %s with 2 output channels and " % result)
             pass
         return result
@@ -297,7 +307,8 @@ class LogComparison:
         value = LogComparison.SPECIFIED_FEATURE_PARAS_DICT[key]
         if value != 'non-exist':
             value = value.strip('\n')
-            result = value.split(" ")[-9]
+            result = value.split(" ")[INDEX_OUTPUT_MODE_IN_QMF_PROCESS_LIST]
+            # DlbDap2QmfProcess: DAP output mode set to 1 with 2 output channels and null mix matrix.
             self.logger.info("in qmf process , dap output mode set to %s with 2 output channels and " % result)
             pass
         return result
@@ -321,7 +332,8 @@ class LogComparison:
         value = LogComparison.SPECIFIED_FEATURE_PARAS_DICT[key]
         if value != 'non-exist':
             value = value.strip('\n')
-            result = value.split(" ")[-3]
+            # DlbDap2QmfProcess: DAP output mode set to 1 with 2 output channels and null mix matrix.
+            result = value.split(" ")[INDEX_MIX_MATRIX_IN_QMF_PROCESS_LIST]
             self.logger.info(".................. %s mix matrix (QMF)" % result)
             pass
         return result
@@ -333,7 +345,8 @@ class LogComparison:
         value = LogComparison.SPECIFIED_FEATURE_PARAS_DICT[key]
         if value != 'non-exist':
             value = value.strip('\n')
-            result = value.split(" ")[-3]
+            # DlbDap2QmfProcess: DAP output mode set to 1 with 2 output channels and null mix matrix.
+            result = value.split(" ")[INDEX_MIX_MATRIX_IN_GLOBAL_PROCESS_LIST]
             self.logger.info(".................. %s mix matrix" % result)
             pass
         return result
@@ -439,17 +452,23 @@ def verify_all_dap_decoder_parameters_equals_to_non_exist():
 # filter by key word from log file
 def filter_audio_key_word_from_log(key_word_list, input_file_name, output_file_name):
     # Read data from log file
-    with open(input_file_name, 'r') as fp_r:
-        lines = fp_r.readlines()
-        fp_r.close()
+    try:
+        with open(input_file_name, 'r') as fp_r:
+            lines = fp_r.readlines()
+            fp_r.close()
+    except EnvironmentError, e:
+        print ("!!!!!failed to open logcat file captured from device"+e.message)
 
-    with open(output_file_name, 'w') as fp_w:
-        for line in lines:
-            for _key_word in key_word_list:
-                if _key_word in line:
-                    fp_w.write(line)
-                    pass
-    fp_w.close()
+    try:
+        with open(output_file_name, 'w') as fp_w:
+            for line in lines:
+                for _key_word in key_word_list:
+                    if _key_word in line:
+                        fp_w.write(line)
+                        pass
+        fp_w.close()
+    except EnvironmentError, e1:
+        print ("!!!!!failed to open file saved audio key words:" + e1.message)
 
 help_content = (
     "this is used to : \n"

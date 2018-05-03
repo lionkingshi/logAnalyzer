@@ -19,16 +19,13 @@ def specified_profile_default_value_test_procedure_dax3(caller_name, endpoint_id
     elif _dap_profile == dap_profile_music:
         _profile_name = 'Music'
 
-    if content_type in content_type_dolby:
-        index = int(_tuning_device_name)
+    index = _tuning_device_name
+    logging.getLogger(endpoint_id).info(
+        "===== Verify default values in {} profile when playing {} content under {} ".format(
+            _profile_name, content_type, endpoint_id))
+    if endpoint_id in (AUDIO_DEVICE_OUT_MONO_SPEAKER, AUDIO_DEVICE_OUT_STEREO_SPEAKER):
         logging.getLogger(endpoint_id).info(
-            "===== Verify {} profile default values when playing {} Dolby content using {} and {} mode".format(
-                _profile_name, content_type, endpoint_id, tuning_endpoint_name[index]))
-    else:
-        index = int(_tuning_device_name)
-        logging.getLogger(endpoint_id).info(
-            "===== Verify {} profile default values when playing {} non Dolby content using {} and {} mode".format(
-                _profile_name, content_type, endpoint_id, tuning_endpoint_name[index]))
+            "=====                          and {} mode".format(speaker_tuning_name[index]))
 
     # step 2 : change tuning device name for speaker port
     if endpoint_id in (AUDIO_DEVICE_OUT_MONO_SPEAKER, AUDIO_DEVICE_OUT_STEREO_SPEAKER):
@@ -71,7 +68,7 @@ def assert_specified_profile_default_values_result(_profile_name, tuning_device_
         if four_cc_name not in ('vcbf', 'preg', 'pstg', 'vol'):
             if four_cc_name == 'ceqt':
                 if len(post_para_dict_from_xml[four_cc_name]) == len(post_para_dict_from_log[four_cc_name]):
-                    logging.getLogger(_endpoint_type).info("ceqt length from log and xml is equals : {} !".format(
+                    logging.getLogger(_endpoint_type).debug("ceqt length from log and xml is equals : {} !".format(
                         len(post_para_dict_from_log[four_cc_name]))
                     )
                     __assert_equal(
@@ -134,21 +131,6 @@ def be_test_procedure_dax3(caller_name, endpoint_id, content_name, content_type,
 
     # step 3 : capture adb log to a file and parse dap parameter from log
     __generate_and_parse_log_file(caller_name, endpoint_id, content_name, content_type)
-    # print ("module name is :" + __name__)
-    # step 4 : verify dap feature is correct or not , and include below step :
-    #                     -->check no double processing for dolby content
-    #                     -->check no qmf processing for non dolby content
-    #                            --> check specified dap feature value is correct
-    # __assert_no_double_processing_by_content_type(content_type)
-    #
-    # if dap_feature_value == dap_feature_value_be_on:
-    #     if (endpoint_id == AUDIO_DEVICE_OUT_MONO_SPEAKER) \
-    #             or (endpoint_id == AUDIO_DEVICE_OUT_STEREO_SPEAKER):
-    #         __comparison_result(content_type, be_on_expected_value_speaker_endpoint)
-    #     else:
-    #         __comparison_result(content_type, be_on_expected_value_except_speaker_endpoint)
-    # elif dap_feature_value == dap_feature_value_be_off:
-    #     __comparison_result(content_type, be_off_expected_value)
 
 
 def assert_dap_be_related_feature_result(endpoint_id, _content_type, _be_value_dict):
@@ -173,14 +155,6 @@ def mi_off_test_procedure(caller_name, endpoint_id, content_name, content_type, 
 
     # step 3 : capture adb log to a file and parse dap parameter from log
     __generate_and_parse_log_file(caller_name, endpoint_id, content_name, content_type)
-
-    # step 4 : verify dap feature is correct or not , and include below step :
-    #                     -->check no double processing for dolby content
-    #                     -->check no qmf processing for non dolby content
-    #                            --> check specified dap feature value is correct
-    # __assert_no_double_processing_by_content_type(content_type)
-    #
-    # __comparison_result(content_type, mi_off_expected_result)
 
 
 def mi_on_test_procedure(caller_name, endpoint_id, content_name, content_type, dap_status, dap_profile,
@@ -349,15 +323,6 @@ def up_mix_and_sv_off_test_procedure(caller_name, endpoint_id, content_name, con
     # step 4 : capture adb log to a file and parse dap parameter from log
     __generate_and_parse_log_file(caller_name, endpoint_id, content_name, content_type)
 
-    # step 5 : verify dap feature is correct or not , and include below step :
-    #                     -->check no double processing for dolby content
-    #                     -->check no qmf processing for non dolby content
-    #                            --> check specified dap feature value is correct
-    # __assert_no_double_processing_by_content_type(content_type)
-    # __assert_dap_output_mode_setting(content_type, endpoint_id, dap_feature_value_vsv_off)
-    #
-    # __comparison_result(content_type, up_mix_and_sv_off_expected_value)
-
 
 def up_mix_and_sv_on_test_procedure(caller_name, endpoint_id, content_name, content_type,
                                     spk_tuning_device_name_id=dap_tuning_device_name_internal_speaker):
@@ -407,24 +372,6 @@ def up_mix_and_sv_on_test_procedure(caller_name, endpoint_id, content_name, cont
     # step 4 : capture adb log to a file and parse dap parameter from log
     __generate_and_parse_log_file(caller_name, endpoint_id, content_name, content_type)
 
-    # step 5 : verify dap feature is correct or not , and include below step
-    #                     -->check no double processing for dolby content
-    #                     -->check no qmf processing for non dolby content
-    #                            --> check specified dap feature value is correct
-
-    # __assert_no_double_processing_by_content_type(content_type)
-    # __assert_dap_output_mode_setting(content_type, endpoint_id, dap_feature_value_vsv_on)
-    #
-    # if endpoint_id == AUDIO_DEVICE_OUT_MONO_SPEAKER:
-    #     __comparison_result(content_type, up_mix_and_sv_on_mono_spk_expected_value)
-    # elif endpoint_id == AUDIO_DEVICE_OUT_STEREO_SPEAKER:
-    #     __comparison_result(content_type, up_mix_and_sv_on_stereo_spk_expected_value)
-    # elif (endpoint_id == AUDIO_DEVICE_OUT_WIRED_HEADPHONE) \
-    #         or (endpoint_id == AUDIO_DEVICE_OUT_DGTL_DOCK_HEADSET):
-    #     __comparison_result(content_type, up_mix_and_sv_on_headphone_expected_value)
-    # elif endpoint_id == AUDIO_DEVICE_OUT_BLUETOOTH_A2DP:
-    #     __comparison_result(content_type, up_mix_and_sv_on_blue_tooth_expected_value)
-
 
 def log_print_when_dap_off_test_procedure(caller_name, endpoint_id, content_name, content_type):
     # step 1 :register logger name to record all command to logger file except session setup() function
@@ -458,7 +405,6 @@ def log_print_when_dap_off_test_procedure(caller_name, endpoint_id, content_name
 
     # step 4 : check no log printing in stand output console
     __generate_and_parse_log_file(caller_name, endpoint_id, content_name, content_type)
-    # assert_no_log_print_when_dap_off(endpoint_id)
 
 
 def reference_level_when_dap_off_test_procedure(caller_name, endpoint_id, content_name, content_type):
@@ -537,7 +483,8 @@ def assert_apply_dap_off_profile_values_when_dap_off_for_dolby_content(_endpoint
 
 
 def assert_decoding_drc_mode_related_feature_result(_content_type, _endpoint_id):
-    pass
+    if _content_type is None and _endpoint_id is None:
+        pass
 
 
 def assert_decoding_joc_down_mix_related_feature_result(_endpoint_id, _content_type, _down_mix=None):
@@ -569,16 +516,6 @@ def assert_dap_mi_related_feature_result(_endpoint_id, _content_type, _mi_expect
 
     # verify mi related value is expected
     __comparison_result(_endpoint_id, _content_type, _mi_expected_value)
-
-    # if _mi_expected_value:
-    #     if _content_type in content_type_2_channel_dolby:
-    #         __comparison_result(_content_type, mi_on_2_channel_expected_result)
-    #     elif _content_type in content_type_dolby:
-    #         __comparison_result(_content_type, mi_on_multi_channel_expected_result)
-    #     else:
-    #         __comparison_result(_content_type, mi_on_non_dolby_content_expected_result)
-    # else:
-    #     __comparison_result(_content_type, mi_off_expected_result)
 
 
 # to make decoding output level equals to -14db when dap on and -17db when dap off for dolby content ,
@@ -638,11 +575,14 @@ def assert_endpoint_type_in_dom_list(_endpoint_id, _dap_status):
                         AUDIO_DEVICE_OUT_WIRED_HEADPHONE, AUDIO_DEVICE_OUT_DGTL_DOCK_HEADSET):
         if _dap_status == dap_status_on:
             if _endpoint_id in (AUDIO_DEVICE_OUT_STEREO_SPEAKER, AUDIO_DEVICE_OUT_MONO_SPEAKER):
-                m_endpoint_type_expected_value = endpoint_type_speaker_in_dom
+                m_endpoint_type_expected_value = value_of_speaker_endpoint_type_in_dom
             elif _endpoint_id in (AUDIO_DEVICE_OUT_DGTL_DOCK_HEADSET, AUDIO_DEVICE_OUT_WIRED_HEADPHONE):
-                m_endpoint_type_expected_value = endpoint_type_headphone_in_dom
+                m_endpoint_type_expected_value = value_of_headphone_endpoint_type_in_dom
+            else:
+                m_endpoint_type_expected_value = invalid_value_endpoint_type_in_dom
+
             dom_value_in_qmf_process = get_feature_value_from_qmf_process('dom')
-            m_endpoint_type_actual_value = dom_value_in_qmf_process[endpoint_type_index_in_dom]
+            m_endpoint_type_actual_value = dom_value_in_qmf_process[index_endpoint_type_in_dom]
             __assert_equal(
                 _endpoint_id, 'endpoint type ', m_endpoint_type_actual_value, m_endpoint_type_expected_value)
         elif _dap_status == dap_status_off:
@@ -726,40 +666,6 @@ def assert_processing_mode_in_global_process(_endpoint_id, _dap_output_mode, _da
     actual_dom_value = get_feature_value_from_global_process('dom')
     if actual_dom_value is not None:
         __assert_equal(_endpoint_id, 'dom', _dom['dom'], actual_dom_value)
-
-
-# def assert_up_mix_related_feature_result(
-#         _endpoint_id, _content_type, _dap_output_mode, _dap_mix_matrix, _dom, _down_mix=None):
-#     __assert_no_double_processing_by_content_type(_endpoint_id, _content_type)
-#
-#     if _content_type in content_type_dolby:
-#         # for dolby content , output mode value should print in qmf process
-#         _output_mode_in_process = DAP_OUT_PUT_MODE_FOR_DOLBY_CONTENT_INDEX
-#         temp_down_mix = _down_mix
-#     else:
-#         # for non dolby content , output mode value should print in global process
-#         _output_mode_in_process = DAP_OUT_PUT_MODE_FOR_NON_DOLBY_CONTENT_INDEX
-#         # for non dolby content , down mix value should not exist
-#         temp_down_mix = None
-#
-#     _temp_output_mode = get_dap_output_mode_set_value(_content_type)
-#
-#     if _temp_output_mode is not None or _content_type in content_type_dolby:
-#         __assert_equal(_endpoint_id,
-#                        SPECIFIED_FEATURE_KEY_WORDS_LIST[_output_mode_in_process],
-#                        _dap_output_mode,
-#                        _temp_output_mode)
-#         __assert_equal(_endpoint_id,
-#                        SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_MIX_MATRIX_INDEX],
-#                        _dap_mix_matrix,
-#                        get_dap_output_mode_mix_matrix())
-#         __assert_equal(_endpoint_id,
-#                        SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_JOC_FORCE_DOWN_MIX_INDEX],
-#                        temp_down_mix,
-#                        get_decoder_joc_force_down_mix_mode_value())
-#
-#     # verify the dom value is correct
-#     __comparison_result(_endpoint_id, _content_type, _dom)
 
 
 def assert_dom_value_in_global_process():

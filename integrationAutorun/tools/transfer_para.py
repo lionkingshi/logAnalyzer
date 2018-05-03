@@ -169,7 +169,7 @@ def ceqt(value):
     if (channel_num*length_in_each_channel+2) == ceqt_length:
         effective_ceqt = temp_ceqt[2:]
         # logging.getLogger(logger_print_name).info("ceqt length temp: {}".format(len(effective_ceqt)))
-        logging.getLogger(logger_print_name).info("ceqt format check succeed !!!!!")
+        logging.getLogger(logger_print_name).debug("!!!!! ceqt format check succeed")
         for index_channel in range(channel_num):
             for index_channel_num_list in range(length_in_each_channel):
                 if index_channel_num_list == (length_in_each_channel-1):
@@ -188,14 +188,14 @@ def ceqt(value):
                     # logging.getLogger(logger_print_name).info("ceqt format check succeed 4!!!!!")
                     flag_check_2 = False
         if flag_check_1 and flag_check_2:
-            logging.getLogger(logger_print_name).info("complex-equalizer-tuning={}".format(result))
+            logging.getLogger(logger_print_name).debug("complex-equalizer-tuning={}".format(result))
             return result
         else:
-            logging.getLogger(logger_print_name).error("return wrong ceqt value !!!!!")
+            logging.getLogger(logger_print_name).error("!!!!! return wrong ceqt value")
             return ","
         pass
     else:
-        logging.getLogger(logger_print_name).info("ceqt format check failed !!!!!")
+        logging.getLogger(logger_print_name).info("!!!!! ceqt format check failed")
         pass
     pass
 

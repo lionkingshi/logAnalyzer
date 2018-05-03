@@ -3,14 +3,17 @@ PROJECT_ID_DAX3 = 3
 PROJECT_ID_DAX2 = 2
 # define sleep time before record device log
 SLEEP_TIME_BEFORE_RECORD_LOG = 5
-SLEEP_TIME_FOR_PUSH_MEDIA_TO_DUT = 15
+SLEEP_TIME_FOR_PUSH_MEDIA_TO_DUT = 3
 SLEEP_TIME_FOR_ACTIVITY_START = 1
 SLEEP_TIME_FOR_INSTALLING_APK = 3
 # define play content
-play_content_local_location = './mediaSrc/*'
-play_content_device_location = '/sdcard/featureTest'
+play_content_local_location = './featureTestContent/*'
+play_content_device_parent_location = '/sdcard/dolby'
+play_content_folder_name = 'featureTestContent'
+play_content_device_location = '/sdcard/dolby/featureTestContent'
 # define test apk location and name
-test_apk_location = './apkSrc/app-debug.apk'
+test_apk_parent_location = 'apkSrc'
+test_apk_file_name = 'DAXLogAnalysis.apk'
 # define test case log location on device under test
 logFileLocation = "./log/"
 logFileNameFormat = "{functionName}_{endpoint_type}_{log_type}.txt"
@@ -45,6 +48,7 @@ intent_change_dap_tuning_device = intent_change_dap + '--ei dap_tuning_port {0} 
 adb_record_log = 'adb logcat -d >'
 adb_record_log_append = 'adb logcat -d >>'
 adb_clear_log = 'adb logcat -b all -c'
+# adb_clear_log = 'adb device'
 
 # define dolby content category
 content_type_1_channel_non_dolby = '1.0'
@@ -181,9 +185,9 @@ dap_tuning_port_usb = str(5)
 dap_tuning_port_other = str(6)
 # define tuning device name parameter
 dap_feature_type_tuning_device_name_dax3 = 'dap_tuning_device'
-dap_tuning_device_name_speaker_portrait = str(0)
-dap_tuning_device_name_speaker_landscape = str(1)
-dap_tuning_device_name_internal_speaker = str(2)
+dap_tuning_device_name_speaker_portrait = str(2)
+dap_tuning_device_name_speaker_landscape = str(0)
+dap_tuning_device_name_internal_speaker = str(1)
 dap_tuning_device_name_hdmi = str(0)
 dap_tuning_device_name_miracast = str(0)
 dap_tuning_device_name_headphone_port = str(0)
@@ -193,6 +197,12 @@ dap_tuning_device_name_speaker_bluetooth = str(2)
 dap_tuning_device_name_usb = str(0)
 dap_tuning_device_name_headphone_usb = str(1)
 dap_tuning_device_name_speaker_usb = str(2)
+# define tuning device name for speaker port
+speaker_tuning_name = {
+    dap_tuning_device_name_speaker_landscape: 'Speaker_landscape',
+    dap_tuning_device_name_internal_speaker: 'internal speaker',
+    dap_tuning_device_name_speaker_portrait: 'Speaker_portrait'
+}
 
 # define dap four cc expected value when dap off for dolby content
 # dolby content will apply the off profile value in qmf process
@@ -218,12 +228,13 @@ dap_off_four_cc_expected_dictionary_for_dolby_content_in_dax3 = {
 # index 2 means endpoint type : 0-spk 1-hp 2-pass though 3-other 4-default
 # index 3 is ,
 # index 4 means orientation : 0-portrait 1-landscape 2-N/A
-endpoint_type_index_in_dom = 2
-endpoint_type_speaker_in_dom = '0'
-endpoint_type_headphone_in_dom = '1'
-endpoint_type_pass_through_in_dom = '2'
-endpoint_type_other_in_dom = '3'
-endpoint_type_default_in_dom = '4'
+index_endpoint_type_in_dom = 2
+value_of_speaker_endpoint_type_in_dom = '0'
+value_of_headphone_endpoint_type_in_dom = '1'
+value_of_pass_through_endpoint_type_in_dom = '2'
+value_of_other_endpoint_type_in_dom = '3'
+value_of_default_endpoint_type_in_dom = '4'
+invalid_value_endpoint_type_in_dom = '10'
 
 
 

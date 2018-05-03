@@ -1,4 +1,5 @@
 import subprocess
+import platform
 from constant import *
 import time
 from filter_para import *
@@ -184,7 +185,21 @@ def contain_string(files, string):
 def execute(cmd):
     # prc = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
     # return prc.communicate()[0]
-    return_code = subprocess.call(cmd, shell=True)
-    logging.getLogger(logger_name).info("===== run command : %s " % cmd)
+    _os_version = platform.system()
+    if "Windows" in _os_version:
+        _flag_os_is_windows = True
+    else:
+        _flag_os_is_windows = False
+
+    if "logcat" in cmd:
+        cmd_temp = cmd
+    else:
+        if _flag_os_is_windows:
+            cmd_temp = cmd + " 1> nul"
+        else:
+            cmd_temp = cmd + " 1> /dev/null"
+
+    return_code = subprocess.call(cmd_temp, shell=True)
+    logging.getLogger(logger_name).debug("===== run command : %s " % cmd)
     # print cmd + ' return result : ' + str(return_code)
     return return_code

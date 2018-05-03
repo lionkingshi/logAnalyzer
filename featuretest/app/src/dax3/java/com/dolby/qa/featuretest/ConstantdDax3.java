@@ -7,7 +7,7 @@ public class ConstantdDax3 {
     // following tuning device name list must sync up with dax-default.xml
     public static final String[][] TUNING_DEVICE_NAME_LIST =
             {
-                    {"Speaker_portrait","Speaker_landscape","internal_speaker"},
+                    {"Speaker_landscape", "internal_speaker", "Speaker_portrait"},
                     {"hdmi"},
                     {"miracast"},
                     {"headphone_port"},

@@ -250,8 +250,3 @@ custom_profile_default_value_test_data = [
     ('7ch_25fps.wav', content_type_71_channel_non_dolby, dap_status_on, dap_profile_custom_dax3,
      dap_feature_type_hv, dap_feature_value_hv_on)
 ]
-
-
-
-
-

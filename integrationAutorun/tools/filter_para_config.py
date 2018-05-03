@@ -42,7 +42,17 @@ DAP_OUT_PUT_MODE_FOR_NON_DOLBY_CONTENT_INDEX = 2
 DAP_MIX_MATRIX_INDEX = 3
 SPECIFIED_FEATURE_KEY_WORDS_LIST = [
     'DDP_JOCDecoder: setMultiChannelPCMOutDownmix',
+    # DlbDap2QmfProcess: DAP output mode set to 1 with 2 output channels and null mix matrix.
     'DlbDap2QmfProcess: DAP output mode set',  # for DlbDap2QmfProcess and DlbDap2Process
+    # DlbDap2Process: DAP output mode set to 11 with 2 output channels and custom mix matrix.
     'DlbDap2Process: DAP output mode set',  # for DlbDap2QmfProcess and DlbDap2Process
     'mix matrix'
 ]
+# define index of output mode, orientation and mix matrix in filtered string
+INDEX_OUTPUT_MODE_IN_GLOBAL_PROCESS_LIST = -9
+INDEX_ORIENTATION_IN_GLOBAL_PROCESS_LIST = -6
+INDEX_MIX_MATRIX_IN_GLOBAL_PROCESS_LIST = -3
+INDEX_OUTPUT_MODE_IN_QMF_PROCESS_LIST = -9
+INDEX_ORIENTATION_IN_QMF_PROCESS_LIST = -6
+INDEX_MIX_MATRIX_IN_QMF_PROCESS_LIST = -3
+

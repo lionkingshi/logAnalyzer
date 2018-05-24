@@ -1,7 +1,7 @@
 import sys
 import logging
 from collections import OrderedDict
-from os.path import abspath, join, exists, isfile
+from os.path import abspath, join, exists
 from transfer_para import transfer_para
 from transfer_para import set_content_channel_num_equal_to_two
 from transfer_para import set_content_channel_num_not_equal_to_two
@@ -14,10 +14,13 @@ from filter_para_config import *
 #     format='%(asctime)s %(name)s %(filename)s[line:%(lineno)d] %(levelname)s ->> %(message)s',
 #     datefmt='%a, %d %b %Y %H:%M:%S')
 
+EMPTY_STRING_FLAG = 'non-exist'
+
 
 class LogComparison:
     EFFECT_PARAS_DICT = OrderedDict()
     A_RENDERER_PARAS_DICT = OrderedDict()
+    AC4_PARAS_DICT = OrderedDict()
     SPECIFIED_FEATURE_PARAS_DICT = OrderedDict()
 
     def __init__(self, logger_name=''):
@@ -40,24 +43,31 @@ class LogComparison:
         LogComparison.__initialize_global_para_ordered_dict()
         LogComparison.__initialize_qmf_para_ordered_dict()
         LogComparison.__initialize_specified_para_ordered_dict()
+        LogComparison.__initialize_ac4_para_ordered_dict()
 
     # initialize global dap parameters
     @staticmethod
     def __initialize_global_para_ordered_dict():
         for index in range(len(PARA_LIST_IN_GLOBAL_PROCESS)):
-            LogComparison.EFFECT_PARAS_DICT[PARA_LIST_IN_GLOBAL_PROCESS[index]] = 'non-exist'
+            LogComparison.EFFECT_PARAS_DICT[PARA_LIST_IN_GLOBAL_PROCESS[index]] = EMPTY_STRING_FLAG
 
     # initialize dap parameters in OMX component
     @staticmethod
     def __initialize_qmf_para_ordered_dict():
         for index in range(len(PARA_LIST_IN_QMF_PROCESS)):
-            LogComparison.A_RENDERER_PARAS_DICT[PARA_LIST_IN_QMF_PROCESS[index]] = 'non-exist'
+            LogComparison.A_RENDERER_PARAS_DICT[PARA_LIST_IN_QMF_PROCESS[index]] = EMPTY_STRING_FLAG
 
     # initialize specified feature value
     @staticmethod
     def __initialize_specified_para_ordered_dict():
         for index in range(len(SPECIFIED_FEATURE_KEY_WORDS_LIST)):
-            LogComparison.SPECIFIED_FEATURE_PARAS_DICT[SPECIFIED_FEATURE_KEY_WORDS_LIST[index]] = 'non-exist'
+            LogComparison.SPECIFIED_FEATURE_PARAS_DICT[SPECIFIED_FEATURE_KEY_WORDS_LIST[index]] = EMPTY_STRING_FLAG
+
+    # initialize AC4 parameters value in OMX component
+    @staticmethod
+    def __initialize_ac4_para_ordered_dict():
+        for index in range(len(PARA_LIST_AC4)):
+            LogComparison.AC4_PARAS_DICT[PARA_LIST_AC4[index]] = EMPTY_STRING_FLAG
 
     # common function to filter expected key word in string
     def __search_dap_para_line_by_line(self, process_name, line):
@@ -80,6 +90,8 @@ class LogComparison:
                         LogComparison.EFFECT_PARAS_DICT[fourcc_name] = fourcc_value
                     elif QMF_PROCESS_NAME == process_name:
                         LogComparison.A_RENDERER_PARAS_DICT[fourcc_name] = fourcc_value
+                    elif AC4_PROCESS_NAME == process_name:
+                        LogComparison.AC4_PARAS_DICT[fourcc_name] = fourcc_value
                     else:
                         self.logger.error("not expected filter key words !")
         else:
@@ -132,6 +144,7 @@ class LogComparison:
                 if line != "":
                     self.__search_dap_para_line_by_line(GLOBAL_PROCESS_NAME, line)
                     self.__search_dap_para_line_by_line(QMF_PROCESS_NAME, line)
+                    self.__search_dap_para_line_by_line(AC4_PROCESS_NAME, line)
                 else:
                     # self.logger.debug("read empty line in log !")
                     pass
@@ -186,6 +199,17 @@ class LogComparison:
         else:
             self.logger.error("!!!!! failed to write effect param in qmf process to file")
 
+    # write ac4 parameters to a file whose name is suffixed with *_ac4_paras_*.txt
+    def __write_ac4_parameter_to_file(self, output_file_name):
+        self.logger.info("<<<<< write dap ac4 parameters start")
+        self.__write_content_to_file(LogComparison.AC4_PARAS_DICT, output_file_name)
+        self.logger.info("<<<<< write dap ac4 parameters end  ")
+        if exists(output_file_name):
+            self.logger.info("<<<<< Congratulation. filter dap ac4 param succeed ")
+            self.logger.warning("<<<<< Please refer to the file : %s " % output_file_name)
+        else:
+            self.logger.error("!!!!! failed to write dap ac4 param to file")
+
     # special handle for 2 channel content when creating binary command line
     @staticmethod
     def set_special_flag_for_specified_channel_num(channel_num_two_flag=False):
@@ -197,7 +221,7 @@ class LogComparison:
     # transfer global dap effect parameters to dap ca dp parameter
     # and saved in a file as suffixed with *dap_cp_dp_*.txt
     # new created file could be used as a input of a stand alone library (dap_cp_dp.exe)
-    def __write_dap_cp_dp_params_to_file(self, input_file_name, output_file_name, channel_num=None):
+    def __write_dap_cp_dp_params_to_file(self, input_file_name, output_file_name):
         if output_file_name is None:
             return None
 
@@ -233,6 +257,9 @@ class LogComparison:
         if not verify_all_dap_decoder_parameters_equals_to_non_exist():
             self.__write_qmf_parameter_to_file(a_renderer_para_file_name)
             self.__write_dap_cp_dp_params_to_file(a_renderer_para_file_name, dap_qmf_cp_dp_file_name)
+        if not verify_all_ac4_decoder_parameters_equals_to_non_exist():
+            _ac4_para_file_name = a_renderer_para_file_name.replace('arenderer', 'ac4')
+            self.__write_ac4_parameter_to_file(_ac4_para_file_name)
 
     # get value through four cc name from global dap effect parameters
     # But if the input argument is None , return all dap parameters dictionary
@@ -243,7 +270,7 @@ class LogComparison:
         else:
             if effect_fourcc_name in PARA_LIST_IN_GLOBAL_PROCESS:
                 temp_value = LogComparison.EFFECT_PARAS_DICT[effect_fourcc_name]
-                if 'non-exist' != temp_value:
+                if EMPTY_STRING_FLAG != temp_value:
                     self.logger.info("in global process: %s = %s " % (effect_fourcc_name, temp_value))
                     result = temp_value
                 else:
@@ -263,7 +290,7 @@ class LogComparison:
         else:
             if effect_fourcc_name in PARA_LIST_IN_QMF_PROCESS:
                 temp_value = LogComparison.A_RENDERER_PARAS_DICT[effect_fourcc_name]
-                if 'non-exist' != temp_value:
+                if EMPTY_STRING_FLAG != temp_value:
                     self.logger.info("in qmf process : %s = %s " % (effect_fourcc_name, temp_value))
                     result = temp_value
                 else:
@@ -275,12 +302,32 @@ class LogComparison:
                 pass
             return result
 
+    # get value though four cc name from dap ac4 effect parameters
+    def get_parameter_value_in_ac4_decoder(self, effect_fourcc_name=None):
+        result = None
+        if effect_fourcc_name is None:
+            return LogComparison.AC4_PARAS_DICT
+        else:
+            if effect_fourcc_name in PARA_LIST_AC4:
+                temp_value = LogComparison.AC4_PARAS_DICT[effect_fourcc_name]
+                if EMPTY_STRING_FLAG != temp_value:
+                    self.logger.info("in ac4 decoder : %s = %s " % (effect_fourcc_name, temp_value))
+                    result = temp_value
+                else:
+                    self.logger.error("!!!!! Found no specified dap four cc name in ac4 decoder : %s "
+                                      % effect_fourcc_name)
+            else:
+                self.logger.error(
+                    "!!!!! Please specify correct dap ac4 para four cc name in ac4 decoder: %s " % effect_fourcc_name)
+                pass
+            return result
+
     # get dap force down mix value
     def get_decoder_joc_force_down_mix_mode_value_in_ddp_joc_decoder(self):
         result = None
         key = SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_JOC_FORCE_DOWN_MIX_INDEX]
         value = LogComparison.SPECIFIED_FEATURE_PARAS_DICT[key]
-        if value != 'non-exist':
+        if value != EMPTY_STRING_FLAG:
             value = value.strip('\n')
             result = value.split(" ")[-1]
             self.logger.info("in ddp decode config , force down mix value : %s " % result)
@@ -292,7 +339,7 @@ class LogComparison:
         result = None
         key = SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_OUT_PUT_MODE_FOR_NON_DOLBY_CONTENT_INDEX]
         value = LogComparison.SPECIFIED_FEATURE_PARAS_DICT[key]
-        if value != 'non-exist':
+        if value != EMPTY_STRING_FLAG:
             value = value.strip('\n')
             # DlbDap2Process: DAP output mode set to 11 with 2 output channels and custom mix matrix.
             result = value.split(" ")[INDEX_OUTPUT_MODE_IN_GLOBAL_PROCESS_LIST]
@@ -305,7 +352,7 @@ class LogComparison:
         result = None
         key = SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_OUT_PUT_MODE_FOR_DOLBY_CONTENT_INDEX]
         value = LogComparison.SPECIFIED_FEATURE_PARAS_DICT[key]
-        if value != 'non-exist':
+        if value != EMPTY_STRING_FLAG:
             value = value.strip('\n')
             result = value.split(" ")[INDEX_OUTPUT_MODE_IN_QMF_PROCESS_LIST]
             # DlbDap2QmfProcess: DAP output mode set to 1 with 2 output channels and null mix matrix.
@@ -318,7 +365,7 @@ class LogComparison:
         result = None
         key = SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_MIX_MATRIX_INDEX]
         value = LogComparison.SPECIFIED_FEATURE_PARAS_DICT[key]
-        if value != 'non-exist':
+        if value != EMPTY_STRING_FLAG:
             value = value.strip('\n')
             result = value.split(" ")[-3]
             self.logger.info(".................. %s mix matrix" % result)
@@ -330,7 +377,7 @@ class LogComparison:
         result = None
         key = SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_OUT_PUT_MODE_FOR_DOLBY_CONTENT_INDEX]
         value = LogComparison.SPECIFIED_FEATURE_PARAS_DICT[key]
-        if value != 'non-exist':
+        if value != EMPTY_STRING_FLAG:
             value = value.strip('\n')
             # DlbDap2QmfProcess: DAP output mode set to 1 with 2 output channels and null mix matrix.
             result = value.split(" ")[INDEX_MIX_MATRIX_IN_QMF_PROCESS_LIST]
@@ -343,7 +390,7 @@ class LogComparison:
         result = None
         key = SPECIFIED_FEATURE_KEY_WORDS_LIST[DAP_OUT_PUT_MODE_FOR_NON_DOLBY_CONTENT_INDEX]
         value = LogComparison.SPECIFIED_FEATURE_PARAS_DICT[key]
-        if value != 'non-exist':
+        if value != EMPTY_STRING_FLAG:
             value = value.strip('\n')
             # DlbDap2QmfProcess: DAP output mode set to 1 with 2 output channels and null mix matrix.
             result = value.split(" ")[INDEX_MIX_MATRIX_IN_GLOBAL_PROCESS_LIST]
@@ -372,10 +419,11 @@ class LogComparison:
         result = True
         for effect_fourcc_name in DEVICE_PROCESSING_PARAM_LIST:
             if effect_fourcc_name in LogComparison.A_RENDERER_PARAS_DICT:
-                self.logger.error("!!!!! double device processing in qmf process ")
                 temp_string = LogComparison.A_RENDERER_PARAS_DICT[effect_fourcc_name]
-                self.logger.error("!!!!! %s = %s " % (effect_fourcc_name, temp_string))
-                result = False
+                if temp_string != EMPTY_STRING_FLAG:
+                    self.logger.error("!!!!! double device processing in qmf process ")
+                    self.logger.error("!!!!! %s = %s " % (effect_fourcc_name, temp_string))
+                    result = False
                 pass
         if result:
             self.logger.info("----- Congratulation ! No double device processing in qmf process.")
@@ -407,7 +455,7 @@ class LogComparison:
         self.logger.info("----- verify effect parameter didn't exist in qmf process for non Dolby content ")
 
         for key, value in LogComparison.A_RENDERER_PARAS_DICT.items():
-            if 'non-exist' != value:
+            if EMPTY_STRING_FLAG != value:
                 self.logger.error("!!!!! effect parameter exist in qmf process for non dolby content")
                 self.logger.error("!!!!! %s = %s " % (key, value))
                 result = False
@@ -425,10 +473,10 @@ def verify_all_dap_parameters_equals_to_non_exist():
     if not verify_all_dap_decoder_parameters_equals_to_non_exist():
         result = False
     # for key in PARA_LIST_IN_GLOBAL_PROCESS:
-    #     if LogComparison.EFFECT_PARAS_DICT[key] != 'non-exist':
+    #     if LogComparison.EFFECT_PARAS_DICT[key] != EMPTY_STRING_FLAG:
     #         result = True
     # for key_other in PARA_LIST_IN_QMF_PROCESS:
-    #     if LogComparison.A_RENDERER_PARAS_DICT[key_other] != 'non-exist':
+    #     if LogComparison.A_RENDERER_PARAS_DICT[key_other] != EMPTY_STRING_FLAG:
     #         result = True
     return result
 
@@ -436,7 +484,7 @@ def verify_all_dap_parameters_equals_to_non_exist():
 def verify_all_dap_global_parameters_equals_to_non_exist():
     result = True
     for key in PARA_LIST_IN_GLOBAL_PROCESS:
-        if LogComparison.EFFECT_PARAS_DICT[key] != 'non-exist':
+        if LogComparison.EFFECT_PARAS_DICT[key] != EMPTY_STRING_FLAG:
             result = False
     return result
 
@@ -444,7 +492,15 @@ def verify_all_dap_global_parameters_equals_to_non_exist():
 def verify_all_dap_decoder_parameters_equals_to_non_exist():
     result = True
     for key_other in PARA_LIST_IN_QMF_PROCESS:
-        if LogComparison.A_RENDERER_PARAS_DICT[key_other] != 'non-exist':
+        if LogComparison.A_RENDERER_PARAS_DICT[key_other] != EMPTY_STRING_FLAG:
+            result = False
+    return result
+
+
+def verify_all_ac4_decoder_parameters_equals_to_non_exist():
+    result = True
+    for key_other in PARA_LIST_AC4:
+        if LogComparison.AC4_PARAS_DICT[key_other] != EMPTY_STRING_FLAG:
             result = False
     return result
 
@@ -452,6 +508,7 @@ def verify_all_dap_decoder_parameters_equals_to_non_exist():
 # filter by key word from log file
 def filter_audio_key_word_from_log(key_word_list, input_file_name, output_file_name):
     # Read data from log file
+    lines = ''
     try:
         with open(input_file_name, 'r') as fp_r:
             lines = fp_r.readlines()
@@ -507,7 +564,7 @@ def main(argvs):
         sys.exit(0)
 
     input_file_name = None
-    FLAG_CHANNEL_NUM_TWO = False
+    flaf_channel_num_two = False
 
     logging.getLogger(temp_logger_name).debug(" opts :" + str(opts))
 
@@ -524,8 +581,8 @@ def main(argvs):
                         'Please set the log file name captured from adb logcat command')
                     sys.exit(0)
             if op in ('-2', '--channel'):
-                FLAG_CHANNEL_NUM_TWO = True
-                logging.getLogger(temp_logger_name).warning("content channel num is 2 : "+str(FLAG_CHANNEL_NUM_TWO))
+                flaf_channel_num_two = True
+                logging.getLogger(temp_logger_name).warning("content channel num is 2 : "+str(flaf_channel_num_two))
 
         # first specified the log file we want to filter effect parameters
         input_file_abs_path = abspath(join('.', input_file_name))
@@ -544,7 +601,7 @@ def main(argvs):
         logging.getLogger(temp_logger_name).debug(
             "dap qmf cp and dp para saved at : %s" % dap_qmf_cp_dp_param_output_file_abs_path)
 
-        if FLAG_CHANNEL_NUM_TWO:
+        if flaf_channel_num_two:
             em1.set_special_flag_for_specified_channel_num(channel_num_two_flag=True)
 
         em1.filter_para_from_log(input_file_abs_path,

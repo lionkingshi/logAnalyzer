@@ -13,6 +13,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.Locale;
 
+import static com.dolby.qa.featuretest.ConstantdDax3.COMMAND_INDEX_MAPPING;
 import static com.dolby.qa.featuretest.ConstantdDax3.TUNING_DEVICE_NAME_LIST;
 import static com.dolby.qa.featuretest.Constants.GLOBAL_SESSION_ID_NUM;
 import static com.dolby.qa.featuretest.Constants.MIDDLE_PRIORITY_NUM;
@@ -82,32 +83,61 @@ public class DapControllerHandlerCallback implements Handler.Callback{
                             (msg.arg1 <= DsTuning.usb.toInt())){
 
                         String[] mTuningDeviceNameList = mDAP.getTuningDevicesList(mPortId);
-                        for (String temp:mTuningDeviceNameList){
-                            Log.d(TAG,"tuning device name index : "+ temp);
+
+                        int m_tuning_device_list_length = mTuningDeviceNameList.length;
+
+                        for(int index=0;index<m_tuning_device_list_length;index++){
+                            Log.d(TAG,"tuning device name list : " + index +
+                                    "==" + mTuningDeviceNameList[index]);
                         }
+
                         if (mTuningDeviceNameIndex >= mTuningDeviceNameList.length){
                             Log.d(TAG,"tuning device name index invalid: "+
                                     mTuningDeviceNameIndex + " not in range [0:" +
                                     mTuningDeviceNameList.length+")");
                         }else {
-                            String mTuningInfoShowInTV =
-                                    String.format(
-                                            Locale.getDefault(),
-                                            "change tuning device name to : %s",
-                                            mTuningDeviceNameList[mTuningDeviceNameIndex]);
+                            for (int index=0;index<m_tuning_device_list_length;index++){
+                                if (mTuningDeviceNameList[index].contains(
+                                        COMMAND_INDEX_MAPPING[mTuningDeviceNameIndex])){
+                                    String mTuningInfoShowInTV =
+                                            String.format(
+                                                    Locale.getDefault(),
+                                                    "change tuning device name to : %s",
+                                                    mTuningDeviceNameList[index]);
 
-                            packageIntentForUIUpdate(
-                                    MSG_UPDATE_DAP_FEATURE_TYPE_TV,
-                                    MSG_UPDATE_UI_ARG1_DEFAULT,
-                                    mTuningInfoShowInTV);
+                                    packageIntentForUIUpdate(
+                                            MSG_UPDATE_DAP_FEATURE_TYPE_TV,
+                                            MSG_UPDATE_UI_ARG1_DEFAULT,
+                                            mTuningInfoShowInTV);
 
-                            Log.d(TAG, "change tuning port :" + msg.arg1);
-                            Log.d(TAG, "change tuning device name :" +
-                                    mTuningDeviceNameList[mTuningDeviceNameIndex]);
+                                    Log.d(TAG, "change tuning port :" + msg.arg1);
+                                    Log.d(TAG, "change tuning device name :" +
+                                            mTuningDeviceNameList[index]);
 
-                            mDAP.setSelectedTuningDevice(
-                                    mPortId,
-                                    mTuningDeviceNameList[mTuningDeviceNameIndex]);
+                                    mDAP.setSelectedTuningDevice(
+                                            mPortId,
+                                            mTuningDeviceNameList[index]);
+                                }
+                            }
+
+//                            String mTuningInfoShowInTV =
+//                                    String.format(
+//                                            Locale.getDefault(),
+//                                            "change tuning device name to : %s",
+//                                            mTuningDeviceNameList[mTuningDeviceNameIndex]);
+//
+//                            packageIntentForUIUpdate(
+//                                    MSG_UPDATE_DAP_FEATURE_TYPE_TV,
+//                                    MSG_UPDATE_UI_ARG1_DEFAULT,
+//                                    mTuningInfoShowInTV);
+//
+//                            Log.d(TAG, "change tuning port :" + msg.arg1);
+//                            Log.d(TAG, "change tuning device name :" +
+//                                    mTuningDeviceNameList[mTuningDeviceNameIndex]);
+//
+//                            mDAP.setSelectedTuningDevice(
+//                                    mPortId,
+//                                    mTuningDeviceNameList[mTuningDeviceNameIndex]);
                         }
                     }else {
                         Log.d(TAG,"tuning port index invalid: " +

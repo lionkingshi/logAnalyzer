@@ -51,8 +51,8 @@ def specified_profile_default_value_test_procedure_dax3(caller_name, endpoint_id
 
 
 def assert_specified_profile_default_values_result(_profile_name, tuning_device_name,
-                                                   _endpoint_type=AUDIO_DEVICE_OUT_STEREO_SPEAKER):
-    post_para_dict_from_log = get_feature_value_from_global_process()
+                                                   _endpoint_type=AUDIO_DEVICE_OUT_STEREO_SPEAKER,
+                                                   _content_type=content_type_2_channel_non_dolby):
     if _endpoint_type == AUDIO_DEVICE_OUT_MONO_SPEAKER:
         default_xml_file_name = abspath(join('.', 'dax3XMLParser', 'mono', 'dax3-default-mono-speaker.xml'))
     else:
@@ -61,11 +61,281 @@ def assert_specified_profile_default_values_result(_profile_name, tuning_device_
     post_para_dict_from_xml = xml_parser_class.print_expect_value(_profile_name=_profile_name,
                                                                   tuning_device_name_endpoint=tuning_device_name)
 
+    if _content_type in content_type_non_dolby:
+        __compare_para_default_value_for_non_dolby_content(post_para_dict_from_xml, _endpoint_type, _profile_name)
+        logging.getLogger(_endpoint_type).info(
+            "====== for non dolby content playback, ")
+    elif _content_type in content_type_dolby:
+        __compare_para_default_value_for_dolby_content(
+            post_para_dict_from_xml, _endpoint_type, _profile_name, _content_type)
+        logging.getLogger(_endpoint_type).info(
+            "====== for dolby content playback, ")
+    elif _content_type in content_type_ac4:
+        __compare_para_default_value_for_dolby_content(
+            post_para_dict_from_xml, _endpoint_type, _profile_name, _content_type)
+        logging.getLogger(_endpoint_type).info(
+            "====== for AC4 content playback, ")
+        pass
+
+    logging.getLogger(_endpoint_type).info(
+        "====== {} profile default params are same as one parsing from xml !!!!!".format(_profile_name))
+
+
+def __compare_para_default_value_for_dolby_content(post_para_dict_from_xml,
+                                                   _endpoint_type,
+                                                   _profile_name,
+                                                   __content_type=content_type_51_dd):
+    assert isinstance(post_para_dict_from_xml, dict)
+    # produce expected parameters according to data parsed from xml file
+    produce_three_type_para(post_para_dict_from_xml)
+    _global_process_key_value_assembled = get_assembled_global_process_para_dict()
+    _qmf_process_key_value_assembled = get_assembled_qmf_process_para_dict()
+    _ac4_decoder_key_value_assembled = get_assembled_ac4_decoder_para_dict()
+
+    # produce actual parameters accordingly to data captured from log file
+    _global_para_dict_from_log = get_feature_value_from_global_process()
+    _qmf_para_dict_from_log = get_feature_value_from_qmf_process()
+    _ac4_para_dict_from_log = get_feature_value_from_ac4_decoder()
+
+    # modified ac4 decoder parameter according to code implementation
+    _ac4_decoder_key_value_assembled_after_special_handle = \
+        __special_handle_ac4_expected_para_value(_ac4_decoder_key_value_assembled, _endpoint_type, _profile_name)
+
+    _qmf_process_key_value_assembled_after_handle = \
+        __special_handle_qmf_para_expected_value(_qmf_process_key_value_assembled, _profile_name, _endpoint_type)
+
+    # compare parameters
+    if __content_type in content_type_dolby:
+        __compare_qmf_para_for_dolby_content(_qmf_process_key_value_assembled_after_handle,
+                                             _qmf_para_dict_from_log,
+                                             _profile_name,
+                                             _endpoint_type)
+
+        __compare_global_para_for_dolby_content(_global_process_key_value_assembled,
+                                                _global_para_dict_from_log,
+                                                _profile_name,
+                                                _endpoint_type)
+    elif __content_type in content_type_ac4:
+        __compare_ac4_para_for_dolby_content(_ac4_decoder_key_value_assembled_after_special_handle,
+                                             _ac4_para_dict_from_log,
+                                             _profile_name,
+                                             _endpoint_type)
+
+        __compare_global_para_for_dolby_content(_global_process_key_value_assembled,
+                                                _global_para_dict_from_log,
+                                                _profile_name,
+                                                _endpoint_type)
+
+
+def __compare_ac4_para_for_dolby_content(_ac4_decoder_key_value_assembled,
+                                         _ac4_para_dict_from_log,
+                                         _profile_name,
+                                         _endpoint_type):
+    assert isinstance(_ac4_para_dict_from_log, dict)
+    assert isinstance(_ac4_decoder_key_value_assembled, dict)
+
+    for __key_four_cc_name in _ac4_decoder_key_value_assembled.keys():
+        # iea value depends to playback content
+        if __key_four_cc_name != 'dea':
+            __assert_equal(
+                _endpoint_type,
+                __key_four_cc_name,
+                _ac4_decoder_key_value_assembled[__key_four_cc_name],
+                _ac4_para_dict_from_log[__key_four_cc_name])
+    pass
+
+
+def __special_handle_ac4_expected_para_value(__qmf_process_key_value_assembled, __endpoint_type, __profile_name):
+    assert isinstance(__qmf_process_key_value_assembled, dict)
+
+    _ac4_decoder_key_value_assemble = OrderedDict()
+    # directly copy value
+    for __four_cc_name in PARA_LIST_AC4:
+        if __four_cc_name in __qmf_process_key_value_assembled.keys():
+            _ac4_decoder_key_value_assemble[__four_cc_name] = __qmf_process_key_value_assembled[__four_cc_name]
+        else:
+            _ac4_decoder_key_value_assemble[__four_cc_name] = EMPTY_STRING_FLAG
+
+    # assemble ieid default value
+    _ac4_decoder_key_value_assemble['ieid'] = \
+        __assemble_ac4_ieid_expected_value(__qmf_process_key_value_assembled, __profile_name)
+
+    # assemble endp default value
+    # review set_endpoint_virtualization() method in ac4dec_wrapper.cpp file for more details
+    _ac4_decoder_key_value_assemble['endp'] = __assemble_ac4_endp_expected_value(
+        __qmf_process_key_value_assembled, __endpoint_type, __profile_name)
+
+    _ac4_decoder_key_value_assemble['mixp'] = __assemble_ac4_mixp_expected_value()
+    _ac4_decoder_key_value_assemble['prei'] = __assemble_ac4_prei_expected_value()
+    _ac4_decoder_key_value_assemble['dvlo'] = __assemble_ac4_dvlo_expected_value(__qmf_process_key_value_assembled)
+
+    return _ac4_decoder_key_value_assemble
+
+
+def __special_handle_qmf_para_expected_value(__qmf_process_key_value_assembled, __profile_name, __endpoint_type):
+    assert isinstance(__qmf_process_key_value_assembled, dict)
+    qmf_process_key_value_assembled = __qmf_process_key_value_assembled
+    assert isinstance(qmf_process_key_value_assembled, dict)
+
+    # for music profile ,vir is always set to enabled
+    qmf_process_key_value_assembled['dom'] = \
+        __assemble_qmf_dom_expected_value(__qmf_process_key_value_assembled, __profile_name, __endpoint_type)
+
+    return qmf_process_key_value_assembled
+
+
+def __assemble_qmf_dom_expected_value(__qmf_process_key_value_assembled, __profile_name, __endpoint_type):
+    assert isinstance(__qmf_process_key_value_assembled, dict)
+    __temp_dom_value_in_qmf_process = __qmf_process_key_value_assembled['dom']
+    if 'dom' in __qmf_process_key_value_assembled.keys():
+        # for music profile ,vir is always set to enabled
+        if __profile_name == profile_name[2]:
+            if __endpoint_type in \
+                    (AUDIO_DEVICE_OUT_STEREO_SPEAKER,
+                     AUDIO_DEVICE_OUT_WIRED_HEADPHONE,
+                     AUDIO_DEVICE_OUT_DGTL_DOCK_HEADSET):
+                __temp_dom_value_in_qmf_process = \
+                    '1' + __qmf_process_key_value_assembled['dom'][1:]
+    return __temp_dom_value_in_qmf_process
+
+
+def __assemble_ac4_ieid_expected_value(__qmf_process_key_value_assembled, __profile_name):
+    # assemble ieid default value
+    __temp_ieid_value = EMPTY_STRING_FLAG
+    if __qmf_process_key_value_assembled['ieon'] == '0':
+        __temp_ieid_value = INDEX_IEQ_OFF
+    elif __qmf_process_key_value_assembled['ieon'] == '1':
+        _temp_iebs_string = __qmf_process_key_value_assembled['iebs']
+        assert isinstance(_temp_iebs_string, str)
+        if IEQ_BALANCED_SPECIFIED_STRING_IN_IEBS in _temp_iebs_string:
+            __temp_ieid_value = INDEX_IEQ_BALANCED
+        elif IEQ_WARM_SPECIFIED_STRING_IN_IEBS in _temp_iebs_string:
+            __temp_ieid_value = INDEX_IEQ_WARM
+        elif IEQ_DETAILED_SPECIFIED_STRING_IN_IEBS in _temp_iebs_string:
+            __temp_ieid_value = INDEX_IEQ_DETAILED
+        else:
+            __temp_ieid_value = EMPTY_STRING_FLAG
+    # for dynamic profile , force ieid to off
+    if __profile_name == profile_name[0]:
+        __temp_ieid_value = INDEX_IEQ_OFF
+
+    return __temp_ieid_value
+
+
+def __assemble_ac4_endp_expected_value(__qmf_process_key_value_assembled, __endpoint_type, __profile_name):
+    assert isinstance(__qmf_process_key_value_assembled, dict)
+    __temp_endp_value = EMPTY_STRING_FLAG
+    __temp_vir_status_in_dom_list = __qmf_process_key_value_assembled['dom'][index_vir_status_in_dom]
+    __temp_orientation_type_in_dom_list = __qmf_process_key_value_assembled['dom'][index_orientation_type_in_dom]
+    # if virtual is disable or orientation is portrait, endp = 512 (disabled)
+    if (__temp_vir_status_in_dom_list == SINGLE_STRING_DISABLE_STATUS) or \
+            (__temp_orientation_type_in_dom_list == value_of_speaker_portrait_type_in_dom):
+        __temp_endp_value = AC4DEC_OUT_CH_LO_RO
+        # But for music profile , vir was set to enabled
+        if __profile_name == profile_name[2]:
+            if (__endpoint_type == AUDIO_DEVICE_OUT_STEREO_SPEAKER) and \
+                    (__temp_orientation_type_in_dom_list == value_of_speaker_landscape_type_in_dom):
+                __temp_endp_value = AC4DEC_OUT_CH_SPEAKER_VIRT
+            elif __endpoint_type == AUDIO_DEVICE_OUT_WIRED_HEADPHONE or \
+                            __endpoint_type == AUDIO_DEVICE_OUT_DGTL_DOCK_HEADSET:
+                __temp_endp_value = AC4DEC_OUT_CH_HEADPHONE
+            else:
+                pass
+    elif __endpoint_type == AUDIO_DEVICE_OUT_STEREO_SPEAKER:
+        __temp_endp_value = AC4DEC_OUT_CH_SPEAKER_VIRT
+    elif __endpoint_type == AUDIO_DEVICE_OUT_WIRED_HEADPHONE or __endpoint_type == AUDIO_DEVICE_OUT_DGTL_DOCK_HEADSET:
+        __temp_endp_value = AC4DEC_OUT_CH_HEADPHONE
+    else:
+        __temp_endp_value = EMPTY_STRING_FLAG
+
+    return __temp_endp_value
+
+
+def __assemble_ac4_mixp_expected_value():
+    __temp_mixp_value = AC4DEC_WRAPPER_MAIN_ASSO_PREF_DEFAULT
+    return __temp_mixp_value
+
+
+def __assemble_ac4_prei_expected_value():
+    __temp_prei_value = AC4DEC_WRAPPER_PRESENTATION_INDEX_DEFAULT
+    return __temp_prei_value
+
+
+def __assemble_ac4_dvlo_expected_value(__qmf_process_key_value_assembled):
+    _temp_dvlo_db = int(__qmf_process_key_value_assembled['dvlo'])/16
+    return str(_temp_dvlo_db)
+
+
+def __compare_global_para_for_dolby_content(_global_process_key_value_assembled,
+                                            _global_para_dict_from_log,
+                                            _profile_name,
+                                            _endpoint_type):
+    for _key_four_cc_name in _global_process_key_value_assembled.keys():
+        # special handle for iebs when custom profile
+        # for custom profile , ieq status is off and iebs values remains as previous
+        if _profile_name == profile_name[3]:
+            if _key_four_cc_name == 'iebs':
+                continue
+
+        if _key_four_cc_name == 'bexe':
+            continue
+
+        if _key_four_cc_name in VOLUME_LEVELER:
+            continue
+
+        if _key_four_cc_name in VOL_MAX_BOOST:
+            continue
+
+        __assert_equal(
+            _endpoint_type,
+            _key_four_cc_name,
+            _global_process_key_value_assembled[_key_four_cc_name],
+            _global_para_dict_from_log[_key_four_cc_name])
+    pass
+
+
+def __compare_qmf_para_for_dolby_content(_qmf_process_key_value_assembled,
+                                         _qmf_para_dict_from_log,
+                                         _profile_name,
+                                         _endpoint_type):
+    for _key_four_cc_name in _qmf_process_key_value_assembled.keys():
+        # special handle for iebs when custom profile
+        # for custom profile , ieq status is off and iebs values remains as previous
+        if _profile_name == profile_name[3]:
+            if _key_four_cc_name == 'iebs':
+                continue
+
+        if _key_four_cc_name == 'bexe':
+            continue
+
+        if _key_four_cc_name in VOLUME_LEVELER:
+            continue
+
+        if _key_four_cc_name in VOL_MAX_BOOST:
+            continue
+
+        # if _key_four_cc_name == 'dom':
+        #     if _profile_name == profile_name[2]:
+        #         if _endpoint_type != AUDIO_DEVICE_OUT_BLUETOOTH_A2DP:
+        #             _qmf_process_key_value_assembled[_key_four_cc_name] = \
+        #                 '1' + _qmf_process_key_value_assembled[_key_four_cc_name][1:]
+
+        __assert_equal(
+            _endpoint_type,
+            _key_four_cc_name,
+            _qmf_process_key_value_assembled[_key_four_cc_name],
+            _qmf_para_dict_from_log[_key_four_cc_name])
+    pass
+
+
+def __compare_para_default_value_for_non_dolby_content(post_para_dict_from_xml, _endpoint_type, _profile_name):
+    post_para_dict_from_log = get_feature_value_from_global_process()
     for __index in range(len(PARA_LIST_IN_GLOBAL_PROCESS)):
         four_cc_name = PARA_LIST_IN_GLOBAL_PROCESS[__index]
-        assert isinstance(post_para_dict_from_xml[four_cc_name], str)
-        assert isinstance(post_para_dict_from_log[four_cc_name], str)
-        if four_cc_name not in ('vcbf', 'preg', 'pstg', 'vol'):
+        if four_cc_name not in PARA_LIST_NOT_EXIST_XML_FILE:
+            assert isinstance(post_para_dict_from_xml[four_cc_name], str)
+            assert isinstance(post_para_dict_from_log[four_cc_name], str)
+
             if four_cc_name == 'ceqt':
                 if len(post_para_dict_from_xml[four_cc_name]) == len(post_para_dict_from_log[four_cc_name]):
                     logging.getLogger(_endpoint_type).debug("ceqt length from log and xml is equals : {} !".format(
@@ -86,6 +356,7 @@ def assert_specified_profile_default_values_result(_profile_name, tuning_device_
                         post_para_dict_from_xml[four_cc_name],
                         post_para_dict_from_log[four_cc_name][:-4])
             else:
+                # special handle for iebs when custom profile
                 # for custom profile , ieq status is off and iebs values remains as previous
                 if _profile_name == profile_name[3]:
                     if four_cc_name == 'iebs':
@@ -97,8 +368,6 @@ def assert_specified_profile_default_values_result(_profile_name, tuning_device_
                     post_para_dict_from_xml[four_cc_name],
                     post_para_dict_from_log[four_cc_name])
         pass
-    logging.getLogger(_endpoint_type).info(
-        "====== {} profile default params are same as one parsing from xml !!!!!".format(_profile_name))
 
 
 def be_test_procedure_dax3(caller_name, endpoint_id, content_name, content_type, dap_feature_value):

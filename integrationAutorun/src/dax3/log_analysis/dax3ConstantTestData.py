@@ -236,17 +236,33 @@ reference_level_test_data = [
 # ************************************************************************************
 dynamic_profile_default_value_test_data = [
     ('7ch_25fps.wav', content_type_71_channel_non_dolby, dap_status_on, dap_profile_dynamic,
-     dap_feature_type_hv, dap_feature_value_hv_on)
+     dap_feature_type_hv, dap_feature_value_hv_on),
+    ('2ch_dd_25fps_channel_id.mp4', content_type_2_dd, dap_status_on, dap_profile_dynamic,
+     dap_feature_type_vsv, dap_feature_value_vsv_off),
+    ('Ch_ID_Atmos_72k_IMS_AC4_H264_25fps.mp4', content_type_ac4_ims, dap_status_on, dap_profile_dynamic,
+     dap_feature_type_vsv, dap_feature_value_vsv_off)
 ]
 movie_profile_default_value_test_data = [
     ('7ch_25fps.wav', content_type_71_channel_non_dolby, dap_status_on, dap_profile_movie,
-     dap_feature_type_hv, dap_feature_value_hv_on)
+     dap_feature_type_hv, dap_feature_value_hv_on),
+    ('Eragon_5.1_ddp_128Kbps.mp4', content_type_51_ddp, dap_status_on, dap_profile_movie,
+     dap_feature_type_vsv, dap_feature_value_vsv_off),
+    ('Ch_ID_Atmos_64k_IMS_AC4_H264_25fps.mp4', content_type_ac4_ims, dap_status_on, dap_profile_movie,
+     dap_feature_type_vsv, dap_feature_value_vsv_off)
 ]
 music_profile_default_value_test_data = [
     ('7ch_25fps.wav', content_type_71_channel_non_dolby, dap_status_on, dap_profile_music,
-     dap_feature_type_hv, dap_feature_value_hv_on)
+     dap_feature_type_hv, dap_feature_value_hv_on),
+    ('ChID_voices_51_384_ddp_joc.mp4', content_type_51_ddp_joc, dap_status_on, dap_profile_music,
+     dap_feature_type_vsv, dap_feature_value_vsv_off),
+    ('Ch_ID_Atmos_112k_IMS_AC4_H264_25fps.mp4', content_type_ac4_ims, dap_status_on, dap_profile_music,
+     dap_feature_type_vsv, dap_feature_value_vsv_off)
 ]
 custom_profile_default_value_test_data = [
     ('7ch_25fps.wav', content_type_71_channel_non_dolby, dap_status_on, dap_profile_custom_dax3,
-     dap_feature_type_hv, dap_feature_value_hv_on)
+     dap_feature_type_hv, dap_feature_value_hv_on),
+    ('7ch_ddp_25fps_diff_music_01.mp4', content_type_71_ddp, dap_status_on, dap_profile_custom_dax3,
+     dap_feature_type_vsv, dap_feature_value_vsv_off),
+    ('Ch_ID_Atmos_512_AC4_H264_25fps.mp4', content_type_ac4_ims, dap_status_on, dap_profile_custom_dax3,
+     dap_feature_type_vsv, dap_feature_value_vsv_off)
 ]

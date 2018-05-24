@@ -15,4 +15,10 @@ public class ConstantdDax3 {
                     {"usb","headphone_usb","speaker_usb"},
                     {"other"}
             };
+
+    public static final String[] COMMAND_INDEX_MAPPING = {
+            "landscape",
+            "internal",
+            "portrait"
+    };
 }

@@ -33,7 +33,11 @@ def test_log_dynamic_profile_default_value_verify(content_name, content_type,
         content_type,
         dap_profile)
 
-    assert_specified_profile_default_values_result(profile_name[0], tuning_endpoint_name[2], endpoint_type_in_module)
+    assert_specified_profile_default_values_result(
+        profile_name[0],
+        tuning_endpoint_name[2],
+        endpoint_type_in_module,
+        content_type)
 
 
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
@@ -54,7 +58,11 @@ def test_log_movie_profile_default_value_verify_for_non_dolby_content(content_na
         content_type,
         dap_profile)
 
-    assert_specified_profile_default_values_result(profile_name[1], tuning_endpoint_name[2], endpoint_type_in_module)
+    assert_specified_profile_default_values_result(
+        profile_name[1],
+        tuning_endpoint_name[2],
+        endpoint_type_in_module,
+        content_type)
 
 
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
@@ -75,7 +83,11 @@ def test_log_music_profile_default_value_verify_for_non_dolby_content(content_na
         content_type,
         dap_profile)
 
-    assert_specified_profile_default_values_result(profile_name[2], tuning_endpoint_name[2], endpoint_type_in_module)
+    assert_specified_profile_default_values_result(
+        profile_name[2],
+        tuning_endpoint_name[2],
+        endpoint_type_in_module,
+        content_type)
 
 
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
@@ -96,7 +108,11 @@ def test_log_custom_profile_default_value_verify_for_non_dolby_content(content_n
         content_type,
         dap_profile)
 
-    assert_specified_profile_default_values_result(profile_name[3], tuning_endpoint_name[2], endpoint_type_in_module)
+    assert_specified_profile_default_values_result(
+        profile_name[3],
+        tuning_endpoint_name[2],
+        endpoint_type_in_module,
+        content_type)
 
 
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',

@@ -3,6 +3,7 @@ import platform
 from constant import *
 import time
 from filter_para import *
+from para_assign_and_comp import *
 
 logger_name = ''
 endpoint_type = 'unknown'
@@ -75,7 +76,7 @@ def parse_dap_feature_value_from_log_file(log_file_name):
     # specified the output file name , and default it will be saved at current location
     effect_paras_output_file_abs_path = abspath(log_file_abs_path_except_extension + "_effect_params_from_log.txt")
     arendered_param_output_file_abs_path = abspath(
-        log_file_abs_path_except_extension + "_arendered_params_from_log.txt")
+        log_file_abs_path_except_extension + "_arenderer_params_from_log.txt")
     dap_global_cp_dp_param_output_file_abs_path = \
         abspath(log_file_abs_path_except_extension + "_dap_global_cp_dp_from_log.txt")
     dap_qmf_cp_dp_param_output_file_abs_path = abspath(
@@ -127,6 +128,11 @@ def get_feature_value_from_global_process(effect_fourcc_name=None):
 # return a specified feature value from qmf process
 def get_feature_value_from_qmf_process(effect_fourcc_name=None):
     return log_analysis_instance.get_parameter_value_in_qmf_process(effect_fourcc_name)
+
+
+# return a specified feature value for ac4 content
+def get_feature_value_from_ac4_decoder(effect_fourcc_name=None):
+    return log_analysis_instance.get_parameter_value_in_ac4_decoder(effect_fourcc_name)
 
 
 #

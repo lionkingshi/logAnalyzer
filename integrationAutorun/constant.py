@@ -20,6 +20,10 @@ logFileNameFormat = "{functionName}_{endpoint_type}_{log_type}.txt"
 # define test apk package full name
 test_package_name = 'com.dolby.qa.featuretest'
 test_package_main_activity_name = '.MainActivity'
+# define apk permission list
+modify_audio_permission = 'android.permission.MODIFY_AUDIO_SETTINGS'
+read_storage_permission = 'android.permission.READ_EXTERNAL_STORAGE'
+record_audio_permission = 'android.permission.RECORD_AUDIO'
 
 # define intent action for activity broadcast receiver
 test_type = 'feature_test'
@@ -64,12 +68,15 @@ content_type_51_ddp = '51_ddp'
 content_type_71_ddp = '71_ddp'
 content_type_51_ddp_joc = '51_ddp_joc'
 content_type_71_ddp_joc = '71_ddp_joc'
+content_type_ac4 = 'ac4'
+content_type_ac4_ims = 'ac4_ims'
 
 content_type_non_dolby = [content_type_1_channel_non_dolby, content_type_2_channel_non_dolby,
                           content_type_51_channel_non_dolby, content_type_71_channel_non_dolby]
 content_type_dolby = [content_type_1_dd, content_type_2_dd, content_type_51_dd,
                       content_type_1_ddp, content_type_2_ddp, content_type_51_ddp,
                       content_type_71_ddp, content_type_51_ddp_joc, content_type_71_ddp_joc]
+content_type_ac4 = [content_type_ac4, content_type_ac4_ims]
 # 2 channel dolby content will be up mixed to 5.1 channel, instead of up mixing to 5.1.2 ,
 content_type_2_channel_dolby = [content_type_2_dd, content_type_2_ddp]
 
@@ -199,42 +206,33 @@ dap_tuning_device_name_headphone_usb = str(1)
 dap_tuning_device_name_speaker_usb = str(2)
 # define tuning device name for speaker port
 speaker_tuning_name = {
-    dap_tuning_device_name_speaker_landscape: 'Speaker_landscape',
+    dap_tuning_device_name_speaker_portrait: 'Speaker_portrait',
     dap_tuning_device_name_internal_speaker: 'internal speaker',
-    dap_tuning_device_name_speaker_portrait: 'Speaker_portrait'
+    dap_tuning_device_name_speaker_landscape: 'Speaker_landscape'
 }
 
-# define dap four cc expected value when dap off for dolby content
-# dolby content will apply the off profile value in qmf process
-# non-dolby content will bypass all dap features
-dap_off_four_cc_expected_dictionary_for_dolby_content_in_dax3 = {
-    'dvle': '1',
-    'dvlo': '-272',
-    'vol': '0',
-    'deon': '0',
-    'ieon': '0',
-    'dvme': '0',
-    'dom': '0',
-    'msce': '0',
-    'miee': '0',
-    'mdle': '0',
-    'mdee': '0',
-    'mave': '0',
-    'ngon': '0'
-}
-# endpoint type defined in dom list
-# index 0 means virtualizer enable or disable
-# index 1 is ,
-# index 2 means endpoint type : 0-spk 1-hp 2-pass though 3-other 4-default
-# index 3 is ,
-# index 4 means orientation : 0-portrait 1-landscape 2-N/A
-index_endpoint_type_in_dom = 2
-value_of_speaker_endpoint_type_in_dom = '0'
-value_of_headphone_endpoint_type_in_dom = '1'
-value_of_pass_through_endpoint_type_in_dom = '2'
-value_of_other_endpoint_type_in_dom = '3'
-value_of_default_endpoint_type_in_dom = '4'
-invalid_value_endpoint_type_in_dom = '10'
+# define disabled status value measured by boolean
+SINGLE_STRING_DISABLE_STATUS = '0'
+SINGLE_STRING_ENABLE_STATUS = '1'
+
+# # define dap four cc expected value when dap off for dolby content
+# # dolby content will apply the off profile value in qmf process
+# # non-dolby content will bypass all dap features
+# dap_off_four_cc_expected_dictionary_for_dolby_content_in_dax3 = {
+#     'dvle': '1',
+#     'dvlo': '-272',
+#     'vol': '0',
+#     'deon': '0',
+#     'ieon': '0',
+#     'dvme': '0',
+#     'dom': '0',
+#     'msce': '0',
+#     'miee': '0',
+#     'mdle': '0',
+#     'mdee': '0',
+#     'mave': '0',
+#     'ngon': '0'
+# }
 
 
 

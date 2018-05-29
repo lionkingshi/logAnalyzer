@@ -411,6 +411,8 @@ def test_log_print_situation_when_dap_off_verify(content_name, content_type,
         assert_no_log_print_when_dap_off_for_non_dolby_content(endpoint_type_in_module)
     elif content_type in content_type_dolby:
         assert_apply_dap_off_profile_values_when_dap_off_for_dolby_content(endpoint_type_in_module)
+    elif content_type in content_type_ac4:
+        assert_apply_dap_off_profile_values_when_dap_off_for_ac4_content(endpoint_type_in_module)
 
 
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',

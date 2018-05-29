@@ -14,7 +14,6 @@ import java.util.Arrays;
 import java.util.Locale;
 
 import static com.dolby.qa.featuretest.ConstantdDax3.COMMAND_INDEX_MAPPING;
-import static com.dolby.qa.featuretest.ConstantdDax3.TUNING_DEVICE_NAME_LIST;
 import static com.dolby.qa.featuretest.Constants.GLOBAL_SESSION_ID_NUM;
 import static com.dolby.qa.featuretest.Constants.MIDDLE_PRIORITY_NUM;
 import static com.dolby.qa.featuretest.Constants.MSG_CHANGE_TUNING_DEVICE_NAME;

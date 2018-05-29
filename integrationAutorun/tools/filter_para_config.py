@@ -50,7 +50,7 @@ PARA_LIST_IN_QMF_PROCESS = ASSEMBLED_CONTENT_PROCESSING_PARA_LIST + DUPLICATED_P
 #                             'dvlo', 'gebs', 'iebs', 'aobs', 'vol')
 # define global process expected parameter list
 # for dax3 project , added vol, ceon, ceqt to the tuple elements
-PARA_LIST_AC4 = ('dea', 'ieid', 'iea', 'dfsa', 'dvlo', 'endp', 'prei', 'mixp')
+PARA_LIST_AC4 = ('dea', 'ieid', 'iea', 'dfsa', 'dvlo', 'endp', 'prei', 'mixp', 'drc')
 # define global process expected parameter list
 # for dax3 project , added vol, ceon, ceqt to the tuple elements
 PARA_LIST_IN_GLOBAL_PROCESS = ASSEMBLED_CONTENT_PROCESSING_PARA_LIST + \
@@ -125,7 +125,9 @@ AC4DEC_OUT_CH_SPEAKER_VIRT = '529'
 AC4DEC_WRAPPER_MAIN_ASSO_PREF_DEFAULT = '0'
 # Default presentation index
 AC4DEC_WRAPPER_PRESENTATION_INDEX_DEFAULT = '65535'
-
+# Default drc mode when dap on and off
+AC4DEC_WRAPPER_DRC_MODE_DEFAULT_DAP_ON = '-14'
+AC4DEC_WRAPPER_DRC_MODE_DEFAULT_DAP_OFF = '-17'
 # endpoint type defined in dom list
 # index 0 means virtualizer enable or disable
 # index 1 is ,
@@ -162,4 +164,18 @@ dap_off_four_cc_expected_dictionary_for_dolby_content_in_dax3 = {
     'mdee': '0',
     'mave': '0',
     'ngon': '0'
+}
+# define dap four cc expected value when dap off for ac4 content
+# dolby content will apply the off profile value in ac4 decoder
+# non-dolby content will bypass all dap features
+dap_off_four_cc_expected_dictionary_for_ac4_content_in_dax3 = {
+    'dea': '0',
+    'ieid': '0',
+    'iea': '0',
+    'dfsa': '0',
+    'dvlo': '-17',
+    'endp': AC4DEC_OUT_CH_LO_RO,
+    'prei': AC4DEC_WRAPPER_PRESENTATION_INDEX_DEFAULT,
+    'mixp': AC4DEC_WRAPPER_MAIN_ASSO_PREF_DEFAULT,
+    'drc': AC4DEC_WRAPPER_DRC_MODE_DEFAULT_DAP_OFF
 }

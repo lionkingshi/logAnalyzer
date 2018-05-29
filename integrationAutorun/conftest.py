@@ -11,7 +11,7 @@ def move_test_content(request):
     execute('adb shell mkdir {0}'.format(play_content_device_parent_location))
     m_content_parent_location = os.path.dirname(os.path.abspath(__file__))
     m_content_location = os.path.join(m_content_parent_location, play_content_folder_name)
-    # execute('/home/emediaqa/tools/Android/Sdk/platform-tools/adb push {0} {1}'.format(m_content_location, play_content_device_parent_location))
+    # execute('adb push {0} {1}'.format(m_content_location, play_content_device_parent_location))
     time.sleep(SLEEP_TIME_FOR_PUSH_MEDIA_TO_DUT)
 
     # next install test application to device

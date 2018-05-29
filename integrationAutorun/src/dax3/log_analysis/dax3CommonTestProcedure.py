@@ -168,6 +168,7 @@ def __special_handle_ac4_expected_para_value(__qmf_process_key_value_assembled, 
     _ac4_decoder_key_value_assemble['mixp'] = __assemble_ac4_mixp_expected_value()
     _ac4_decoder_key_value_assemble['prei'] = __assemble_ac4_prei_expected_value()
     _ac4_decoder_key_value_assemble['dvlo'] = __assemble_ac4_dvlo_expected_value(__qmf_process_key_value_assembled)
+    _ac4_decoder_key_value_assemble['drc'] = __assemble_ac4_drc_expected_value_when_dap_on()
 
     return _ac4_decoder_key_value_assemble
 
@@ -259,6 +260,11 @@ def __assemble_ac4_mixp_expected_value():
 def __assemble_ac4_prei_expected_value():
     __temp_prei_value = AC4DEC_WRAPPER_PRESENTATION_INDEX_DEFAULT
     return __temp_prei_value
+
+
+def __assemble_ac4_drc_expected_value_when_dap_on():
+    __temp_drc_value = AC4DEC_WRAPPER_DRC_MODE_DEFAULT_DAP_ON
+    return __temp_drc_value
 
 
 def __assemble_ac4_dvlo_expected_value(__qmf_process_key_value_assembled):
@@ -642,6 +648,65 @@ def up_mix_and_sv_on_test_procedure(caller_name, endpoint_id, content_name, cont
     __generate_and_parse_log_file(caller_name, endpoint_id, content_name, content_type)
 
 
+def sv_always_enabled_in_music_profile_test_procedure(
+        caller_name,
+        endpoint_id,
+        content_name,
+        content_type,
+        spk_tuning_device_name_id=dap_tuning_device_name_internal_speaker,
+        sv_always_enabled=False):
+    # step 1 :register logger name to record all command to logger file except session setup() function
+    register_logger_name(endpoint_id)
+
+    if content_type in content_type_dolby:
+        logging.getLogger(endpoint_id).info(
+            "===== Verify virtual is always enabled in music profile ")
+        logging.getLogger(endpoint_id).info(
+            "=====       when playing {} channel Dolby content under {} ".format(content_type, endpoint_id))
+    else:
+        logging.getLogger(endpoint_id).info(
+            "===== Verify virtual could be changed in music profile ")
+        logging.getLogger(endpoint_id).info(
+            "=====       when playing {} channel non Dolby content under {} ".format(content_type, endpoint_id))
+    if endpoint_id in (AUDIO_DEVICE_OUT_MONO_SPEAKER, AUDIO_DEVICE_OUT_STEREO_SPEAKER):
+        index = str(spk_tuning_device_name_id)
+        logging.getLogger(endpoint_id).info(
+            "=====                          and {} mode".format(speaker_tuning_name[index]))
+
+    # step 2 : change tuning device name for speaker port
+    if endpoint_id in (AUDIO_DEVICE_OUT_MONO_SPEAKER, AUDIO_DEVICE_OUT_STEREO_SPEAKER):
+        if spk_tuning_device_name_id == dap_tuning_device_name_speaker_landscape:
+            execute(adb_broadcast_intent + intent_change_dap_tuning_device.format(
+                dap_tuning_port_internal_speaker,
+                dap_tuning_device_name_speaker_landscape))
+        elif spk_tuning_device_name_id == dap_tuning_device_name_speaker_portrait:
+            execute(adb_broadcast_intent + intent_change_dap_tuning_device.format(
+                dap_tuning_port_internal_speaker,
+                dap_tuning_device_name_speaker_portrait))
+
+    # step 3 : change dap feature
+    if endpoint_id in (AUDIO_DEVICE_OUT_MONO_SPEAKER, AUDIO_DEVICE_OUT_STEREO_SPEAKER):
+        feature_test_procedure(content_name, dap_status_on, dap_profile_movie,
+                               dap_feature_type_vsv, dap_feature_value_vsv_off)
+        feature_test_procedure(content_name, dap_status_off)
+        # even if turn off speaker virtual in music profile , for dolby content OMX would force turn on virtual again
+        # and for non dolby content, virtual should be off
+        feature_test_procedure(content_name, dap_status_on, dap_profile_music,
+                               dap_feature_type_vsv, dap_feature_value_vsv_off)
+    elif endpoint_id in (AUDIO_DEVICE_OUT_WIRED_HEADPHONE, AUDIO_DEVICE_OUT_DGTL_DOCK_HEADSET,
+                         AUDIO_DEVICE_OUT_BLUETOOTH_A2DP):
+        feature_test_procedure(content_name, dap_status_on, dap_profile_movie,
+                               dap_feature_type_hv, dap_feature_value_hv_off)
+        feature_test_procedure(content_name, dap_status_off)
+        # even if turn off headphone virtual in music profile , for dolby content OMX would force turn on virtual again
+        # and for non dolby content, virtual should be off
+        feature_test_procedure(content_name, dap_status_on, dap_profile_music,
+                               dap_feature_type_hv, dap_feature_value_hv_off)
+
+    # step 4 : capture adb log to a file and parse dap parameter from log
+    __generate_and_parse_log_file(caller_name, endpoint_id, content_name, content_type)
+
+
 def log_print_when_dap_off_test_procedure(caller_name, endpoint_id, content_name, content_type):
     # step 1 :register logger name to record all command to logger file except session setup() function
     register_logger_name(endpoint_id)
@@ -650,10 +715,14 @@ def log_print_when_dap_off_test_procedure(caller_name, endpoint_id, content_name
         logging.getLogger(endpoint_id).info(
             "===== Verify no log print when dap off when playing {} channel content using {} ".format(
                 content_type, endpoint_id))
-    elif content_type in content_type_non_dolby:
+    elif content_type in content_type_dolby:
         logging.getLogger(endpoint_id).info(
             "===== Verify apply dap off profile values when dap off when playing {} channel content using {} ".format(
                 content_type, endpoint_id))
+    elif content_type in content_type_ac4:
+        logging.getLogger(endpoint_id).info(
+            "===== Verify apply dap off profile values when dap off when playing ac4 content using {} ".format(
+                endpoint_id))
 
     # step 2 : change dap feature
     if endpoint_id in (AUDIO_DEVICE_OUT_MONO_SPEAKER, AUDIO_DEVICE_OUT_STEREO_SPEAKER, AUDIO_DEVICE_OUT_BLUETOOTH_A2DP):
@@ -749,6 +818,14 @@ def assert_no_log_print_when_dap_off_for_non_dolby_content(_endpoint_id):
 def assert_apply_dap_off_profile_values_when_dap_off_for_dolby_content(_endpoint_id):
     logging.getLogger(_endpoint_id).debug("===== verify apply dap off profile values for dolby content !")
     __comparison_result(_endpoint_id, content_type_51_dd, dap_off_four_cc_expected_dictionary_for_dolby_content_in_dax3)
+
+
+def assert_apply_dap_off_profile_values_when_dap_off_for_ac4_content(_endpoint_id):
+    logging.getLogger(_endpoint_id).debug("===== verify apply dap off profile values for ac4 content !")
+    __comparison_ac4_result(
+        _endpoint_id,
+        content_type_ac4_ims,
+        dap_off_four_cc_expected_dictionary_for_ac4_content_in_dax3)
 
 
 def assert_decoding_drc_mode_related_feature_result(_content_type, _endpoint_id):
@@ -955,6 +1032,10 @@ def __generate_and_parse_log_file(_caller_name, _endpoint_id, _content_name, _co
     set_special_flag_for_specified_channel_num(flag_channel_num_equal_to_two=False)
 
 
+# compare values in expected list to value pared from log
+# the logic is stable for value comparison in global and qmf process
+# But for value comparison in ac4 decoder, logic should be changed.
+# you'd bether refer the following function
 def __comparison_result(_endpoint_id, _content_type, _expected_list):
     for _four_cc_name in _expected_list.keys():
         expected_value = _expected_list[_four_cc_name]
@@ -967,6 +1048,19 @@ def __comparison_result(_endpoint_id, _content_type, _expected_list):
         __assert_equal(_endpoint_id, _four_cc_name, expected_value, actual_value)
         assert expected_value == actual_value, \
             "{} expected value : {} but {}".format(_four_cc_name, expected_value, actual_value)
+
+
+def __comparison_ac4_result(_endpoint_id, _content_type, _expected_list):
+    if _content_type in content_type_ac4:
+        assert isinstance(_expected_list, dict)
+        for _ac4_decoder_para in _expected_list.keys():
+            _expected_value = _expected_list[_ac4_decoder_para]
+            _actual_value = get_feature_value_from_ac4_decoder(_ac4_decoder_para)
+            if _ac4_decoder_para == "prei" and _actual_value is None:
+                continue
+            __assert_equal(_endpoint_id, _ac4_decoder_para, _expected_value, _actual_value)
+            assert _expected_value == _actual_value, \
+                "{} expected value : {} but {}".format(_ac4_decoder_para, _expected_value, _actual_value)
 
 
 def __comparison_vmb_result(_endpoint_id, _vmb_expected_value):

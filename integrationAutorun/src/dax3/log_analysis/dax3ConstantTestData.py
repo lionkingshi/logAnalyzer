@@ -187,6 +187,8 @@ dap_off_test_data = [
     ('7ch_ddp_25fps_diff_music_01.mp4', content_type_71_ddp, dap_status_on, dap_profile_custom_dax3,
      dap_feature_type_vsv, dap_feature_value_vsv_off),
     ('ChID_voices_71_640_ddp_joc.mp4', content_type_71_ddp_joc, dap_status_on, dap_profile_custom_dax3,
+     dap_feature_type_vsv, dap_feature_value_vsv_off),
+    ('Ch_ID_Atmos_72k_IMS_AC4_H264_25fps.mp4', content_type_ac4_ims, dap_status_on, dap_profile_dynamic,
      dap_feature_type_vsv, dap_feature_value_vsv_off)
 ]
 

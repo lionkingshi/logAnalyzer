@@ -534,6 +534,45 @@ def test_log_up_mix_sv_on_verify_portrait(content_name, content_type,
                                          _tuning_device_name=dap_tuning_device_name_speaker_portrait)
 
 
+@pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
+                         up_mix_and_hv_on_test_data)
+def test_log_sv_always_enabled_in_music_profile_verify_landscape(content_name, content_type,
+                                 dap_status, dap_profile, dap_feature_type, dap_feature_value):
+    """
+    Test Case ID    :   TC-2627, 2628, 2629, 2630, 2631, 2632, 2633 and 169, 170, 171, 172, 173
+
+    Test Condition  :   make sure device endpoint is wired headphone
+
+    Test Description:   virtual is always enabled in music profile for dolby content
+                        virtual could be changed in music profile for non dolby content
+    """
+    caller_name = test_log_sv_always_enabled_in_music_profile_verify_landscape.__name__
+    sv_always_enabled_in_music_profile_test_procedure(caller_name, endpoint_type_in_module, content_name, content_type,
+                                                      spk_tuning_device_name_id=dap_tuning_device_name_speaker_landscape
+                                                      )
+
+    if content_type in content_type_dolby:
+        # 2 channel dolby content will be up mixed to 5.1 channel, instead of up mixing to 5.1.2
+        dom = {'dom': '1,0,1,16384,0,0,16384,11583,11583,8192,8192,16384,0,0,16384,16384,0,0,16384'}
+        # output mode = 11 : output channel count is 8 with order L, R, C, LFE, Ls, Rs, Ltm, Rtm
+        # output mode = 10 : output channel count is 6 with order L, R, C, LFE, Ls, Rs
+        if content_type in content_type_2_channel_dolby:
+            dap_output_mode = '10'
+        else:
+            dap_output_mode = '11'
+        dap_mix_matrix = 'custom'
+        ddp_down_mix = '0'
+    else:
+        dom = {'dom': '0,0,1,16384,0,0,16384,11583,11583,8192,8192,16384,0,0,16384,16384,0,0,16384'}
+        # output mode = 1 : output channel count is 2 with order L, R
+        dap_output_mode = '1'
+        dap_mix_matrix = 'null'
+        ddp_down_mix = '0'
+
+    assert_up_mix_related_feature_result(endpoint_type_in_module, content_type,
+                                         dap_output_mode, dap_mix_matrix, dom, ddp_down_mix)
+
+
 @pytest.mark.log
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
                          dap_off_test_data)
@@ -556,6 +595,8 @@ def test_log_print_situation_when_dap_off_verify(content_name, content_type,
         assert_no_log_print_when_dap_off_for_non_dolby_content(endpoint_type_in_module)
     elif content_type in content_type_dolby:
         assert_apply_dap_off_profile_values_when_dap_off_for_dolby_content(endpoint_type_in_module)
+    elif content_type in content_type_ac4:
+        assert_apply_dap_off_profile_values_when_dap_off_for_ac4_content(endpoint_type_in_module)
 
 
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',

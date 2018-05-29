@@ -459,7 +459,7 @@ def print_a_list(_input_list_or_tuple):
 
 help_content = (
     "this is used to : \n"
-    "\t assign four cc key word to global and qmf process . \n"
+    "\t assemble DAP four cc key words used in global and qmf process . \n"
     "Usage: \n"
     "1. python para_assign_and_comp.py -i effects_paras.txt \n"
     "   the default output file name : *_effect_params_assembled.txt and *_ARenderer_params_assembled.txt \n"

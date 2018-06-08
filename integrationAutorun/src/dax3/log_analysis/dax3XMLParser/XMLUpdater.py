@@ -93,7 +93,6 @@ class TuningFileParser:
         pass
 
     # check profile if valid
-    @staticmethod
     def check_ifvalid(self, profile, endpoint):
         flag = 1
         if profile not in profile_name:

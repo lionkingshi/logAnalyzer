@@ -30,8 +30,6 @@ dap_profile_dict = {
 dap_tuning_dict = {
     "aobs": "band_optimizer",
     "arbs": "band_regulator",
-    "aobs": "band_optimizer",
-    "arbs": "band_regulator",
     "aoon": "audio-optimizer-enable",
     "aron": "regulator-enable",
     "arde": "regulator-speaker-dist-enable",

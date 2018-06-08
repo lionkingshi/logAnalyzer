@@ -7,7 +7,7 @@ from tools.common import *
 @pytest.fixture(scope="session", autouse=True)
 def move_test_content(request):
     # first move all test content to device
-    print '\n move all test content to device directory: /sdcard/dolby/featureTest/'
+    print ('\n move all test content to device directory: /sdcard/dolby/featureTest/')
     execute('adb shell mkdir {0}'.format(play_content_device_parent_location))
     m_content_parent_location = os.path.dirname(os.path.abspath(__file__))
     m_content_location = os.path.join(m_content_parent_location, play_content_folder_name)
@@ -16,7 +16,7 @@ def move_test_content(request):
 
     # next install test application to device
     # first time installation require human to permit the permission
-    print '\n install test apk to device under test'
+    print ('\n install test apk to device under test')
     m_test_apk_location = os.path.join(m_content_parent_location, test_apk_parent_location, test_apk_file_name)
     # execute('adb install -r {0}'.format(m_test_apk_location))
     execute("adb shell pm grant {} {}".format(test_package_name, modify_audio_permission))
@@ -27,14 +27,14 @@ def move_test_content(request):
 
     def global_resource_release():
         # execute(adb_clear_log)
-        print '\n please release global resource'
+        print ('\n please release global resource')
 
     request.addfinalizer(global_resource_release)
 
 
 @pytest.fixture(scope="function", autouse=True)
 def function_set_up(request):
-    print '\n each test case set up now'
+    print ('\n each test case set up now')
     execute("adb shell am start -n {0}/{1}".format(test_package_name, test_package_main_activity_name))
     execute(adb_clear_log)
     # must sleep some time because only activity is active , it will begin to receive broadcast intent
@@ -42,7 +42,7 @@ def function_set_up(request):
     time.sleep(SLEEP_TIME_FOR_ACTIVITY_START)
 
     def function_tear_down():
-        print 'each test case tear down'
+        print ('each test case tear down')
         execute(adb_broadcast_intent + intent_change_dap_high_level_feature.format(
             dap_feature_type_reset_universal_para, dap_feature_value_reset_universal_para))
         execute(adb_broadcast_intent + intent_change_dap_high_level_feature.format(

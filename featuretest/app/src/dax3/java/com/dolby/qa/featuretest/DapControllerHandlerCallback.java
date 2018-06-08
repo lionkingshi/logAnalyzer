@@ -25,11 +25,18 @@ import static com.dolby.qa.featuretest.Constants.MSG_UPDATE_PLAY_CONTENT_TV;
 import static com.dolby.qa.featuretest.Constants.MSG_UPDATE_RESET_TV;
 import static com.dolby.qa.featuretest.Constants.MSG_UPDATE_UI_ARG1_DEFAULT;
 import static com.dolby.qa.featuretest.Constants.MSG_UPDATE_UI_ARG1_VISIBLE;
+import static com.dolby.qa.featuretest.Constants.VOLUME_ADJUSTMENT_DIRECTION_LOWER;
+import static com.dolby.qa.featuretest.Constants.VOLUME_ADJUSTMENT_DIRECTION_MAXIMUM;
+import static com.dolby.qa.featuretest.Constants.VOLUME_ADJUSTMENT_DIRECTION_MUTE;
+import static com.dolby.qa.featuretest.Constants.VOLUME_ADJUSTMENT_DIRECTION_RAISE;
+import static com.dolby.qa.featuretest.Constants.VOLUME_ADJUSTMENT_DIRECTION_SAME;
 import static com.dolby.qa.featuretest.MainActivity.mDAP;
 import static com.dolby.qa.featuretest.MainActivity.mTrack;
 import static com.dolby.qa.featuretest.MainActivity.playOrPause;
 import static com.dolby.qa.featuretest.MainActivity.releaseResource;
 import static com.dolby.qa.featuretest.MainActivity.restartPlayback;
+import static com.dolby.qa.featuretest.MainActivity.setStreamVolume;
+import static com.dolby.qa.featuretest.MainActivity.setTrackVolume;
 import static com.dolby.qa.featuretest.MainActivity.stopPlayback;
 
 public class DapControllerHandlerCallback implements Handler.Callback{
@@ -66,6 +73,22 @@ public class DapControllerHandlerCallback implements Handler.Callback{
                 break;
             case Constants.MSG_RESTART_PLAYBACK:
                 restartPlayback();
+                break;
+            case Constants.MSG_VOLUME_CONTROL:
+                int m_adjustment_direction = msg.arg1;
+                switch (m_adjustment_direction){
+                    case VOLUME_ADJUSTMENT_DIRECTION_MUTE:
+                        setStreamVolume(m_adjustment_direction,true,false);
+                        break;
+                    case VOLUME_ADJUSTMENT_DIRECTION_MAXIMUM:
+                        setStreamVolume(m_adjustment_direction,false,true);
+                        break;
+                    case VOLUME_ADJUSTMENT_DIRECTION_LOWER:
+                    case VOLUME_ADJUSTMENT_DIRECTION_SAME:
+                    case VOLUME_ADJUSTMENT_DIRECTION_RAISE:
+                        setStreamVolume(m_adjustment_direction,false,false);
+                        break;
+                }
                 break;
             case Constants.MSG_CHANGE_DAP_FEATURE_DAP_STATUS:
                 String mContentShowInDapStatusTV = String.format(Locale.getDefault(), "set ds status : %b", msg.arg1 != 0);

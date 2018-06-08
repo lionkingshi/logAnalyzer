@@ -40,6 +40,8 @@ import static com.dolby.qa.featuretest.Constants.EXTRA_CMD_STEP_RECORD_LOG;
 import static com.dolby.qa.featuretest.Constants.EXTRA_CMD_STEP_RELEASE_RESOURCE;
 import static com.dolby.qa.featuretest.Constants.EXTRA_CMD_STEP_RESTART_PLAYBACK;
 import static com.dolby.qa.featuretest.Constants.EXTRA_CMD_STEP_STOP_PLAYBACK;
+import static com.dolby.qa.featuretest.Constants.EXTRA_CMD_STEP_VOLUME_CONTROL;
+import static com.dolby.qa.featuretest.Constants.EXTRA_CMD_VOLUME_ADJUSTMENT_DIRECTION;
 import static com.dolby.qa.featuretest.Constants.INVALID_DAP_PROFILE_ID;
 import static com.dolby.qa.featuretest.Constants.MSG_ARG1_DEFAULT;
 import static com.dolby.qa.featuretest.Constants.MSG_CHANGE_DAP_FEATURE_DAP_FEATURE_TYPE;
@@ -60,7 +62,9 @@ import static com.dolby.qa.featuretest.Constants.MSG_RECORD_LOG;
 import static com.dolby.qa.featuretest.Constants.MSG_RELEASE_RESOURCE;
 import static com.dolby.qa.featuretest.Constants.MSG_RESTART_PLAYBACK;
 import static com.dolby.qa.featuretest.Constants.MSG_STOP_PLAYBACK;
+import static com.dolby.qa.featuretest.Constants.MSG_VOLUME_CONTROL;
 import static com.dolby.qa.featuretest.Constants.RESET_DAP_ALL_PROFILE_PARA;
+import static com.dolby.qa.featuretest.Constants.VOLUME_ADJUSTMENT_DIRECTION_SAME;
 
 public class BroadcastReceiverParseFromHostClient extends BroadcastReceiver {
     private static final String TAG = ConstantdDax3.TAG;
@@ -93,6 +97,9 @@ public class BroadcastReceiverParseFromHostClient extends BroadcastReceiver {
                     break;
                 case EXTRA_CMD_STEP_RESTART_PLAYBACK:
                     parseIntentRestartPlayback(context, intent);
+                    break;
+                case EXTRA_CMD_STEP_VOLUME_CONTROL:
+                    parseIntentVolumeControl(context,intent);
                     break;
                 default:
                     Log.d(TAG, "receive broadcast , not expected action !");
@@ -134,6 +141,16 @@ public class BroadcastReceiverParseFromHostClient extends BroadcastReceiver {
         Log.d(TAG,"receive broadcast , restart music player audio track playback .......");
         handleIntentAndThenSendMessage(MSG_RESTART_PLAYBACK,MSG_ARG1_DEFAULT,null);
     }
+
+    public void parseIntentVolumeControl(Context context,Intent intent){
+        int adjust_direction = intent.getIntExtra(
+                EXTRA_CMD_VOLUME_ADJUSTMENT_DIRECTION,VOLUME_ADJUSTMENT_DIRECTION_SAME);
+        Log.d(TAG,"receive broadcast , adjust stream volume for media player : " +
+                adjust_direction);
+
+        handleIntentAndThenSendMessage(MSG_VOLUME_CONTROL,adjust_direction,null);
+    }
+
 
     public void parseIntentChangeFeature(Context context,Intent intent){
         // create a dummy audio track if no playing content intent was received

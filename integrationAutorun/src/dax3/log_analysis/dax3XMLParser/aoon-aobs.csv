@@ -1,0 +1,9 @@
+gain_left,480,Speaker_portrait,aobs,tuning
+gain_right,480,Speaker_portrait,aobs,tuning
+gain_left,480,Speaker_landscape,aobs,tuning
+gain_right,480,Speaker_landscape,aobs,tuning
+gain_left,-480,Headphone,aobs,tuning
+gain_right,-480,Headphone,aobs,tuning
+aoon,true,Headphone,,tuning
+aoon,true,Speaker_landscape,,tuning
+aoon,true,Speaker_portrait,,tuning

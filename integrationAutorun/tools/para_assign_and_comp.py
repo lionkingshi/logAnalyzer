@@ -314,13 +314,13 @@ def print_para_dictionary(_para1_dict, _para2_dict):
             __temp_name_list.append(__key_2)
 
     if len(__temp_name_list) > 0:
-        print "======================================================"
-        print "==== name ========= value1 ========= value2 =========="
+        print ("======================================================")
+        print ("==== name ========= value1 ========= value2 ==========")
 
         for __name in __temp_name_list:
             print_specified_para(__name, _para1_dict, _para2_dict)
 
-        print "======================================================"
+        print ("======================================================")
     pass
 
 
@@ -386,14 +386,14 @@ def compare_para_dictionary(_para1_dict, _para2_dict):
             __temp_name_list.append(__key_2)
 
     if len(__temp_name_list) > 0:
-        # print "========== list all diff values ===================="
-        # print "==== name ========= value1 ========= value2 =========="
+        # print ("========== list all diff values ====================")
+        # print ("==== name ========= value1 ========= value2 ==========")
 
         for __name in __temp_name_list:
             __comparison_result = compare_one_para(__name, _para1_dict, _para2_dict)
             if __comparison_result is False:
                 result = False
-        # print "======================================================"
+        # print ("======================================================")
     return result
 
 
@@ -479,7 +479,7 @@ def main(argvs):
     try:
         opts, args = getopt.getopt(argvs, 'hi:', ['help', 'input'])
     except Exception, e:
-        print e.message
+        print (e.message)
         sys.exit(0)
 
     if len(opts) == 0:
@@ -492,7 +492,7 @@ def main(argvs):
     try:
         for op, value in opts:
             if op in ('-h', '--help'):
-                print help_content
+                print (help_content)
                 sys.exit(0)
             if op in ('-i', '--input'):
                 print ("file name parsed from xml file : " + value)

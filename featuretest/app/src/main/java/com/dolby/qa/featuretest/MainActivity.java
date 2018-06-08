@@ -1,6 +1,7 @@
 package com.dolby.qa.featuretest;
 
 import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.media.AudioAttributes;
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
     static DolbyAudioEffect mDAP = null;
     static AudioTrack mTrack=null;
+    static AudioManager audioManager;
 
     private static final String[] permissionArray=new String[]{
             android.Manifest.permission.MODIFY_AUDIO_SETTINGS,
@@ -105,6 +107,8 @@ public class MainActivity extends AppCompatActivity {
 
         // initialize the dap
         initializeDAPWithDummyAudioTrack();
+        //initial audio manger
+        audioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
 
         checkRequiredPermission();
         this.registerReceiver();
@@ -181,13 +185,13 @@ public class MainActivity extends AppCompatActivity {
                     mMediaPlayer.prepare();
                     mMediaPlayer.setLooping(true);
                 } catch (IOException ex1) {
-                    Log.e(TAG, "mMediaPlayercreate failed:", ex1);
+                    Log.e(TAG, "mMediaPlayer create failed:", ex1);
                     mMediaPlayer = null;
                 } catch (IllegalArgumentException ex2) {
-                    Log.e(TAG, "mMediaPlayercreate failed:", ex2);
+                    Log.e(TAG, "mMediaPlayer create failed:", ex2);
                     mMediaPlayer = null;
                 } catch (SecurityException ex3) {
-                    Log.e(TAG, "mMediaPlayercreate failed:", ex3);
+                    Log.e(TAG, "mMediaPlayer create failed:", ex3);
                     mMediaPlayer = null;
                 }
 
@@ -235,6 +239,57 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
+    public static void setTrackVolume(float leftVolume, float rightVolume){
+        mMediaPlayer.setVolume(leftVolume,rightVolume);
+    }
+
+    public static void setStreamVolume(int direction, boolean is_mute, boolean is_maximum){
+        if (!audioManager.isVolumeFixed()){
+            int mCurrentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+            int maximumVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+            Log.d(TAG,"maximum volume is :" + maximumVolume);
+            Log.d(TAG,"current volume before adjustment is :" + mCurrentVolume);
+
+            int temp = direction%maximumVolume;
+
+            if (is_mute){
+                temp = 0;
+                if (0 != mCurrentVolume){
+                    audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,temp,0);
+                }
+            }
+
+            if (is_maximum){
+                temp = maximumVolume;
+                if (mCurrentVolume != maximumVolume){
+                    audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,temp,0);
+                }
+            }
+
+            if (!(is_maximum || is_mute)){
+                temp = mCurrentVolume + direction;
+                if (temp < 0){
+                    temp = 0;
+                }
+                if (temp > maximumVolume){
+                    temp = maximumVolume;
+                }
+                if (temp != mCurrentVolume){
+                    audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,temp,0);
+                }
+            }
+
+            Log.d(TAG,"set volume to  :" + temp);
+            mCurrentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+            Log.d(TAG,"volume after adjustment is :" + mCurrentVolume);
+
+        }else {
+            Log.d(TAG,
+                    "current device didn't have volume control and operate at a fixed volume");
+        }
+    }
+
 
     public static void releaseResource(){
         if (mMediaPlayer != null){

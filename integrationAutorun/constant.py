@@ -33,6 +33,14 @@ adb_broadcast_intent = 'adb shell am broadcast -a {0} -p {1} '.format(test_type,
 # define intent type
 # intent type 1 : play content
 intent_play_content = '--es step play_content --es content_location {0}/'.format(play_content_device_location)
+intent_stop_playback = ''
+intent_restart_playback = ''
+intent_volume_control = '--es step volume_control --ei adjust_direction '
+ADJUST_MAX_VOLUME = '2'
+ADJUST_RAISE = '1'
+ADJUST_SAME = '0'
+ADJUST_LOWER = '-1'
+ADJUST_MUTE = '-2'
 # intent type 2 : change dap api
 intent_change_dap = '--es step change_dap_feature '
 # intent type 2.1 : change dap status on or off

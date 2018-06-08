@@ -1,0 +1,9 @@
+threshold_high,-2080,Speaker_portrait,arbs,tuning
+threshold_low,-2080,Speaker_portrait,arbs,tuning
+arde,true,Speaker_portrait,,tuning
+threshold_high,-2080,Headphone,arbs,tuning
+threshold_low,-2080,Headphone,arbs,tuning
+arde,true,Headphone,,tuning
+threshold_high,-2080,Speaker_landscape,arbs,tuning
+threshold_low,-2080,Speaker_landscape,arbs,tuning
+arde,true,Speaker_landscape,,tuning

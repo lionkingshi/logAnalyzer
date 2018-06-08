@@ -53,10 +53,11 @@ def specified_profile_default_value_test_procedure_dax3(caller_name, endpoint_id
 def assert_specified_profile_default_values_result(_profile_name, tuning_device_name,
                                                    _endpoint_type=AUDIO_DEVICE_OUT_STEREO_SPEAKER,
                                                    _content_type=content_type_2_channel_non_dolby):
+    _current_directory = os.path.dirname(os.path.abspath(__file__))
     if _endpoint_type == AUDIO_DEVICE_OUT_MONO_SPEAKER:
-        default_xml_file_name = abspath(join('.', 'dax3XMLParser', 'mono', 'dax3-default-mono-speaker.xml'))
+        default_xml_file_name = abspath(join(_current_directory, 'dax3XMLParser', 'mono', 'dax3-default-mono-speaker.xml'))
     else:
-        default_xml_file_name = abspath(join('.', 'dax3XMLParser', 'stereo', 'dax3-default-stereo-speaker.xml'))
+        default_xml_file_name = abspath(join(_current_directory, 'dax3XMLParser', 'stereo', 'dax3-default-stereo-speaker.xml'))
     xml_parser_class = TuningFileParser(default_xml_file_name)
     post_para_dict_from_xml = xml_parser_class.print_expect_value(_profile_name=_profile_name,
                                                                   tuning_device_name_endpoint=tuning_device_name)
@@ -1023,7 +1024,8 @@ def __generate_and_parse_log_file(_caller_name, _endpoint_id, _content_name, _co
     temp_log_name = logFileNameFormat.format(functionName=_caller_name,
                                              endpoint_type=_endpoint_id,
                                              log_type=_content_name.replace('.', '_'))
-    sv_log_file_name = abspath(join('.', 'log', _endpoint_id, temp_log_name))
+    _current_directory = os.path.dirname(os.path.abspath(__file__))
+    sv_log_file_name = abspath(join(_current_directory, 'log', _endpoint_id, temp_log_name))
     generate_log_file(sv_log_file_name)
     # parse log file
     if _content_type in content_type_2_channel_dolby:

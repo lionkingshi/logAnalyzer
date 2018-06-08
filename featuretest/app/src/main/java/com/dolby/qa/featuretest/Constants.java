@@ -9,6 +9,7 @@ public class Constants {
     public static final String EXTRA_CMD_STEP_PLAY_CONTENT = "play_content";
     public static final String EXTRA_CMD_STEP_STOP_PLAYBACK = "stop_playback";
     public static final String EXTRA_CMD_STEP_RESTART_PLAYBACK = "restart_playback";
+    public static final String EXTRA_CMD_STEP_VOLUME_CONTROL = "volume_control";
     public static final String EXTRA_CMD_STEP_CHANGE_DAP_FEATURE = "change_dap_feature";
     public static final String EXTRA_CMD_STEP_RECORD_LOG = "record_log";
     public static final String EXTRA_CMD_STEP_RELEASE_RESOURCE = "release_resource";
@@ -16,6 +17,8 @@ public class Constants {
 
     //playing content key
     public static final String EXTRA_CMD_CONTENT_LOCATION = "content_location";
+    //volume control key
+    public static final String EXTRA_CMD_VOLUME_ADJUSTMENT_DIRECTION = "adjust_direction";
 
     //key matched by first class api
     public static final String EXTRA_CMD_FEATURE_DAP_STATUS = "dap_status";
@@ -52,6 +55,8 @@ public class Constants {
     //stop and restart playback
     public static final int MSG_STOP_PLAYBACK=0X101;
     public static final int MSG_RESTART_PLAYBACK=0X102;
+    //volume control
+    public static final int MSG_VOLUME_CONTROL=0x103;
     //change dap
     public static final int MSG_CHANGE_DAP_FEATURE_DAP_STATUS=0X111;
     public static final int MSG_CHANGE_DAP_FEATURE_DAP_PROFILE=0X112;
@@ -102,4 +107,11 @@ public class Constants {
     public static final int RESET_DAP_ALL_PROFILE_PARA = 10 ;
     public static final int MSG_ARG1_DEFAULT = 0 ;
     public static final int ID_RESET_ALL_PROFILE = 10 ;
+
+    //volume control direction
+    public static final int VOLUME_ADJUSTMENT_DIRECTION_MAXIMUM = 2 ;
+    public static final int VOLUME_ADJUSTMENT_DIRECTION_RAISE = 1 ;
+    public static final int VOLUME_ADJUSTMENT_DIRECTION_SAME = 0 ;
+    public static final int VOLUME_ADJUSTMENT_DIRECTION_LOWER = -1 ;
+    public static final int VOLUME_ADJUSTMENT_DIRECTION_MUTE = -2 ;
 }

@@ -4,13 +4,73 @@ from XMLConfigConstants import *
 import csv
 from os.path import abspath, exists, dirname
 from getopt import getopt
-
-try:
-    import xml.etree.cElementTree as ET
-except ImportError:
-    import xml.etree.ElementTree as ET
-
+# try:
+#     import xml.etree.cElementTree as ET
+# except ImportError:
+#     import xml.etree.ElementTree as ET
+import xml.etree.ElementTree as ET
 from collections import OrderedDict
+
+
+# sort order for attributes
+def _serialize_xml(write, elem, encoding, qnames, namespaces):
+    tag = elem.tag
+    text = elem.text
+    if tag is ET.Comment:
+        write("<!--%s-->" % ET._encode(text, encoding))
+    elif tag is ET.ProcessingInstruction:
+        write("<?%s?>" % ET._encode(text, encoding))
+    else:
+        tag = qnames[tag]
+        if tag is None:
+            if text:
+                write(ET._escape_cdata(text, encoding))
+            for _temp_element in elem:
+                _serialize_xml(write, _temp_element, encoding, qnames, None)
+        else:
+            write("<" + tag)
+            items = elem.items()
+            if items or namespaces:
+                if namespaces:
+                    for v, k in sorted(namespaces.items(), key=lambda x: x[1]):  # sort on prefix
+                        if k:
+                            k = ":" + k
+                        write(" xmlns%s=\"%s\"" % (
+                            k.encode(encoding),
+                            ET._escape_attrib(v, encoding)
+                            ))
+                for k, v in items: # Monkey patch
+                    if isinstance(k, ET.QName):
+                        k = k.text
+                    if isinstance(v, ET.QName):
+                        v = qnames[v.text]
+                    else:
+                        v = ET._escape_attrib(v, encoding)
+                    write(" %s=\"%s\"" % (qnames[k], v))
+            if text or len(elem):
+                write(">")
+                if text:
+                    write(ET._escape_cdata(text, encoding))
+                for e in elem:
+                    _serialize_xml(write, e, encoding, qnames, None)
+                write("</" + tag + ">")
+            else:
+                write(" />")
+    if elem.tail:
+        write(ET._escape_cdata(elem.tail, encoding))
+
+ET._serialize_xml = _serialize_xml
+
+
+class OrderedXMLTreeBuilder(ET.XMLTreeBuilder):
+    def _start_list(self, tag, attrib_in):
+        fixname = self._fixname
+        tag = fixname(tag)
+        attrib = OrderedDict()
+        if attrib_in:
+            for i in range(0, len(attrib_in), 2):
+                attrib[fixname(attrib_in[i])] = self._fixtext(attrib_in[i+1])
+        return self._target.start(tag, attrib)
 
 
 class TuningFileParser:
@@ -21,7 +81,7 @@ class TuningFileParser:
             raise Exception("Input file '%s' doesn't exist." % xml_file_path)
         self.__input = xml_file_path
 
-        self.__tree = ET.parse(xml_file_path)
+        self.__tree = ET.parse(xml_file_path, OrderedXMLTreeBuilder())
         self.__root = self.__tree.getroot()
         self.__initialize_parameters_value_to_non_exist()
 
@@ -33,15 +93,16 @@ class TuningFileParser:
         pass
 
     # check profile if valid
+    @staticmethod
     def check_ifvalid(self, profile, endpoint):
         flag = 1
         if profile not in profile_name:
-            print "valid profile name shall be : "
-            print profile_name
+            print ("valid profile name shall be : ")
+            print (profile_name)
             flag = 0
         if endpoint not in tuning_endpoint_name:
-            print "valid tuning endpoint name shall be : "
-            print tuning_endpoint_name
+            print ("valid tuning endpoint name shall be : ")
+            print (tuning_endpoint_name)
             flag = 0
         return flag
 
@@ -64,7 +125,7 @@ class TuningFileParser:
                 # print e_dap_feature.tag
             return e_dap_feature
         except Exception, e:
-            print e
+            print (e)
 
     # get dap feature item element for profile
     def get_dapE_profile(self, dap_feature, profile, endpoint_type):
@@ -80,7 +141,7 @@ class TuningFileParser:
             e_dap_feature = profile.find(dap_feature_patten)
             return e_dap_feature
         except Exception, e:
-            print e
+            print (e)
 
     # change default dict to Order dict,for aobs, the channel order , for arbs, threshold low/high
     def order_attribs(self, e_band, order_list):
@@ -139,14 +200,14 @@ class TuningFileParser:
 
     def get_feature_aobs_arbs(self, dap_feature, endpoint):
         if dap_feature not in ["aobs", "arbs"]:
-            print "input error for aobs(arbs)"
+            print ("input error for aobs(arbs)")
             return -1
         try:
             dap_feature = dap_tuning_dict[dap_feature]
             e_dap_feature = self.get_dapE_tuning(dap_feature, endpoint)
             return self.get_value_of_bands(e_dap_feature)
         except Exception, e:
-            print e
+            print (e)
 
     # get iebs for profile
     def get_iebs_gebs(self, ie_ge, profile):
@@ -259,7 +320,7 @@ class TuningFileParser:
             orientation_value = e_oritenation.get('value')
             return orientation_value
         except Exception, e:
-            print e
+            print (e)
 
     # get matrix of endpoint
     def get_matrix_endpoint(self, endpoint):
@@ -277,7 +338,7 @@ class TuningFileParser:
                 value += each_ele.get('value') + ","
             return value[:-1]
         except Exception, e:
-            print e
+            print (e)
 
     # get feature value for dom,vbon and beon, these three ones are special ones
     def get_feture_dom_bass(self, dap_feature, profile, endpoint):
@@ -322,8 +383,8 @@ class TuningFileParser:
 
             return flag
         except Exception, e:
-            print e
-            print "Cannot get the value of  " + dap_feature + " for " + profile + "," + endpoint
+            print (e)
+            print ("Cannot get the value of  " + dap_feature + " for " + profile + "," + endpoint)
 
     ''' 
     set features for tuning part
@@ -344,7 +405,7 @@ class TuningFileParser:
                 dap_feature = dap_tuning_dict[dap_feature]
                 # print "dap_feature "+dap_feature
         except Exception, e:
-            print e
+            print (e)
         try:
             if ao_or_ar != "":
                 ao_or_ar = dap_tuning_dict[ao_or_ar]
@@ -352,13 +413,13 @@ class TuningFileParser:
                 # it has 20 band for ao and ar
                 for each_band in e_dap_feature:
                     each_band.set(dap_feature, feature_value)
-                print "Set parameters succeed: " + e_dap_feature[0].tag
+                print ("Set parameters succeed: " + e_dap_feature[0].tag)
             else:
                 e_dap_feature = self.get_dapE_tuning(dap_feature, endpoint)
                 e_dap_feature.set('value', feature_value)
-                print "Set parameters succeed: " + e_dap_feature.tag
+                print ("Set parameters succeed: " + e_dap_feature.tag)
         except Exception, e:
-            print e
+            print (e)
 
     '''
     set parameters for profile part
@@ -376,9 +437,9 @@ class TuningFileParser:
                 dap_feature = dap_profile_dict[dap_feature]
             e_dap_feature = self.get_dapE_profile(dap_feature, profile, endpoint_type)
             e_dap_feature.set('value', feature_value)
-            print "Set parameters succeed: " + e_dap_feature.tag
+            print ("Set parameters succeed: " + e_dap_feature.tag)
         except Exception, e:
-            print e
+            print (e)
 
     # print expect value for all supported features
     def print_expect_value(self, _profile_name="Movie", tuning_device_name_endpoint="Speaker_landscape"):
@@ -417,7 +478,7 @@ class TuningFileParser:
             TuningFileParser.POST_PROCESSING_PARAS_DICT[feature] = str(_value)
             fo.write(feature + "=" + str(_value) + "\n")
         fo.close()
-        print "Succeed read :" + out_file_name
+        print ("Succeed read :" + out_file_name)
         return TuningFileParser.POST_PROCESSING_PARAS_DICT
 
     # print values for all profiles and endpoints
@@ -431,8 +492,8 @@ class TuningFileParser:
         input_file_path = os.path.abspath(self.__input)
         input_dirname = os.path.dirname(input_file_path)
         _output_file = os.path.join(input_dirname, output_file)
-        self.__root.set("xmlns:xsd", "http://www.w3.org/2001/XMLSchema")
         self.__root.set("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance")
+        self.__root.set("xmlns:xsd", "http://www.w3.org/2001/XMLSchema")
         self.__tree.write(_output_file, encoding='utf-8', xml_declaration=True)
 
 
@@ -453,7 +514,7 @@ Optional Parameters:
 -o/--output=            Saved xml after changed,default value is "changed_dax-default.xml".
                         No need to specify path, it will be in the same path as input xml file.
 --option=               option can be read and write, the two usage of the script, default is "read"
--pf/--parameters_file=  Paramter file which list the paramters and values want to change,
+--parameters_file=  Paramter file which list the paramters and values want to change,
                         default value is "parameters.csv". The format shall be:
                         The first colume is feature, 2nd colume is value, 3rd is Profile or endpoint name
                         4th colume: endpoint type if it's profile feature, can be blank
@@ -473,11 +534,11 @@ if __name__ == "__main__":
                             ['help', 'input=', 'profile=', 'endpoint=', 'output=', 'parameters_file=', 'option=',
                              'readAll='])
     except Exception, e:
-        print e
+        print (e)
         sys.exit(1)
 
     if len(opts) == 0:
-        print "Please specify the mandatory parameters. Use '-h' or '--help' to see how to use this tool"
+        print ("Please specify the mandatory parameters. Use '-h' or '--help' to see how to use this tool")
         sys.exit(0)
 
         # Assgin default values to the parameters
@@ -491,21 +552,21 @@ if __name__ == "__main__":
     try:
         for op, value in opts:
             if op in ('--help', '-h'):
-                print help_content
+                print (help_content)
                 sys.exit(0)
             if op in ('-i', '--input'):
                 input_file = value
             if op in ('-p', '--profile'):
                 profile = value
                 if profile not in profile_name:
-                    print "profile name shall be the following:"
-                    print profile_name
+                    print ("profile name shall be the following:")
+                    print (profile_name)
                     sys.exit(1)
             if op in ('-e', '--endpoint'):
                 endpoint = value
                 if endpoint not in tuning_endpoint_name:
-                    print "endpoint name shall be the following:"
-                    print tuning_endpoint_name
+                    print ("endpoint name shall be the following:")
+                    print (tuning_endpoint_name)
                     sys.exit(1)
             if op in ('-o', '--output'):
                 output_file = value
@@ -514,18 +575,18 @@ if __name__ == "__main__":
             if op in ('--option',):
                 option = value
                 if option not in ('read', 'write'):
-                    print "Option must be 'read' or 'write'.Use '-h' or '--help' to see how to use this tool"
+                    print ("Option must be 'read' or 'write'.Use '-h' or '--help' to see how to use this tool")
                     sys.exit(1)
             if op in ('--readAll',):
                 readAll = value
                 if readAll not in ('true', 'false'):
-                    print "ReadAll must be 'true' or 'false'.Use '-h' or '--help' to see how to use this tool"
+                    print ("ReadAll must be 'true' or 'false'.Use '-h' or '--help' to see how to use this tool")
                     sys.exit(1)
         if input_file is None:
-            print "Missing Input File Name. Use '-h' or '--help' to see how to use this tool"
+            print ("Missing Input File Name. Use '-h' or '--help' to see how to use this tool")
             sys.exit(1)
     except Exception, e:
-        print e
+        print (e)
     tuningFileUpdater = TuningFileParser(input_file)
     # read values of all profile and all endpoint
     if readAll == 'true':

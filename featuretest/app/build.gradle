@@ -31,14 +31,20 @@ android {
     flavorDimensions "default"
 
     productFlavors {
-        dax2 {
-            versionNameSuffix "-dax2"
-            manifestPlaceholders = [APP_NAME: "@string/app_name_effect_3.0"]
+
+        dax35 {
+            versionNameSuffix "-dax35"
+            manifestPlaceholders = [APP_NAME: "@string/app_name_dax35"]
         }
 
         dax3 {
             versionNameSuffix "-dax3"
             manifestPlaceholders = [APP_NAME: "@string/app_name_dax3"]
+        }
+
+        dax2 {
+            versionNameSuffix "-dax2"
+            manifestPlaceholders = [APP_NAME: "@string/app_name_effect_3.0"]
         }
 
     //modify apk name for each build
@@ -51,8 +57,12 @@ android {
                     if (fileName.contains('dax2')){
                         outputFileName = 'DAX2LogAnalysis.apk'
                     }else{
-                        if (fileName.contains('dax3')){
-                            outputFileName = 'DAX3LogAnalysis.apk'
+                        if (fileName.contains('dax35')){
+                            outputFileName = 'DAX35LogAnalysis.apk'
+                        }else{
+                            if (fileName.contains('dax3')){
+                                outputFileName = 'DAX3LogAnalysis.apk'
+                            }
                         }
                     }
                 }
@@ -63,7 +73,7 @@ android {
 }
 
 dependencies {
-//    compile fileTree(include: ['*.jar'], dir: 'libs')
+    //    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:' + rootProject.espressoVersion, {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
@@ -72,4 +82,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     dax2Implementation files('libs/dax.jar')
     dax3Implementation files('libs/dax3_static.jar')
+    dax35Implementation files('libs/dax3_5_static.jar')
 }

@@ -4,6 +4,7 @@ Created on May 18st, 2018 (my son has just already one year and seven month)
 @author: hshi
 """
 import sys
+import logging
 from os.path import abspath, join, exists
 from collections import OrderedDict
 # import logging
@@ -29,6 +30,15 @@ __assembled_specified_content_processing_in_global_process = OrderedDict()
 __assembled_ac4_decoder_para_dict = OrderedDict()
 
 
+logger = logging.getLogger('test')
+
+
+def set_logger_name_for_para_assign(logger_name, _level_no=logging.DEBUG):
+    global logger
+    logger = logging.getLogger(logger_name)
+    logger.setLevel(_level_no)
+
+
 def produce_three_type_para(_key_word_para_dict):
     produce_qmf_process_para(_key_word_para_dict)
     produce_global_process_para(_key_word_para_dict)
@@ -44,12 +54,13 @@ def assemble_para():
 
 
 def assemble_device_processing_para():
+    global logger
     global __assembled_device_processing_para_list
     assert isinstance(VIRTUAL_BASS, object)
     __assembled_device_processing_para_list = AUDIO_OPTIMIZER + AUDIO_REGULATOR + BASS_ENHANCER + BASS_EXTRACTION + \
                                               VIRTUAL_BASS + GRAPHIC_EQUALIZER + COMPLEX_EQUALIZER
     # print_a_list(__assembled_device_processing_para_list)
-    print ("assemble device processing parameters over!")
+    logger.info("assemble device processing parameters over!")
     pass
 
 
@@ -60,6 +71,7 @@ def get_assembled_device_processing_para_list():
 
 
 def assemble_content_processing_para():
+    global logger
     global __assembled_content_processing_para_list
     _temp_list = [CALIBRATION_BOOST, VOL_MAX_BOOST, SURROUND_DECODER]
     __assembled_content_processing_para_list = DIALOG_ENHANCER + \
@@ -68,7 +80,7 @@ def assemble_content_processing_para():
                                                MEDIA_INTELLIGENT + \
                                                VIRTUALIZER + SPEAKER_VIRTUALIZER
     # print_a_list(__assembled_content_processing_para_list)
-    print ("assemble content processing parameters over!")
+    logger.info("assemble content processing parameters over!")
     return _temp_list
 
 
@@ -79,10 +91,11 @@ def get_assembled_content_processing_para_list():
 
 
 def assemble_ac4_para():
+    global logger
     global __assembled_ac4_para_list
     __assembled_ac4_para_list = PARA_LIST_AC4
     # print_a_list(__assembled_content_processing_para_list)
-    print ("assemble ac4 parameters over!")
+    logger.info("assemble ac4 parameters over!")
     pass
 
 
@@ -99,6 +112,7 @@ def produce_para(_key_word_para_dict):
 
 
 def produce_device_processing_para(_key_word_para_dict):
+    global logger
     global __assembled_device_processing_para_dict
     global __assembled_device_processing_para_list
     assert isinstance(_key_word_para_dict, dict)
@@ -114,7 +128,7 @@ def produce_device_processing_para(_key_word_para_dict):
         __assembled_device_processing_para_dict[__m_key] = __m_value
         pass
 
-    print("produce device processing parameters over!")
+    logger.info("produce device processing parameters over!")
     pass
 
 
@@ -124,6 +138,7 @@ def get_assembled_device_processing_para_dict():
 
 
 def produce_content_processing_para(_key_word_para_dict):
+    global logger
     global __assembled_content_processing_para_dict
     global __assembled_content_processing_para_list
     assert isinstance(_key_word_para_dict, dict)
@@ -139,7 +154,7 @@ def produce_content_processing_para(_key_word_para_dict):
         __assembled_content_processing_para_dict[__m_key] = __m_value
         pass
 
-    print("produce content processing parameters over!")
+    logger.info("produce content processing parameters over!")
     pass
 
 
@@ -149,6 +164,7 @@ def get_assembled_content_processing_para_dict():
 
 
 def produce_ac4_para(_key_word_para_dict):
+    global logger
     global __assembled_ac4_para_dict
     global __assembled_ac4_para_list
     assert isinstance(_key_word_para_dict, dict)
@@ -164,7 +180,7 @@ def produce_ac4_para(_key_word_para_dict):
         __assembled_ac4_para_dict[__m_key] = __m_value
         pass
 
-    print("produce ac4 parameters over!")
+    logger.info("produce ac4 parameters over!")
     pass
 
 
@@ -199,6 +215,7 @@ def set_dom_para_to_disable(_key_word_para_dict):
 
 
 def produce_global_process_para(_key_word_para_dict):
+    global logger
     global __assembled_global_process_para_dict
     global __assembled_device_processing_para_dict
     global __assembled_device_processing_para_list
@@ -215,7 +232,7 @@ def produce_global_process_para(_key_word_para_dict):
     for __m_key, __m_value in __assembled_specified_content_processing_in_global_process.items():
         __assembled_global_process_para_dict[__m_key] = __m_value
 
-    print("produce global process parameters over!")
+    logger.info("produce global process parameters over!")
 
     pass
 
@@ -226,6 +243,7 @@ def get_assembled_global_process_para_dict():
 
 
 def produce_qmf_process_para(_key_word_para_dict):
+    global logger
     global __assembled_qmf_process_para_dict
     global __assembled_content_processing_para_dict
     global __assembled_content_processing_para_list
@@ -236,7 +254,7 @@ def produce_qmf_process_para(_key_word_para_dict):
 
     for __m_key, __m_value in __assembled_content_processing_para_dict.items():
         __assembled_qmf_process_para_dict[__m_key] = __m_value
-    print('produce qmf process parameters over!')
+    logger.info('produce qmf process parameters over!')
     pass
 
 
@@ -246,6 +264,7 @@ def get_assembled_qmf_process_para_dict():
 
 
 def produce_ac4_decoder_para_dict(_key_word_para_dict):
+    global logger
     global __assembled_ac4_decoder_para_dict
     global __assembled_ac4_para_dict
     global __assembled_ac4_para_list
@@ -272,7 +291,7 @@ def produce_ac4_decoder_para_dict(_key_word_para_dict):
     else:
         __assembled_ac4_decoder_para_dict['iebs'] = 'non-exist'
 
-    print('produce ac4 decoder parameters over!')
+    logger.info('produce ac4 decoder parameters over!')
 
 
 def get_assembled_ac4_decoder_para_dict():
@@ -281,6 +300,7 @@ def get_assembled_ac4_decoder_para_dict():
 
 
 def print_specified_para(_name, _para1_dict, _para2_dict):
+    global logger
     assert isinstance(_name, str)
     assert isinstance(_para1_dict, dict)
     assert isinstance(_para2_dict, dict)
@@ -298,11 +318,12 @@ def print_specified_para(_name, _para1_dict, _para2_dict):
     if len(__latter_value) > 4:
         __latter_value = __latter_value[:4]
 
-    print ("==== {} ========= {} ========= {} ==========".format(_name, __former_value, __latter_value))
+    logger.info("==== {} ========= {} ========= {} ==========".format(_name, __former_value, __latter_value))
     pass
 
 
 def print_para_dictionary(_para1_dict, _para2_dict):
+    global logger
     assert isinstance(_para1_dict, dict)
     assert isinstance(_para2_dict, dict)
     # a list contains all key strings
@@ -314,13 +335,13 @@ def print_para_dictionary(_para1_dict, _para2_dict):
             __temp_name_list.append(__key_2)
 
     if len(__temp_name_list) > 0:
-        print ("======================================================")
-        print ("==== name ========= value1 ========= value2 ==========")
+        logger.info("======================================================")
+        logger.info("==== name ========= value1 ========= value2 ==========")
 
         for __name in __temp_name_list:
             print_specified_para(__name, _para1_dict, _para2_dict)
 
-        print ("======================================================")
+            logger.info("======================================================")
     pass
 
 
@@ -398,6 +419,7 @@ def compare_para_dictionary(_para1_dict, _para2_dict):
 
 
 def get_key_value_from_file(_file_name_abs_path):
+    global logger
     _temp_dict = dict()
     if exists(_file_name_abs_path):
         # Read data from file
@@ -413,9 +435,9 @@ def get_key_value_from_file(_file_name_abs_path):
                     __value = line.split('=')[1]
                     _temp_dict[__key] = __value
         except EnvironmentError, e:
-            print ("!!!!!failed to open file :" + e.message)
+            logger.critical("!!!!!failed to open file :" + e.message)
     else:
-        print("file did not exist: {}".format(_file_name_abs_path))
+        logger.info("file did not exist: {}".format(_file_name_abs_path))
 
     # print_a_dictionary(_temp_dict)
 
@@ -423,11 +445,12 @@ def get_key_value_from_file(_file_name_abs_path):
 
 
 def save_key_value_to_file(_input_dictionary, _file_name_abs_path, _name_suffix):
+    global logger
     assert isinstance(_file_name_abs_path, str)
     assert isinstance(_input_dictionary, dict)
 
     if not _file_name_abs_path:
-        print("!!!!!file name argument is empty !")
+        logger.critical("!!!!!file name argument is empty !")
     else:
         __temp_output_file_name = _file_name_abs_path[:-4] + _name_suffix
         try:
@@ -438,23 +461,24 @@ def save_key_value_to_file(_input_dictionary, _file_name_abs_path, _name_suffix)
                     fp_w.write(content)
             fp_w.close()
         except EnvironmentError, e:
-            print ("!!!!!failed to write value to file" + e.message)
+            logger.critical("!!!!!failed to write value to file" + e.message)
 
 
 def print_a_dictionary(_input_dictionary):
+    global logger
     assert isinstance(_input_dictionary, dict)
 
-    print("============ display all value in dictionary ===============")
+    logger.info("============ display all value in dictionary ===============")
     for key, value in _input_dictionary.items():
-        print(key + " = " + value)
+        logger.info(key + " = " + value)
 
 
 def print_a_list(_input_list_or_tuple):
-
-    print("============ display all value in list or tuple ===============")
-    print("============ list or tuple length : " + str(len(_input_list_or_tuple)))
+    global logger
+    logger.info("============ display all value in list or tuple ===============")
+    logger.info("============ list or tuple length : " + str(len(_input_list_or_tuple)))
     for index in range(len(_input_list_or_tuple)):
-        print(str(index) + " = " + _input_list_or_tuple[index])
+        logger.info(str(index) + " = " + _input_list_or_tuple[index])
 
 
 help_content = (

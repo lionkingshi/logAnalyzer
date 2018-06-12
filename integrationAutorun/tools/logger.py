@@ -45,7 +45,7 @@ class Logger:
 
         # create a stream handler to print log to system console
         sh = logging.StreamHandler()
-        sh.setLevel(logging.INFO)
+        sh.setLevel(logging.ERROR)
 
         # create print format
         formatter = format_dict[int(log_level)]

@@ -1,6 +1,6 @@
 import logging
-from os import mkdir
-from os.path import abspath, join, exists
+from os import mkdir, makedirs
+from os.path import abspath, join, exists, dirname
 from constant import *
 
 log_file_name_for_diff_endpoint = (AUDIO_DEVICE_OUT_MONO_SPEAKER,
@@ -19,7 +19,7 @@ format_dict = {
 
 
 class Logger:
-    def __init__(self, log_name, log_level='1', logger_name=''):
+    def __init__(self, log_name='', log_level='1', logger_name=''):
         """
         :param log_name: specify the file name log saved
         :param log_level: specify the print log level
@@ -27,13 +27,21 @@ class Logger:
         """
 
         # create folder for log
-        parent_abs_folder = abspath(join('.', 'log'))
-        for index in range(len(log_file_name_for_diff_endpoint)):
-            folder_name_abs_path = abspath(join(parent_abs_folder, log_file_name_for_diff_endpoint[index]))
-            # folder_name_abs_path = parent_abs_folder + '/' + log_file_name_for_diff_endpoint[index]
-            print ("create folder name is %s" % folder_name_abs_path)
-            if not exists(folder_name_abs_path):
-                mkdir(folder_name_abs_path)
+        _log_parent_dir = dirname(log_name)
+        is_exist = exists(_log_parent_dir)
+        print("\n")
+        print("+++log name:" + log_name)
+        print("+++log dir:" + _log_parent_dir)
+        if not is_exist:
+            makedirs(_log_parent_dir)
+
+        # parent_abs_folder = _log_parent_dir
+        # for index in range(len(log_file_name_for_diff_endpoint)):
+        #     folder_name_abs_path = abspath(join(parent_abs_folder, log_file_name_for_diff_endpoint[index]))
+        #     # folder_name_abs_path = parent_abs_folder + '/' + log_file_name_for_diff_endpoint[index]
+        #     print ("create folder name is %s" % folder_name_abs_path)
+        #     if not exists(folder_name_abs_path):
+        #         mkdir(folder_name_abs_path)
 
         # create a logger
         self.logger = logging.getLogger(logger_name)

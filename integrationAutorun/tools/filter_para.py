@@ -1,7 +1,7 @@
 import sys
 import logging
 from collections import OrderedDict
-from os.path import abspath, join, exists
+from os.path import abspath, join, exists, realpath
 from transfer_para import transfer_para
 from transfer_para import set_content_channel_num_equal_to_two
 from transfer_para import set_content_channel_num_not_equal_to_two

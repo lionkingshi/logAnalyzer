@@ -4,7 +4,8 @@ from dax3ConstantTestData import *
 
 # register the logging configuration
 endpoint_type_in_module = AUDIO_DEVICE_OUT_MONO_SPEAKER
-logging_file_name = abspath(join('.', 'log', endpoint_type_in_module, __name__))
+_current_directory = dirname(realpath(__file__))
+logging_file_name = abspath(join(_current_directory, 'log', endpoint_type_in_module, __name__))
 logger = Logger(log_name=logging_file_name + '.log', log_level='1',
                 logger_name=endpoint_type_in_module).get_log
 

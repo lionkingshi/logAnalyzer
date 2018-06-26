@@ -1,7 +1,7 @@
 package com.dolby.qa.featuretest;
 
-public class ConstantdDax35 {
-    public static final int PROFILE_NUM = 4 ;
+public class constantddax31 {
+//    public static final int PROFILE_NUM = 4 ;
     public static final String TAG = "<<<< Dax3FeatureTest: " ;
 
     // following tuning device name list must sync up with dax-default.xml

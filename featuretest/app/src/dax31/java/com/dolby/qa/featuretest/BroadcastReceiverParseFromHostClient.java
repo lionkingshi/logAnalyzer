@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import com.dolby.dax.DsParams;
 
-import static com.dolby.qa.featuretest.ConstantdDax35.TUNING_DEVICE_NAME_LIST;
+import static com.dolby.qa.featuretest.constantddax31.TUNING_DEVICE_NAME_LIST;
 import static com.dolby.qa.featuretest.Constants.EXTRA_CMD_ACTION;
 import static com.dolby.qa.featuretest.Constants.EXTRA_CMD_CONTENT_LOCATION;
 import static com.dolby.qa.featuretest.Constants.EXTRA_CMD_FEATURE_DAP_FEATURE_TYPE;
@@ -67,7 +67,7 @@ import static com.dolby.qa.featuretest.Constants.RESET_DAP_ALL_PROFILE_PARA;
 import static com.dolby.qa.featuretest.Constants.VOLUME_ADJUSTMENT_DIRECTION_SAME;
 
 public class BroadcastReceiverParseFromHostClient extends BroadcastReceiver {
-    private static final String TAG = ConstantdDax35.TAG;
+    private static final String TAG = constantddax31.TAG;
     private Handler mBroadcastReceiverParseHandlerInMainUi;
 
     public BroadcastReceiverParseFromHostClient(Handler mBroadcastReceiverParseHandlerInMainUi) {

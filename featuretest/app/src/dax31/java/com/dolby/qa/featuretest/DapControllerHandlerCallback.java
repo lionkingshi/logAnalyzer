@@ -13,7 +13,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.Locale;
 
-import static com.dolby.qa.featuretest.ConstantdDax35.COMMAND_INDEX_MAPPING;
+import static com.dolby.qa.featuretest.constantddax31.COMMAND_INDEX_MAPPING;
 import static com.dolby.qa.featuretest.Constants.GLOBAL_SESSION_ID_NUM;
 import static com.dolby.qa.featuretest.Constants.MIDDLE_PRIORITY_NUM;
 import static com.dolby.qa.featuretest.Constants.MSG_CHANGE_TUNING_DEVICE_NAME;
@@ -39,7 +39,7 @@ import static com.dolby.qa.featuretest.MainActivity.setStreamVolume;
 import static com.dolby.qa.featuretest.MainActivity.stopPlayback;
 
 public class DapControllerHandlerCallback implements Handler.Callback{
-    private final String TAG = ConstantdDax35.TAG;
+    private final String TAG = constantddax31.TAG;
     private Handler mUpdateUIHandlerInMainUi;
 
     public DapControllerHandlerCallback(Handler mUpdateUIHandlerInMainUi) {
@@ -183,7 +183,7 @@ public class DapControllerHandlerCallback implements Handler.Callback{
                     String mContentShowInDapFeatureTypeTV = String.format(Locale.getDefault(), "reset all profile : %d", msg.arg1);
                     packageIntentForUIUpdate(MSG_UPDATE_DAP_FEATURE_TYPE_TV,MSG_UPDATE_UI_ARG1_DEFAULT,mContentShowInDapFeatureTypeTV);
 
-                    for (int index = 0; index < ConstantdDax35.PROFILE_NUM; index++) {
+                    for (int index = 0; index < mDAP.getNumOfProfiles(); index++) {
                         if (mDAP.isProfileSpecificSettingsModified(index)) {
                             mDAP.resetProfileSpecificSettings(index);
                         }

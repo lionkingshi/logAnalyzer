@@ -103,10 +103,10 @@ public class Constants {
     public static final int GLOBAL_SESSION_ID_NUM = 0 ;
 
     //invalid num definition
-    public static final int INVALID_DAP_PROFILE_ID = 8 ;
-    public static final int RESET_DAP_ALL_PROFILE_PARA = 10 ;
+    public static final int INVALID_DAP_PROFILE_ID = -2 ;
+    public static final int RESET_DAP_ALL_PROFILE_PARA = -1 ;
     public static final int MSG_ARG1_DEFAULT = 0 ;
-    public static final int ID_RESET_ALL_PROFILE = 10 ;
+    public static final int ID_RESET_ALL_PROFILE = -1 ;
 
     //volume control direction
     public static final int VOLUME_ADJUSTMENT_DIRECTION_MAXIMUM = 2 ;

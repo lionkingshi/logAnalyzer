@@ -13,7 +13,7 @@ play_content_folder_name = 'featureTestContent'
 play_content_device_location = '/sdcard/dolby/featureTestContent'
 # define test apk location and name
 test_apk_parent_location = 'apkSrc'
-test_apk_file_name = 'DAX35LogAnalysis.apk'
+test_apk_file_name = 'DAX31LogAnalysis.apk'
 # define test case log location on device under test
 logFileLocation = "./log/"
 logFileNameFormat = "{functionName}_{endpoint_type}_{log_type}.txt"

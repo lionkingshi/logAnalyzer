@@ -105,7 +105,7 @@ dap_profile_unchanged = str(6)
 # define dolby audio processing feature
 # define reset profile intent
 dap_feature_type_reset_profile = 'dap_reset_profile'
-dap_feature_value_reset_profile_all = '10'
+dap_feature_value_reset_profile_all = '-1'
 dap_feature_value_reset_profile_dynamic = dap_profile_dynamic
 dap_feature_value_reset_profile_movie = dap_profile_movie
 dap_feature_value_reset_profile_music = dap_profile_music

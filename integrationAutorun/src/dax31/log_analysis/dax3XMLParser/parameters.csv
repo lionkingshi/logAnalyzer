@@ -1,0 +1,15 @@
+dom,false,Movie,speaker,profile
+dom,true,Music,speaker,profile
+dom,true,Speaker_portrait,,tuning
+dom,false,Movie,headphone,profile
+dom,true,Music,headphone,profile
+dom,true,Headphone,,tuning
+ieon,true,Movie,,profile
+gain_left,-240,Speaker_portrait,aobs,tuning
+gain_right,-240,Speaker_portrait,aobs,tuning
+gain_left,-480,Headphone,aobs,tuning
+gain_right,480,Headphone,aobs,tuning
+threshold_high,-2080,Speaker_portrait,arbs,tuning
+threshold_low,-2080,Headphone,arbs,tuning
+aoon,true,Headphone,,tuning
+arde,true,Headphone,,tuning

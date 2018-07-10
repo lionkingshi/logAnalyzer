@@ -247,6 +247,86 @@ def test_log_custom_profile_default_value_verify_portrait(content_name, content_
         content_type)
 
 
+@pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
+                         custom_profile_default_value_test_data)
+def test_log_new_added_profiles_default_value_verify_landscape(
+        content_name,
+        content_type,
+        dap_status,
+        dap_profile,
+        dap_feature_type,
+        dap_feature_value):
+    """
+    Test Case ID    : TC-new
+
+    Test Check Point: DAP parameter's value in new added profile is expected as xml parsing ones
+                      And it is only effective for speaker landscape mode
+    """
+    caller_name = test_log_new_added_profiles_default_value_verify_landscape.__name__
+
+    new_added_profile_num = 1
+    total_profile_number = (new_added_profile_num + 4)
+    add_new_profiles_in_xml_file_and_then_push_to_device(new_added_profile_num)
+
+    # iterate all new added profiles to verify the default value is expected
+    for index in xrange(0, total_profile_number, 1):
+        specified_profile_default_value_test_procedure_dax3(
+            caller_name,
+            endpoint_type_in_module,
+            content_name,
+            content_type,
+            str(index),
+            _tuning_port=dap_tuning_port_internal_speaker,
+            _tuning_device_name=dap_tuning_device_name_speaker_landscape
+        )
+
+        assert_specified_profile_default_values_result(
+            index,
+            speaker_tuning_name[dap_tuning_device_name_speaker_landscape],
+            endpoint_type_in_module,
+            content_type)
+
+
+@pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
+                         custom_profile_default_value_test_data)
+def test_log_new_added_profiles_default_value_verify_portrait(
+        content_name,
+        content_type,
+        dap_status,
+        dap_profile,
+        dap_feature_type,
+        dap_feature_value):
+    """
+    Test Case ID    : TC-new
+
+    Test Check Point: DAP parameter's value in new added profile is expected as xml parsing ones
+                      And it is only effective for speaker portrait mode
+    """
+    caller_name = test_log_new_added_profiles_default_value_verify_portrait.__name__
+
+    new_added_profile_num = 12
+    total_profile_number = (new_added_profile_num + 4)
+    add_new_profiles_in_xml_file_and_then_push_to_device(new_added_profile_num)
+
+    # iterate all new added profiles to verify the default value is expected
+    for index in xrange(0, total_profile_number, 1):
+        specified_profile_default_value_test_procedure_dax3(
+            caller_name,
+            endpoint_type_in_module,
+            content_name,
+            content_type,
+            str(index),
+            _tuning_port=dap_tuning_port_internal_speaker,
+            _tuning_device_name=dap_tuning_device_name_speaker_portrait
+        )
+
+        assert_specified_profile_default_values_result(
+            index,
+            speaker_tuning_name[dap_tuning_device_name_speaker_portrait],
+            endpoint_type_in_module,
+            content_type)
+
+
 @pytest.mark.bass
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
                          be_on_test_data)

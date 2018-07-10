@@ -19,6 +19,29 @@ def register_logger_name(_logger_name):
     log_analysis_instance.set_logger_name(_logger_name)
 
 
+# define common remount device command
+def remount_device():
+    execute("adb root")
+    execute("adb remount")
+    pass
+
+
+# define common reboot device command
+def reboot_device_until_online():
+    time.sleep(SLEEP_TIME_UNTIL_DEVICE_ONLINE)
+    execute("adb reboot")
+    execute("adb wait-for-device")
+    # click power button and turn screen on
+    # execute("adb shell input keyevent 26")
+    # click swap and unlock and ask for pin
+    time.sleep(5)
+    execute("adb shell svc power stayon true")
+    execute("adb shell input keyevent 82")
+    # use 'adb shell getprop sys.boot_completed' to judge online status of a device
+    time.sleep(SLEEP_TIME_UNTIL_DEVICE_ONLINE)
+    pass
+
+
 # common serial action : play content -> change dap parameter -> save log to a specified file for later analysis
 def feature_test_procedure(content_name, dap_status, dap_profile=None, dap_feature_type=None, dap_feature_value=None):
     # play content

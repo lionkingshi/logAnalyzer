@@ -355,7 +355,8 @@ class TuningFileParser:
     # get feature value for dom,vbon and beon, these three ones are special ones
     def get_feture_dom_bass(self, dap_feature, profile, endpoint):
         if not self.check_ifvalid(profile, endpoint):
-            return 0
+            pass
+            # return 0
         flag = 0
         tuning_patten = ".//tuning[@name='%s']" % endpoint
         try:

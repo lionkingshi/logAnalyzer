@@ -1,23 +1,79 @@
 from tools.common import *
 from tools.logger import *
 from src.dax31.log_analysis.dax3XMLParser.XMLUpdater import *
+from src.dax31.log_analysis.dax3XMLParser.addNewProfile import *
+
+output_xml_file_name = None
+profile_name_after_new_added = None
+
+
+def add_new_profiles_in_xml_file_and_then_push_to_device(_new_added_profile_num,
+                                                         _endpoint_type=AUDIO_DEVICE_OUT_STEREO_SPEAKER):
+    global output_xml_file_name
+    assert isinstance(_new_added_profile_num, int)
+
+    logging.getLogger(_endpoint_type).critical(
+        "===== Please wait : now replace the xml file on the device and then reboot device")
+
+    _total_profile_num = _new_added_profile_num + 4
+    _current_directory = os.path.dirname(os.path.abspath(__file__))
+    if _endpoint_type == AUDIO_DEVICE_OUT_MONO_SPEAKER:
+        default_xml_file_name = abspath(
+            join(_current_directory, 'dax3XMLParser', 'mono', 'dax3-default-mono-speaker.xml'))
+        output_xml_file_name = str(_total_profile_num) + "-profiles-mono-speaker.xml"
+    else:
+        default_xml_file_name = abspath(
+            join(_current_directory, 'dax3XMLParser', 'stereo', 'dax3-default-stereo-speaker.xml'))
+        output_xml_file_name = str(_total_profile_num) + "-profiles-stereo-speaker.xml"
+
+    # step 1 : add new profiles in a new xml file
+    create_new_profiles_in_sequence(default_xml_file_name, _new_added_profile_num, output_xml_file_name)
+
+    # step 2 : push new xml file to device and then reboot the device
+    if _endpoint_type == AUDIO_DEVICE_OUT_MONO_SPEAKER:
+        default_new_xml_file_name = abspath(
+            join(_current_directory, 'dax3XMLParser', 'mono', output_xml_file_name))
+    else:
+        default_new_xml_file_name = abspath(
+            join(_current_directory, 'dax3XMLParser', 'stereo', output_xml_file_name))
+
+    if exists(default_new_xml_file_name):
+        logging.getLogger(_endpoint_type).debug("====== succeed to create a new xml file!")
+        logging.getLogger(_endpoint_type).debug("====== start to push new xml file to device !")
+        remount_device()
+        execute("adb push {0} {1}".format(default_new_xml_file_name, xml_file_location_on_device))
+        reboot_device_until_online()
+        logging.getLogger(_endpoint_type).debug("====== end to push new xml file to device !")
+        logging.getLogger(_endpoint_type).critical(
+            "===== Already updated total profile numbers equals to {} on the device under test ".format(
+                str(_new_added_profile_num + 4)))
+    else:
+        logging.getLogger(_endpoint_type).debug("====== fail to create a new xml file!")
+    # step 3: start target activity again
+    execute("adb shell am start -n {0}/{1}".format(test_package_name, test_package_main_activity_name))
+    time.sleep(10)
+    pass
 
 
 def specified_profile_default_value_test_procedure_dax3(caller_name, endpoint_id, content_name, content_type,
                                                         _dap_profile,
                                                         _tuning_port=dap_tuning_port_internal_speaker,
                                                         _tuning_device_name=dap_tuning_device_name_speaker_landscape):
+    global output_xml_file_name
     # step 1 :register logger name to record all command to logger file except session setup() function
     register_logger_name(endpoint_id)
 
-    if _dap_profile == dap_profile_custom_dax3:
-        _profile_name = 'Custom'
-    elif _dap_profile == dap_profile_dynamic:
-        _profile_name = 'Dynamic'
-    elif _dap_profile == dap_profile_movie:
-        _profile_name = 'Movie'
-    elif _dap_profile == dap_profile_music:
-        _profile_name = 'Music'
+    # get profile name from xml file
+    _new_xml_file_name = __get_profile_name_from_xml_file(endpoint_id)
+    _profile_name = get_profile_name_by_id(_new_xml_file_name, int(_dap_profile))
+    # if _dap_profile == dap_profile_custom_dax3:
+    #     _profile_name = 'Custom'
+    # elif _dap_profile == dap_profile_dynamic:
+    #     _profile_name = 'Dynamic'
+    # elif _dap_profile == dap_profile_movie:
+    #     _profile_name = 'Movie'
+    # elif _dap_profile == dap_profile_music:
+    #     _profile_name = 'Music'
 
     index = _tuning_device_name
     logging.getLogger(endpoint_id).critical(
@@ -40,7 +96,7 @@ def specified_profile_default_value_test_procedure_dax3(caller_name, endpoint_id
                 dap_tuning_device_name_speaker_portrait))
 
     # step 3 : change dap profile
-    if _dap_profile != dap_profile_custom_dax3:
+    if (str(int(_dap_profile) % 4)) != dap_profile_custom_dax3:
         feature_test_procedure(content_name, dap_status_on, dap_profile_custom_dax3)
         feature_test_procedure(content_name, dap_status_on, _dap_profile)
     else:
@@ -54,35 +110,58 @@ def specified_profile_default_value_test_procedure_dax3(caller_name, endpoint_id
 def assert_specified_profile_default_values_result(_profile_name, tuning_device_name,
                                                    _endpoint_type=AUDIO_DEVICE_OUT_STEREO_SPEAKER,
                                                    _content_type=content_type_2_channel_non_dolby):
-    _current_directory = os.path.dirname(os.path.abspath(__file__))
-    if _endpoint_type == AUDIO_DEVICE_OUT_MONO_SPEAKER:
-        default_xml_file_name = abspath(
-            join(_current_directory, 'dax3XMLParser', 'mono', 'dax3-default-mono-speaker.xml'))
+    _new_xml_file_name = __get_profile_name_from_xml_file(_endpoint_type)
+    _current_profile_name_list = get_profile_name(_new_xml_file_name)
+
+    if isinstance(_profile_name, int):
+        assert len(_current_profile_name_list) > 0, "fail to read profile name from xml file!"
+        _profile_name_finally = _current_profile_name_list[_profile_name]
     else:
-        default_xml_file_name = abspath(
-            join(_current_directory, 'dax3XMLParser', 'stereo', 'dax3-default-stereo-speaker.xml'))
-    xml_parser_class = TuningFileParser(default_xml_file_name)
-    post_para_dict_from_xml = xml_parser_class.print_expect_value(_profile_name=_profile_name,
+        _profile_name_finally = _profile_name
+
+    xml_parser_class = TuningFileParser(_new_xml_file_name)
+    post_para_dict_from_xml = xml_parser_class.print_expect_value(_profile_name=_profile_name_finally,
                                                                   tuning_device_name_endpoint=tuning_device_name)
 
     if _content_type in content_type_non_dolby:
-        __compare_para_default_value_for_non_dolby_content(post_para_dict_from_xml, _endpoint_type, _profile_name)
+        __compare_para_default_value_for_non_dolby_content(
+            post_para_dict_from_xml, _endpoint_type, _profile_name_finally)
         logging.getLogger(_endpoint_type).critical(
             "====== for non dolby content playback, ")
     elif _content_type in content_type_dolby:
         __compare_para_default_value_for_dolby_content(
-            post_para_dict_from_xml, _endpoint_type, _profile_name, _content_type)
+            post_para_dict_from_xml, _endpoint_type, _profile_name_finally, _content_type)
         logging.getLogger(_endpoint_type).critical(
             "====== for dolby content playback, ")
     elif _content_type in content_type_ac4:
         __compare_para_default_value_for_dolby_content(
-            post_para_dict_from_xml, _endpoint_type, _profile_name, _content_type)
+            post_para_dict_from_xml, _endpoint_type, _profile_name_finally, _content_type)
         logging.getLogger(_endpoint_type).critical(
             "====== for AC4 content playback, ")
         pass
 
     logging.getLogger(_endpoint_type).critical(
-        "====== default params in {} profile are same as ones parsing from xml !!!!!".format(_profile_name))
+        "====== default params in {} profile are same as ones parsing from xml !!!!!".format(_profile_name_finally))
+
+
+def __get_profile_name_from_xml_file(_endpoint_type):
+    global output_xml_file_name
+    # get profile name from xml file
+    _current_directory = os.path.dirname(os.path.abspath(__file__))
+    if _endpoint_type == AUDIO_DEVICE_OUT_MONO_SPEAKER:
+        if output_xml_file_name is None:
+            _new_xml_file_name = abspath(
+                join(_current_directory, 'dax3XMLParser', 'mono', 'dax3-default-mono-speaker.xml'))
+        else:
+            _new_xml_file_name = abspath(
+                join(_current_directory, 'dax3XMLParser', 'mono', output_xml_file_name))
+    else:
+        if output_xml_file_name is None:
+            _new_xml_file_name = abspath(join(
+                _current_directory, 'dax3XMLParser', 'stereo', 'dax3-default-stereo-speaker.xml'))
+        else:
+            _new_xml_file_name = abspath(join(_current_directory, 'dax3XMLParser', 'stereo', output_xml_file_name))
+    return _new_xml_file_name
 
 
 def __compare_para_default_value_for_dolby_content(post_para_dict_from_xml,
@@ -252,7 +331,7 @@ def __assemble_ac4_ieid_expected_value(__qmf_process_key_value_assembled, __prof
         else:
             __temp_ieid_value = EMPTY_STRING_FLAG
     # for dynamic profile , force ieid to off
-    if __profile_name == profile_name[0]:
+    if profile_name[0] in __profile_name:
         __temp_ieid_value = INDEX_IEQ_OFF
 
     return __temp_ieid_value
@@ -318,7 +397,7 @@ def __compare_global_para_for_dolby_content(_global_process_key_value_assembled,
     for _key_four_cc_name in _global_process_key_value_assembled.keys():
         # special handle for iebs when custom profile
         # for custom profile , ieq status is off and iebs values remains as previous
-        if _profile_name == profile_name[3]:
+        if profile_name[3] in _profile_name:
             if _key_four_cc_name == 'iebs':
                 continue
 
@@ -346,7 +425,7 @@ def __compare_qmf_para_for_dolby_content(_qmf_process_key_value_assembled,
     for _key_four_cc_name in _qmf_process_key_value_assembled.keys():
         # special handle for iebs when custom profile
         # for custom profile , ieq status is off and iebs values remains as previous
-        if _profile_name == profile_name[3]:
+        if profile_name[3] in _profile_name:
             if _key_four_cc_name == 'iebs':
                 continue
 
@@ -403,7 +482,7 @@ def __compare_para_default_value_for_non_dolby_content(post_para_dict_from_xml, 
             else:
                 # special handle for iebs when custom profile
                 # for custom profile , ieq status is off and iebs values remains as previous
-                if _profile_name == profile_name[3]:
+                if profile_name[3] in _profile_name:
                     if four_cc_name == 'iebs':
                         continue
                 # special handle for vbm and vbon

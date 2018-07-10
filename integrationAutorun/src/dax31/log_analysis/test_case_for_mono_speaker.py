@@ -13,6 +13,51 @@ logger = Logger(log_name=logging_file_name + '.log', log_level='1',
 log_file_name = abspath(join('.', 'log', 'log.txt'))
 
 
+# this test case must be run in highest priority and in first sequence
+# because it will push dax-default-mono-speaker.xml to device other than dax-default-stereo-speaker.xml
+# in the log analysis with headphone or bluetooth or usb headphone endpoint under device with mono speaker
+# it will push dax-default-stereo-speaker.xml to device under test and
+# no better way to detect mono speaker and then push mono-speaker.xml to device
+@pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
+                         custom_profile_default_value_test_data)
+def test_log_new_added_profiles_default_value_verify(
+        content_name,
+        content_type,
+        dap_status,
+        dap_profile,
+        dap_feature_type,
+        dap_feature_value):
+    """
+    Test Case ID    : TC-new
+
+    Test Check Point: DAP parameter's value in new added profile is expected as xml parsing ones
+    """
+    caller_name = test_log_new_added_profiles_default_value_verify.__name__
+
+    new_added_profile_num = 10
+    total_profile_number = (new_added_profile_num + 4)
+    add_new_profiles_in_xml_file_and_then_push_to_device(new_added_profile_num,
+                                                         _endpoint_type=endpoint_type_in_module)
+
+    # iterate all new added profiles to verify the default value is expected
+    for index in xrange(0, total_profile_number, 1):
+        specified_profile_default_value_test_procedure_dax3(
+            caller_name,
+            endpoint_type_in_module,
+            content_name,
+            content_type,
+            str(index),
+            _tuning_port=dap_tuning_port_internal_speaker,
+            _tuning_device_name=dap_tuning_device_name_speaker_portrait
+        )
+
+        assert_specified_profile_default_values_result(
+            index,
+            speaker_tuning_name[dap_tuning_device_name_speaker_portrait],
+            endpoint_type_in_module,
+            content_type)
+
+
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
                          dynamic_profile_default_value_test_data)
 def test_log_dynamic_profile_default_value_verify(content_name, content_type,

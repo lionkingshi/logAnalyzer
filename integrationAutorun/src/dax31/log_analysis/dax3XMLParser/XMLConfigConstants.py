@@ -1,3 +1,4 @@
+from tools.filter_para_config import PARA_LIST_IN_GLOBAL_PROCESS
 # profile feature dict,dom beon and vbon are specifal ones, they exist in both profile and tuning
 # so only specified for profile,e.g dap_profile_dict[dom][0] is for profile, dap_profile_dict[dom][1] is for tuning
 dap_profile_dict = {
@@ -63,17 +64,19 @@ dap_tuning_dict = {
 # "arod","artp","arra","vbm","vbog","vbsg","dfsa","dhsa","dsa","dvmc","bexe","ceon", \
 # ]
 
-POST_PROCESSING_PARAS_LIST = [
-    'dea', 'iea', 'dsa', 'beb', 'plb', 'vmb', 'dsb', 'ded', 'vbm', 'dom', 'bew', 'dvla',
-    'arra', 'dfsa', 'dhsa', 'dvmc', 'arod', 'msce', 'arde', 'mdee', 'miee', 'mdle', 'dvle',
-    'dvme', 'mave', 'vcbf', 'becf', 'vbmf', 'vbsf', 'preg', 'vbhg', 'vbog', 'vbsg', 'dvli',
-    'dhfm', 'vbon', 'beon', 'deon', 'geon', 'ieon', 'ngon', 'aoon', 'aron', 'dvlo', 'artp',
-    'pstg', 'gebs', 'iebs', 'aobs', 'arbs', 'vol', 'ceon', 'ceqt'
-]
+# POST_PROCESSING_PARAS_LIST = [
+#     'dea', 'iea', 'dsa', 'beb', 'plb', 'vmb', 'dsb', 'ded', 'vbm', 'dom', 'bew', 'dvla',
+#     'arra', 'dfsa', 'dhsa', 'dvmc', 'arod', 'msce', 'arde', 'mdee', 'miee', 'mdle', 'dvle',
+#     'dvme', 'mave', 'vcbf', 'becf', 'vbmf', 'vbsf', 'preg', 'vbhg', 'vbog', 'vbsg', 'dvli',
+#     'dhfm', 'vbon', 'beon', 'deon', 'geon', 'ieon', 'ngon', 'aoon', 'aron', 'dvlo', 'artp',
+#     'pstg', 'gebs', 'iebs', 'aobs', 'arbs', 'vol', 'ceon', 'ceqt'
+# ]
+POST_PROCESSING_PARAS_LIST = PARA_LIST_IN_GLOBAL_PROCESS
 
 # tuning endpoint list
 tuning_endpoint_name = ["Speaker_portrait", "Speaker_landscape", "Headphone", "Ext Spkr", "HDMI", "Miracast", "Unknown"]
-profile_name = ["Dynamic", "Movie", "Music", "Custom"]
+profile_name = ["Dynamic", "Movie", "Music", "Custom", "Dynamic1", "Movie1", "Music1", "Custom1",
+                "Dynamic2", "Movie2", "Music2", "Custom2", "Dynamic3", "Movie3", "Music3", "Custom3"]
 
 band_optimizer_order = ["frequency", "gain_left", "gain_right", "gain_center", "gain_lfe", "gain_left_surround",
                         "gain_right_surround", "gain_left_rear_surround", "gain_right_rear_surround",

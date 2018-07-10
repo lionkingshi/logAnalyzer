@@ -6,6 +6,9 @@ SLEEP_TIME_BEFORE_RECORD_LOG = 5
 SLEEP_TIME_FOR_PUSH_MEDIA_TO_DUT = 3
 SLEEP_TIME_FOR_ACTIVITY_START = 1
 SLEEP_TIME_FOR_INSTALLING_APK = 3
+SLEEP_TIME_UNTIL_DEVICE_ONLINE = 10
+# define xml file location on the device
+xml_file_location_on_device = '/vendor/etc/dolby/dax-default.xml'
 # define play content
 play_content_local_location = './featureTestContent/*'
 play_content_device_parent_location = '/sdcard/dolby'

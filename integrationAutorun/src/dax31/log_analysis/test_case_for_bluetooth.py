@@ -119,6 +119,44 @@ def test_log_custom_profile_default_value_verify_for(content_name, content_type,
 
 
 @pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
+                         custom_profile_default_value_test_data)
+def test_log_new_added_profiles_default_value_verify(
+        content_name,
+        content_type,
+        dap_status,
+        dap_profile,
+        dap_feature_type,
+        dap_feature_value):
+    """
+    Test Case ID    : TC-new
+
+    Test Check Point: DAP parameter's value in new added profile is expected as xml parsing ones
+    """
+    caller_name = test_log_new_added_profiles_default_value_verify.__name__
+
+    new_added_profile_num = 10
+    total_profile_number = (new_added_profile_num + 4)
+    add_new_profiles_in_xml_file_and_then_push_to_device(new_added_profile_num,
+                                                         _endpoint_type=endpoint_type_in_module)
+
+    # iterate all new added profiles to verify the default value is expected
+    for index in xrange(0, total_profile_number, 1):
+        specified_profile_default_value_test_procedure_dax3(
+            caller_name,
+            endpoint_type_in_module,
+            content_name,
+            content_type,
+            str(index)
+        )
+
+        assert_specified_profile_default_values_result(
+            index,
+            tuning_endpoint_name[2],
+            _endpoint_type=endpoint_type_in_module,
+            _content_type=content_type)
+
+
+@pytest.mark.parametrize('content_name,content_type,dap_status,dap_profile,dap_feature_type,dap_feature_value',
                          be_on_test_data)
 def test_log_bass_on_verify(content_name, content_type, dap_status, dap_profile, dap_feature_type, dap_feature_value):
     """

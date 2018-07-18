@@ -10,6 +10,26 @@ geq_frequency_list = ['47', '141', '234', '328', '469', '656', '844', '1031', '1
 total_added_profile_number = 0
 
 
+def get_speaker_endpoint_type(_xml_file_abs_path):
+    _flag_speaker_is_mono = True
+    _lang = xml.parse(_xml_file_abs_path)
+    _root = _lang.getroot()
+
+    for _tuning_tag_element in _root.iter("tuning"):
+        if _tuning_tag_element.attrib["mono_device"] == "true":
+            _flag_speaker_is_mono = True
+            break
+        elif _tuning_tag_element.attrib["mono_device"] == "false":
+            _flag_speaker_is_mono = False
+            break
+        else:
+            _flag_speaker_is_mono = True
+
+    import os
+    os.remove(_xml_file_abs_path)
+    return _flag_speaker_is_mono
+
+
 def get_profile_name_by_id(_xml_file_path, _profile_id):
     assert isinstance(_profile_id, int)
 

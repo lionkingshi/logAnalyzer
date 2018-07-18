@@ -232,3 +232,12 @@ def execute(cmd):
     logging.getLogger(logger_name).debug("===== run command : %s " % cmd)
     # print cmd + ' return result : ' + str(return_code)
     return return_code
+
+
+def run_command(cmd):
+    import subprocess
+    p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    # p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    logging.getLogger(logger_name).debug("===== run command : %s " % cmd)
+    _std_output, _err_output = p.communicate()
+    return _std_output, _err_output

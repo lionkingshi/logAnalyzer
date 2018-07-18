@@ -32,6 +32,7 @@ class Logger:
         print("\n")
         print("+++log name:" + log_name)
         print("+++log dir:" + _log_parent_dir)
+        print("\n")
         if not is_exist:
             makedirs(_log_parent_dir)
 

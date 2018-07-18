@@ -264,7 +264,7 @@ def test_log_new_added_profiles_default_value_verify_landscape(
     """
     caller_name = test_log_new_added_profiles_default_value_verify_landscape.__name__
 
-    new_added_profile_num = 1
+    new_added_profile_num = 11
     total_profile_number = (new_added_profile_num + 4)
     add_new_profiles_in_xml_file_and_then_push_to_device(new_added_profile_num)
 

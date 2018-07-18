@@ -5,19 +5,32 @@ from src.dax31.log_analysis.dax3XMLParser.addNewProfile import *
 
 output_xml_file_name = None
 profile_name_after_new_added = None
+flag_speaker_is_mono = None
 
 
 def add_new_profiles_in_xml_file_and_then_push_to_device(_new_added_profile_num,
                                                          _endpoint_type=AUDIO_DEVICE_OUT_STEREO_SPEAKER):
     global output_xml_file_name
+    global flag_speaker_is_mono
     assert isinstance(_new_added_profile_num, int)
 
     logging.getLogger(_endpoint_type).critical(
         "===== Please wait : now replace the xml file on the device and then reboot device")
 
+    # step 0 : judge the speaker is mono or stereo through parsing xml file from device
     _total_profile_num = _new_added_profile_num + 4
     _current_directory = os.path.dirname(os.path.abspath(__file__))
-    if _endpoint_type == AUDIO_DEVICE_OUT_MONO_SPEAKER:
+    _temp_xml_file = abspath(join(_current_directory, "temp.xml"))
+    _xml_file_location_on_device = "/vendor/etc/dolby/dax-default.xml"
+    execute("adb pull {0} {1}".format(_xml_file_location_on_device, _temp_xml_file))
+    flag_speaker_is_mono = get_speaker_endpoint_type(_temp_xml_file)
+
+    if flag_speaker_is_mono:
+        logging.getLogger(_endpoint_type).debug("===== current speaker of device under test has a mono speaker")
+    else:
+        logging.getLogger(_endpoint_type).debug("===== current speaker of device under test has a stereo speaker")
+
+    if _endpoint_type == AUDIO_DEVICE_OUT_MONO_SPEAKER or flag_speaker_is_mono:
         default_xml_file_name = abspath(
             join(_current_directory, 'dax3XMLParser', 'mono', 'dax3-default-mono-speaker.xml'))
         output_xml_file_name = str(_total_profile_num) + "-profiles-mono-speaker.xml"
@@ -30,7 +43,7 @@ def add_new_profiles_in_xml_file_and_then_push_to_device(_new_added_profile_num,
     create_new_profiles_in_sequence(default_xml_file_name, _new_added_profile_num, output_xml_file_name)
 
     # step 2 : push new xml file to device and then reboot the device
-    if _endpoint_type == AUDIO_DEVICE_OUT_MONO_SPEAKER:
+    if _endpoint_type == AUDIO_DEVICE_OUT_MONO_SPEAKER or flag_speaker_is_mono:
         default_new_xml_file_name = abspath(
             join(_current_directory, 'dax3XMLParser', 'mono', output_xml_file_name))
     else:
@@ -146,9 +159,10 @@ def assert_specified_profile_default_values_result(_profile_name, tuning_device_
 
 def __get_profile_name_from_xml_file(_endpoint_type):
     global output_xml_file_name
+    global flag_speaker_is_mono
     # get profile name from xml file
     _current_directory = os.path.dirname(os.path.abspath(__file__))
-    if _endpoint_type == AUDIO_DEVICE_OUT_MONO_SPEAKER:
+    if _endpoint_type == AUDIO_DEVICE_OUT_MONO_SPEAKER or flag_speaker_is_mono:
         if output_xml_file_name is None:
             _new_xml_file_name = abspath(
                 join(_current_directory, 'dax3XMLParser', 'mono', 'dax3-default-mono-speaker.xml'))
